@@ -1,6 +1,7 @@
 package com.hdmstuttgart.fluffybear.model;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
@@ -9,8 +10,45 @@ import javax.persistence.Embeddable;
 public class RecipeIngredientKey implements Serializable {	
 
 	@Column(name = "recipe_id", nullable = false)
-    Long recipeId;
+    private Long recipeId;
  
     @Column(name = "ingredient_id", nullable = false)
-    Long ingredientId;
+    private Long ingredientId;
+
+	public RecipeIngredientKey(Long recipeId, Long ingredientId) {
+		this.recipeId = recipeId;
+		this.ingredientId = ingredientId;
+	}
+
+	// define unique equal properties for RecipeIngredientKey
+	@Override
+	public boolean equals(Object arg0) {
+	    if (arg0 == null) return false;
+	    if (!(arg0 instanceof RecipeIngredientKey)) return false;
+	    if (arg0 == this) return true;
+	    return (this.getIngredientId() == ((RecipeIngredientKey) arg0).getIngredientId())
+	    		&& (this.getRecipeId() == ((RecipeIngredientKey) arg0).getIngredientId());
+	}
+
+	// use recipe_id and ingredient_id for hash generation
+	@Override
+	public int hashCode() {
+		return Objects.hash(this.getRecipeId(), this.getIngredientId());
+	}
+
+	public Long getRecipeId() {
+		return recipeId;
+	}
+
+	public void setRecipeId(Long recipeId) {
+		this.recipeId = recipeId;
+	}
+
+	public Long getIngredientId() {
+		return ingredientId;
+	}
+
+	public void setIngredientId(Long ingredientId) {
+		this.ingredientId = ingredientId;
+	}
 }
