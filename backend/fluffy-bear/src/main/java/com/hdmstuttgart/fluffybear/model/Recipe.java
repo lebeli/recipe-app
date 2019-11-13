@@ -4,9 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinTable;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import java.util.Set;
 
 @Entity
@@ -19,12 +17,8 @@ public class Recipe {
 	private String instruction;
 	private int yield;
 	
-	@ManyToMany
-	@JoinTable(
-			  name = "contained_ingredience", 
-			  joinColumns = @JoinColumn(name = "recipe_id"), 
-			  inverseJoinColumns = @JoinColumn(name = "ingredient_id"))
-	private Set<String> ingredients;
+	@OneToMany(mappedBy = "recipe")
+    Set<RecipeIngredient> ingredientAmount;
 
 	public String getName() {
 		return name;
