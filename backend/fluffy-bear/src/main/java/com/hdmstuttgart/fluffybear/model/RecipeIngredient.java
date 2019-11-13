@@ -24,9 +24,10 @@ public class RecipeIngredient {
  
     int ingredientAmount;
     
-    public RecipeIngredient(Recipe recipe, Ingredient ingredient) {
+    public RecipeIngredient(Recipe recipe, Ingredient ingredient, int ingredientAmount) {
     	this.recipe = recipe;
     	this.ingredient = ingredient;
+    	this.ingredientAmount = ingredientAmount;
     }
 
 	public int getIngredientAmount() {
