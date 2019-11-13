@@ -18,6 +18,10 @@ public class Ingredient {
 	
 	@OneToMany(mappedBy = "ingredient")
     Set<RecipeIngredient> ingredientAmount;
+	
+	public Ingredient(String name) {
+		this.name = name;
+	}
 
 	public String getName() {
 		return name;

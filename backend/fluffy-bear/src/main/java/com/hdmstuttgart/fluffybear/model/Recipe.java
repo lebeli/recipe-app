@@ -19,6 +19,12 @@ public class Recipe {
 	
 	@OneToMany(mappedBy = "recipe")
     Set<RecipeIngredient> ingredientAmount;
+	
+	public Recipe(String name, String instruction, int yield) {
+		this.name = name;
+		this.instruction = instruction;
+		this.yield = yield;
+	}
 
 	public String getName() {
 		return name;
