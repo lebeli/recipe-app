@@ -11,19 +11,27 @@ import java.util.Set;
 public class Recipe {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long id;
+	private Long id;
 	
 	private String name;
 	private String instruction;
 	private int yield;
 	
 	@OneToMany(mappedBy = "recipe")
-    Set<RecipeIngredient> ingredientAmount;
+    private Set<RecipeIngredient> ingredientAmount;
 	
 	public Recipe(String name, String instruction, int yield) {
 		this.name = name;
 		this.instruction = instruction;
 		this.yield = yield;
+	}
+	
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
 	}
 
 	public String getName() {
@@ -48,5 +56,13 @@ public class Recipe {
 
 	public void setYield(int yield) {
 		this.yield = yield;
+	}
+
+	public Set<RecipeIngredient> getIngredientAmount() {
+		return ingredientAmount;
+	}
+
+	public void setIngredientAmount(Set<RecipeIngredient> ingredientAmount) {
+		this.ingredientAmount = ingredientAmount;
 	}
 }
