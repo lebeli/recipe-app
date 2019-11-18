@@ -1,34 +1,51 @@
 package com.hdmstuttgart.fluffybear.model;
 
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.MapsId;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
-public class RecipeIngredient {
-	
-	@EmbeddedId
-	private RecipeIngredientKey id;
+public class RecipeIngredient {	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long id;
 	
 	@ManyToOne
-    @MapsId("recipe_id")
+//    @MapsId("recipe_id")
     @JoinColumn(name = "recipe_id")
-    private Recipe recipe;
+	@JsonBackReference(value = "recipe")
+    private Recipe recipe;  // back reference is ignored during JSON serialization (due to recursion)
  
     @ManyToOne
-    @MapsId("ingredient_id")
     @JoinColumn(name = "ingredient_id")
-    private Ingredient ingredient;
+    @JsonBackReference(value = "ingredient")
+    private Ingredient ingredient;  // managed reference will be serialized
  
+    @JoinColumn(name = "ingredient_name")
+    String ingredientName;
+    
     int ingredientAmount;
+    
+    public RecipeIngredient() {}
     
     public RecipeIngredient(Recipe recipe, Ingredient ingredient, int ingredientAmount) {
     	this.recipe = recipe;
     	this.ingredient = ingredient;
     	this.ingredientAmount = ingredientAmount;
     }
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
 
 	public int getIngredientAmount() {
 		return ingredientAmount;
