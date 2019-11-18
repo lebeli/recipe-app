@@ -9,13 +9,15 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class RecipeIngredientKey implements Serializable {	
 
-	@Column(name = "recipe_id", nullable = false)
-    private Long recipeId;
+	@Column(name = "recipe_id")
+    private long recipeId;
  
-    @Column(name = "ingredient_id", nullable = false)
-    private Long ingredientId;
+    @Column(name = "ingredient_id")
+    private long ingredientId;
 
-	public RecipeIngredientKey(Long recipeId, Long ingredientId) {
+    public RecipeIngredientKey() {}
+    
+	public RecipeIngredientKey(long recipeId, long ingredientId) {
 		this.recipeId = recipeId;
 		this.ingredientId = ingredientId;
 	}

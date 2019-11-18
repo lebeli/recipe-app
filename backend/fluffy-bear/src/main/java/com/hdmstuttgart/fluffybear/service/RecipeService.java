@@ -14,11 +14,11 @@ public class RecipeService {
 	@Autowired
 	private RecipeRepository recipeRepository;
 	
-	public List<Recipe> getAllRecipes(Long id) {
+	public List<Recipe> getAllRecipes() {
 		List<Recipe> recipes = new ArrayList<Recipe>();
 		recipeRepository.findAll()
-		.forEach(topic -> {
-			recipes.add(topic);
+		.forEach(recipe -> {
+			recipes.add(recipe);
 		});
 		return recipes;
 	}
@@ -34,12 +34,16 @@ public class RecipeService {
 	public void addRecipe(Recipe recipe) {
 		recipeRepository.save(recipe);
 	}
-	
-	public void updateRecipe(Long id, Recipe recipe) {
+
+	public void updateRecipe(long id, Recipe recipe) {
 		recipeRepository.save(recipe); // if id already exists, Spring updates the id with the passed recipe instance 
 	}
 	
-	public void deleteRecipe(Long id) {
+	public void deleteRecipe(long id) {
 		recipeRepository.deleteById(id); // if id already exists, Spring updates the id with the passed recipe instance 
+	}
+	
+	public void deleteAll() {
+		recipeRepository.deleteAll(); 
 	}
 }

@@ -5,18 +5,24 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import java.util.Set;
 
 @Entity
 public class Ingredient {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	
 	private String name;
 	
 	@OneToMany(mappedBy = "ingredient")
-    Set<RecipeIngredient> ingredientAmount;
+	@JsonManagedReference(value = "ingredient")
+    Set<RecipeIngredient> recipeIngredients;  // back reference is ignored during JSON serialization
+	
+	public Ingredient() {}
 	
 	public Ingredient(String name) {
 		this.name = name;
@@ -28,5 +34,21 @@ public class Ingredient {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public Set<RecipeIngredient> getRecipeIngredients() {
+		return recipeIngredients;
+	}
+
+	public void setRecipeIngredients(Set<RecipeIngredient> recipeIngredients) {
+		this.recipeIngredients = recipeIngredients;
 	}
 }
