@@ -15,6 +15,10 @@ module.exports = {
          test: /\.(css|scss)$/,
          use: ['style-loader', 'css-loader', 'sass-loader'],
          include: /flexboxgrid/
+      },
+      {
+        test: /\.(png|jpe?g|gif)$/i,
+        loader: 'file-loader'
       }
     ]
   },
