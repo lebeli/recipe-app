@@ -1,58 +1,58 @@
 package com.hdmstuttgart.fluffybear.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonUnwrapped;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import javax.persistence.*;
+
 
 @Entity
-public class RecipeIngredient {	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+public class RecipeIngredient {
+	@EmbeddedId
+	@JsonIgnore
+    private RecipeIngredientKey id = new RecipeIngredientKey();
 	
-	@ManyToOne
-//    @MapsId("recipe_id")
-    @JoinColumn(name = "recipe_id")
-	@JsonBackReference(value = "recipe")
-    private Recipe recipe;  // back reference is ignored during JSON serialization (due to recursion)
- 
-    @ManyToOne
-    @JoinColumn(name = "ingredient_id")
-    @JsonBackReference(value = "ingredient")
-    private Ingredient ingredient;  // managed reference will be serialized
- 
-    @JoinColumn(name = "ingredient_name")
-    String ingredientName;
-    
-    int ingredientAmount;
-    
-    public RecipeIngredient() {}
-    
-    public RecipeIngredient(Recipe recipe, Ingredient ingredient, int ingredientAmount) {
-    	this.recipe = recipe;
-    	this.ingredient = ingredient;
-    	this.ingredientAmount = ingredientAmount;
-    }
+	@ManyToOne(fetch = FetchType.LAZY)
+    @MapsId("recipeId")
+	@JoinColumn(name = "recipe_id", referencedColumnName = "id")
+	@JsonIgnore
+	private Recipe recipe;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+    @MapsId("ingredientId")
+	@JoinColumn(name = "ingredient_id", referencedColumnName = "id")
+	@JsonUnwrapped
+	private Ingredient ingredient;
 
-	public long getId() {
+	private int amount;
+	
+	public RecipeIngredient() {}
+
+	public RecipeIngredient(Recipe recipe, Ingredient ingredient) {
+		this.recipe = recipe;
+		this.ingredient = ingredient;
+	}
+	
+	public RecipeIngredient(Recipe recipe, Ingredient ingredient, int amount) {
+		this.recipe = recipe;
+		this.ingredient = ingredient;
+		this.amount = amount;
+	}
+
+	public RecipeIngredientKey getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(RecipeIngredientKey id) {
 		this.id = id;
 	}
 
-	public int getIngredientAmount() {
-		return ingredientAmount;
+	public int getAmount() {
+		return amount;
 	}
 
-	public void setIngredientAmount(int ingredientAmount) {
-		this.ingredientAmount = ingredientAmount;
+	public void setAmount(int amount) {
+		this.amount = amount;
 	}
 
 	public Recipe getRecipe() {
