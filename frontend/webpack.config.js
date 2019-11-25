@@ -1,5 +1,5 @@
 const path = require("path");
-const webpack = require("webpack")
+const webpack = require("webpack");
 
 module.exports = {
   entry: "./src/index.jsx",
@@ -9,16 +9,30 @@ module.exports = {
       {
         test: /\.jsx$/,
         exclude: /(node_modules)/,
-        loader: 'babel-loader'
+        use: ["babel-loader", "eslint-loader"]
       },
       {
-         test: /\.(css|scss)$/,
-         use: ['style-loader', 'css-loader', 'sass-loader'],
-         include: /flexboxgrid/
+        test: /\.scss$/,
+        use: [
+          // Creates `style` nodes from JS strings
+          'style-loader',
+          // Translates CSS into CommonJS
+          'css-loader',
+          // Compiles Sass to CSS
+          'sass-loader',
+        ]
+      },
+      {
+        test: /\.css$/,
+        use: [
+          'style-loader',
+          'css-loader',
+        ],
+        include: /flexboxgrid/
       }
     ]
   },
-  resolve: { extensions: ['*', '.js', '.jsx'] },
+  resolve: { extensions: ["*", ".js", ".jsx", ".scss"] },
   output: {
     path: path.resolve(__dirname, "dist/"),
     publicPath: "/dist/",
