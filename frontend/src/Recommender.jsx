@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-//import teaserImage from './resources/toast.jpg';
-import teaserImage from './resources/wolf.jpg';
+import RecommenderImage from './RecommenderImage';
+import RecommenderHeader from './RecommenderHeader';
 
 function Recommender() {
-  return (
-    <div className="teaserImage">
-      <img src={teaserImage} width="50" height="150" />
+  return(
+    <div className="recommender" >
+      <RecommenderHeader />
+      <RecommenderImage />
     </div>
   );
 }
