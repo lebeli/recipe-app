@@ -2,11 +2,11 @@ import React from 'react';
 
 function RecommenderHeader() {
 
-  var style = {
+  const style = {
     position: 'absolute',
     top: '0',
     left: '0',
-    background: 'red'
+    background: 'rgba(255, 255, 255, 0.5)',
   };
 
   return (
