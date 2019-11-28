@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import teaserImage from './resources/toast.jpg';
+//import teaserImage from './resources/toast.jpg';
+import teaserImage from './resources/wolf.jpg';
 
 function Recommender() {
   return (
