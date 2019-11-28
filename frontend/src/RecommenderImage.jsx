@@ -4,7 +4,7 @@ import teaserImage from './resources/wolf.jpg';
 
 function RecommenderImage() {
   return (
-    <div className="teaserImage">
+    <div className="teaserImage" >
       <img src={teaserImage} width="50" height="150" />
     </div>
   );
