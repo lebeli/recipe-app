@@ -1,16 +1,22 @@
 const path = require("path");
 const webpack = require("webpack");
 
+require.extensions['.css'] = () => {
+  return;
+};
+
 module.exports = {
   entry: "./src/index.jsx",
   mode: "development",
   module: {
     rules: [
+      // to load .jsx files
       {
         test: /\.jsx$/,
         exclude: /(node_modules)/,
         use: ["babel-loader", "eslint-loader"]
       },
+      // to load style files
       {
         test: /\.scss$/,
         use: [
@@ -22,14 +28,11 @@ module.exports = {
           'sass-loader',
         ]
       },
+      // to load fonts
       {
-        test: /\.css$/,
-        use: [
-          'style-loader',
-          'css-loader',
-        ],
-        include: /flexboxgrid/
-      }
+        test: /\.(ttf|otf)$/,
+        use: ['file-loader']
+      },  
     ]
   },
   resolve: { extensions: ["*", ".js", ".jsx", ".scss"] },
