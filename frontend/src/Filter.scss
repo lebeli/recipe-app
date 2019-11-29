@@ -1,0 +1,48 @@
+@import './styles/styles.scss';
+
+.Filter {
+    #filter-panel {
+        background-color: $secondaryColor;
+        #filter-header {
+            font-family: $secondaryFont;
+            font-size: 15pt;
+            color: white;
+        }
+        .MuiSvgIcon-root {
+            fill: white; 
+        }
+
+        .MuiBox-root-33  {
+            margin: 0;
+            padding: 0;
+        }
+
+        .MuiBox-root-34 {
+            margin: 0;
+        }
+
+        .MuiExpansionPanelSummary-root {
+        
+            min-height: 20px;
+
+            .MuiExpansionPanelSummary-content {
+                margin: 0;
+            }
+        }
+    }
+}
+
+.FilterCategory {
+    .MuiToggleButton-root {
+        border-radius: 24px;
+        background-color: white;
+        
+        .MuiToggleButton-label {
+            font-family: $secondaryFont;
+            text-transform: none;
+        }
+    }
+}
+
+
+

@@ -1,19 +1,19 @@
-import React, { Component } from 'react';
+import React from 'react';
 import RecommenderImage from './RecommenderImage';
 import RecommenderHeader from './RecommenderHeader';
+import RecommenderReloadButton from './RecommenderReloadButton';
 
 function Recommender() {
-
-  var containerStyle = {
+  const containerStyle = {
     position: 'relative',
     height: '100%',
     width: '100%',
   };
 
-
-  return(
+  return (
     <div className="recommender" id="container" style={containerStyle}>
       <RecommenderHeader />
+      <RecommenderReloadButton />
       <RecommenderImage />
     </div>
   );
