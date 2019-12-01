@@ -26,7 +26,7 @@ class Filter extends Component {
           <Box display="flex" justifyContent="center" m={1} p={1}>
             <Box p={1}>
               <ExpansionPanelSummary
-                expandIcon={<ExpandMoreIcon bgcolor="white" />}
+                expandIcon={<ExpandMoreIcon id="search-expand-icon" />}
                 aria-controls="filter-panel-content"
                 id="filter-panel-header-summery"
               >
