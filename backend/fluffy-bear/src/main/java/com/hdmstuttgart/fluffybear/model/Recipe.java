@@ -1,9 +1,7 @@
 package com.hdmstuttgart.fluffybear.model;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 @Entity
 public class Recipe {
@@ -17,6 +15,12 @@ public class Recipe {
 
 	@OneToMany(mappedBy = "recipe", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<RecipeIngredient> ingredients = new ArrayList<>();
+
+	@ManyToMany
+	@JoinTable(name = "recipe_instruction",
+			joinColumns = @JoinColumn(name = "recipe_id"),
+			inverseJoinColumns = @JoinColumn(name = "instruction_id"))
+	private List<Instruction> instructions = new ArrayList<>();
 
 	public Recipe() {}
 	
@@ -45,6 +49,16 @@ public class Recipe {
 	            recipeIngredient.setIngredient(null);
 	        }
 	    }
+	}
+
+	public void addInstruction(Instruction instruction) {
+		instruction.addRecipe(this);
+		instructions.add(instruction);
+	}
+
+	public void removeInstruction(Instruction instruction) {
+		instructions.remove(instruction);
+		instruction.removeRecipe(this);
 	}
 
 	// getters and setters

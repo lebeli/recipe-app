@@ -13,6 +13,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.hdmstuttgart.fluffybear.AppConfig;
 import com.hdmstuttgart.fluffybear.DemoDataController;
+import com.hdmstuttgart.fluffybear.model.Instruction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -29,6 +30,7 @@ import com.hdmstuttgart.fluffybear.service.RecipeIngredientService;
 import com.hdmstuttgart.fluffybear.service.RecipeService;
 
 import javax.annotation.PostConstruct;
+import javax.persistence.criteria.CriteriaBuilder;
 
 @RestController
 public class RecipeController {
@@ -79,7 +81,23 @@ public class RecipeController {
 			recipeIngredientService.addRecipeIngredient(recipeIngredient); //
 		});
 	}
-	
+
+	@RequestMapping("/sample")
+	public Recipe getSample() {
+		Recipe recipe = new Recipe("Spaghetti", "Boil and stuff", 2);
+		Ingredient noodles = new Ingredient("Noodles");
+		Ingredient sauce = new Ingredient("Sauce");
+		Instruction noodleInst = new Instruction("Boil noodles.");
+		Instruction sauceInst = new Instruction("Heat sauce.");
+
+		recipe.addIngredient(noodles);
+		recipe.addIngredient(sauce);
+		recipe.addInstruction(noodleInst);
+		recipe.addInstruction(sauceInst);
+
+		return recipe;
+	}
+
 	@RequestMapping("/recipes/{id}")
     public Recipe getRecipe(@PathVariable("id") Long id) {
 		return recipeService.getRecipe(id);
