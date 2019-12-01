@@ -1,13 +1,15 @@
-import React from 'react';
-// import teaserImage from './resources/toast.jpg';
-import teaserImage from './resources/wolf.jpg';
+import React, { Component } from 'react';
 
-function RecommenderImage() {
-  return (
-    <div className="teaserImage">
-      <img src={teaserImage} alt="finished dish" width="100%" height="100%" />
-    </div>
-  );
+class RecommenderImage extends Component {
+  render() {
+    const teaserImage = this.props;
+
+    return (
+      <div className="TeaserImage">
+        <img src={teaserImage} alt="finished dish" width="100%" height="100%" />
+      </div>
+    );
+  }
 }
 
 export default RecommenderImage;

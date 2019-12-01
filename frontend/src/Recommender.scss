@@ -1,5 +1,13 @@
 @import './styles/styles.scss';
 
+#Container {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
 .Header {
   position: absolute;
   top: 0;
@@ -21,4 +29,6 @@
 #ReloadFab {
   background: #EB672C;
   color: white;
+  position: absolute;
+  bottom: 0;
 }
