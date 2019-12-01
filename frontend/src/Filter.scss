@@ -1,8 +1,11 @@
 @import './styles/styles.scss';
 
 .Filter {
+
     #filter-panel {
+
         background-color: $secondaryColor;
+
         #filter-header {
             font-family: $secondaryFont;
             font-size: 15pt;
@@ -29,20 +32,60 @@
                 margin: 0;
             }
         }
+
+        .MuiBox-root {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0;
+        }
+
+        .MuiExpansionPanelDetails-root {
+            padding: 0;
+        }
     }
 }
 
 .FilterCategory {
+
     .MuiToggleButton-root {
         border-radius: 24px;
+        border: 0px;
         background-color: white;
+        height: 40px;
+        padding: 0 40px 0 40px;
         
         .MuiToggleButton-label {
             font-family: $secondaryFont;
             text-transform: none;
+            color: black;
+        }
+
+    }
+
+    .MuiToggleButton-root:hover {
+
+        background-color: $primaryColor;
+
+        .MuiToggleButton-label {
+            color: white;
         }
     }
+
+    .MuiToggleButton-root.Mui-selected {
+
+        background-color: $primaryColor;
+
+        .MuiToggleButton-label {
+            color: white;
+        }
+    }
+
+    .MuiToggleButton-root.Mui-selected:hover {
+        background-color: #D24E13;
+    }
 }
+
+
 
 
 

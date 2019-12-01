@@ -6,10 +6,20 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import ToggleButton from '@material-ui/lab/ToggleButton';
+import TextField from '@material-ui/core/TextField';
+import Autocomplete from '@material-ui/lab/Autocomplete';
 import './Filter.scss';
 
 class Filter extends Component {
+  constructor(params) {
+    super(params);
+    this.state = {
+      ingredients: params.ingredients,
+    };
+  }
+
   render() {
+    const { ingredients } = this.state;
     return (
       <div className="Filter">
         <ExpansionPanel square id="filter-panel">
@@ -29,18 +39,9 @@ class Filter extends Component {
           <Box display="flex" justifyContent="center" m={1} p={1}>
             <Box p={1}>
               <ExpansionPanelDetails>
-                <Typography>
-                  <Box display="flex" justifyContent="center" m={1} p={1}>
-                    <Box p={1}>
-                      <FilterCategory categoryOne="Frühstück" />
-                    </Box>
-                    <Box p={1}>
-                      <FilterCategory categoryOne="Mittagessen" />
-                    </Box>
-                    <Box p={1}>
-                      <FilterCategory categoryOne="Abendessen" />
-                    </Box>
-                  </Box>
+                <Typography component="span">
+                  <ToggleButtons />
+                  <Tags ingredients={ingredients} />
                 </Typography>
               </ExpansionPanelDetails>
             </Box>
@@ -51,24 +52,74 @@ class Filter extends Component {
   }
 }
 
+function ToggleButtons() {
+  return (
+    <div className="ToggleButtons">
+      <Box display="flex" justifyContent="center" m={1} p={1}>
+        <Box p={1}>
+          <FilterCategory categoryName="Frühstück" value="fruehstueck" />
+        </Box>
+        <Box p={1}>
+          <FilterCategory categoryName="Mittagessen" value="mittagessen" />
+        </Box>
+        <Box p={1}>
+          <FilterCategory categoryName="Abendessen" value="abendessen" />
+        </Box>
+      </Box>
+      <Box display="flex" justifyContent="center" m={1} p={1}>
+        <Box p={1}>
+          <FilterCategory categoryName="Vegetarisch" value="vegetarisch" />
+        </Box>
+        <Box p={1}>
+          <FilterCategory categoryName="Vegan" value="vegan" />
+        </Box>
+        <Box p={1}>
+          <FilterCategory categoryName="Schnell" value="schnell" />
+        </Box>
+        <Box p={1}>
+          <FilterCategory categoryName="Ich habe Zeit" value="ich-habe-zeit" />
+        </Box>
+      </Box>
+    </div>
+  );
+}
+
 function FilterCategory(params) {
-  const selected = false;
-
-  function setSelected(s) {
-    return s;
-  }
-
+  const [selected, setSelected] = React.useState(false);
   return (
     <div className="FilterCategory">
       <ToggleButton
-        value="check"
+        value={params.value}
+        id={params.value}
         selected={selected}
         onChange={() => {
           setSelected(!selected);
         }}
       >
-        {params.categoryOne}
+        {params.categoryName}
       </ToggleButton>
+    </div>
+  );
+}
+
+function Tags(params) {
+  return (
+    <div className="Tags">
+      <Autocomplete
+        multiple
+        options={params.ingredients}
+        getOptionLabel={(ingredient) => ingredient}
+        filterSelectedOptions
+        renderInput={(tags) => (
+          <TextField
+            {...tags}
+            variant="outlined"
+            placeholder="Nach Zutaten suchen..."
+            margin="normal"
+            fullWidth
+          />
+        )}
+      />
     </div>
   );
 }
