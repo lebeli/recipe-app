@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import './Header.scss';
-import Box from '@material-ui/core/Box';
+import React, { Component } from "react";
+import "./Header.scss";
+import Box from "@material-ui/core/Box";
 
-import img from './images/foodbaby.png';
+import img from "./images/foodbaby.png";
 
 class Header extends Component {
   render() {

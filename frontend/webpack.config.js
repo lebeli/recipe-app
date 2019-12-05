@@ -1,7 +1,7 @@
 const path = require("path");
 const webpack = require("webpack");
 
-require.extensions['.css'] = () => {
+require.extensions[".css"] = () => {
   return;
 };
 
@@ -18,24 +18,31 @@ module.exports = {
       },
       // to load style files
       {
-        test: /\.scss$/,
+        test: /\.(css|scss)$/,
         use: [
           // Creates `style` nodes from JS strings
-          'style-loader',
+          "style-loader",
           // Translates CSS into CommonJS
-          'css-loader',
+          "css-loader",
           // Compiles Sass to CSS
-          'sass-loader',
+          "sass-loader"
         ]
       },
       // to load fonts
       {
-        test: /\.(ttf|otf|png)$/,
-        use: ['file-loader']
-      },  
+        test: /\.(ttf|otf|png|ico)$/,
+        use: [
+          {
+            loader: "file-loader",
+            options: {
+              name: "[name].[ext]"
+            }
+          }
+        ]
+      }
     ]
   },
-  resolve: { 
+  resolve: {
     extensions: ["*", ".js", ".jsx", ".scss"]
   },
   output: {
