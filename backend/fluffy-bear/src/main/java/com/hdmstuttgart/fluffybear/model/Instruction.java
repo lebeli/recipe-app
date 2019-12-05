@@ -1,6 +1,8 @@
 package com.hdmstuttgart.fluffybear.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -9,6 +11,7 @@ import java.util.List;
 import java.util.Set;
 
 @Entity
+@JsonIgnoreProperties({"id"})
 public class Instruction {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -17,6 +20,7 @@ public class Instruction {
     private String instruction;
 
     @ManyToMany(mappedBy = "instructions", cascade = CascadeType.PERSIST)
+    @JsonBackReference
     private List<Recipe> recipes = new ArrayList<>();
 
     public Instruction() {}

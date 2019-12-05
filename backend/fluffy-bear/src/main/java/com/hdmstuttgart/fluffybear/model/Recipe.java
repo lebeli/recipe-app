@@ -1,9 +1,14 @@
 package com.hdmstuttgart.fluffybear.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.*;
 import java.util.*;
 
 @Entity
+@JsonIgnoreProperties({"id"})
 public class Recipe {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -20,6 +25,7 @@ public class Recipe {
 	@JoinTable(name = "recipe_instruction",
 			joinColumns = @JoinColumn(name = "recipe_id"),
 			inverseJoinColumns = @JoinColumn(name = "instruction_id"))
+	@JsonManagedReference // without annotation instructions is not beeing serialized (alternative: @JsonProperty and @JsonIgnore)
 	private List<Instruction> instructions = new ArrayList<>();
 
 	public Recipe() {}
