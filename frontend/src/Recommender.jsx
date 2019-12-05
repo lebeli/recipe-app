@@ -7,8 +7,8 @@ import toastImage from './resources/toast.jpg';
 import './Recommender.scss';
 
 class Recommender extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       image: toastImage,
     };
@@ -21,12 +21,11 @@ class Recommender extends Component {
   }
 
   render() {
-    const { image } = this.state;
     return (
       <div className="Recommender" id="Container">
         <RecommenderHeader />
         <RecommenderReloadButton onClick="changeImage()" />
-        <RecommenderImage teaserImage={image} />
+        <RecommenderImage teaserImage={this.state.image} />
       </div>
     );
   }
