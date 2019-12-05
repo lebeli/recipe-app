@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import ExpansionPanel from "@material-ui/core/ExpansionPanel";
 import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
 import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
@@ -30,14 +30,13 @@ class Filter extends Component {
       vegan: false,
       schnell: false,
       ich_habe_zeit: false,
-      chosen_ingredients: []
+      chosen_ingredients: {}
     };
 
     this.updateState = this.updateState.bind(this);
   }
 
   updateState(name, val) {
-    console.log(name);
     this.setState({
       [name]: val
     });
@@ -73,7 +72,11 @@ class Filter extends Component {
                     chosen_ingredients={this.state.chosen_ingredients}
                     updateState={this.updateState}
                   />
-                  <Tags ingredients={this.state.ingredients} />
+                  <Tags
+                    ingredients={this.state.ingredients}
+                    chosen_ingredients={this.state.chosen_ingredients}
+                    updateState={this.updateState}
+                  />
                 </Typography>
               </ExpansionPanelDetails>
             </Box>
@@ -85,10 +88,6 @@ class Filter extends Component {
 }
 
 function ToggleButtons(params) {
-  // function updateToggleButtonState(name, selected) {
-  //   params.updateState("fruehstueck", true);
-  // }
-
   return (
     <div className="ToggleButtons">
       <Box display="flex" justifyContent="center" m={1} p={1}>
@@ -158,17 +157,13 @@ function ToggleButtons(params) {
 function FilterCategory(params) {
   const [selected, setSelected] = React.useState(false);
 
-  function updateFilterCategory(selected) {
-    params.updateState(params.value, selected);
-  }
-
   return (
     <div className="FilterCategory">
       <ToggleButton
         value={params.value}
         selected={selected}
         onChange={() => {
-          updateFilterCategory(!params.selected);
+          params.updateState(params.value, !params.selected);
           setSelected(!params.selected);
         }}
       >
@@ -186,6 +181,9 @@ function Tags(params) {
         options={params.ingredients}
         getOptionLabel={ingredient => ingredient}
         filterSelectedOptions
+        onChange={(_, tags) => {
+          params.updateState("chosen_ingredients", tags);
+        }}
         renderInput={tags => (
           <TextField
             {...tags}

@@ -1,20 +1,21 @@
-@import './styles/styles.scss';
+@import "./styles/styles.scss";
 
 .Header {
-    background-color: $tertiaryColor;
+  background-color: $tertiaryColor;
 
-    .MuiBox-root {
-        margin: 0;
-    }
+  .MuiBox-root {
+    margin: 0;
+  }
 
-    #logo {
-        width: 130px;
-    }
+  #logo {
+    width: 130px;
+    height: 130px;
+  }
 
-    #slogan {
-        font-family: $primaryFont;
-        font-size: 16pt;
-        color: white;
-        margin: 0 0 20px 0;
-    }
+  #slogan {
+    font-family: $primaryFont;
+    font-size: 16pt;
+    color: white;
+    margin: 0 0 20px 0;
+  }
 }
