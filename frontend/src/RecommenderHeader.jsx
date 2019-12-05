@@ -1,5 +1,5 @@
-import React from 'react';
-import './Recommender.scss';
+import React from "react";
+import "./Recommender.scss";
 
 function RecommenderHeader() {
   return (

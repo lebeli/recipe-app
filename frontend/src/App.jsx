@@ -1,6 +1,6 @@
 import { hot } from "react-hot-loader";
 import React, { Component } from "react";
-import Recommender from './Recommender';
+import Recommender from "./Recommender";
 import "./App.scss";
 
 class App extends Component {
