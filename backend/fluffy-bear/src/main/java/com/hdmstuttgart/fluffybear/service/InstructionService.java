@@ -3,10 +3,12 @@ package com.hdmstuttgart.fluffybear.service;
 import com.hdmstuttgart.fluffybear.model.Instruction;
 import com.hdmstuttgart.fluffybear.repository.InstructionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.Set;
 
+@Service
 public class InstructionService {
     @Autowired
     private InstructionRepository instructionRepository;

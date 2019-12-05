@@ -19,8 +19,8 @@ public class Instruction {
 
     private String instruction;
 
-    @ManyToMany(mappedBy = "instructions", cascade = CascadeType.PERSIST)
-    @JsonBackReference
+    @ManyToMany(mappedBy = "instructions")
+    @JsonIgnore  // @JsonBackReference
     private List<Recipe> recipes = new ArrayList<>();
 
     public Instruction() {}

@@ -21,11 +21,11 @@ public class Recipe {
 	@OneToMany(mappedBy = "recipe", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<RecipeIngredient> ingredients = new ArrayList<>();
 
-	@ManyToMany
+	@ManyToMany(cascade = CascadeType.PERSIST)
 	@JoinTable(name = "recipe_instruction",
 			joinColumns = @JoinColumn(name = "recipe_id"),
 			inverseJoinColumns = @JoinColumn(name = "instruction_id"))
-	@JsonManagedReference // without annotation instructions is not beeing serialized (alternative: @JsonProperty and @JsonIgnore)
+	@JsonProperty // without annotation instructions is not beeing serialized (alternative: @JsonProperty and @JsonIgnore)
 	private List<Instruction> instructions = new ArrayList<>();
 
 	public Recipe() {}
@@ -97,6 +97,9 @@ public class Recipe {
 		return id;
 	}
 
+	public void setId(long id) {
+		this.id = id;
+	}
 	public void setRecipeId(long id) {
 		this.id = id;
 	}
@@ -107,5 +110,13 @@ public class Recipe {
 
 	public void setIngredients(List<RecipeIngredient> ingredients) {
 		this.ingredients = ingredients;
+	}
+
+	public List<Instruction> getInstructions() {
+		return instructions;
+	}
+
+	public void setInstructions(List<Instruction> instructions) {
+		this.instructions = instructions;
 	}
 }

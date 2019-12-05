@@ -14,6 +14,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.hdmstuttgart.fluffybear.AppConfig;
 import com.hdmstuttgart.fluffybear.DemoDataController;
 import com.hdmstuttgart.fluffybear.model.Instruction;
+import com.hdmstuttgart.fluffybear.service.InstructionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -37,6 +38,9 @@ public class RecipeController {
 	
 	@Autowired
 	private RecipeService recipeService;
+
+	@Autowired
+	private InstructionService instructionService;
 	
 	@Autowired
 	private IngredientService ingredientService;
@@ -61,7 +65,8 @@ public class RecipeController {
 	@PostMapping("/recipes/add")
 	public void saveRecipe(@RequestBody Recipe recipe) {
 		// get lists with Ingredient and RecipeIngredient instances
-		List<Ingredient> ingredients = new ArrayList<>(); 
+		List<Ingredient> ingredients = new ArrayList<>();
+		List<Instruction> instructions = recipe.getInstructions();
 		List<RecipeIngredient> recipeIngredients = recipe.getIngredients();
 		recipeIngredients.forEach(recipeIngredient -> {
 			ingredients.add(recipeIngredient.getIngredient());
@@ -71,7 +76,7 @@ public class RecipeController {
 		recipe.getIngredients().forEach(recipeIngredient -> {
 			recipeIngredient.setRecipe(recipe);
 		});
-		
+
 		// persist entities
 		recipeService.addRecipe(recipe);
 		ingredients.forEach(ingredient -> {
