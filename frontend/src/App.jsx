@@ -4,6 +4,7 @@ import Header from "./Header";
 import Filter from "./Filter";
 import Footer from "./Footer";
 import "./App.scss";
+import AddRecipe from "./AddRecipe";
 
 class App extends Component {
   constructor(params) {
@@ -15,6 +16,7 @@ class App extends Component {
       <div className="App">
         <Header />
         <Filter />
+        <AddRecipe />
         <Footer />
       </div>
     );

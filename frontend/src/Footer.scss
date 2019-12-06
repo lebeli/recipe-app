@@ -6,4 +6,24 @@
   bottom: 0;
   width: 100%;
   height: 100px;
+
+  p {
+    color: white;
+    margin-top: 30px;
+  }
+
+  a,
+  a:link {
+    text-decoration: none;
+    color: white;
+  }
+
+  a:hover {
+    text-decoration: none;
+    color: black;
+  }
+
+  a:active {
+    text-decoration: none;
+  }
 }
