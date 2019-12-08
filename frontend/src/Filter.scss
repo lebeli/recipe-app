@@ -1,0 +1,118 @@
+@import "./styles/styles.scss";
+
+.Filter {
+  #filter-panel {
+    background-color: $secondaryColor;
+
+    .MuiBox-root {
+      display: flex;
+      flex-wrap: wrap;
+      margin: 0;
+      padding: 5px;
+
+      #filter-header {
+        font-family: $secondaryFont;
+        font-size: 15pt;
+        color: white;
+        text-align: center;
+      }
+
+      #search-expand-icon {
+        fill: white;
+      }
+
+      .MuiBox-root-34 {
+        margin: 0;
+      }
+
+      .MuiExpansionPanelSummary-root {
+        min-height: 20px;
+
+        .MuiExpansionPanelSummary-content {
+          margin: 0;
+        }
+      }
+
+      .MuiExpansionPanelDetails-root {
+        padding: 0;
+      }
+    }
+  }
+}
+
+.FilterCategory {
+  .MuiToggleButton-root {
+    border-radius: 24px;
+    border: 0px;
+    background-color: white;
+    height: 40px;
+    padding: 0 40px 0 40px;
+
+    .MuiToggleButton-label {
+      font-family: $secondaryFont;
+      text-transform: none;
+      color: black;
+    }
+  }
+
+  .MuiToggleButton-root:hover {
+    background-color: $primaryColor;
+
+    .MuiToggleButton-label {
+      color: white;
+    }
+  }
+
+  .MuiToggleButton-root.Mui-selected {
+    background-color: $primaryColor;
+
+    .MuiToggleButton-label {
+      color: white;
+    }
+  }
+
+  .MuiToggleButton-root.Mui-selected:hover {
+    background-color: #d24e13;
+  }
+}
+
+.Tags {
+  max-width: 600px;
+  .MuiInputBase-root {
+    background-color: white;
+    border-radius: 24px;
+    padding: 0 0 0 5px;
+  }
+
+  .MuiAutocomplete-inputRoot[class*="MuiOutlinedInput-root"] {
+    padding: 0 10px 0 10px;
+  }
+
+  .MuiOutlinedInput-notchedOutline {
+    border: 0px;
+    border-radius: 24px;
+    height: 50px;
+  }
+
+  .MuiChip-root {
+    background-color: $primaryColor;
+    color: white;
+    position: relative;
+
+    .MuiSvgIcon-root {
+      fill: white;
+    }
+
+    .MuiChip-label {
+      font-family: $secondaryFont;
+    }
+  }
+
+  .MuiInputBase-input {
+    font-family: $secondaryFont;
+  }
+
+  .MuiIconButton-root {
+    background-color: transparent;
+  }
+}

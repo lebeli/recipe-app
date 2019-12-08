@@ -1,0 +1,23 @@
+$primaryFont: "Fauna One";
+$secondaryFont: "Abel";
+
+$primaryColor: #eb672c;
+$secondaryColor: #c4c24a;
+$tertiaryColor: #e8e474;
+
+@font-face {
+  font-family: "Abel";
+  font-size: 18pt;
+  src: local("Abel Regular"),
+    url("./fonts/Abel/Abel-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Fauna One";
+  src: local("Fauna One Regular"),
+    url("./fonts/Fauna_One/FaunaOne-Regular.ttf") format("truetype");
+}
+
+body {
+  margin: 0;
+}
