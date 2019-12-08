@@ -1,18 +1,8 @@
 package com.hdmstuttgart.fluffybear.controller;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.hdmstuttgart.fluffybear.AppConfig;
-import com.hdmstuttgart.fluffybear.DemoDataController;
 import com.hdmstuttgart.fluffybear.model.Instruction;
 import com.hdmstuttgart.fluffybear.service.InstructionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +21,6 @@ import com.hdmstuttgart.fluffybear.service.RecipeIngredientService;
 import com.hdmstuttgart.fluffybear.service.RecipeService;
 
 import javax.annotation.PostConstruct;
-import javax.persistence.criteria.CriteriaBuilder;
 
 @RestController
 public class RecipeController {
@@ -52,15 +41,6 @@ public class RecipeController {
     public List<Recipe> getRecipes() {
 		return recipeService.getAllRecipes();
 	}
-
-	@PostConstruct
-	public void init() {
-		System.out.println(AppConfig.getInstance().isDemoMode());
-		if (AppConfig.getInstance().isDemoMode()) {
-			DemoDataController.getInstance().getDemoRecipes().forEach(this::saveRecipe);
-		}
-	}
-
 	
 	@PostMapping("/recipes/add")
 	public void saveRecipe(@RequestBody Recipe recipe) {
