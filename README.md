@@ -16,13 +16,13 @@ Install:
 
 #### Set up
 
-The following instructions refers to the fluffy-bear backend project root folder.
+The following steps refers to the fluffy-bear backend project root folder.
 
-Build the application
+1. Build the application
 ```
 mvn clean install
 ```
-Build application and database images and run services in docker containers
+2. Build application and database images and run services in docker containers
 ```
 docker-compose up
 ```
