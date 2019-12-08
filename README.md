@@ -19,14 +19,14 @@ Install:
 The following instructions refers to the fluffy-bear backend project root folder.
 
 1. Build the application
-```
-mvn clean install
-```
+	```
+	mvn clean install
+	```
 
 2. Build application and database images and run services in docker containers
-```
-docker-compose up
-```
+	```
+	docker-compose up
+	```
 
 #### Usage
 
