@@ -9,7 +9,6 @@ import static org.junit.Assert.*;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
-import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -58,7 +57,7 @@ public class RecipeTest {
 
 	@Test
 	public void recipeGetInstruction() {
-		assertEquals("Boil and add Sauce.", recipe.getInstruction());
+		assertEquals("Boil and add Sauce.", recipe.getDescription());
 	}
 
 	@Test
@@ -74,8 +73,8 @@ public class RecipeTest {
 
 	@Test
 	public void recipeSetInstruction() {
-		recipe.setInstruction("Boil and add Cheese.");
-		assertEquals("Boil and add Cheese.", recipe.getInstruction());
+		recipe.setDescription("Boil and add Cheese.");
+		assertEquals("Boil and add Cheese.", recipe.getDescription());
 	}
 
 	@Test

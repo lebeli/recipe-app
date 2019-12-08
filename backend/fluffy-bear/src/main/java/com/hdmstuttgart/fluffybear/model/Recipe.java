@@ -1,7 +1,6 @@
 package com.hdmstuttgart.fluffybear.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
@@ -15,7 +14,7 @@ public class Recipe {
 	private long id;
 
 	private String name;
-	private String instruction;
+	private String description;
 	private int yield;
 
 	@OneToMany(mappedBy = "recipe", cascade = CascadeType.ALL, orphanRemoval = true)
@@ -30,9 +29,9 @@ public class Recipe {
 
 	public Recipe() {}
 	
-	public Recipe(String name, String instruction, int yield) {
+	public Recipe(String name, String description, int yield) {
 		this.name = name;
-		this.instruction = instruction;
+		this.description = description;
 		this.yield = yield;
 	}
 	
@@ -77,12 +76,12 @@ public class Recipe {
 		this.name = name;
 	}
 
-	public String getInstruction() {
-		return instruction;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setInstruction(String instruction) {
-		this.instruction = instruction;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	public int getYield() {
