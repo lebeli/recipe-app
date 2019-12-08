@@ -36,7 +36,10 @@ Recipes have following JSON format:
 	"name":"Spaghetti",
 	"description":"Tasty noodle recipe.",
 	"yield":2,"ingredients":[{"name":"Noodles","amount":150},{"name":"Sauce","amount":85}],
-	"instructions":[{"instruction":"Boil noodles for 9-11 minutes."},{"instruction":"Cook vegetables, add  chopped tomatoes (with juice) and tomato paste. Let it simmer for 15 minutes."}]
+	"instructions":[
+		{"instruction":"Boil noodles for 9-11 minutes."},
+		{"instruction":"Cook vegetables, add  chopped tomatoes (with juice) and tomato paste. Let it simmer for 15 minutes."}
+		]
 }
 ```
 
