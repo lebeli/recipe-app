@@ -1,28 +1,37 @@
 package com.hdmstuttgart.fluffybear.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 @Entity
+@JsonIgnoreProperties({"id"})
 public class Recipe {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 
 	private String name;
-	private String instruction;
+	private String description;
 	private int yield;
 
 	@OneToMany(mappedBy = "recipe", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<RecipeIngredient> ingredients = new ArrayList<>();
 
+	@ManyToMany(cascade = CascadeType.PERSIST)
+	@JoinTable(name = "recipe_instruction",
+			joinColumns = @JoinColumn(name = "recipe_id"),
+			inverseJoinColumns = @JoinColumn(name = "instruction_id"))
+	@JsonProperty // without annotation instructions is not beeing serialized (alternative: @JsonProperty and @JsonIgnore)
+	private List<Instruction> instructions = new ArrayList<>();
+
 	public Recipe() {}
 	
-	public Recipe(String name, String instruction, int yield) {
+	public Recipe(String name, String description, int yield) {
 		this.name = name;
-		this.instruction = instruction;
+		this.description = description;
 		this.yield = yield;
 	}
 	
@@ -47,6 +56,16 @@ public class Recipe {
 	    }
 	}
 
+	public void addInstruction(Instruction instruction) {
+		instruction.addRecipe(this);
+		instructions.add(instruction);
+	}
+
+	public void removeInstruction(Instruction instruction) {
+		instructions.remove(instruction);
+		instruction.removeRecipe(this);
+	}
+
 	// getters and setters
 	
 	public String getName() {
@@ -57,12 +76,12 @@ public class Recipe {
 		this.name = name;
 	}
 
-	public String getInstruction() {
-		return instruction;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setInstruction(String instruction) {
-		this.instruction = instruction;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	public int getYield() {
@@ -77,6 +96,9 @@ public class Recipe {
 		return id;
 	}
 
+	public void setId(long id) {
+		this.id = id;
+	}
 	public void setRecipeId(long id) {
 		this.id = id;
 	}
@@ -87,5 +109,13 @@ public class Recipe {
 
 	public void setIngredients(List<RecipeIngredient> ingredients) {
 		this.ingredients = ingredients;
+	}
+
+	public List<Instruction> getInstructions() {
+		return instructions;
+	}
+
+	public void setInstructions(List<Instruction> instructions) {
+		this.instructions = instructions;
 	}
 }
