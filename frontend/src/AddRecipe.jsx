@@ -12,6 +12,7 @@ import CloseIcon from "@material-ui/icons/Close";
 import AddIcon from "@material-ui/icons/Add";
 import TextField from "@material-ui/core/TextField";
 import RadioGroup from "@material-ui/core/RadioGroup";
+import PhotoIcon from "@material-ui/icons/Photo";
 import img from "./images/add_recipe.jpg";
 
 class AddRecipe extends Component {
@@ -96,13 +97,16 @@ class AddRecipeForm extends Component {
       meal: "fruehstueck",
       dietForm: "keine",
       closeForm: params.closeForm,
-      steps: 1
+      steps: 1,
+      image: {}
     };
 
     this.handleMeal = this.handleMeal.bind(this);
     this.handleDietForm = this.handleDietForm.bind(this);
     this.addStep = this.addStep.bind(this);
     this.showSteps = this.showSteps.bind(this);
+    this.removeStep = this.removeStep.bind(this);
+    this.handleImageUpload = this.handleImageUpload.bind(this);
   }
 
   handleMeal(event) {
@@ -119,17 +123,37 @@ class AddRecipeForm extends Component {
 
   showSteps() {
     var steps = [];
-    for (var x = 0; x < this.state.steps; x++) {
-      steps.push(
-        <TextField
-          id={"step" + (x + 1)}
-          key={x}
-          label={"Arbeitsschritt " + (x + 1)}
-          variant="outlined"
-          multiline
-          rows="3"
-        />
-      );
+    if (this.state.steps > 0) {
+      for (var x = 0; x < this.state.steps; x++) {
+        steps.push(
+          <Grid
+            container
+            spacing={2}
+            key={"step" + (x + 1)}
+            id={"step" + (x + 1)}
+          >
+            <Grid item xs={10} sm={11}>
+              <TextField
+                label={"Schritt " + (x + 1)}
+                variant="outlined"
+                multiline
+                rows="3"
+              />
+            </Grid>
+            {x == this.state.steps - 1 && (
+              <Grid item xs={1} sm={1} id="remove_step_button">
+                <Button
+                  className="remove_step"
+                  disableRipple
+                  onClick={() => this.removeStep()}
+                >
+                  <CloseIcon />
+                </Button>
+              </Grid>
+            )}
+          </Grid>
+        );
+      }
     }
     return steps;
   }
@@ -140,17 +164,18 @@ class AddRecipeForm extends Component {
     });
   }
 
-  // const addStep = event => {
-  //   steps.push(steps.length + 1);
-  // };
+  removeStep() {
+    this.setState({
+      steps: this.state.steps - 1
+    });
+  }
 
-  // var stepsInputFields = steps.map(step => {
-  //   <TextField
-  //     label={"Arbeitsschritt " + step}
-  //     key={step}
-  //     variant="outlined"
-  //   />;
-  // });
+  handleImageUpload(file) {
+    this.setState({
+      file: file
+    });
+  }
+
   render() {
     return (
       <div className="AddRecipeForm">
@@ -232,6 +257,9 @@ class AddRecipeForm extends Component {
               </div>
             </Grid>
           </Grid>
+          <FormLabel component="legend" className="form_labels" required>
+            Zutaten
+          </FormLabel>
           <TextField
             id="recipe_ingredients"
             required
@@ -241,10 +269,14 @@ class AddRecipeForm extends Component {
             placeholder="Bspw. 100g Butter"
             variant="outlined"
           />
+          <FormLabel component="legend" className="form_labels" required>
+            Zubereitungsdauer
+          </FormLabel>
           <TextField
             id="recipe_time"
+            required
             className="recipe_time"
-            label="Dauer"
+            label="std/min"
             type="time"
             defaultValue="01:00"
             variant="outlined"
@@ -255,12 +287,34 @@ class AddRecipeForm extends Component {
               step: 300 // 5 min
             }}
           />
+          <FormLabel component="legend" className="form_labels" required>
+            Arbeitsschritte
+          </FormLabel>
           <div>{this.showSteps()}</div>
-          <div display="inline">
-            <Button onClick={this.addStep}>
+          <div id="recipe_add_working_step" display="flex">
+            <Button onClick={this.addStep} disableTouchRipple>
               <AddIcon />
+              Arbeitsschritt hinzufügen*
             </Button>
-            <p>Arbeitsschritt hinzufügen</p>
+          </div>
+          <div id="add_image_button_container">
+            <Grid container spacing={1}>
+              <Grid item>
+                <Button variant="outlined" component="label">
+                  <PhotoIcon id="photo_icon" />
+                  Bild hochladen
+                  <input
+                    required
+                    type="file"
+                    style={{ display: "none" }}
+                    onChange={e => this.handleImageUpload(e.target.files[0])}
+                  />
+                </Button>
+              </Grid>
+              <Grid item id="filename_item">
+                <div>{this.state.file != null && this.state.file.name}</div>
+              </Grid>
+            </Grid>
           </div>
         </form>
       </div>

@@ -75,12 +75,20 @@
     margin-bottom: 20px;
   }
 
+  .remove_step {
+    min-width: auto;
+
+    .MuiButton-label {
+      padding: 0;
+    }
+  }
+
   .MuiFormControl-root {
-    margin-top: 20px;
     width: 100%;
   }
   .recipe_time {
     width: 30%;
+    min-width: fit-content;
   }
 
   .MuiOutlinedInput-root.Mui-focused {
@@ -125,7 +133,74 @@
     margin-top: 40px;
   }
 
-  #step1 {
+  #step {
     margin-top: 0px;
+  }
+
+  #remove_step_button {
+    .MuiButton-root {
+      padding: 0;
+    }
+    .MuiButton-root:hover,
+    .MuiButton-root:focus,
+    .MuiButton-root:focus-within,
+    .MuiButton-root:visited,
+    .MuiButton-root:active {
+      background-color: transparent;
+      color: black;
+    }
+  }
+
+  #recipe_add_working_step {
+    .MuiButton-root {
+      color: black;
+      font-family: $secondaryFont;
+      text-transform: none;
+
+      .MuiSvgIcon-root {
+        margin-right: 5px;
+      }
+    }
+    .MuiButton-root:hover,
+    .MuiButton-root:focus,
+    .MuiButton-root:focus-within,
+    .MuiButton-root:visited,
+    .MuiButton-root:active {
+      background-color: transparent;
+      // color: #d24e13;
+      color: black;
+    }
+  }
+
+  // Button for uploading an image
+
+  #add_image_button_container {
+    display: flex;
+    margin-top: 20px;
+
+    #photo_icon {
+      margin-right: 10px;
+    }
+
+    .MuiButton-root {
+      min-width: fit-content;
+      height: fit-content;
+      border-radius: 0;
+      color: $secondaryColor;
+      border: 1px solid $secondaryColor;
+    }
+
+    .BuiButton-root:hover {
+      background-color: #aba93122;
+    }
+
+    .MuiButton-label {
+      font-family: $secondaryFont;
+      text-transform: none;
+    }
+
+    #filename_item {
+      align-self: center;
+    }
   }
 }
