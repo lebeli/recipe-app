@@ -137,7 +137,7 @@
     margin-top: 0px;
   }
 
-  #remove_step_button {
+  .remove_step_button {
     .MuiButton-root {
       padding: 0;
     }
@@ -151,7 +151,9 @@
     }
   }
 
-  #recipe_add_working_step {
+  // Button for adding another working step
+
+  .recipe_add {
     .MuiButton-root {
       color: black;
       font-family: $secondaryFont;
@@ -202,5 +204,10 @@
     #filename_item {
       align-self: center;
     }
+  }
+
+  .ingredients_container,
+  .steps_container {
+    margin-bottom: 10px;
   }
 }

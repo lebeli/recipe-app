@@ -14,6 +14,7 @@ import TextField from "@material-ui/core/TextField";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import PhotoIcon from "@material-ui/icons/Photo";
 import img from "./images/add_recipe.jpg";
+// import Ingredient from "./models/Ingredient";
 
 class AddRecipe extends Component {
   constructor(params) {
@@ -94,37 +95,127 @@ class AddRecipeForm extends Component {
   constructor(params) {
     super(params);
     this.state = {
+      closeForm: params.closeForm,
+      name: "",
       meal: "fruehstueck",
       dietForm: "keine",
-      closeForm: params.closeForm,
-      steps: 1,
+      ingredientsAmount: 0,
+      ingredients: [],
+      stepsAmount: 0,
+      steps: [],
       image: {}
     };
 
-    this.handleMeal = this.handleMeal.bind(this);
-    this.handleDietForm = this.handleDietForm.bind(this);
-    this.addStep = this.addStep.bind(this);
+    this.updateStateParameters = this.updateStateParameters.bind(this);
+    this.showIngredients = this.showIngredients.bind(this);
+    this.updateIngredient = this.updateIngredient.bind(this);
+    this.addIngredient = this.addIngredient.bind(this);
+    this.removeIngredient = this.removeIngredient.bind(this);
     this.showSteps = this.showSteps.bind(this);
+    this.updateStep = this.updateStep.bind(this);
+    this.addStep = this.addStep.bind(this);
     this.removeStep = this.removeStep.bind(this);
     this.handleImageUpload = this.handleImageUpload.bind(this);
   }
 
-  handleMeal(event) {
+  updateStateParameters(name, event) {
     this.setState({
-      meal: event.target.value
+      [name]: event.target.value
     });
   }
 
-  handleDietForm(event) {
+  showIngredients() {
+    var ingredientsComponent = new Array();
+    if (this.state.ingredientsAmount > 0) {
+      for (var x = 0; x < this.state.ingredientsAmount; x++) {
+        ingredientsComponent.push(
+          <Grid
+            container
+            spacing={2}
+            key={"ingredient" + (x + 1)}
+            id={"ingredient" + (x + 1)}
+          >
+            <Grid item sm={3}>
+              <TextField
+                id={x.toString()}
+                className="ingredient_amount"
+                required
+                label="Menge"
+                placeholder="Bspw. 100g"
+                variant="outlined"
+                onChange={evt =>
+                  this.updateIngredient(event.target.id, 1, evt.target.value)
+                }
+              />
+            </Grid>
+            <Grid item sm={8}>
+              <TextField
+                id={x.toString()}
+                className="ingredient_name"
+                required
+                label="Zutat"
+                placeholder="bspw. Butter"
+                variant="outlined"
+                onChange={evt =>
+                  this.updateIngredient(event.target.id, 0, evt.target.value)
+                }
+              />
+            </Grid>
+            {x == this.state.ingredientsAmount - 1 && (
+              <Grid item xs={1} sm={1} className="remove_step_button">
+                <Button
+                  className="remove_step"
+                  disableRipple
+                  onClick={() => this.removeIngredient()}
+                >
+                  <CloseIcon />
+                </Button>
+              </Grid>
+            )}
+          </Grid>
+        );
+      }
+    }
+    return ingredientsComponent;
+  }
+
+  updateIngredient(ingredientsIndex, ingredientIndex, value) {
+    var ingredientsCopy = Object.values(this.state.ingredients);
+
+    var ingredient = ingredientsCopy[ingredientsIndex];
+    ingredient[ingredientIndex] = value;
+    ingredientsCopy.splice(ingredientsIndex, 1, ingredient);
+
     this.setState({
-      dietForm: event.target.value
+      ingredients: ingredientsCopy
+    });
+  }
+
+  addIngredient() {
+    // Add an entry into the ingredients array, so that it can be updated with "updateIngredient"
+    var ingredientsCopy = this.state.ingredients;
+    var emptyIngredient = ["", ""];
+    ingredientsCopy.push(emptyIngredient);
+
+    this.setState({
+      ingredientsAmount: this.state.ingredientsAmount + 1,
+      ingredients: ingredientsCopy
+    });
+  }
+
+  removeIngredient() {
+    var ingredientsCopy = this.state.ingredients;
+    ingredientsCopy.splice(ingredientsCopy.length - 1, 1);
+    this.setState({
+      ingredientsAmount: this.state.ingredientsAmount - 1,
+      ingredients: ingredientsCopy
     });
   }
 
   showSteps() {
     var steps = [];
-    if (this.state.steps > 0) {
-      for (var x = 0; x < this.state.steps; x++) {
+    if (this.state.stepsAmount > 0) {
+      for (var x = 0; x < this.state.stepsAmount; x++) {
         steps.push(
           <Grid
             container
@@ -134,14 +225,18 @@ class AddRecipeForm extends Component {
           >
             <Grid item xs={10} sm={11}>
               <TextField
+                id={"x" + x}
                 label={"Schritt " + (x + 1)}
                 variant="outlined"
                 multiline
                 rows="3"
+                onChange={evt =>
+                  this.updateStep(event.target.id, evt.target.value)
+                }
               />
             </Grid>
-            {x == this.state.steps - 1 && (
-              <Grid item xs={1} sm={1} id="remove_step_button">
+            {x == this.state.stepsAmount - 1 && (
+              <Grid item xs={1} sm={1} className="remove_step_button">
                 <Button
                   className="remove_step"
                   disableRipple
@@ -158,16 +253,44 @@ class AddRecipeForm extends Component {
     return steps;
   }
 
-  addStep() {
+  updateStep(stepIndex, value) {
+    var index = stepIndex.substring(1, 2);
+    var stepsCopy = this.state.steps;
+    var step = stepsCopy[index];
+    step = value;
+    stepsCopy.splice(index, 1, step);
+
     this.setState({
-      steps: this.state.steps + 1
+      steps: stepsCopy
     });
+    console.log("updateStep");
+    console.log(stepsCopy);
+  }
+
+  addStep() {
+    // Add an entry into the steps array, so that it can be updated with "updateStep"
+    var stepsCopy = this.state.steps;
+    var emptyStep = "";
+    stepsCopy.push(emptyStep);
+
+    this.setState({
+      stepsAmount: this.state.stepsAmount + 1,
+      steps: stepsCopy
+    });
+
+    console.log("addStep");
+    console.log(stepsCopy);
   }
 
   removeStep() {
+    var stepsCopy = this.state.steps;
+    stepsCopy.splice(stepsCopy.length - 1, 1);
     this.setState({
-      steps: this.state.steps - 1
+      stepsAmount: this.state.stepsAmount - 1,
+      steps: stepsCopy
     });
+    console.log("removeSteps");
+    console.log(stepsCopy);
   }
 
   handleImageUpload(file) {
@@ -196,6 +319,8 @@ class AddRecipeForm extends Component {
             required
             label="Rezeptname"
             variant="outlined"
+            value={this.state.name}
+            onChange={event => this.updateStateParameters("name", event)}
           />
           <Grid container spacing={3} id="radio_buttons_container">
             <Grid item sm={6}>
@@ -207,7 +332,7 @@ class AddRecipeForm extends Component {
                   aria-label="meal"
                   name="meal"
                   value={this.state.meal}
-                  onChange={this.handleMeal}
+                  onChange={event => this.updateStateParameters("meal", event)}
                 >
                   <FormControlLabel
                     value="fruehstueck"
@@ -236,7 +361,9 @@ class AddRecipeForm extends Component {
                   aria-label="diet_form"
                   name="diet_form"
                   value={this.state.dietForm}
-                  onChange={this.handleDietForm}
+                  onChange={event =>
+                    this.updateStateParameters("dietForm", event)
+                  }
                 >
                   <FormControlLabel
                     value="keine"
@@ -258,18 +385,6 @@ class AddRecipeForm extends Component {
             </Grid>
           </Grid>
           <FormLabel component="legend" className="form_labels" required>
-            Zutaten
-          </FormLabel>
-          <TextField
-            id="recipe_ingredients"
-            required
-            multiline
-            rows="8"
-            label="Zutaten"
-            placeholder="Bspw. 100g Butter"
-            variant="outlined"
-          />
-          <FormLabel component="legend" className="form_labels" required>
             Zubereitungsdauer
           </FormLabel>
           <TextField
@@ -288,13 +403,23 @@ class AddRecipeForm extends Component {
             }}
           />
           <FormLabel component="legend" className="form_labels" required>
+            Zutaten
+          </FormLabel>
+          <div className="ingredients_container">{this.showIngredients()}</div>
+          <div className="recipe_add" display="flex">
+            <Button onClick={this.addIngredient} disableTouchRipple>
+              <AddIcon />
+              Zutat hinzufügen
+            </Button>
+          </div>
+          <FormLabel component="legend" className="form_labels" required>
             Arbeitsschritte
           </FormLabel>
-          <div>{this.showSteps()}</div>
-          <div id="recipe_add_working_step" display="flex">
+          <div className="steps_container">{this.showSteps()}</div>
+          <div className="recipe_add" display="flex">
             <Button onClick={this.addStep} disableTouchRipple>
               <AddIcon />
-              Arbeitsschritt hinzufügen*
+              Arbeitsschritt hinzufügen
             </Button>
           </div>
           <div id="add_image_button_container">
