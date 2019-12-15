@@ -192,7 +192,7 @@
       border: 1px solid $secondaryColor;
     }
 
-    .BuiButton-root:hover {
+    .MuiButton-root:hover {
       background-color: #aba93122;
     }
 
@@ -209,5 +209,28 @@
   .ingredients_container,
   .steps_container {
     margin-bottom: 10px;
+  }
+
+  // Submit Button
+
+  #recipe_form_submit_button {
+    margin-top: 40px;
+
+    .MuiButton-root {
+      min-width: fit-content;
+      height: fit-content;
+      border-radius: 0;
+      background-color: $primaryColor;
+      box-shadow: none;
+    }
+
+    .MuiButton-root:hover {
+      background-color: $primaryColorDarker;
+    }
+
+    .MuiButton-label {
+      font-family: $secondaryFont;
+      color: white;
+    }
   }
 }

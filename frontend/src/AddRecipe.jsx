@@ -14,7 +14,6 @@ import TextField from "@material-ui/core/TextField";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import PhotoIcon from "@material-ui/icons/Photo";
 import img from "./images/add_recipe.jpg";
-// import Ingredient from "./models/Ingredient";
 
 class AddRecipe extends Component {
   constructor(params) {
@@ -99,6 +98,7 @@ class AddRecipeForm extends Component {
       name: "",
       meal: "fruehstueck",
       dietForm: "keine",
+      duration: "01:00",
       ingredientsAmount: 0,
       ingredients: [],
       stepsAmount: 0,
@@ -106,16 +106,8 @@ class AddRecipeForm extends Component {
       image: {}
     };
 
-    this.updateStateParameters = this.updateStateParameters.bind(this);
-    this.showIngredients = this.showIngredients.bind(this);
-    this.updateIngredient = this.updateIngredient.bind(this);
     this.addIngredient = this.addIngredient.bind(this);
-    this.removeIngredient = this.removeIngredient.bind(this);
-    this.showSteps = this.showSteps.bind(this);
-    this.updateStep = this.updateStep.bind(this);
     this.addStep = this.addStep.bind(this);
-    this.removeStep = this.removeStep.bind(this);
-    this.handleImageUpload = this.handleImageUpload.bind(this);
   }
 
   updateStateParameters(name, event) {
@@ -263,8 +255,6 @@ class AddRecipeForm extends Component {
     this.setState({
       steps: stepsCopy
     });
-    console.log("updateStep");
-    console.log(stepsCopy);
   }
 
   addStep() {
@@ -277,9 +267,6 @@ class AddRecipeForm extends Component {
       stepsAmount: this.state.stepsAmount + 1,
       steps: stepsCopy
     });
-
-    console.log("addStep");
-    console.log(stepsCopy);
   }
 
   removeStep() {
@@ -289,14 +276,18 @@ class AddRecipeForm extends Component {
       stepsAmount: this.state.stepsAmount - 1,
       steps: stepsCopy
     });
-    console.log("removeSteps");
-    console.log(stepsCopy);
   }
 
   handleImageUpload(file) {
     this.setState({
       file: file
     });
+  }
+
+  saveRecipe() {
+    console.log("Saving recipe");
+    // TODO: Api call and reset of recipe state, if saving was successful
+    // Also visual feedback, if saving was successful
   }
 
   render() {
@@ -401,6 +392,7 @@ class AddRecipeForm extends Component {
             inputProps={{
               step: 300 // 5 min
             }}
+            onChange={event => this.updateStateParameters("duration", event)}
           />
           <FormLabel component="legend" className="form_labels" required>
             Zutaten
@@ -440,6 +432,11 @@ class AddRecipeForm extends Component {
                 <div>{this.state.file != null && this.state.file.name}</div>
               </Grid>
             </Grid>
+          </div>
+          <div id="recipe_form_submit_button">
+            <Button variant="contained" onClick={() => this.saveRecipe()}>
+              Rezept speichern
+            </Button>
           </div>
         </form>
       </div>
