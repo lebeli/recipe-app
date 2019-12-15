@@ -4,11 +4,23 @@ import "./Details.scss";
 class Details extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      pageNumber: 1
+    };
+
+    this.handleGoBack = this.handleGoBack.bind(this);
+  }
+
+  handleGoBack() {
+    this.setState({
+      pageNumber: 0
+    });
   }
 
   render() {
     return (
       <div className="Details">
+        <BackButton onClick={this.handleGoBack} />
         <Ingredients />
         <Instructions />
       </div>
@@ -16,14 +28,18 @@ class Details extends Component {
   }
 }
 
+function BackButton({ onClick }) {
+  return <button onClick={onClick}>Zurück</button>;
+}
+
 function Ingredients(params) {
   return (
     <div className="Ingredients">
-      <h4>INGREDIENTS</h4>
+      <h4>ZUTATEN</h4>
       <ul>
-        <li>Flour</li>
-        <li>Tomatoes</li>
-        <li>Basil</li>
+        <li>Mehl</li>
+        <li>Tomaten</li>
+        <li>Basilikum</li>
       </ul>
     </div>
   );
