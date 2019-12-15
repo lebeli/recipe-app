@@ -15,7 +15,7 @@ public class IngredientService {
 	@Autowired
 	private IngredientRepository ingredientRepository;
 
-	public List<Ingredient> getAllRecipes() {
+	public List<Ingredient> getAllIngredients() {
 		List<Ingredient> ingredients = new ArrayList<Ingredient>();
 		ingredientRepository.findAll().forEach(ingredient -> {
 			ingredients.add(ingredient);
