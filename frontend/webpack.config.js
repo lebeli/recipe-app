@@ -39,7 +39,12 @@ module.exports = {
             }
           }
         ]
-      }
+      },
+      // load images
+      {
+        test: /\.(png|jpe?g|gif)$/i,
+        loader: 'file-loader'
+      },
     ]
   },
   resolve: {
