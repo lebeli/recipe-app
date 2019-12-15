@@ -1,4 +1,4 @@
-version: '3'
+version: "3"
 
 services:
   mysql-docker-container:
@@ -13,11 +13,18 @@ services:
   fluffy-bear-backend:
     image: fluffy-bear-backend-image
     build:
-      context: ./
+      context: ./backend/fluffy-bear
       dockerfile: Dockerfile
     depends_on:
       - mysql-docker-container
     ports:
-      - 8080:8080                           # host:container
+      - 8080:8080 # host:container
     volumes:
       - /data/spring-boot-app
+  fluffy-bear-frontend:
+    image: fluff-bear-frontend-image
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
