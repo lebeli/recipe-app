@@ -18,7 +18,7 @@ public class RecipeIngredientTest {
 
     @Before
     public void setUpEntities() {
-        spaghetti = new Recipe("Spaghetti", "Boil and add Sauce.", 3);
+        spaghetti = new Recipe("Spaghetti");
         sauce = new Ingredient("Sauce");
         spaghettiSauce = new RecipeIngredient(spaghetti, sauce, 125);
     }
@@ -46,7 +46,7 @@ public class RecipeIngredientTest {
 
     @Test
     public void ingredientRecipeSetRecipe() {
-        Recipe tortellini = new Recipe("Tortellini", "Boil and add Sauce.", 2);
+        Recipe tortellini = new Recipe("Tortellini");
         spaghettiSauce.setRecipe(tortellini);
         assertEquals(tortellini, spaghettiSauce.getRecipe());
     }

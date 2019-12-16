@@ -24,7 +24,7 @@ public class IngredientTest {
 
     @Before
     public void setUpEntities() {
-        recipeSpaghetti = new Recipe("Spaghetti", "Boil and add Sauce.", 3);
+        recipeSpaghetti = new Recipe("Spaghetti");
         sauce = new Ingredient("Sauce");
         spaghettiSauce = new RecipeIngredient();
 
