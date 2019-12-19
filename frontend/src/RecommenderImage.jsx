@@ -13,6 +13,7 @@ class RecommenderImage extends Component {
           alt="finished dish"
           width="100%"
           height="100%"
+          onClick={this.props.onClick}
         />
       </div>
     );
