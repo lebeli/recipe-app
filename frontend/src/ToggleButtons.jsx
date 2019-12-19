@@ -11,24 +11,24 @@ function ToggleButtons(params) {
         <Box p={1}>
           <FilterCategory
             categoryName="Frühstück"
-            value="fruehstueck"
-            selected={params.fruehstueck}
+            value="breakfast"
+            selected={params.breakfast}
             updateState={params.updateState}
           />
         </Box>
         <Box p={1}>
           <FilterCategory
             categoryName="Mittagessen"
-            value="mittagessen"
-            selected={params.mittagessen}
+            value="lunch"
+            selected={params.lunch}
             updateState={params.updateState}
           />
         </Box>
         <Box p={1}>
           <FilterCategory
             categoryName="Abendessen"
-            value="abendessen"
-            selected={params.abendessen}
+            value="dinner"
+            selected={params.dinner}
             updateState={params.updateState}
           />
         </Box>
@@ -36,15 +36,15 @@ function ToggleButtons(params) {
       <Box display="flex" justifyContent="center" m={1} p={1}>
         <Box p={1}>
           <FilterCategory
-            categoryName="Vegetarisch"
-            value="vegetarisch"
-            selected={params.vegetarisch}
+            categoryName="vegetarisch"
+            value="vegetarian"
+            selected={params.vegetarian}
             updateState={params.updateState}
           />
         </Box>
         <Box p={1}>
           <FilterCategory
-            categoryName="Vegan"
+            categoryName="vegan"
             value="vegan"
             selected={params.vegan}
             updateState={params.updateState}
@@ -52,7 +52,7 @@ function ToggleButtons(params) {
         </Box>
         <Box p={1}>
           <FilterCategory
-            categoryName="Schnell"
+            categoryName="schnell"
             value="schnell"
             selected={params.schnell}
             updateState={params.updateState}
@@ -60,9 +60,9 @@ function ToggleButtons(params) {
         </Box>
         <Box p={1}>
           <FilterCategory
-            categoryName="Ich habe Zeit"
-            value="ich_habe_zeit"
-            selected={params.ich_habe_zeit}
+            categoryName="ich habe Zeit"
+            value="i_have_time"
+            selected={params.i_have_time}
             updateState={params.updateState}
           />
         </Box>

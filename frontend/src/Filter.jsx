@@ -22,13 +22,13 @@ class Filter extends Component {
         "Gouda",
         "Erdnüsse"
       ],
-      fruehstueck: false,
-      mittagessen: false,
-      abendessen: false,
-      vegetarisch: false,
+      breakfast: false,
+      lunch: false,
+      dinner: false,
+      vegetarian: false,
       vegan: false,
-      schnell: false,
-      ich_habe_zeit: false,
+      fast: false,
+      i_have_time: false,
       chosen_ingredients: []
     };
 
@@ -37,25 +37,25 @@ class Filter extends Component {
 
   calculateActiveFilters() {
     let active = 0;
-    if (this.state.fruehstueck == true) {
+    if (this.state.breakfast == true) {
       active = active + 1;
     }
-    if (this.state.mittagessen == true) {
+    if (this.state.lunch == true) {
       active = active + 1;
     }
-    if (this.state.abendessen == true) {
+    if (this.state.dinner == true) {
       active = active + 1;
     }
-    if (this.state.vegetarisch == true) {
+    if (this.state.vegetarian == true) {
       active = active + 1;
     }
     if (this.state.vegan == true) {
       active = active + 1;
     }
-    if (this.state.schnell == true) {
+    if (this.state.fast == true) {
       active = active + 1;
     }
-    if (this.state.ich_habe_zeit == true) {
+    if (this.state.i_have_time == true) {
       active = active + 1;
     }
 
@@ -91,13 +91,13 @@ class Filter extends Component {
               <ExpansionPanelDetails>
                 <Typography component="span">
                   <ToggleButtons
-                    fruehstueck={this.state.fruehstueck}
-                    mittagessen={this.state.mittagessen}
-                    abendessen={this.state.abendessen}
-                    vegetarisch={this.state.vegetarisch}
+                    breakfast={this.state.breakfast}
+                    lunch={this.state.lunch}
+                    dinner={this.state.dinner}
+                    vegetarian={this.state.vegetarian}
                     vegan={this.state.vegan}
-                    schnell={this.state.schnell}
-                    ich_habe_zeit={this.state.ich_habe_zeit}
+                    fast={this.state.fast}
+                    i_have_time={this.state.i_have_time}
                     chosen_ingredients={this.state.chosen_ingredients}
                     updateState={this.updateState}
                   />

@@ -1,10 +1,6 @@
 const path = require("path");
 const webpack = require("webpack");
 
-// require.extensions[".css"] = () => {
-//   return;
-// };
-
 module.exports = {
   entry: "./src/index.jsx",
   mode: "development",
