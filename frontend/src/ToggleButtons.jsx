@@ -53,8 +53,8 @@ function ToggleButtons(params) {
         <Box p={1}>
           <FilterCategory
             categoryName="schnell"
-            value="schnell"
-            selected={params.schnell}
+            value="fast"
+            selected={params.fast}
             updateState={params.updateState}
           />
         </Box>
