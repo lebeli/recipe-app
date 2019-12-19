@@ -1,10 +1,6 @@
 const path = require("path");
 const webpack = require("webpack");
 
-require.extensions[".css"] = () => {
-  return;
-};
-
 module.exports = {
   entry: "./src/index.jsx",
   mode: "development",
@@ -52,7 +48,7 @@ module.exports = {
   },
   devServer: {
     contentBase: path.join(__dirname, "public/"),
-    port: 3000,
+    port: 3001,
     publicPath: "http://localhost:3000/dist/",
     hotOnly: true
   },

@@ -5,9 +5,8 @@ import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
-import ToggleButton from "@material-ui/lab/ToggleButton";
-import TextField from "@material-ui/core/TextField";
-import Autocomplete from "@material-ui/lab/Autocomplete";
+import ToggleButtons from "./ToggleButtons";
+import Tags from "./Tags";
 import "./Filter.scss";
 
 class Filter extends Component {
@@ -23,13 +22,13 @@ class Filter extends Component {
         "Gouda",
         "Erdnüsse"
       ],
-      fruehstueck: false,
-      mittagessen: false,
-      abendessen: false,
-      vegetarisch: false,
+      breakfast: false,
+      lunch: false,
+      dinner: false,
+      vegetarian: false,
       vegan: false,
-      schnell: false,
-      ich_habe_zeit: false,
+      fast: false,
+      i_have_time: false,
       chosen_ingredients: []
     };
 
@@ -38,25 +37,25 @@ class Filter extends Component {
 
   calculateActiveFilters() {
     let active = 0;
-    if (this.state.fruehstueck == true) {
+    if (this.state.breakfast == true) {
       active = active + 1;
     }
-    if (this.state.mittagessen == true) {
+    if (this.state.lunch == true) {
       active = active + 1;
     }
-    if (this.state.abendessen == true) {
+    if (this.state.dinner == true) {
       active = active + 1;
     }
-    if (this.state.vegetarisch == true) {
+    if (this.state.vegetarian == true) {
       active = active + 1;
     }
     if (this.state.vegan == true) {
       active = active + 1;
     }
-    if (this.state.schnell == true) {
+    if (this.state.fast == true) {
       active = active + 1;
     }
-    if (this.state.ich_habe_zeit == true) {
+    if (this.state.i_have_time == true) {
       active = active + 1;
     }
 
@@ -92,13 +91,13 @@ class Filter extends Component {
               <ExpansionPanelDetails>
                 <Typography component="span">
                   <ToggleButtons
-                    fruehstueck={this.state.fruehstueck}
-                    mittagessen={this.state.mittagessen}
-                    abendessen={this.state.abendessen}
-                    vegetarisch={this.state.vegetarisch}
+                    breakfast={this.state.breakfast}
+                    lunch={this.state.lunch}
+                    dinner={this.state.dinner}
+                    vegetarian={this.state.vegetarian}
                     vegan={this.state.vegan}
-                    schnell={this.state.schnell}
-                    ich_habe_zeit={this.state.ich_habe_zeit}
+                    fast={this.state.fast}
+                    i_have_time={this.state.i_have_time}
                     chosen_ingredients={this.state.chosen_ingredients}
                     updateState={this.updateState}
                   />
@@ -115,117 +114,6 @@ class Filter extends Component {
       </div>
     );
   }
-}
-
-function ToggleButtons(params) {
-  return (
-    <div className="ToggleButtons">
-      <Box display="flex" justifyContent="center" m={1} p={1}>
-        <Box p={1}>
-          <FilterCategory
-            categoryName="Frühstück"
-            value="fruehstueck"
-            selected={params.fruehstueck}
-            updateState={params.updateState}
-          />
-        </Box>
-        <Box p={1}>
-          <FilterCategory
-            categoryName="Mittagessen"
-            value="mittagessen"
-            selected={params.mittagessen}
-            updateState={params.updateState}
-          />
-        </Box>
-        <Box p={1}>
-          <FilterCategory
-            categoryName="Abendessen"
-            value="abendessen"
-            selected={params.abendessen}
-            updateState={params.updateState}
-          />
-        </Box>
-      </Box>
-      <Box display="flex" justifyContent="center" m={1} p={1}>
-        <Box p={1}>
-          <FilterCategory
-            categoryName="Vegetarisch"
-            value="vegetarisch"
-            selected={params.vegetarisch}
-            updateState={params.updateState}
-          />
-        </Box>
-        <Box p={1}>
-          <FilterCategory
-            categoryName="Vegan"
-            value="vegan"
-            selected={params.vegan}
-            updateState={params.updateState}
-          />
-        </Box>
-        <Box p={1}>
-          <FilterCategory
-            categoryName="Schnell"
-            value="schnell"
-            selected={params.schnell}
-            updateState={params.updateState}
-          />
-        </Box>
-        <Box p={1}>
-          <FilterCategory
-            categoryName="Ich habe Zeit"
-            value="ich_habe_zeit"
-            selected={params.ich_habe_zeit}
-            updateState={params.updateState}
-          />
-        </Box>
-      </Box>
-    </div>
-  );
-}
-
-function FilterCategory(params) {
-  const [selected, setSelected] = React.useState(false);
-
-  return (
-    <div className="FilterCategory">
-      <ToggleButton
-        value={params.value}
-        selected={selected}
-        onChange={() => {
-          params.updateState(params.value, !params.selected);
-          setSelected(!params.selected);
-        }}
-      >
-        {params.categoryName}
-      </ToggleButton>
-    </div>
-  );
-}
-
-function Tags(params) {
-  return (
-    <div className="Tags">
-      <Autocomplete
-        multiple
-        options={params.ingredients}
-        getOptionLabel={ingredient => ingredient}
-        filterSelectedOptions
-        onChange={(_, tags) => {
-          params.updateState("chosen_ingredients", tags);
-        }}
-        renderInput={tags => (
-          <TextField
-            {...tags}
-            variant="outlined"
-            placeholder="Nach Zutaten suchen..."
-            margin="normal"
-            fullWidth
-          />
-        )}
-      />
-    </div>
-  );
 }
 
 export default Filter;
