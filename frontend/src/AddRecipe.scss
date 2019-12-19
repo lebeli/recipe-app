@@ -1,0 +1,40 @@
+@import "./styles/styles.scss";
+
+.Addrecipe {
+  margin: 100px 10% 100px 10%;
+
+  #add_recipe_container {
+    #add_recipe_description {
+      #add_recipe_headline {
+        font-family: $primaryFont;
+        font-size: 16pt;
+        color: $primaryColor;
+      }
+
+      #add_recipe_button_container {
+        margin-top: 20px;
+
+        button {
+          background-color: $secondaryColor;
+        }
+
+        button:hover {
+          background-color: #aba931;
+        }
+
+        .MuiButton-root {
+          border-radius: 0;
+          box-shadow: none;
+        }
+
+        .MuiButton-label {
+          font-family: $secondaryFont;
+        }
+      }
+    }
+
+    #add_recipe_image_container {
+      text-align: center;
+    }
+  }
+}
