@@ -11,8 +11,6 @@ class RecommenderImage extends Component {
         <img
           src={this.props.image}
           alt="finished dish"
-          width="100%"
-          height="100%"
           onClick={this.props.onClick}
         />
       </div>
