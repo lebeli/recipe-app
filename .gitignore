@@ -21,6 +21,10 @@ chrome-user-data
 *.swp
 *.swo
 
+# Docker generated dirs and files
+mysql/
+
+
 # Runtime data
 pids
 *.pid
