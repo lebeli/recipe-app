@@ -1,6 +1,0 @@
-FROM java:8
-VOLUME /tmp
-EXPOSE 8080
-ADD --from=MAVEN_BUILD /target/gs-rest-service-0.1.0.jar gs-rest-service-0.1.0.jar
-
-ENTRYPOINT ["java","-jar","gs-rest-service-0.1.0.jar"]
