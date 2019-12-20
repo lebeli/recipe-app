@@ -1,0 +1,15 @@
+/Users/erikgrosskopf/Documents/repos/fluffy-bear/backend/src/main/java/com/hdmstuttgart/fluffybear/repository/RecipeRepository.java
+/Users/erikgrosskopf/Documents/repos/fluffy-bear/backend/src/main/java/com/hdmstuttgart/fluffybear/model/Instruction.java
+/Users/erikgrosskopf/Documents/repos/fluffy-bear/backend/src/main/java/com/hdmstuttgart/fluffybear/service/InstructionService.java
+/Users/erikgrosskopf/Documents/repos/fluffy-bear/backend/src/main/java/com/hdmstuttgart/fluffybear/service/IngredientService.java
+/Users/erikgrosskopf/Documents/repos/fluffy-bear/backend/src/main/java/com/hdmstuttgart/fluffybear/repository/IngredientRepository.java
+/Users/erikgrosskopf/Documents/repos/fluffy-bear/backend/src/main/java/com/hdmstuttgart/fluffybear/model/Ingredient.java
+/Users/erikgrosskopf/Documents/repos/fluffy-bear/backend/src/main/java/com/hdmstuttgart/fluffybear/repository/InstructionRepository.java
+/Users/erikgrosskopf/Documents/repos/fluffy-bear/backend/src/main/java/com/hdmstuttgart/fluffybear/controller/RecipeController.java
+/Users/erikgrosskopf/Documents/repos/fluffy-bear/backend/src/main/java/com/hdmstuttgart/fluffybear/model/RecipeIngredient.java
+/Users/erikgrosskopf/Documents/repos/fluffy-bear/backend/src/main/java/com/hdmstuttgart/fluffybear/repository/RecipeIngredientRepository.java
+/Users/erikgrosskopf/Documents/repos/fluffy-bear/backend/src/main/java/com/hdmstuttgart/fluffybear/model/RecipeIngredientKey.java
+/Users/erikgrosskopf/Documents/repos/fluffy-bear/backend/src/main/java/com/hdmstuttgart/fluffybear/FluffyBearApplication.java
+/Users/erikgrosskopf/Documents/repos/fluffy-bear/backend/src/main/java/com/hdmstuttgart/fluffybear/service/RecipeService.java
+/Users/erikgrosskopf/Documents/repos/fluffy-bear/backend/src/main/java/com/hdmstuttgart/fluffybear/service/RecipeIngredientService.java
+/Users/erikgrosskopf/Documents/repos/fluffy-bear/backend/src/main/java/com/hdmstuttgart/fluffybear/model/Recipe.java

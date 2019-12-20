@@ -13,7 +13,7 @@ services:
   fluffy-bear-backend:
     image: backend
     build:
-      context: ./
+      context: ./backend/
       dockerfile: Dockerfile
     depends_on:
       - mysql-docker-container
@@ -24,7 +24,7 @@ services:
   fluffy-bear-frontend:
     image: frontend
     build:
-      context: ./frontend
+      context: ./frontend/
       dockerfile: Dockerfile
     ports:
       - 3000:3000

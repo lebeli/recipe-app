@@ -1,0 +1,15 @@
+com/hdmstuttgart/fluffybear/model/RecipeIngredient.class
+com/hdmstuttgart/fluffybear/model/RecipeIngredientKey.class
+com/hdmstuttgart/fluffybear/repository/RecipeRepository.class
+com/hdmstuttgart/fluffybear/controller/RecipeController.class
+com/hdmstuttgart/fluffybear/model/Instruction.class
+com/hdmstuttgart/fluffybear/service/RecipeIngredientService.class
+com/hdmstuttgart/fluffybear/FluffyBearApplication.class
+com/hdmstuttgart/fluffybear/service/IngredientService.class
+com/hdmstuttgart/fluffybear/service/InstructionService.class
+com/hdmstuttgart/fluffybear/model/Recipe.class
+com/hdmstuttgart/fluffybear/repository/InstructionRepository.class
+com/hdmstuttgart/fluffybear/model/Ingredient.class
+com/hdmstuttgart/fluffybear/repository/RecipeIngredientRepository.class
+com/hdmstuttgart/fluffybear/repository/IngredientRepository.class
+com/hdmstuttgart/fluffybear/service/RecipeService.class
