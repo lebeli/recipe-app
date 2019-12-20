@@ -14,8 +14,11 @@ public class Recipe {
 	private long id;
 
 	private String name;
-	private String description;
-	private int yield;
+	private String image;
+	private int totalTime;
+	private String category;
+	private boolean vegetarian;
+	private boolean vegan;
 
 	@OneToMany(mappedBy = "recipe", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<RecipeIngredient> ingredients = new ArrayList<>();
@@ -29,10 +32,8 @@ public class Recipe {
 
 	public Recipe() {}
 	
-	public Recipe(String name, String description, int yield) {
+	public Recipe(String name) {
 		this.name = name;
-		this.description = description;
-		this.yield = yield;
 	}
 	
 	// utility functions
@@ -76,22 +77,6 @@ public class Recipe {
 		this.name = name;
 	}
 
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	public int getYield() {
-		return yield;
-	}
-
-	public void setYield(int yield) {
-		this.yield = yield;
-	}
-
 	public long getId() {
 		return id;
 	}
@@ -117,5 +102,45 @@ public class Recipe {
 
 	public void setInstructions(List<Instruction> instructions) {
 		this.instructions = instructions;
+	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
+	public int getTotalTime() {
+		return totalTime;
+	}
+
+	public void setTotalTime(int totalTime) {
+		this.totalTime = totalTime;
+	}
+
+	public String getCategory() {
+		return category;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
+	}
+
+	public boolean isVegetarian() {
+		return vegetarian;
+	}
+
+	public void setVegetarian(boolean vegetarian) {
+		this.vegetarian = vegetarian;
+	}
+
+	public boolean isVegan() {
+		return vegan;
+	}
+
+	public void setVegan(boolean vegan) {
+		this.vegan = vegan;
 	}
 }

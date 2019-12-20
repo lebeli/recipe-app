@@ -1,3 +1,6 @@
+FROM maven:3.6.0-jdk-11-slim AS MAVEN_BUILD
+RUN mvn install -DskipTests
+
 FROM java:8
 VOLUME /tmp
 EXPOSE 8080
