@@ -1,0 +1,197 @@
+@import "./styles/styles.scss";
+
+.AddRecipeForm {
+  margin-top: 100px;
+  width: 100%;
+
+  // Close button ----------------------------
+
+  #close_button_container {
+    #close_button_description {
+      font-size: 11pt;
+      color: $primaryColor;
+    }
+    .MuiButton-root {
+      color: $primaryColor;
+    }
+    .MuiButton-root:hover,
+    .MuiButton-root:focus,
+    .MuiButton-root:focus-within,
+    .MuiButton-root:visited,
+    .MuiButton-root:active {
+      background-color: transparent;
+      color: #d24e13;
+    }
+  }
+
+  // Form ------------------------------------
+
+  // Headline
+  #add_recipe_form_headline {
+    color: $secondaryColor;
+  }
+
+  .form_labels {
+    margin-top: 30px;
+    margin-bottom: 20px;
+  }
+
+  .remove_step {
+    min-width: auto;
+
+    .MuiButton-label {
+      padding: 0;
+    }
+  }
+
+  .MuiFormControl-root {
+    width: 100%;
+  }
+  .recipe_time {
+    width: 30%;
+    min-width: fit-content;
+  }
+
+  .MuiOutlinedInput-root.Mui-focused {
+    border-color: rgba(0, 0, 0, 0.23);
+
+    .MuiOutlinedInput-notchedOutline {
+      border-color: rgba(0, 0, 0, 0.87);
+      border-width: 1px;
+    }
+  }
+
+  .MuiFormLabel-root.Mui-focused {
+    color: rgba(0, 0, 0, 0.87);
+    font-family: $secondaryFont;
+  }
+
+  .MuiInputBase-input,
+  .MuiInputLabel-root,
+  .MuiFormLabel-root,
+  .MuiTypography-root {
+    font-family: $secondaryFont;
+  }
+
+  .fieldset {
+    height: 20px;
+  }
+
+  // Radio buttons
+
+  .radioButtons {
+    .MuiIconButton-colorSecondary:hover {
+      background-color: transparent;
+    }
+    .MuiRadio-colorSecondary.Mui-checked {
+      color: $primaryColor;
+    }
+  }
+
+  // Arbeitsschritte
+
+  h4 {
+    margin-top: 40px;
+  }
+
+  #step {
+    margin-top: 0px;
+  }
+
+  .remove_step_button {
+    .MuiButton-root {
+      padding: 0;
+    }
+    .MuiButton-root:hover,
+    .MuiButton-root:focus,
+    .MuiButton-root:focus-within,
+    .MuiButton-root:visited,
+    .MuiButton-root:active {
+      background-color: transparent;
+      color: black;
+    }
+  }
+
+  // Button for adding another working step
+
+  .recipe_add {
+    .MuiButton-root {
+      color: black;
+      font-family: $secondaryFont;
+      text-transform: none;
+
+      .MuiSvgIcon-root {
+        margin-right: 5px;
+      }
+    }
+    .MuiButton-root:hover,
+    .MuiButton-root:focus,
+    .MuiButton-root:focus-within,
+    .MuiButton-root:visited,
+    .MuiButton-root:active {
+      background-color: transparent;
+      // color: #d24e13;
+      color: black;
+    }
+  }
+
+  // Button for uploading an image
+
+  #add_image_button_container {
+    display: flex;
+    margin-top: 20px;
+
+    #photo_icon {
+      margin-right: 10px;
+    }
+
+    .MuiButton-root {
+      min-width: fit-content;
+      height: fit-content;
+      border-radius: 0;
+      color: $secondaryColor;
+      border: 1px solid $secondaryColor;
+    }
+
+    .MuiButton-root:hover {
+      background-color: #aba93122;
+    }
+
+    .MuiButton-label {
+      font-family: $secondaryFont;
+      text-transform: none;
+    }
+
+    #filename_item {
+      align-self: center;
+    }
+  }
+
+  .ingredients_container,
+  .steps_container {
+    margin-bottom: 10px;
+  }
+
+  // Submit Button
+
+  #recipe_form_submit_button {
+    margin-top: 40px;
+
+    .MuiButton-root {
+      min-width: fit-content;
+      height: fit-content;
+      border-radius: 0;
+      background-color: $primaryColor;
+      box-shadow: none;
+    }
+
+    .MuiButton-root:hover {
+      background-color: $primaryColorDarker;
+    }
+
+    .MuiButton-label {
+      font-family: $secondaryFont;
+      color: white;
+    }
+  }
+}

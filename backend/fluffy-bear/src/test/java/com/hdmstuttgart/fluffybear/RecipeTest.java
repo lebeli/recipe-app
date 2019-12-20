@@ -25,7 +25,7 @@ public class RecipeTest {
 
 	@Before
 	public void setUpEntities() {
-		recipe = new Recipe("Spaghetti", "Boil and add Sauce.", 3);
+		recipe = new Recipe("Spaghetti");
 		noodles = new Ingredient("Noodles");
 		sauce = new Ingredient("Sauce");
 		spaghettiNoodles = new RecipeIngredient();
@@ -56,31 +56,9 @@ public class RecipeTest {
 	}
 
 	@Test
-	public void recipeGetInstruction() {
-		assertEquals("Boil and add Sauce.", recipe.getDescription());
-	}
-
-	@Test
-	public void recipeGetYield() {
-		assertEquals(3, recipe.getYield());
-	}
-
-	@Test
 	public void recipeSetName() {
 		recipe.setName("Mac and Cheese");
 		assertEquals("Mac and Cheese", recipe.getName());
-	}
-
-	@Test
-	public void recipeSetInstruction() {
-		recipe.setDescription("Boil and add Cheese.");
-		assertEquals("Boil and add Cheese.", recipe.getDescription());
-	}
-
-	@Test
-	public void recipeSetYield() {
-		recipe.setYield(4);
-		assertEquals(4, recipe.getYield());
 	}
 
 	@Test

@@ -41,6 +41,11 @@ public class RecipeController {
     public List<Recipe> getRecipes() {
 		return recipeService.getAllRecipes();
 	}
+
+	@RequestMapping("/recipes/{id}")
+	public Recipe getRecipe(@PathVariable("id") Long id) {
+		return recipeService.getRecipe(id);
+	}
 	
 	@PostMapping("/recipes/add")
 	public void saveRecipe(@RequestBody Recipe recipe) {
@@ -67,9 +72,19 @@ public class RecipeController {
 		});
 	}
 
+	@RequestMapping("/recipes/filter")
+	public List<Recipe> getRecipesByParameters(@RequestBody Recipe recipe) {
+		return recipeService.getAllRecipes();
+	}
+
+	@RequestMapping("/ingredients")
+	public List<Ingredient> getIngredients() {
+		return ingredientService.getAllIngredients();
+	}
+
 	@RequestMapping("/sample")
 	public Recipe getSample() {
-		Recipe recipe = new Recipe("Spaghetti", "Boil and stuff", 2);
+		Recipe recipe = new Recipe("Spaghetti");
 		Ingredient noodles = new Ingredient("Noodles");
 		Ingredient sauce = new Ingredient("Sauce");
 		Instruction noodleInst = new Instruction("Boil noodles.");
@@ -82,9 +97,4 @@ public class RecipeController {
 
 		return recipe;
 	}
-
-	@RequestMapping("/recipes/{id}")
-    public Recipe getRecipe(@PathVariable("id") Long id) {
-		return recipeService.getRecipe(id);
-    }
 }

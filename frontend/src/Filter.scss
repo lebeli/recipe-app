@@ -1,0 +1,41 @@
+@import "./styles/styles.scss";
+
+.Filter {
+  #filter-panel {
+    background-color: $secondaryColor;
+
+    .MuiBox-root {
+      display: flex;
+      flex-wrap: wrap;
+      margin: 0;
+      padding: 5px;
+
+      #filter-header {
+        font-family: $secondaryFont;
+        font-size: 15pt;
+        color: white;
+        text-align: center;
+      }
+
+      #search-expand-icon {
+        fill: white;
+      }
+
+      .MuiBox-root-34 {
+        margin: 0;
+      }
+
+      .MuiExpansionPanelSummary-root {
+        min-height: 20px;
+
+        .MuiExpansionPanelSummary-content {
+          margin: 0;
+        }
+      }
+
+      .MuiExpansionPanelDetails-root {
+        padding: 0;
+      }
+    }
+  }
+}
