@@ -3,8 +3,6 @@ package com.hdmstuttgart.fluffybear.controller;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.hdmstuttgart.fluffybear.model.Instruction;
-import com.hdmstuttgart.fluffybear.service.InstructionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,17 +18,12 @@ import com.hdmstuttgart.fluffybear.service.IngredientService;
 import com.hdmstuttgart.fluffybear.service.RecipeIngredientService;
 import com.hdmstuttgart.fluffybear.service.RecipeService;
 
-import javax.annotation.PostConstruct;
-
 @RestController
 public class RecipeController {
 	
 	@Autowired
 	private RecipeService recipeService;
 
-	@Autowired
-	private InstructionService instructionService;
-	
 	@Autowired
 	private IngredientService ingredientService;
 	
@@ -51,7 +44,6 @@ public class RecipeController {
 	public void saveRecipe(@RequestBody Recipe recipe) {
 		// get lists with Ingredient and RecipeIngredient instances
 		List<Ingredient> ingredients = new ArrayList<>();
-		List<Instruction> instructions = recipe.getInstructions();
 		List<RecipeIngredient> recipeIngredients = recipe.getIngredients();
 		recipeIngredients.forEach(recipeIngredient -> {
 			ingredients.add(recipeIngredient.getIngredient());
@@ -80,21 +72,5 @@ public class RecipeController {
 	@RequestMapping("/ingredients")
 	public List<Ingredient> getIngredients() {
 		return ingredientService.getAllIngredients();
-	}
-
-	@RequestMapping("/sample")
-	public Recipe getSample() {
-		Recipe recipe = new Recipe("Spaghetti");
-		Ingredient noodles = new Ingredient("Noodles");
-		Ingredient sauce = new Ingredient("Sauce");
-		Instruction noodleInst = new Instruction("Boil noodles.");
-		Instruction sauceInst = new Instruction("Heat sauce.");
-
-		recipe.addIngredient(noodles);
-		recipe.addIngredient(sauce);
-		recipe.addInstruction(noodleInst);
-		recipe.addInstruction(sauceInst);
-
-		return recipe;
 	}
 }

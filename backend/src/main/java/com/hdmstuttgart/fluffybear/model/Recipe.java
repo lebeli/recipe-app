@@ -2,6 +2,7 @@ package com.hdmstuttgart.fluffybear.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonUnwrapped;
 
 import javax.persistence.*;
 import java.util.*;
@@ -23,12 +24,9 @@ public class Recipe {
 	@OneToMany(mappedBy = "recipe", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<RecipeIngredient> ingredients = new ArrayList<>();
 
-	@ManyToMany(cascade = CascadeType.PERSIST)
-	@JoinTable(name = "recipe_instruction",
-			joinColumns = @JoinColumn(name = "recipe_id"),
-			inverseJoinColumns = @JoinColumn(name = "instruction_id"))
-	@JsonProperty // without annotation instructions is not beeing serialized (alternative: @JsonProperty and @JsonIgnore)
-	private List<Instruction> instructions = new ArrayList<>();
+	@ElementCollection(fetch=FetchType.EAGER)
+	@Column(length=5000)
+	private List<String> instructions = new ArrayList<>();
 
 	public Recipe() {}
 	
@@ -55,16 +53,6 @@ public class Recipe {
 	            recipeIngredient.setIngredient(null);
 	        }
 	    }
-	}
-
-	public void addInstruction(Instruction instruction) {
-		instruction.addRecipe(this);
-		instructions.add(instruction);
-	}
-
-	public void removeInstruction(Instruction instruction) {
-		instructions.remove(instruction);
-		instruction.removeRecipe(this);
 	}
 
 	// getters and setters
@@ -96,11 +84,11 @@ public class Recipe {
 		this.ingredients = ingredients;
 	}
 
-	public List<Instruction> getInstructions() {
+	public List<String> getInstructions() {
 		return instructions;
 	}
 
-	public void setInstructions(List<Instruction> instructions) {
+	public void setInstructions(List<String> instructions) {
 		this.instructions = instructions;
 	}
 
