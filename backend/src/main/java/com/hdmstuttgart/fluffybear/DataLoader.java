@@ -20,11 +20,11 @@ import java.util.Iterator;
 @Component
 public class DataLoader implements ApplicationRunner {
 
+    private ObjectMapper mapper = new ObjectMapper();
+
     private RecipeRepository recipeRepository;
     private IngredientRepository ingredientRepository;
     private RecipeIngredientRepository recipeIngredientRepository;
-
-    ObjectMapper mapper = new ObjectMapper();
 
     @Autowired
     public DataLoader(RecipeRepository recipeRepository, IngredientRepository ingredientRepository, RecipeIngredientRepository recipeIngredientRepository) {
@@ -33,31 +33,39 @@ public class DataLoader implements ApplicationRunner {
         this.recipeIngredientRepository = recipeIngredientRepository;
     }
 
-    public void run(ApplicationArguments args) throws IOException {
+    public void run(ApplicationArguments args) {
         InputStream path = getClass().getClassLoader().getResourceAsStream("demo_recipes.json");
+        String jsonString = convertStreamToString(path);
+        JSONArray recipeArray = new JSONArray(jsonString);
 
-        JSONArray recipeArray = new JSONArray(convertStreamToString(path));
         Iterator<Object> iterator = recipeArray.iterator();
         while(iterator.hasNext()) {
             JSONObject recipeJSON = (JSONObject) iterator.next();
 
             // Save ingredients
             JSONArray ingredientArray = (JSONArray) recipeJSON.get("ingredients");
-            recipeJSON.remove("ingredients");
+            recipeJSON.remove("ingredients"); // Later added vida repository
 
-            // Decode recipeJSON to Objects
-            Recipe recipe = mapper.readValue(recipeJSON.toString(), Recipe.class);
-            recipeRepository.save(recipe);
-
-            // Add ingredients
-            Iterator<Object> ingredientIterator = ingredientArray.iterator();
-            while (ingredientIterator.hasNext()) {
-                JSONObject ingredientJSON = (JSONObject) ingredientIterator.next();
-                String typeAmount = ingredientJSON.getString("typeAmount");
-                ingredientJSON.remove("typeAmount");
-                Ingredient ingredient = ingredientRepository.save(mapper.readValue(ingredientJSON.toString(), Ingredient.class));
-                recipeIngredientRepository.save(new RecipeIngredient(recipe, ingredient, typeAmount));
+            Recipe recipe = null;
+            try {
+                // Map recipeJSON to recipe object
+                recipe = mapper.readValue(recipeJSON.toString(), Recipe.class);
+                recipeRepository.save(recipe);
+                addIngredients(ingredientArray, recipe);
+            } catch (IOException e) {
+                e.printStackTrace();
             }
+        }
+    }
+
+    private void addIngredients(JSONArray ingredientArray, Recipe recipe) throws IOException {
+        Iterator<Object> ingredientIterator = ingredientArray.iterator();
+        while (ingredientIterator.hasNext()) {
+            JSONObject ingredientJSON = (JSONObject) ingredientIterator.next();
+            String typeAmount = ingredientJSON.getString("typeAmount");
+            ingredientJSON.remove("typeAmount");
+            Ingredient ingredient = ingredientRepository.save(mapper.readValue(ingredientJSON.toString(), Ingredient.class));
+            recipeIngredientRepository.save(new RecipeIngredient(recipe, ingredient, typeAmount));
         }
     }
 
