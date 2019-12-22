@@ -2,13 +2,11 @@ package com.hdmstuttgart.fluffybear.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
+import com.hdmstuttgart.fluffybear.model.Category;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.hdmstuttgart.fluffybear.model.Ingredient;
 import com.hdmstuttgart.fluffybear.model.Recipe;
@@ -31,8 +29,48 @@ public class RecipeController {
 	private RecipeIngredientService recipeIngredientService;
 	
 	@RequestMapping("/recipes")
-    public List<Recipe> getRecipes() {
-		return recipeService.getAllRecipes();
+    public List<Recipe> getRecipes(
+			@RequestParam(defaultValue = "true") Boolean breakfast,
+			@RequestParam(defaultValue = "true") Boolean lunch,
+			@RequestParam(defaultValue = "true") Boolean dinner,
+			@RequestParam(defaultValue = "false") Boolean vegetarian,
+			@RequestParam(defaultValue = "false") Boolean vegan,
+			@RequestParam(required = false) Boolean longTime,
+			@RequestParam(required = false) Boolean shortTime
+	) {
+		return recipeService.getAllRecipes().stream().filter(recipe -> {
+			boolean accepted = true;
+
+			if (!breakfast && recipe.getCategory() == Category.BREAKFAST) {
+					return false;
+			}
+			if (!lunch && recipe.getCategory() == Category.LUNCH) {
+					return false;
+			}
+			if (!dinner && recipe.getCategory() == Category.DINNER) {
+					return false;
+			}
+			if (vegetarian && !recipe.isVegetarian()) {
+				return false;
+			}
+			if (vegan && !recipe.isVegan()) {
+				return false;
+			}
+
+			if (longTime != null && longTime) {
+				accepted = recipe.getTotalTime() >= 60;
+			}
+
+			if (shortTime != null && shortTime) {
+				accepted = recipe.getTotalTime() <= 10;
+			}
+
+			if (shortTime != null && shortTime && longTime != null && longTime) { // Impossible
+				accepted = false;
+			}
+
+			return accepted;
+		}).collect(Collectors.toList());
 	}
 
 	@RequestMapping("/recipes/{id}")
@@ -62,11 +100,6 @@ public class RecipeController {
 		recipeIngredients.forEach(recipeIngredient -> {
 			recipeIngredientService.addRecipeIngredient(recipeIngredient); //
 		});
-	}
-
-	@RequestMapping("/recipes/filter")
-	public List<Recipe> getRecipesByParameters(@RequestBody Recipe recipe) {
-		return recipeService.getAllRecipes();
 	}
 
 	@RequestMapping("/ingredients")

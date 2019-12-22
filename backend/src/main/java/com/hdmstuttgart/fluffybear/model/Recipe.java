@@ -1,9 +1,6 @@
 package com.hdmstuttgart.fluffybear.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonUnwrapped;
-
 import javax.persistence.*;
 import java.util.*;
 
@@ -17,7 +14,7 @@ public class Recipe {
 	private String name;
 	private String image;
 	private int totalTime;
-	private String category;
+	private Category category;
 	private boolean vegetarian;
 	private boolean vegan;
 
@@ -108,14 +105,6 @@ public class Recipe {
 		this.totalTime = totalTime;
 	}
 
-	public String getCategory() {
-		return category;
-	}
-
-	public void setCategory(String category) {
-		this.category = category;
-	}
-
 	public boolean isVegetarian() {
 		return vegetarian;
 	}
@@ -130,5 +119,13 @@ public class Recipe {
 
 	public void setVegan(boolean vegan) {
 		this.vegan = vegan;
+	}
+
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
 	}
 }
