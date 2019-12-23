@@ -8,6 +8,8 @@ services:
       - MYSQL_DATABASE=fluffy_bear
       - MYSQL_USER=springuser
       - MYSQL_PASSWORD=ThePassword
+    ports:
+      - 3306:3306
     volumes:
       - ./mysql:/data/mysql #nicht für Produktion
   fluffy-bear-backend:
@@ -15,6 +17,8 @@ services:
     build:
       context: ./backend/
       dockerfile: Dockerfile
+    environment: 
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql-docker-container:3306/fluffy_bear?serverTimezone=UTC
     depends_on:
       - mysql-docker-container
     ports:
