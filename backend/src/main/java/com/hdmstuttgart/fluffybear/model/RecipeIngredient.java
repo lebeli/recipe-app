@@ -24,7 +24,7 @@ public class RecipeIngredient {
 	@JsonUnwrapped
 	private Ingredient ingredient;
 
-	private int amount;
+	private String typeAmount;
 	
 	public RecipeIngredient() {}
 
@@ -33,10 +33,10 @@ public class RecipeIngredient {
 		this.ingredient = ingredient;
 	}
 	
-	public RecipeIngredient(Recipe recipe, Ingredient ingredient, int amount) {
+	public RecipeIngredient(Recipe recipe, Ingredient ingredient, String typeAmount) {
 		this.recipe = recipe;
 		this.ingredient = ingredient;
-		this.amount = amount;
+		this.typeAmount = typeAmount;
 	}
 
 	public RecipeIngredientKey getId() {
@@ -45,14 +45,6 @@ public class RecipeIngredient {
 
 	public void setId(RecipeIngredientKey id) {
 		this.id = id;
-	}
-
-	public int getAmount() {
-		return amount;
-	}
-
-	public void setAmount(int amount) {
-		this.amount = amount;
 	}
 
 	public Recipe getRecipe() {
@@ -69,5 +61,13 @@ public class RecipeIngredient {
 
 	public void setIngredient(Ingredient ingredient) {
 		this.ingredient = ingredient;
+	}
+
+	public String getTypeAmount() {
+		return typeAmount;
+	}
+
+	public void setTypeAmount(String typeAmount) {
+		this.typeAmount = typeAmount;
 	}
 }

@@ -20,12 +20,12 @@ public class RecipeIngredientTest {
     public void setUpEntities() {
         spaghetti = new Recipe("Spaghetti");
         sauce = new Ingredient("Sauce");
-        spaghettiSauce = new RecipeIngredient(spaghetti, sauce, 125);
+        spaghettiSauce = new RecipeIngredient(spaghetti, sauce, "200 g");
     }
 
     @Test
     public void ingredientRecipeGetAmount() {
-        assertEquals(125, spaghettiSauce.getAmount());
+        assertEquals("200 g", spaghettiSauce.getTypeAmount());
     }
 
     @Test
@@ -40,8 +40,8 @@ public class RecipeIngredientTest {
 
     @Test
     public void ingredientRecipeSAmount() {
-        spaghettiSauce.setAmount(150);
-        assertEquals(150, spaghettiSauce.getAmount());
+        spaghettiSauce.setTypeAmount("300 g");
+        assertEquals("300 g", spaghettiSauce.getTypeAmount());
     }
 
     @Test

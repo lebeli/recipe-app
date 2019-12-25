@@ -2,15 +2,10 @@ package com.hdmstuttgart.fluffybear.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
-import com.hdmstuttgart.fluffybear.model.Instruction;
-import com.hdmstuttgart.fluffybear.service.InstructionService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.hdmstuttgart.fluffybear.model.Ingredient;
 import com.hdmstuttgart.fluffybear.model.Recipe;
@@ -20,8 +15,6 @@ import com.hdmstuttgart.fluffybear.service.IngredientService;
 import com.hdmstuttgart.fluffybear.service.RecipeIngredientService;
 import com.hdmstuttgart.fluffybear.service.RecipeService;
 
-import javax.annotation.PostConstruct;
-
 @RestController
 public class RecipeController {
 	
@@ -29,17 +22,24 @@ public class RecipeController {
 	private RecipeService recipeService;
 
 	@Autowired
-	private InstructionService instructionService;
-	
-	@Autowired
 	private IngredientService ingredientService;
 	
 	@Autowired
 	private RecipeIngredientService recipeIngredientService;
 	
-	@RequestMapping("/recipes")
-    public List<Recipe> getRecipes() {
-		return recipeService.getAllRecipes();
+	@RequestMapping(value = "/recipes", method = {RequestMethod.POST},
+			consumes = {"application/json"})
+    public List<Recipe> getRecipes(@RequestBody Map<String, Boolean> filter) {
+		List<String> categories = new ArrayList<String>();
+		if(filter.get("breakfast")) { categories.add("breakfast"); }
+		if(filter.get("lunch")) { categories.add("lunch"); }
+		if(filter.get("dinner")) { categories.add("dinner"); }
+		int minTime = 30;
+		int maxTime = 60;
+		if(filter.get("shortTime")) { minTime = 0; }
+		if(filter.get("shortTime")) { maxTime = 180; }
+
+		return recipeService.getAllRecipesByFilter(minTime, maxTime, categories, filter.get("vegetarian"), filter.get("vegan"));
 	}
 
 	@RequestMapping("/recipes/{id}")
@@ -51,7 +51,6 @@ public class RecipeController {
 	public void saveRecipe(@RequestBody Recipe recipe) {
 		// get lists with Ingredient and RecipeIngredient instances
 		List<Ingredient> ingredients = new ArrayList<>();
-		List<Instruction> instructions = recipe.getInstructions();
 		List<RecipeIngredient> recipeIngredients = recipe.getIngredients();
 		recipeIngredients.forEach(recipeIngredient -> {
 			ingredients.add(recipeIngredient.getIngredient());
@@ -72,29 +71,8 @@ public class RecipeController {
 		});
 	}
 
-	@RequestMapping("/recipes/filter")
-	public List<Recipe> getRecipesByParameters(@RequestBody Recipe recipe) {
-		return recipeService.getAllRecipes();
-	}
-
 	@RequestMapping("/ingredients")
 	public List<Ingredient> getIngredients() {
 		return ingredientService.getAllIngredients();
-	}
-
-	@RequestMapping("/sample")
-	public Recipe getSample() {
-		Recipe recipe = new Recipe("Spaghetti");
-		Ingredient noodles = new Ingredient("Noodles");
-		Ingredient sauce = new Ingredient("Sauce");
-		Instruction noodleInst = new Instruction("Boil noodles.");
-		Instruction sauceInst = new Instruction("Heat sauce.");
-
-		recipe.addIngredient(noodles);
-		recipe.addIngredient(sauce);
-		recipe.addInstruction(noodleInst);
-		recipe.addInstruction(sauceInst);
-
-		return recipe;
 	}
 }
