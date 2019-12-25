@@ -22,7 +22,16 @@ public class RecipeService {
 		});
 		return recipes;
 	}
-	
+
+	public List<Recipe> getAllRecipesByFilter(int minTime, int maxTime, List<String> categories, boolean vegetarian, boolean vegan) {
+		List<Recipe> recipes = new ArrayList<Recipe>();
+		recipeRepository.findByJsonParameters(minTime, maxTime, categories, vegetarian, vegan)
+		.forEach(recipe -> {
+			recipes.add(recipe);
+		});
+		return recipes;
+	}
+
 	public Recipe getRecipe(long id) {
 		return recipeRepository.findById(id);
 	}

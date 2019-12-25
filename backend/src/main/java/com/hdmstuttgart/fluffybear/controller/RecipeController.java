@@ -2,9 +2,8 @@ package com.hdmstuttgart.fluffybear.controller;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Map;
 
-import com.hdmstuttgart.fluffybear.model.Category;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,49 +27,19 @@ public class RecipeController {
 	@Autowired
 	private RecipeIngredientService recipeIngredientService;
 	
-	@RequestMapping("/recipes")
-    public List<Recipe> getRecipes(
-			@RequestParam(defaultValue = "true") Boolean breakfast,
-			@RequestParam(defaultValue = "true") Boolean lunch,
-			@RequestParam(defaultValue = "true") Boolean dinner,
-			@RequestParam(defaultValue = "false") Boolean vegetarian,
-			@RequestParam(defaultValue = "false") Boolean vegan,
-			@RequestParam(required = false) Boolean longTime,
-			@RequestParam(required = false) Boolean shortTime
-	) {
-		return recipeService.getAllRecipes().stream().filter(recipe -> {
-			boolean accepted = true;
+	@RequestMapping(value = "/recipes", method = {RequestMethod.POST},
+			consumes = {"application/json"})
+    public List<Recipe> getRecipes(@RequestBody Map<String, Boolean> filter) {
+		List<String> categories = new ArrayList<String>();
+		if(filter.get("breakfast")) { categories.add("breakfast"); }
+		if(filter.get("lunch")) { categories.add("lunch"); }
+		if(filter.get("dinner")) { categories.add("dinner"); }
+		int minTime = 30;
+		int maxTime = 60;
+		if(filter.get("shortTime")) { minTime = 0; }
+		if(filter.get("shortTime")) { maxTime = 180; }
 
-			if (!breakfast && recipe.getCategory() == Category.BREAKFAST) {
-					return false;
-			}
-			if (!lunch && recipe.getCategory() == Category.LUNCH) {
-					return false;
-			}
-			if (!dinner && recipe.getCategory() == Category.DINNER) {
-					return false;
-			}
-			if (vegetarian && !recipe.isVegetarian()) {
-				return false;
-			}
-			if (vegan && !recipe.isVegan()) {
-				return false;
-			}
-
-			if (longTime != null && longTime) {
-				accepted = recipe.getTotalTime() >= 60;
-			}
-
-			if (shortTime != null && shortTime) {
-				accepted = recipe.getTotalTime() <= 10;
-			}
-
-			if (shortTime != null && shortTime && longTime != null && longTime) { // Impossible
-				accepted = false;
-			}
-
-			return accepted;
-		}).collect(Collectors.toList());
+		return recipeService.getAllRecipesByFilter(minTime, maxTime, categories, filter.get("vegetarian"), filter.get("vegan"));
 	}
 
 	@RequestMapping("/recipes/{id}")

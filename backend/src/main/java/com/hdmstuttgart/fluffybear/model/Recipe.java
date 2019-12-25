@@ -14,7 +14,7 @@ public class Recipe {
 	private String name;
 	private String image;
 	private int totalTime;
-	private Category category;
+	private String category;
 	private boolean vegetarian;
 	private boolean vegan;
 
@@ -121,11 +121,11 @@ public class Recipe {
 		this.vegan = vegan;
 	}
 
-	public Category getCategory() {
+	public String getCategory() {
 		return category;
 	}
 
-	public void setCategory(Category category) {
+	public void setCategory(String category) {
 		this.category = category;
 	}
 }
