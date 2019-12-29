@@ -10,8 +10,8 @@ services:
       - MYSQL_PASSWORD=ThePassword
     volumes:
       - /data/mysql
-  fluffy-bear-backend:
-    image: fluffy-bear-backend-image
+  backend:
+    image: backend
     build:
       context: ./backend/fluffy-bear
       dockerfile: Dockerfile
@@ -21,10 +21,10 @@ services:
       - 8080:8080 # host:container
     volumes:
       - /data/spring-boot-app
-  fluffy-bear-frontend:
-    image: fluff-bear-frontend-image
+  frontend:
+    image: frontend
     build:
       context: ./frontend
       dockerfile: Dockerfile
     ports:
-      - 3000:3000
+      - 3000:80
