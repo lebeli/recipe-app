@@ -12,12 +12,12 @@ services:
       - 3306:3306
     volumes:
       - ./mysql:/data/mysql #nicht für Produktion
-  fluffy-bear-backend:
+  backend:
     image: backend
     build:
-      context: ./backend/
+      context: ./backend/fluffy-bear
       dockerfile: Dockerfile
-    environment: 
+    environment:
       - SPRING_DATASOURCE_URL=jdbc:mysql://mysql-docker-container:3306/fluffy_bear?serverTimezone=UTC
     depends_on:
       - mysql-docker-container
@@ -25,13 +25,12 @@ services:
       - 8080:8080 # host:container
     volumes:
       - /data/spring-boot-app #TODO: mapping für Development
-  fluffy-bear-frontend:
+  frontend:
     image: frontend
     build:
       context: ./frontend/
       dockerfile: Dockerfile
     ports:
-      - 3000:3000
+      - 3000:80
     volumes:
-      - ./frontend:/frontend #nicht für Produktion
-
+      - ./frontend:/frontend #TODO: raus in Produktion
