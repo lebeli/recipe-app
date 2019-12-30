@@ -9,7 +9,7 @@ services:
       - MYSQL_USER=springuser
       - MYSQL_PASSWORD=ThePassword
     volumes:
-      - /data/mysql
+      - ./mysql:/data/mysql #nicht für Produktion
   backend:
     image: backend
     build:
@@ -20,7 +20,7 @@ services:
     ports:
       - 8080:8080 # host:container
     volumes:
-      - /data/spring-boot-app
+      - /data/spring-boot-app #TODO: mapping für Development
   frontend:
     image: frontend
     build:
@@ -28,3 +28,5 @@ services:
       dockerfile: Dockerfile
     ports:
       - 3000:80
+    volumes:
+      - ./frontend:/frontend #TODO: raus in Produktion
