@@ -10,12 +10,13 @@ services:
       - MYSQL_PASSWORD=ThePassword
     ports:
       - 3306:3306
-    volumes:
-      - ./mysql:/data/mysql #nicht für Produktion
+    #TODO: mapping für Development, nicht für Produktion (ist Mapping überhaupt notwendig?)
+    #volumes:
+    #  - ./mysql:/data/mysql
   backend:
     image: backend
     build:
-      context: ./backend/fluffy-bear
+      context: ./backend
       dockerfile: Dockerfile
     environment:
       - SPRING_DATASOURCE_URL=jdbc:mysql://mysql-docker-container:3306/fluffy_bear?serverTimezone=UTC
@@ -28,9 +29,11 @@ services:
   frontend:
     image: frontend
     build:
-      context: ./frontend/
+      context: ./frontend
       dockerfile: Dockerfile
     ports:
       - 3000:80
-    volumes:
-      - ./frontend:/frontend #TODO: raus in Produktion
+    #TODO: raus in Produktion, funktionieren noch nicht für Development, da Rechte für Ordner in Container fehlen
+    #volumes:
+    #- ./src:/usr/share/nginx/html/dist/
+    #- ./public:/usr/share/nginc/html/
