@@ -39,22 +39,23 @@ public class DataLoader implements ApplicationRunner {
         JSONArray recipeArray = new JSONArray(jsonString);
 
         Iterator<Object> iterator = recipeArray.iterator();
+        int currentIndex = 1;
         while(iterator.hasNext()) {
             JSONObject recipeJSON = (JSONObject) iterator.next();
 
             // Save ingredients
             JSONArray ingredientArray = (JSONArray) recipeJSON.get("ingredients");
-            recipeJSON.remove("ingredients"); // Later added vida repository
-
-            Recipe recipe = null;
+            recipeJSON.remove("ingredients"); // Later added via repository
+            recipeJSON.put("image", "localhost:8080/image/" + currentIndex + ".jpg"); // set image path
             try {
                 // Map recipeJSON to recipe object
-                recipe = mapper.readValue(recipeJSON.toString(), Recipe.class);
+                Recipe recipe = mapper.readValue(recipeJSON.toString(), Recipe.class);
                 recipeRepository.save(recipe);
                 addIngredients(ingredientArray, recipe);
             } catch (IOException e) {
                 e.printStackTrace();
             }
+            currentIndex++;
         }
     }
 

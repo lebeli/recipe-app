@@ -1,12 +1,16 @@
 package com.hdmstuttgart.fluffybear.Storage;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+
 import java.util.stream.Stream;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -96,9 +100,19 @@ public class FileSystemStorageService implements StorageService {
 	public void init() {
 		try {
 			Files.createDirectories(rootLocation);
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
-		catch (IOException e) {
-			throw new StorageException("Could not initialize storage", e);
+		
+		// Instead of hardcoding, get file paths from resources
+		for (int i = 1; i <= 31; i++) {
+			try {
+				URL res = getClass().getClassLoader().getResource("demo_images/" + i + ".jpg");
+				Path path = Paths.get(res.toURI()).toFile().toPath();
+				Files.copy(path, Paths.get(rootLocation.toString() + "/" + i + ".jpg"), StandardCopyOption.REPLACE_EXISTING);
+			} catch (URISyntaxException | IOException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 }
