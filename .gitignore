@@ -23,6 +23,7 @@ chrome-user-data
 
 # java target folder
 */target/**
+*/bin/**
 
 # Docker generated dirs and files
 mysql/
@@ -82,7 +83,7 @@ log/
 
 # OS generated files #
 ######################
-.DS_Store
+*.DS_Store
 .DS_Store?
 ehthumbs.db
 Icon?
