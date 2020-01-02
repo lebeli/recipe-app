@@ -10,7 +10,12 @@ public interface StorageService {
 
 	void init();
 
-	void store(MultipartFile file);
+	/**
+	 * Persist the file
+	 * @param file file to save
+	 * @return the url where the file is stored
+	 */
+	String store(MultipartFile file);
 
 	Stream<Path> loadAll();
 

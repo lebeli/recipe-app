@@ -1,25 +1,24 @@
 package com.hdmstuttgart.fluffybear.Storage;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.MalformedURLException;
-import java.net.URISyntaxException;
-import java.net.URL;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
-
-import java.util.stream.Stream;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
 import org.springframework.stereotype.Service;
 import org.springframework.util.FileSystemUtils;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
+
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
+import java.util.UUID;
+import java.util.stream.Stream;
 
 @Service
 public class FileSystemStorageService implements StorageService {
@@ -32,7 +31,7 @@ public class FileSystemStorageService implements StorageService {
 	}
 
 	@Override
-	public void store(MultipartFile file) {
+	public String store(MultipartFile file) {
 		String filename = StringUtils.cleanPath(file.getOriginalFilename());
 		try {
 			if (file.isEmpty()) {
@@ -45,11 +44,11 @@ public class FileSystemStorageService implements StorageService {
 								+ filename);
 			}
 			try (InputStream inputStream = file.getInputStream()) {
-				Files.copy(inputStream, this.rootLocation.resolve(filename),
-					StandardCopyOption.REPLACE_EXISTING);
+				String uuid = UUID.randomUUID().toString();
+				Files.copy(inputStream, this.rootLocation.resolve(uuid));
+				return "localhost:8080/image/" + uuid;
 			}
-		}
-		catch (IOException e) {
+		} catch (IOException e) {
 			throw new StorageException("Failed to store file " + filename, e);
 		}
 	}
@@ -58,10 +57,9 @@ public class FileSystemStorageService implements StorageService {
 	public Stream<Path> loadAll() {
 		try {
 			return Files.walk(this.rootLocation, 1)
-				.filter(path -> !path.equals(this.rootLocation))
-				.map(this.rootLocation::relativize);
-		}
-		catch (IOException e) {
+					.filter(path -> !path.equals(this.rootLocation))
+					.map(this.rootLocation::relativize);
+		} catch (IOException e) {
 			throw new StorageException("Failed to read stored files", e);
 		}
 
@@ -79,14 +77,12 @@ public class FileSystemStorageService implements StorageService {
 			Resource resource = new UrlResource(file.toUri());
 			if (resource.exists() || resource.isReadable()) {
 				return resource;
-			}
-			else {
+			} else {
 				throw new StorageFileNotFoundException(
 						"Could not read file: " + filename);
 
 			}
-		}
-		catch (MalformedURLException e) {
+		} catch (MalformedURLException e) {
 			throw new StorageFileNotFoundException("Could not read file: " + filename, e);
 		}
 	}
@@ -98,19 +94,29 @@ public class FileSystemStorageService implements StorageService {
 
 	@Override
 	public void init() {
+		// Create upload directory
 		try {
 			Files.createDirectories(rootLocation);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
-		// Instead of hardcoding, get file paths from resources
-		for (int i = 1; i <= 31; i++) {
+
+		// Copy demo images from resources to upload directory
+		try {
+			File[] files = new ClassPathResource("/demo_images").getFile().listFiles();
+			copyFiles(files);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	void copyFiles(File[] files) {
+		for (File f : files) {
 			try {
-				URL res = getClass().getClassLoader().getResource("demo_images/" + i + ".jpg");
-				Path path = Paths.get(res.toURI()).toFile().toPath();
-				Files.copy(path, Paths.get(rootLocation.toString() + "/" + i + ".jpg"), StandardCopyOption.REPLACE_EXISTING);
-			} catch (URISyntaxException | IOException e) {
+				Files.copy(f.toPath(),
+						Paths.get(rootLocation.toString() + "/" + f.getName()),
+						StandardCopyOption.REPLACE_EXISTING);
+			} catch (IOException e) {
 				e.printStackTrace();
 			}
 		}
