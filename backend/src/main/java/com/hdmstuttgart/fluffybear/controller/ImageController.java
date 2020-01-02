@@ -1,10 +1,7 @@
 package com.hdmstuttgart.fluffybear.controller;
 
-import java.io.IOException;
-import java.util.stream.Collectors;
-
-import com.hdmstuttgart.fluffybear.Storage.StorageFileNotFoundException;
 import com.hdmstuttgart.fluffybear.Storage.StorageService;
+import com.hdmstuttgart.fluffybear.Storage.StorageServiceException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
@@ -15,6 +12,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+
+import java.io.FileNotFoundException;
 
 
 @Controller
@@ -33,14 +32,27 @@ public class ImageController {
     )
     @ResponseBody
     public ResponseEntity<Resource> serveFile(@PathVariable String filename) {
-        Resource file = storageService.loadAsResource(filename);
+        Resource file = null;
+        try {
+            file = storageService.loadAsResource(filename);
+        } catch (FileNotFoundException e) {
+            String errorMessage = "Invalid Request for image performed.";
+            System.err.println(errorMessage);
+            return new ResponseEntity<>(new HttpHeaders(), HttpStatus.NOT_FOUND);
+        }
         return new ResponseEntity<>(file, new HttpHeaders(), HttpStatus.OK);
     }
 
     @PostMapping("/image/add")
     @ResponseBody
     public String handleFileUpload(@RequestParam("file") MultipartFile file) {
-        String uuid = storageService.store(file);
+        String uuid = null;
+        try {
+            uuid = storageService.store(file);
+        } catch (StorageServiceException e) {
+            System.err.println("An error occured while storing image.");
+            return "An error occured while storing image.";
+        }
 
         JSONObject response = new JSONObject();
         response.put("url", uuid);
@@ -48,8 +60,8 @@ public class ImageController {
         return response.toString();
     }
 
-    @ExceptionHandler(StorageFileNotFoundException.class)
-    public ResponseEntity<?> handleStorageFileNotFound(StorageFileNotFoundException exc) {
+    @ExceptionHandler(StorageServiceException.class)
+    public ResponseEntity<?> handleStorageFileNotFound(StorageServiceException exc) {
         return ResponseEntity.notFound().build();
     }
 }

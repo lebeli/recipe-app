@@ -10,6 +10,7 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
@@ -26,43 +27,29 @@ public class FileSystemStorageService implements StorageService {
 	private final Path rootLocation;
 
 	@Autowired
-	public FileSystemStorageService(StorageProperties properties) {
-		this.rootLocation = Paths.get(properties.getLocation());
+	public FileSystemStorageService() {
+		this.rootLocation = Paths.get("upload-dir");
 	}
 
 	@Override
-	public String store(MultipartFile file) {
+	public String store(MultipartFile file) throws StorageServiceException {
 		String filename = StringUtils.cleanPath(file.getOriginalFilename());
-		try {
-			if (file.isEmpty()) {
-				throw new StorageException("Failed to store empty file " + filename);
-			}
-			if (filename.contains("..")) {
-				// This is a security check
-				throw new StorageException(
-						"Cannot store file with relative path outside current directory "
-								+ filename);
-			}
-			try (InputStream inputStream = file.getInputStream()) {
-				String uuid = UUID.randomUUID().toString();
-				Files.copy(inputStream, this.rootLocation.resolve(uuid));
-				return "localhost:8080/image/" + uuid;
-			}
-		} catch (IOException e) {
-			throw new StorageException("Failed to store file " + filename, e);
+		if (file.isEmpty()) {
+			throw new StorageServiceException("Failed to store empty file.");
 		}
-	}
-
-	@Override
-	public Stream<Path> loadAll() {
-		try {
-			return Files.walk(this.rootLocation, 1)
-					.filter(path -> !path.equals(this.rootLocation))
-					.map(this.rootLocation::relativize);
-		} catch (IOException e) {
-			throw new StorageException("Failed to read stored files", e);
+		if (filename.contains("..")) {
+			// This is a security check
+			throw new StorageServiceException("Cannot store file with relative path outside current directory.");
 		}
 
+		try (InputStream inputStream = file.getInputStream()) {
+			String uuid = UUID.randomUUID().toString();
+			Files.copy(inputStream, this.rootLocation.resolve(uuid));
+			return "localhost:8080/image/" + uuid;
+		} catch (IOException e) {
+			e.printStackTrace();
+			throw new StorageServiceException("Error while copying File to directory.");
+		}
 	}
 
 	@Override
@@ -71,19 +58,18 @@ public class FileSystemStorageService implements StorageService {
 	}
 
 	@Override
-	public Resource loadAsResource(String filename) {
+	public Resource loadAsResource(String filename) throws FileNotFoundException {
 		try {
 			Path file = load(filename);
 			Resource resource = new UrlResource(file.toUri());
 			if (resource.exists() || resource.isReadable()) {
 				return resource;
 			} else {
-				throw new StorageFileNotFoundException(
+				throw new FileNotFoundException(
 						"Could not read file: " + filename);
-
 			}
 		} catch (MalformedURLException e) {
-			throw new StorageFileNotFoundException("Could not read file: " + filename, e);
+			throw new FileNotFoundException("Could not read file: " + filename);
 		}
 	}
 
@@ -110,7 +96,7 @@ public class FileSystemStorageService implements StorageService {
 		}
 	}
 
-	void copyFiles(File[] files) {
+	private void copyFiles(File[] files) {
 		for (File f : files) {
 			try {
 				Files.copy(f.toPath(),
