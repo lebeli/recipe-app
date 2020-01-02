@@ -1,7 +1,6 @@
 package com.hdmstuttgart.fluffybear.Storage;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
 import org.springframework.stereotype.Service;
@@ -19,7 +18,6 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.UUID;
-import java.util.stream.Stream;
 
 @Service
 public class FileSystemStorageService implements StorageService {
@@ -28,7 +26,7 @@ public class FileSystemStorageService implements StorageService {
 
 	@Autowired
 	public FileSystemStorageService() {
-		this.rootLocation = Paths.get("upload-dir");
+		this.rootLocation = Paths.get("recipe_images");
 	}
 
 	@Override
@@ -87,20 +85,14 @@ public class FileSystemStorageService implements StorageService {
 			e.printStackTrace();
 		}
 
-		// Copy demo images from resources to upload directory
-		try {
-			File[] files = new ClassPathResource("/demo_images").getFile().listFiles();
-			copyFiles(files);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		copyDemoImages(new File("demo_images"));
 	}
 
-	private void copyFiles(File[] files) {
-		for (File f : files) {
+	public void copyDemoImages(final File folder) {
+		for (final File fileEntry : folder.listFiles()) {
 			try {
-				Files.copy(f.toPath(),
-						Paths.get(rootLocation.toString() + "/" + f.getName()),
+				Files.copy(fileEntry.toPath(),
+						Paths.get(rootLocation.toString() + "/" + fileEntry.getName()),
 						StandardCopyOption.REPLACE_EXISTING);
 			} catch (IOException e) {
 				e.printStackTrace();
