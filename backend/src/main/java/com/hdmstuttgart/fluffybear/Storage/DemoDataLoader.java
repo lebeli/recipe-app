@@ -1,4 +1,4 @@
-package com.hdmstuttgart.fluffybear;
+package com.hdmstuttgart.fluffybear.Storage;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.hdmstuttgart.fluffybear.model.Ingredient;
@@ -18,16 +18,16 @@ import java.io.*;
 import java.util.Iterator;
 
 @Component
-public class DataLoader implements ApplicationRunner {
+public class DemoDataLoader implements ApplicationRunner {
 
-    private ObjectMapper mapper = new ObjectMapper();
+    private final ObjectMapper mapper = new ObjectMapper();
 
-    private RecipeRepository recipeRepository;
-    private IngredientRepository ingredientRepository;
-    private RecipeIngredientRepository recipeIngredientRepository;
+    private final RecipeRepository recipeRepository;
+    private final IngredientRepository ingredientRepository;
+    private final RecipeIngredientRepository recipeIngredientRepository;
 
     @Autowired
-    public DataLoader(RecipeRepository recipeRepository, IngredientRepository ingredientRepository, RecipeIngredientRepository recipeIngredientRepository) {
+    public DemoDataLoader(RecipeRepository recipeRepository, IngredientRepository ingredientRepository, RecipeIngredientRepository recipeIngredientRepository) {
         this.recipeRepository = recipeRepository;
         this.ingredientRepository = ingredientRepository;
         this.recipeIngredientRepository = recipeIngredientRepository;
@@ -46,7 +46,7 @@ public class DataLoader implements ApplicationRunner {
             // Save ingredients
             JSONArray ingredientArray = (JSONArray) recipeJSON.get("ingredients");
             recipeJSON.remove("ingredients"); // Later added via repository
-            recipeJSON.put("image", "localhost:8080/image/" + currentIndex + ".jpg"); // set image path
+            recipeJSON.put("image", "localhost:8080/images/" + currentIndex + ".jpg"); // set image path
             try {
                 // Map recipeJSON to recipe object
                 Recipe recipe = mapper.readValue(recipeJSON.toString(), Recipe.class);

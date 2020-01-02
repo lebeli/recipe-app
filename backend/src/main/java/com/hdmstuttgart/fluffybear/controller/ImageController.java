@@ -27,7 +27,7 @@ public class ImageController {
     }
 
     @GetMapping(
-            value = "/image/{filename:.+}",
+            value = "/images/{filename:.+}",
             produces = MediaType.IMAGE_JPEG_VALUE
     )
     @ResponseBody
@@ -43,7 +43,7 @@ public class ImageController {
         return new ResponseEntity<>(file, new HttpHeaders(), HttpStatus.OK);
     }
 
-    @PostMapping("/image/add")
+    @PostMapping("/images/add")
     @ResponseBody
     public String handleFileUpload(@RequestParam("file") MultipartFile file) {
         String uuid = null;
