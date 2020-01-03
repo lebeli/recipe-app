@@ -1,0 +1,131 @@
+@import "./styles/styles.scss";
+
+.Addrecipe {
+  margin: 100px 10% 100px 10%;
+
+  #add_recipe_container {
+    #add_recipe_description {
+      #add_recipe_headline {
+        font-family: $primaryFont;
+        font-size: 16pt;
+        color: $primaryColor;
+      }
+
+      #add_recipe_button_container {
+        margin-top: 20px;
+
+        button {
+          background-color: $secondaryColor;
+        }
+
+        button:hover {
+          background-color: #aba931;
+        }
+
+        .MuiButton-root {
+          border-radius: 0;
+          box-shadow: none;
+        }
+
+        .MuiButton-label {
+          font-family: $secondaryFont;
+        }
+      }
+    }
+
+    #add_recipe_image_container {
+      text-align: center;
+    }
+  }
+}
+
+.AddRecipeForm {
+  margin-top: 100px;
+  width: 100%;
+
+  // Close button ----------------------------
+
+  #close_button_container {
+    #close_button_description {
+      font-size: 11pt;
+      color: $primaryColor;
+    }
+    .MuiButton-root {
+      color: $primaryColor;
+    }
+    .MuiButton-root:hover,
+    .MuiButton-root:focus,
+    .MuiButton-root:focus-within,
+    .MuiButton-root:visited,
+    .MuiButton-root:active {
+      background-color: transparent;
+      color: #d24e13;
+    }
+  }
+
+  // Form ------------------------------------
+
+  // Headline
+  #add_recipe_form_headline {
+    color: $secondaryColor;
+  }
+
+  .form_labels {
+    margin-top: 30px;
+    margin-bottom: 20px;
+  }
+
+  .MuiFormControl-root {
+    margin-top: 20px;
+    width: 100%;
+  }
+  .recipe_time {
+    width: 30%;
+  }
+
+  .MuiOutlinedInput-root.Mui-focused {
+    border-color: rgba(0, 0, 0, 0.23);
+
+    .MuiOutlinedInput-notchedOutline {
+      border-color: rgba(0, 0, 0, 0.87);
+      border-width: 1px;
+    }
+  }
+
+  .MuiFormLabel-root.Mui-focused {
+    color: rgba(0, 0, 0, 0.87);
+    font-family: $secondaryFont;
+  }
+
+  .MuiInputBase-input,
+  .MuiInputLabel-root,
+  .MuiFormLabel-root,
+  .MuiTypography-root {
+    font-family: $secondaryFont;
+  }
+
+  .fieldset {
+    height: 20px;
+  }
+
+  // Radio buttons
+
+  .radioButtons {
+    .MuiIconButton-colorSecondary:hover {
+      background-color: transparent;
+    }
+    .MuiRadio-colorSecondary.Mui-checked {
+      color: $primaryColor;
+    }
+  }
+
+  // Arbeitsschritte
+
+  h4 {
+    margin-top: 40px;
+  }
+
+  #step1 {
+    margin-top: 0px;
+  }
+}

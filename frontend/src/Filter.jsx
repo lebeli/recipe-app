@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import ExpansionPanel from "@material-ui/core/ExpansionPanel";
 import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
 import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
@@ -36,8 +36,35 @@ class Filter extends Component {
     this.updateState = this.updateState.bind(this);
   }
 
+  calculateActiveFilters() {
+    let active = 0;
+    if (this.state.fruehstueck == true) {
+      active = active + 1;
+    }
+    if (this.state.mittagessen == true) {
+      active = active + 1;
+    }
+    if (this.state.abendessen == true) {
+      active = active + 1;
+    }
+    if (this.state.vegetarisch == true) {
+      active = active + 1;
+    }
+    if (this.state.vegan == true) {
+      active = active + 1;
+    }
+    if (this.state.schnell == true) {
+      active = active + 1;
+    }
+    if (this.state.ich_habe_zeit == true) {
+      active = active + 1;
+    }
+
+    active = active + this.state.chosen_ingredients.length;
+    return <span>{active} Filter aktiv</span>;
+  }
+
   updateState(name, val) {
-    console.log(name);
     this.setState({
       [name]: val
     });
@@ -47,14 +74,16 @@ class Filter extends Component {
     return (
       <div className="Filter">
         <ExpansionPanel square id="filter-panel">
-          <Box display="flex" justifyContent="center" m={1} p={1}>
-            <Box p={1}>
+          <Box justifyContent="center">
+            <Box>
               <ExpansionPanelSummary
                 expandIcon={<ExpandMoreIcon id="search-expand-icon" />}
                 aria-controls="filter-panel-content"
                 id="filter-panel-header-summery"
               >
-                <Typography id="filter-header">Suche eingrenzen</Typography>
+                <Typography component="span" id="filter-header">
+                  Suche eingrenzen ({this.calculateActiveFilters()})
+                </Typography>
               </ExpansionPanelSummary>
             </Box>
           </Box>
@@ -73,7 +102,11 @@ class Filter extends Component {
                     chosen_ingredients={this.state.chosen_ingredients}
                     updateState={this.updateState}
                   />
-                  <Tags ingredients={this.state.ingredients} />
+                  <Tags
+                    ingredients={this.state.ingredients}
+                    chosen_ingredients={this.state.chosen_ingredients}
+                    updateState={this.updateState}
+                  />
                 </Typography>
               </ExpansionPanelDetails>
             </Box>
@@ -85,10 +118,6 @@ class Filter extends Component {
 }
 
 function ToggleButtons(params) {
-  // function updateToggleButtonState(name, selected) {
-  //   params.updateState("fruehstueck", true);
-  // }
-
   return (
     <div className="ToggleButtons">
       <Box display="flex" justifyContent="center" m={1} p={1}>
@@ -158,17 +187,13 @@ function ToggleButtons(params) {
 function FilterCategory(params) {
   const [selected, setSelected] = React.useState(false);
 
-  function updateFilterCategory(selected) {
-    params.updateState(params.value, selected);
-  }
-
   return (
     <div className="FilterCategory">
       <ToggleButton
         value={params.value}
         selected={selected}
         onChange={() => {
-          updateFilterCategory(!params.selected);
+          params.updateState(params.value, !params.selected);
           setSelected(!params.selected);
         }}
       >
@@ -186,6 +211,9 @@ function Tags(params) {
         options={params.ingredients}
         getOptionLabel={ingredient => ingredient}
         filterSelectedOptions
+        onChange={(_, tags) => {
+          params.updateState("chosen_ingredients", tags);
+        }}
         renderInput={tags => (
           <TextField
             {...tags}

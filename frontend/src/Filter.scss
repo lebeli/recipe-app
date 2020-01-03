@@ -1,131 +1,118 @@
-@import './styles/styles.scss';
+@import "./styles/styles.scss";
 
 .Filter {
+  #filter-panel {
+    background-color: $secondaryColor;
 
-    #filter-panel {
+    .MuiBox-root {
+      display: flex;
+      flex-wrap: wrap;
+      margin: 0;
+      padding: 5px;
 
-        background-color: $secondaryColor;
+      #filter-header {
+        font-family: $secondaryFont;
+        font-size: 15pt;
+        color: white;
+        text-align: center;
+      }
 
-        .MuiBox-root {
-            display: flex;
-            flex-wrap: wrap;
-            margin: 0;
-            padding: 5px;
+      #search-expand-icon {
+        fill: white;
+      }
 
-            #filter-header {
-                font-family: $secondaryFont;
-                font-size: 15pt;
-                color: white;
-            }
+      .MuiBox-root-34 {
+        margin: 0;
+      }
 
-            #search-expand-icon {
-                fill: white; 
-            }
-    
-            .MuiBox-root-34 {
-                margin: 0;
-            }
-    
-            .MuiExpansionPanelSummary-root {
-            
-                min-height: 20px;
-    
-                .MuiExpansionPanelSummary-content {
-                    margin: 0;
-                }
-            }
-    
-            .MuiExpansionPanelDetails-root {
-                padding: 0;
-            }
+      .MuiExpansionPanelSummary-root {
+        min-height: 20px;
+
+        .MuiExpansionPanelSummary-content {
+          margin: 0;
         }
+      }
+
+      .MuiExpansionPanelDetails-root {
+        padding: 0;
+      }
     }
+  }
 }
 
 .FilterCategory {
+  .MuiToggleButton-root {
+    border-radius: 24px;
+    border: 0px;
+    background-color: white;
+    height: 40px;
+    padding: 0 40px 0 40px;
 
-    .MuiToggleButton-root {
-        border-radius: 24px;
-        border: 0px;
-        background-color: white;
-        height: 40px;
-        padding: 0 40px 0 40px;
-        
-        .MuiToggleButton-label {
-            font-family: $secondaryFont;
-            text-transform: none;
-            color: black;
-        }
-
+    .MuiToggleButton-label {
+      font-family: $secondaryFont;
+      text-transform: none;
+      color: black;
     }
+  }
 
-    .MuiToggleButton-root:hover {
+  .MuiToggleButton-root:hover {
+    background-color: $primaryColor;
 
-        background-color: $primaryColor;
-
-        .MuiToggleButton-label {
-            color: white;
-        }
+    .MuiToggleButton-label {
+      color: white;
     }
+  }
 
-    .MuiToggleButton-root.Mui-selected {
+  .MuiToggleButton-root.Mui-selected {
+    background-color: $primaryColor;
 
-        background-color: $primaryColor;
-
-        .MuiToggleButton-label {
-            color: white;
-        }
+    .MuiToggleButton-label {
+      color: white;
     }
+  }
 
-    .MuiToggleButton-root.Mui-selected:hover {
-        background-color: #D24E13;
-    }
+  .MuiToggleButton-root.Mui-selected:hover {
+    background-color: #d24e13;
+  }
 }
 
 .Tags {
-    
-    max-width: 600px;
-    .MuiInputBase-root {
-        background-color: white;
-        border-radius: 24px;
-        padding: 0 0 0 5px;
-    }
-    
-    .MuiAutocomplete-inputRoot[class*="MuiOutlinedInput-root"] {
-        padding: 0 10px 0 10px;
-    }
+  max-width: 600px;
+  .MuiInputBase-root {
+    background-color: white;
+    border-radius: 24px;
+    padding: 0 0 0 5px;
+  }
 
-    .MuiOutlinedInput-notchedOutline {
-        border: 0px;
-        border-radius: 24px;
-        height: 50px;
-    }
+  .MuiAutocomplete-inputRoot[class*="MuiOutlinedInput-root"] {
+    padding: 0 10px 0 10px;
+  }
 
-    .MuiChip-root {
-        background-color: $primaryColor;
-        color: white;
-        position: relative;
+  .MuiOutlinedInput-notchedOutline {
+    border: 0px;
+    border-radius: 24px;
+    height: 50px;
+  }
 
-        .MuiSvgIcon-root {
-            fill: white;
-        }
+  .MuiChip-root {
+    background-color: $primaryColor;
+    color: white;
+    position: relative;
 
-        .MuiChip-label {
-            font-family: $secondaryFont;
-        }
+    .MuiSvgIcon-root {
+      fill: white;
     }
 
-    .MuiInputBase-input {
-        font-family: $secondaryFont;
+    .MuiChip-label {
+      font-family: $secondaryFont;
     }
+  }
 
-    .MuiIconButton-root {
-        background-color: transparent;
-    }
+  .MuiInputBase-input {
+    font-family: $secondaryFont;
+  }
 
+  .MuiIconButton-root {
+    background-color: transparent;
+  }
 }
-
-
-
-
-

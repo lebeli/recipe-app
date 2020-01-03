@@ -27,7 +27,10 @@ class Recommender extends Component {
       <div className="Recommender" id="Container">
         <RecommenderHeader />
         <RecommenderReloadButton onClick={this.changeImage} />
-        <RecommenderImage image={this.state.image} />
+        <RecommenderImage
+          image={this.state.image}
+          onClick={this.props.goToDetails}
+        />
       </div>
     );
   }
