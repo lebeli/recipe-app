@@ -30,7 +30,7 @@ module.exports = {
       },
       // to load fonts
       {
-        test: /\.(ttf|otf|png|ico|jpg)$/,
+        test: /\.(ttf|otf|png|ico)$/,
         use: [
           {
             loader: "file-loader",
@@ -43,7 +43,11 @@ module.exports = {
       // load images
       {
         test: /\.(png|jpe?g|gif)$/i,
-        loader: 'file-loader'
+        use: [
+          {
+            loader: "file-loader"
+          }
+        ]
       },
     ]
   },

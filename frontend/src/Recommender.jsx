@@ -25,12 +25,14 @@ class Recommender extends Component {
   render() {
     return (
       <div className="Recommender" id="Container">
-        <RecommenderHeader />
-        <RecommenderReloadButton onClick={this.changeImage} />
-        <RecommenderImage
-          image={this.state.image}
-          onClick={this.props.goToDetails}
-        />
+        <div className="RelativeParent">
+          <RecommenderHeader />
+          <RecommenderReloadButton onClick={this.changeImage} />
+          <RecommenderImage
+            image={this.state.image}
+            onClick={this.props.goToDetails}
+          />
+        </div>
       </div>
     );
   }
