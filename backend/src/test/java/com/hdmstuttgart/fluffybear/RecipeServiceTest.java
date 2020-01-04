@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -20,36 +22,40 @@ import static org.junit.Assert.assertEquals;
 @RunWith(MockitoJUnitRunner.class)
 public class RecipeServiceTest {
     @InjectMocks
-    RecipeService recipeService;
+    private RecipeService recipeService;
 
     @Mock
-    RecipeRepository recipeRepository;
+    private RecipeRepository recipeRepository;
+
+    private List<Recipe> allRecipes = new ArrayList<>();
+    private Recipe spaghetti;
+    private Recipe soup;
+    private Recipe pancakes;
+
+    @Before
+    public void setUpEntities() {
+        spaghetti = new Recipe("Spaghetti");
+        soup = new Recipe("Soup");
+        pancakes = new Recipe("Pancakes");
+        spaghetti.setId(1);
+        soup.setId(2);
+        pancakes.setId(3);
+        allRecipes.add(spaghetti);
+        allRecipes.add(soup);
+        allRecipes.add(pancakes);
+    }
 
     @Test
-    public void getAllRecipes() {
-        List<Recipe> allRecipes = new ArrayList<>();
-        Recipe recipe1 = new Recipe("Spaghetti");
-        Recipe recipe2 = new Recipe("Soup");
-        Recipe recipe3 = new Recipe("Pancakes");
-        allRecipes.add(recipe1);
-        allRecipes.add(recipe2);
-        allRecipes.add(recipe3);
-
+    public void getAllRecipesTest() {
         when(recipeRepository.findAll()).thenReturn(allRecipes);
-
         assertEquals(3, recipeService.getAllRecipes().size());
         verify(recipeRepository, times(1)).findAll();
     }
 
     @Test
     public void getRecipesByIdTest() {
-        Recipe recipe1 = new Recipe("Spaghetti");
-        Recipe recipe2 = new Recipe("Soup");
-        recipe1.setId(1);
-        recipe2.setId(2);
-
-        when(recipeRepository.findById(1)).thenReturn(recipe1);
-        when(recipeRepository.findById(2)).thenReturn(recipe2);
+        when(recipeRepository.findById(1)).thenReturn(spaghetti);
+        when(recipeRepository.findById(2)).thenReturn(soup);
 
         assertEquals(1, recipeService.getRecipe(1).getId());
         assertEquals(2, recipeService.getRecipe(2).getId());
@@ -61,15 +67,11 @@ public class RecipeServiceTest {
 
     @Test
     public void getRecipesByNameTest() {
-        Recipe recipe1 = new Recipe("Spaghetti");
-        Recipe recipe2 = new Recipe("Soup");
-        Recipe recipe3 = new Recipe("Soup");
-        recipe1.setId(1);
-        recipe2.setId(2);
-        recipe3.setId(3);
+        Recipe soup2 = new Recipe("Soup");
+        soup2.setId(4);
 
-        when(recipeRepository.findByName("Spaghetti")).thenReturn(new ArrayList<Recipe>(Arrays.asList(recipe1)));
-        when(recipeRepository.findByName("Soup")).thenReturn(new ArrayList<Recipe>(Arrays.asList(recipe2, recipe3)));
+        when(recipeRepository.findByName("Spaghetti")).thenReturn(new ArrayList<Recipe>(Arrays.asList(spaghetti)));
+        when(recipeRepository.findByName("Soup")).thenReturn(new ArrayList<Recipe>(Arrays.asList(soup, soup2)));
 
         List<Recipe> spaghettiQuery = recipeService.getRecipe("Spaghetti");
         List<Recipe> soupQuery = recipeService.getRecipe("Soup");
@@ -85,45 +87,35 @@ public class RecipeServiceTest {
 
     @Test
     public void addAndUpdateRecipeTest() {
-        Recipe recipe = new Recipe("Spaghetti");
+        recipeService.addRecipe(spaghetti);
+        recipeService.updateRecipe(1, spaghetti);
 
-        recipeService.addRecipe(recipe);
-        recipeService.updateRecipe(1, recipe);
-
-        verify(recipeRepository, times(2)).save(recipe);
+        verify(recipeRepository, times(2)).save(spaghetti);
     }
 
     @Test
     public void deleteRecipeTest() {
-        Recipe recipe = new Recipe("Spaghetti");
         recipeService.deleteRecipe(1);
         verify(recipeRepository, times(1)).deleteById(1L);
     }
 
     @Test
     public void getAllRecipesByFilterTest() {
-        List<Recipe> allRecipes = new ArrayList<>();
-        Recipe recipe1 = new Recipe("Spaghetti");
-        Recipe recipe2 = new Recipe("Soup");
-        Recipe recipe3 = new Recipe("Pancakes");
         // spaghetti
-        recipe1.setCategory("Dinner");
-        recipe1.setTotalTime(30);
-        recipe1.setVegan(false);
-        recipe1.setVegetarian(true);
+        spaghetti.setCategory("Dinner");
+        spaghetti.setTotalTime(30);
+        spaghetti.setVegan(false);
+        spaghetti.setVegetarian(true);
         // soup
-        recipe2.setCategory("Lunch");
-        recipe2.setTotalTime(45);
-        recipe2.setVegan(true);
-        recipe2.setVegetarian(true);
+        soup.setCategory("Lunch");
+        soup.setTotalTime(45);
+        soup.setVegan(true);
+        soup.setVegetarian(true);
         // pancakes
-        recipe3.setCategory("Breakfast");
-        recipe3.setTotalTime(10);
-        recipe3.setVegan(false);
-        recipe3.setVegetarian(true);
-        allRecipes.add(recipe1);
-        allRecipes.add(recipe2);
-        allRecipes.add(recipe3);
+        pancakes.setCategory("Breakfast");
+        pancakes.setTotalTime(10);
+        pancakes.setVegan(false);
+        pancakes.setVegetarian(true);
 
         List<String> categoriesFilter = new ArrayList<String>(Arrays.asList("Dinner", "Lunch"));
 
