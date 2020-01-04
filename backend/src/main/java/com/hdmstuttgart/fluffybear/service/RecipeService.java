@@ -49,7 +49,7 @@ public class RecipeService {
 	}
 	
 	public void deleteRecipe(long id) {
-		recipeRepository.deleteById(id); // if id already exists, Spring updates the id with the passed recipe instance 
+		recipeRepository.deleteById(id);
 	}
 	
 	public void deleteAll() {

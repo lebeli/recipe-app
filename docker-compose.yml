@@ -10,8 +10,6 @@ services:
       - MYSQL_PASSWORD=ThePassword
     ports:
       - 3306:3306
-    volumes:
-      - ./mysql:/data/mysql #nicht für Produktion
   fluffy-bear-backend:
     image: backend
     build:
