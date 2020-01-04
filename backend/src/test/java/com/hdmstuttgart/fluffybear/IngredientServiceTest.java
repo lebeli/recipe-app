@@ -1,7 +1,6 @@
 package com.hdmstuttgart.fluffybear;
 
 import com.hdmstuttgart.fluffybear.model.Ingredient;
-import com.hdmstuttgart.fluffybear.model.Recipe;
 import com.hdmstuttgart.fluffybear.repository.IngredientRepository;
 import com.hdmstuttgart.fluffybear.service.IngredientService;
 import java.util.ArrayList;
@@ -94,8 +93,8 @@ public class IngredientServiceTest {
     }
 
     @Test
-    public void deleteRecipeTest() {
-        Recipe recipe = new Recipe("Tomatoes");
+    public void deleteIngredientTest() {
+        Ingredient ingredient = new Ingredient("Tomatoes");
         ingredientService.deleteIngredient(1);
         verify(ingredientRepository, times(1)).deleteById(1L);
     }
