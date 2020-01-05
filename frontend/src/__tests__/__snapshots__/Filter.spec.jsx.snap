@@ -387,7 +387,7 @@ exports[`<Filter /> renders correctly 1`] = `
                         role="combobox"
                       >
                         <div
-                          className="MuiFormControl-root MuiTextField-root MuiFormControl-marginNormal MuiFormControl-fullWidth"
+                          className="MuiFormControl-root MuiTextField-root tag MuiFormControl-marginNormal MuiFormControl-fullWidth"
                         >
                           <div
                             className="MuiInputBase-root MuiOutlinedInput-root MuiAutocomplete-inputRoot MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-adornedEnd MuiOutlinedInput-adornedEnd"
