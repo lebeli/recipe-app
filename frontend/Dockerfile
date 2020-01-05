@@ -4,10 +4,12 @@ COPY . /frontend
 WORKDIR /frontend
 
 RUN rm -rf node_modules
+RUN npm i npm@latest -g
 RUN npm install 
 RUN npm run build
 
 ## STAGE 2: Run nginx 
 FROM nginx 
-COPY --from=frontend-builder /frontend/dist/* /usr/share/nginx/html/
-EXPOSE 3000 
+COPY --from=frontend-builder /frontend/dist/* /usr/share/nginx/html/dist/
+COPY --from=frontend-builder /frontend/public/* /usr/share/nginx/html/
+EXPOSE 80
