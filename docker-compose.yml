@@ -2,7 +2,7 @@ version: "3"
 
 services:
   mysql-docker-container:
-    image: mysql:latest
+    image: mysql:5.7.27
     environment:
       - MYSQL_ROOT_PASSWORD=toor
       - MYSQL_DATABASE=fluffy_bear
@@ -10,6 +10,8 @@ services:
       - MYSQL_PASSWORD=ThePassword
     ports:
       - 3306:3306
+    volumes:
+      - ./mysql:/data/mysql #nicht für Produktion
   fluffy-bear-backend:
     image: backend
     build:
