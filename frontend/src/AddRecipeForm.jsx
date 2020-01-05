@@ -46,6 +46,7 @@ class AddRecipeForm extends Component {
       for (var x = 0; x < this.state.ingredientsAmount; x++) {
         ingredientsComponent.push(
           <Grid
+            className="ingredient"
             container
             spacing={2}
             key={"ingredient" + (x + 1)}
@@ -134,6 +135,7 @@ class AddRecipeForm extends Component {
       for (var x = 0; x < this.state.stepsAmount; x++) {
         steps.push(
           <Grid
+            className="step"
             container
             spacing={2}
             key={"step" + (x + 1)}
@@ -170,7 +172,7 @@ class AddRecipeForm extends Component {
   }
 
   updateStep(stepIndex, value) {
-    var index = stepIndex.substring(1, 2);
+    var index = stepIndex.substring(1, stepIndex.length);
     var stepsCopy = this.state.steps;
     var step = stepsCopy[index];
     step = value;
@@ -323,7 +325,11 @@ class AddRecipeForm extends Component {
           </FormLabel>
           <div className="ingredients_container">{this.showIngredients()}</div>
           <div className="recipe_add" display="flex">
-            <Button onClick={this.addIngredient} disableTouchRipple>
+            <Button
+              id="add_ingredient_button"
+              onClick={this.addIngredient}
+              disableTouchRipple
+            >
               <AddIcon />
               Zutat hinzufügen
             </Button>
