@@ -1,16 +1,52 @@
 @import "./styles/styles.scss";
 
 .Details {
-  padding: 5%;
-}
 
-.Ingredients {
-  h4 {
-    margin: 0;
+  .TeaserImage {
+    height: 50vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    margin: auto;
+
+    Img {
+      height: 50vh;
+      width: 100%;
+    }
   }
-  ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
+
+  .DetailedInfo {
+    padding: 5%;
+    width: calc(100vw - 10%);
+
+    .Header {
+      background: rgba(255, 255, 255, 0.5);
+      display: flex;
+      width: 100%;
+      height: 10%;
+      justify-content: center;
+      align-items: center;
+
+      .HeaderContent {
+        margin: 5px;
+        width: 100%;
+        text-align: center;
+      }
+    }
+
+    Button {
+      color: $primaryColor;
+    }
+
+    .Ingredients {
+      h4 {
+        margin: 0;
+      }
+      ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+      }
+    }
   }
 }

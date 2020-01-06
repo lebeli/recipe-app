@@ -2,22 +2,33 @@ import React, { Component } from "react";
 import BackButton from "./BackButton";
 import Ingredients from "./Ingredients";
 import Instructions from "./Instructions";
+import RecommenderHeader from "./RecommenderHeader";
+import RecommenderImage from "./RecommenderImage";
+import toastImage from "./resources/toast.jpg";
 import "./Details.scss";
 
 class Details extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      pageNumber: 1
+      pageNumber: 1,
+      image: toastImage
     };
   }
 
   render() {
     return (
       <div className="Details">
-        <BackButton handleGoBack={this.props.handleGoBack} />
-        <Ingredients />
-        <Instructions />
+        <RecommenderImage image={this.state.image} />
+        <div className="DetailedInfo">
+          <BackButton
+            className="BackButton"
+            handleGoBack={this.props.handleGoBack}
+          />
+          <RecommenderHeader />
+          <Ingredients />
+          <Instructions />
+        </div>
       </div>
     );
   }
