@@ -26,6 +26,7 @@
       height: 10%;
       justify-content: center;
       align-items: center;
+      padding: 10px;
 
       .HeaderContent {
         margin: 5px;
@@ -36,6 +37,7 @@
 
     Button {
       color: $primaryColor;
+      padding-left: 0;
     }
 
     .Ingredients {

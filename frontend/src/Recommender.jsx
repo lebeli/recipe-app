@@ -3,14 +3,14 @@ import RecommenderImage from "./RecommenderImage";
 import RecommenderHeader from "./RecommenderHeader";
 import RecommenderReloadButton from "./RecommenderReloadButton";
 import wolfImage from "./resources/wolf.jpg";
-import toastImage from "./resources/toast.jpg";
+import LasagneImage from "./resources/lasagne.jpg";
 import "./Recommender.scss";
 
 class Recommender extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      image: toastImage
+      image: LasagneImage
     };
 
     this.changeImage = this.changeImage.bind(this);

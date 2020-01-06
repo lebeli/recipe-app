@@ -4,7 +4,7 @@ import Ingredients from "./Ingredients";
 import Instructions from "./Instructions";
 import RecommenderHeader from "./RecommenderHeader";
 import RecommenderImage from "./RecommenderImage";
-import toastImage from "./resources/toast.jpg";
+import LasagneImage from "./resources/lasagne.jpg";
 import "./Details.scss";
 
 class Details extends Component {
@@ -12,7 +12,7 @@ class Details extends Component {
     super(props);
     this.state = {
       pageNumber: 1,
-      image: toastImage
+      image: LasagneImage
     };
   }
 
