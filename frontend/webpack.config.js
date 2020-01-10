@@ -1,10 +1,6 @@
 const path = require("path");
 const webpack = require("webpack");
 
-require.extensions[".css"] = () => {
-  return;
-};
-
 module.exports = {
   entry: "./src/index.jsx",
   mode: "development",
@@ -30,7 +26,7 @@ module.exports = {
       },
       // to load fonts
       {
-        test: /\.(ttf|otf|png|ico)$/,
+        test: /\.(ttf|otf|png|ico|jpg)$/,
         use: [
           {
             loader: "file-loader",
@@ -39,16 +35,7 @@ module.exports = {
             }
           }
         ]
-      },
-      // load images
-      {
-        test: /\.(png|jpe?g|gif)$/i,
-        use: [
-          {
-            loader: "file-loader"
-          }
-        ]
-      },
+      }
     ]
   },
   resolve: {
@@ -61,8 +48,8 @@ module.exports = {
   },
   devServer: {
     contentBase: path.join(__dirname, "public/"),
-    port: 3000,
-    publicPath: "http://localhost:3000/dist/",
+    port: 3001,
+    publicPath: "http://localhost:3001/dist/",
     hotOnly: true
   },
   plugins: [new webpack.HotModuleReplacementPlugin()]
