@@ -70,7 +70,7 @@ local.properties
 .apt_generated_test/
 
 # java target folder
-*/target/**
+target/
 */bin/**
 
 # Docker generated dirs and files
