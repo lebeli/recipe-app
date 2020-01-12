@@ -52,6 +52,10 @@ public class Recipe {
 	    }
 	}
 
+	public void addInstruction(String instruction) {
+		this.instructions.add(instruction);
+	}
+
 	// getters and setters
 	
 	public String getName() {
