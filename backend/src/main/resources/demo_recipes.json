@@ -1,0 +1,1603 @@
+[
+  {
+    "name": "Pfiffige Pfannkuchen",
+    "image": "",
+    "totalTime": "50",
+    "category": "breakfast",
+    "vegetarian": true,
+    "vegan": false,
+    "ingredients": [
+      {
+        "name": "Kartoffelmehl",
+        "typeAmount": "80 g"
+      },
+      {
+        "name": "Eie",
+        "typeAmount": "3"
+      },
+      {
+        "name": "Milch",
+        "typeAmount": "400 ml"
+      },
+      {
+        "name": "Traubenzucker",
+        "typeAmount": "3 EL"
+      },
+      {
+        "name": "Pflanzenöl",
+        "typeAmount": "5 EL"
+      }
+    ],
+    "instructions": [
+      "Die Mehle vermischen und sieben. Eier, Zucker und Milch dazugeben, alles mit dem Schneebesen gut verquirlen. 10 Minuten quellen lassen, danach noch einmal verrühren.",
+      "Eine Pfanne erhitzen, 1 EL Öl darin heiß werden lassen. Den Teig portionsweise im heißen Öl ausbacken - man braucht pro Portion etwa 1 EL Öl."
+    ]
+  },
+  {
+    "name": "Mickriges Müsli",
+    "image": "",
+    "totalTime": "10",
+    "category": "breakfast",
+    "vegetarian": true,
+    "vegan": false,
+    "ingredients": [
+      {
+        "name": "Haferflocken",
+        "typeAmount": "8 EL"
+      },
+      {
+        "name": "Milch",
+        "typeAmount": "150 ml"
+      },
+      {
+        "name": "Zitronensaft",
+        "typeAmount": "1 EL"
+      },
+      {
+        "name": "Apfel",
+        "typeAmount": "1/2"
+      },
+      {
+        "name": "Joghurt",
+        "typeAmount": "150 g"
+      },
+      {
+        "name": "Haselnüsse",
+        "typeAmount": "1 EL"
+      },
+      {
+        "name": "Honig",
+        "typeAmount": "1 TL"
+      }
+    ],
+    "instructions": [
+      "Die Haferflocken werden mit der Milch und dem Zitronensaft in einer Schüssel verrührt.",
+      "Dann kommen sie für mindestens zwei Stunden (am besten über Nacht) in den Kühlschrank.",
+      "In der Früh raspelt ihr den Apfel und mischt ihn mit dem Honig und dem Joghurt zusammen",
+      "Zum großen Finale die Mischung mit den gehackten Haselnüssen verrühren und fertig ist euer original Bircher Müsli. Lasst es euch schmecken!"
+    ]
+  },
+  {
+    "name": "Korrekte Kürbissuppe",
+    "image": "",
+    "totalTime": "60",
+    "category": "breakfast",
+    "vegetarian": true,
+    "vegan": false,
+    "ingredients": [
+      {
+        "name": "Hokkaidokürbis",
+        "typeAmount": "1"
+      },
+      {
+        "name": "Sahne",
+        "typeAmount": "100 ml"
+      },
+      {
+        "name": "Sherry",
+        "typeAmount": "1 EL"
+      },
+      {
+        "name": "Butter",
+        "typeAmount": "2 EL"
+      },
+      {
+        "name": "Zwiebel",
+        "typeAmount": "1"
+      },
+      {
+        "name": "Gemüsebrühe",
+        "typeAmount": "500 ml"
+      },
+      {
+        "name": "Currypulver",
+        "typeAmount": "2 TL"
+      }
+    ],
+    "instructions": [
+      "Den Kürbis zuerst von den Kernen befreien und würfeln.",
+      "Zusammen mit der gewürfelten Zwiebel in der Butter andünsten.",
+      "Mit dem Sherry ablöschen, die Brühe hinzugeben und ca. 20 - 30 min kochen lassen.",
+      "Dann die Sahne und das Currypulver hinzufügen und die Suppe pürieren.",
+      "Die Suppe eventuell noch etwas einkochen lassen und dann mit Salz, Zucker, Pfeffer und Muskat abschmecken."
+    ]
+  },
+  {
+    "name": "Affengeiles Avocadotoast",
+    "image": "",
+    "totalTime": "60",
+    "category": "breakfast",
+    "vegetarian": false,
+    "vegan": false,
+    "ingredients": [
+      {
+        "name": "Sandwichtoast",
+        "typeAmount": "2 Scheiben"
+      },
+      {
+        "name": "Avocado",
+        "typeAmount": "1/2"
+      },
+      {
+        "name": "Tomate",
+        "typeAmount": "2 Scheiben"
+      },
+      {
+        "name": "Butter",
+        "typeAmount": "2 EL"
+      },
+      {
+        "name": "Bacon",
+        "typeAmount": "3 Scheiben"
+      },
+      {
+        "name": "Käse",
+        "typeAmount": "2 Scheiben"
+      },
+      {
+        "name": "Butter",
+        "typeAmount": "2 TL"
+      }
+    ],
+    "instructions": [
+      "Die Baconscheiben halbieren und in einer beschichteten Pfanne bei mittlerer Hitze ca. 8 Min knusprig braten.",
+      "Den Bacon auf einem Zewa abtropfen lassen. Das Bratfett in eine kleine Schüssel füllen und zurückhalten. Die Pfanne kurz auswischen.",
+      "Nun die 2 Teelöffel Butter in die Pfanne geben und schmelzen lassen. Die 2 Toastscheiben hineingeben und auf einer Seite ca. 3 Minuten bei mittlerer Hitze braten - der Toast sollte eine intensive hellbraune Farbe haben. Die Toastscheiben herausnehmen.",
+      "Die getoastete Seite soll nach oben zeigen. Mit einer Scheibe Sandwichkäse belegen. Anschließend mit dem Bacon, den Avocado-Scheiben und den Tomatenscheiben belegen.",
+      "Obendrauf noch eine Scheibe Käse legen. Nun die zweite Toastscheibe auflegen (die getoasteten Seiten sollen nach innen zeigen) und die Hälfte des zurückgehaltenen Fettes wieder in die Pfanne geben.",
+      "Darin den Toast auf einer Seite ca. 5 Min bei mittlerer Hitze kross braten. Herausnehmen und das restliche Fett in die Pfanne geben und die andere Seite 5 Min bei mittlerer Hitze fertig braten."
+    ]
+  },
+  {
+    "name": "Schmackhafter Smoothie",
+    "image": "",
+    "totalTime": "15",
+    "category": "breakfast",
+    "vegetarian": true,
+    "vegan": true,
+    "ingredients": [
+      {
+        "name": "Banane",
+        "typeAmount": "1"
+      },
+      {
+        "name": "Apfel",
+        "typeAmount": "1"
+      },
+      {
+        "name": "Mangold",
+        "typeAmount": "1 Handvoll"
+      },
+      {
+        "name": "Öl",
+        "typeAmount": "1 TL"
+      },
+      {
+        "name": "Apfelsaft",
+        "typeAmount": "100 ml"
+      },
+      {
+        "name": "Wasser",
+        "typeAmount": "100 ml"
+      }
+    ],
+    "instructions": [
+      "Alle Zutaten werden in den Mixer gegeben und bis zur gewünschten Konsistenz gemixt. Die Obstsorten können frei gewählt werden.",
+      "Das gewünschte Ziel ist die Auflösung des Chlorophylls in den grünen Blättern. Obst gibt dem Ganzen den guten Geschmack!",
+      "Fett oder Öl sind wichtig, dabei auf gute Fette achten, Kokosöl ist sehr geeignet. Die Mengenangaben beim Apfelsaft und Wasser sind nur ungefähre Angaben, denn dies ist geschmacksabhängig!"
+    ]
+  },
+  {
+    "name": "Frivole Frühstückseier mit Pfiff",
+    "image": "",
+    "totalTime": "20",
+    "category": "breakfast",
+    "vegetarian": false,
+    "vegan": false,
+    "ingredients": [
+      {
+        "name": "Zwiebel",
+        "typeAmount": "1"
+      },
+      {
+        "name": "Ei",
+        "typeAmount": "4"
+      },
+      {
+        "name": "Salami",
+        "typeAmount": "10 Scheiben"
+      },
+      {
+        "name": "Schmalz",
+        "typeAmount": "1 EL"
+      },
+      {
+        "name": "Käse",
+        "typeAmount": "1 Scheibe"
+      },
+      {
+        "name": "Paprikapulver",
+        "typeAmount": "etwas"
+      }
+    ],
+    "instructions": [
+      "Zwiebel schälen, der Länge nach halbieren und in halbkreisförmige Ringlein schneiden.",
+      "Schmalz in der Bratpfanne erwärmen, Zwiebeln darin kurz andünsten, die Salami darüber verteilen, den Käse in kleine Stücke geschnitten über die Salami verteilen und die Spiegeleier aufschlagen.",
+      "Langsam köcheln lassen, bis die Eier weiß sind und das Eigelb zu blubbern beginnt. Mit Salz, Pfeffer, Paprika und etwas Streuwürze abschmecken. Auf warmen Tellern servieren. Dazu passt Schwarzbrot und frischer Bohnenkaffee."
+    ]
+  },
+  {
+    "name": "Vortreffliche vegane Waffeln",
+    "image": "",
+    "totalTime": "40",
+    "category": "breakfast",
+    "vegetarian": true,
+    "vegan": true,
+    "ingredients": [
+      {
+        "name": "Mehl",
+        "typeAmount": "500"
+      },
+      {
+        "name": "Zucker",
+        "typeAmount": "125 g"
+      },
+      {
+        "name": "Backpulver",
+        "typeAmount": "2 EL"
+      },
+      {
+        "name": "Salz",
+        "typeAmount": "1 TL"
+      },
+      {
+        "name": "Öl",
+        "typeAmount": "3 EL"
+      },
+      {
+        "name": "Sojamilch",
+        "typeAmount": "500 ml"
+      },
+      {
+        "name": "Wasser",
+        "typeAmount": "100 ml"
+      }
+    ],
+    "instructions": [
+      "Die trockenen Zutaten in eine Schüssel geben und zusammenmischen. Danach das Öl, Sojamilch bzw. Reisdrink und Mineralwasser zugeben und alles zu einem glatten Teig verrühren.",
+      "Nun den Waffelteig portionsweise in ein leicht gefettetes Waffeleisen geben und ausbacken.",
+      "Tipps: Lecker ist es auch, wenn man noch eine zerdrückte Banane zugibt, allerdings klebt der Teig immer ein wenig mehr davon. Das Mehl kann auch aufgeteilt werden in Vollkornmehl, z.B. 50% Vollkorn, 50% normales Mehl."
+    ]
+  },
+  {
+    "name": "Fantastischer Frühstücks-Couscous",
+    "image": "",
+    "totalTime": "25",
+    "category": "breakfast",
+    "vegetarian": true,
+    "vegan": false,
+    "ingredients": [
+      {
+        "name": "Couscous",
+        "typeAmount": "50 g"
+      },
+      {
+        "name": "Milch",
+        "typeAmount": "100 ml"
+      },
+      {
+        "name": "Joghurt",
+        "typeAmount": "150 g"
+      },
+      {
+        "name": "Leinsamen",
+        "typeAmount": "1 TL"
+      },
+      {
+        "name": "Chiasamen",
+        "typeAmount": "1 EL"
+      },
+      {
+        "name": "Zimt",
+        "typeAmount": "etwas"
+      }
+    ],
+    "instructions": [
+      "Die trockenen Zutaten in eine Schüssel geben und zusammenmischen. Danach das Öl, Sojamilch bzw. Reisdrink und Mineralwasser zugeben und alles zu einem glatten Teig verrühren.",
+      "Nun den Waffelteig portionsweise in ein leicht gefettetes Waffeleisen geben und ausbacken.",
+      "Tipps: Lecker ist es auch, wenn man noch eine zerdrückte Banane zugibt, allerdings klebt der Teig immer ein wenig mehr davon. Das Mehl kann auch aufgeteilt werden in Vollkornmehl, z.B. 50% Vollkorn, 50% normales Mehl."
+    ]
+  },
+  {
+    "name": "Genialer Grießbrei mit Mandarinensauce",
+    "image": "",
+    "totalTime": "10",
+    "category": "breakfast",
+    "vegetarian": true,
+    "vegan": true,
+    "ingredients": [
+      {
+        "name": "Hafermilch",
+        "typeAmount": "500 ml"
+      },
+      {
+        "name": "Zimt",
+        "typeAmount": "1/4 TL"
+      },
+      {
+        "name": "Weizengrieß",
+        "typeAmount": "60 g"
+      },
+      {
+        "name": "Mandarine",
+        "typeAmount": "3"
+      },
+      {
+        "name": "Speisestärke",
+        "typeAmount": "1 EL"
+      }
+    ],
+    "instructions": [
+      "Hafermilch zusammen mit Zimt, Vanilleextrakt und Salz unter Rühren aufkochen. Grieß mit einem Schneebesen nach und nach einrühren, kurz aufkochen lassen und Grießbrei vom Herd nehmen. 5 Minuten quellen lassen.",
+      "Kichererbsenwasser mit dem Handrührgerät aufschäumen und unter den Grießbrei rühren.",
+      "2 Mandarinen auspressen. 2 EL Mandarinensaft mit Speisestärke verrühren und beiseitestellen. Dritte Mandarine schälen und filetieren.",
+      "Mandarinensaft aufkochen, Speisestärke einrühren, Mandarinenfilets dazugeben und unter bei niedriger Hitze 1 Minute köcheln lassen."
+    ]
+  },
+  {
+    "name": "Akkurater Arme Ritter",
+    "image": "",
+    "totalTime": "10",
+    "category": "breakfast",
+    "vegetarian": true,
+    "vegan": false,
+    "ingredients": [
+      {
+        "name": "Weißbrot",
+        "typeAmount": "4 Scheiben"
+      },
+      {
+        "name": "Milch",
+        "typeAmount": "500 ml"
+      },
+      {
+        "name": "Vanilleschote",
+        "typeAmount": "1/2"
+      },
+      {
+        "name": "Zucker",
+        "typeAmount": "1 TL"
+      },
+      {
+        "name": "Ei",
+        "typeAmount": "4"
+      },
+      {
+        "name": "Zitronenschale",
+        "typeAmount": "etwas"
+      },
+      {
+        "name": "Butter",
+        "typeAmount": "80 g"
+      }
+    ],
+    "instructions": [
+      "Die Milch mit der Vanilleschote, etwas Zitronenschale und einem TL Zucker aufkochen und dann abkühlen lassen. Nach dem Abkühlen die Vanilleschote entfernen. Nun das Brot in der Milch tränken.",
+      "Die Eier aufschlagen, verrühren, die Brotscheiben durch das Ei ziehen und in Semmelbröseln wenden. Die Brotscheiben in Butter von beiden Seiten braun braten und mit Zucker und Zimt bestreuen.",
+      "Sehr gut zu den Armen Rittern passen Kompott oder Waldbeeren."
+    ]
+  },
+  {
+    "name": "Bekannte Bratlinge",
+    "image": "",
+    "totalTime": "20",
+    "category": "lunch",
+    "vegetarian": true,
+    "vegan": false,
+    "ingredients": [
+      {
+        "name": "Kefir",
+        "typeAmount": "200ml"
+      },
+      {
+        "name": "Mehl",
+        "typeAmount": "200g"
+      },
+      {
+        "name": "Ei",
+        "typeAmount": "1"
+      },
+      {
+        "name": "Natron",
+        "typeAmount": "0.5 TL"
+      },
+      {
+        "name": "Öl",
+        "typeAmount": "5 EL"
+      },
+      {
+        "name": "Frühlingszwiebel",
+        "typeAmount": "1 Bund"
+      }
+    ],
+    "instructions": [
+      "Die Frühlingszwiebeln fein schneiden. Kefir, ein Ei, Natron, Salz und portionsweise Mehl dazugeben. Alles zu einem glatten Teig rühren. 5-6 EL Öl in einer Pfanne erhitzen. Den Teig in die Pfanne geben und goldbraun braten.",
+      "Die Bratlinge nach dem Braten auf ein Papiertuch legen, damit das überflüssige Öl aufgesagt wird.",
+      "Mit saurer Sahne oder Remoulade servieren."
+    ]
+  },
+  {
+    "name": "Kaiserliche Kartoffeln",
+    "image": "",
+    "totalTime": "45",
+    "category": "lunch",
+    "vegetarian": false,
+    "vegan": false,
+    "ingredients": [
+      {
+        "name": "Kartoffeln",
+        "typeAmount": "5"
+      },
+      {
+        "name": "Zwiebel",
+        "typeAmount": "1"
+      },
+      {
+        "name": "Champignons",
+        "typeAmount": "7"
+      },
+      {
+        "name": "Speck",
+        "typeAmount": "100g"
+      },
+      {
+        "name": "Olivenöl",
+        "typeAmount": "1 EL"
+      },
+      {
+        "name": "Kümmel",
+        "typeAmount": "0.5 TL"
+      }
+    ],
+    "instructions": [
+      "Die rohen Kartoffeln waschen, schälen und in dünne Scheiben schneiden. Zwiebel und Speck in feine Würfel schneiden. Die Champignons in ca. 5mm dicke Scheiben schneiden.",
+      "Das Öl in einer Pfanne stark erhitzen, die Kartoffeln gleichmäßig darin verteilen und ca. 2 Minuten anbraten. Die Temperatur auf Mittelhitze reduzieren, die Kartoffeln wenden und Speck, Zwiebeln und Kümmel  hinzugeben. Dann den Deckel auf die Pfanne setzen.",
+      "Nach 10 Minuten alles gut durchmischen, Champignons darauf streuen und den Deckel wieder schließen. Die Temperatur auf das untere Drittel reduzieren.",
+      "Nach weiteren 5 Minuten prüfen, ob die Kartoffeln schon durch sind. Vor dem Servieren mit Salz abschmecken."
+    ]
+  },
+  {
+    "name": "Nachdenkliche Nudelpfanne",
+    "image": "",
+    "totalTime": "20",
+    "category": "lunch",
+    "vegetarian": false,
+    "vegan": false,
+    "ingredients": [
+      {
+        "name": "Hackfleisch",
+        "typeAmount": "300g"
+      },
+      {
+        "name": "Zwiebel",
+        "typeAmount": "2"
+      },
+      {
+        "name": "Paprika",
+        "typeAmount": "1"
+      },
+      {
+        "name": "Passierte Tomaten",
+        "typeAmount": "2 Dosen"
+      },
+      {
+        "name": "Wasser",
+        "typeAmount": "2 Tassen"
+      },
+      {
+        "name": "Chili",
+        "typeAmount": "1 Schote"
+      },
+      {
+        "name": "Nudeln",
+        "typeAmount": "300g"
+      },
+      {
+        "name": "Mozzarella",
+        "typeAmount": "200g, gerieben"
+      },
+      {
+        "name": "Basilikum",
+        "typeAmount": "5 Blätter, frisch"
+      }
+    ],
+    "instructions": [
+      "In einer Pfanne das Öl erhitzen, die klein geschnittene Zwiebel dazugeben und goldbraun braten. Die in Stücke geschnittene Paprika dazugeben und kurz anbraten.",
+      "Zum Schluss das Hackfleisch dazugeben, dann kommen die Chilischote und die Tomaten rein. Salzen und pfeffern und mit Wasser übergießen. Dann die Nudeln dazugeben (je kleiner sie sind, desto besser) und zugedeckt bei milder Hitze kochen. Gelegentlich umrühren.",
+      "Kurz vorm Schluss mit frischen Basilikum-Blättern und geriebenem Mozzarella bestreuen und noch kurz kochen, bis der Käse zerlaufen ist."
+    ]
+  },
+  {
+    "name": "Peppige Paprikaschoten",
+    "image": "",
+    "totalTime": "35",
+    "category": "lunch",
+    "vegetarian": true,
+    "vegan": false,
+    "ingredients": [
+      {
+        "name": "Paprika",
+        "typeAmount": "2 Schoten"
+      },
+      {
+        "name": "Mozzarella",
+        "typeAmount": "130g"
+      },
+      {
+        "name": "Feta-Käse",
+        "typeAmount": "170g"
+      },
+      {
+        "name": "Schmand oder Crème Fraîche",
+        "typeAmount": "130g"
+      },
+      {
+        "name": "Tomatenmark",
+        "typeAmount": "20g"
+      },
+      {
+        "name": "Knoblauch",
+        "typeAmount": "1 kleine Zehe"
+      }
+    ],
+    "instructions": [
+      "Bevor ihr startet müsst ihr den Backofen auf 225 - 250 Grad vorheizen.",
+      "Ihr müsst Mozzarella und Feta-Käse in kleine Würfel schneiden. Danach müsst ihr die Knoblauchzehe pressen und mit den restlichen Zutaten in einer Schüssel vermengen, nutzt dabei am besten Einmalhandschuhe sonst klebt euch alles an den Fingern. Salz und Pfeffer könnt ihr nach Belieben hinzugeben.",
+      "Als nächstes müsst ihr nur noch die Paprikaschoten waschen, halbieren und befüllen.",
+      "Zuletzt schiebt ihr nur noch die fertigen Schoten auf einen mit Backpapier ausgelegten Ofenrost bei 175 Grad / Umluft in den vorgeheizten Backofen und lasst sie 20 Minuten backen.",
+      "Vorsichtig rausnehmen und genießen."
+    ]
+  },
+  {
+    "name": "Zeitlose Zucchinistäbchen",
+    "image": "",
+    "totalTime": "55",
+    "category": "lunch",
+    "vegetarian": true,
+    "vegan": false,
+    "ingredients": [
+      {
+        "name": "Zucchini",
+        "typeAmount": "2"
+      },
+      {
+        "name": "Mehl",
+        "typeAmount": "1 EL"
+      },
+      {
+        "name": "Paniermehl",
+        "typeAmount": "100g"
+      },
+      {
+        "name": "Käse",
+        "typeAmount": "70g"
+      },
+      {
+        "name": "Knoblauch",
+        "typeAmount": "1 Zehe oder 2TL Granulat"
+      },
+      {
+        "name": "Ei",
+        "typeAmount": "2"
+      },
+      {
+        "name": "Olivenöl",
+        "typeAmount": "2 EL"
+      }
+    ],
+    "instructions": [
+      "Die Zucchini waschen und in Stäbchen schneiden. In eine Schüssel geben, mit Salz und Pfeffer bestreuen und ordentlich darin wälzen. Den Backofen auf 170 °C vorheizen.",
+      "Für die Paniermischung einen Teelöffel Salz, Knoblauchpulver, Paprikapulver und geriebenen Käse mit Paniermehl gut vermischen.",
+      "Die Stäbchen zuerst in Mehl wenden, dann durchs Ei ziehen und anschließend in der Paniermischung wenden. Die panierten Zucchinistäbchen auf ein mit Backpapier ausgelegtes Backblech legen, mit Öl beträufeln und in den Ofen schieben. Ungefähr 30 Minuten backen – immer im Auge behalten.",
+      "Ich habe die Zucchini-Stäbchen mit sauerer Sahne serviert, aber ihr könnt jeden beliebigen Dip und jede beliebige Sauce dazu essen, die euch schmeckt."
+    ]
+  },
+  {
+    "name": "Quirliger Quinoasalat",
+    "image": "",
+    "totalTime": "60",
+    "category": "lunch",
+    "vegetarian": true,
+    "vegan": true,
+    "ingredients": [
+      {
+        "name": "Quinoa",
+        "typeAmount": "65g"
+      },
+      {
+        "name": "Gemüsebrühe",
+        "typeAmount": "125ml"
+      },
+      {
+        "name": "Zwiebel",
+        "typeAmount": "0.5"
+      },
+      {
+        "name": "Lauchzwiebel",
+        "typeAmount": "0.5"
+      },
+      {
+        "name": "Paprika",
+        "typeAmount": "0.5"
+      },
+      {
+        "name": "Tomate",
+        "typeAmount": "1"
+      },
+      {
+        "name": "Avocado",
+        "typeAmount": "0.5"
+      },
+      {
+        "name": "Rucola",
+        "typeAmount": "0.5 Bund"
+      },
+      {
+        "name": "Knoblauch",
+        "typeAmount": "0.5 Zehe, kleingehackt"
+      },
+      {
+        "name": "Olivenöl",
+        "typeAmount": "1 EL"
+      },
+      {
+        "name": "Himbeeressig",
+        "typeAmount": "1.5 EL"
+      },
+      {
+        "name": "Honig",
+        "typeAmount": "1 TL"
+      },
+      {
+        "name": "Chili",
+        "typeAmount": "Nach Wunsch"
+      }
+    ],
+    "instructions": [
+      "Quinoa (auch geschälte) in einem feinmaschigen Sieb mit warmem Wasser gründlich waschen, bis das Wasser klar bleibt. Abtropfen lassen.",
+      "Nun zwei Teile Wasser oder Brühe mit einem Teil Quinoa in einem abgedeckten Topf zum Köcheln bringen. Nach 12 - 15 min ist sie gar, vom Herd nehmen und zugedeckt noch 10 min quellen lassen.",
+      "In der Zwischenzeit die Zwiebel häuten und in halbe Ringe schneiden, die Lauchzwiebel waschen, putzen und bis zum Grün in feine Ringe schneiden. Paprika putzen und würfeln, Tomaten waschen und würfeln, Rucola waschen und je nach Größe evtl. halbieren, Knoblauch klein schneiden oder durchpressen. Die Avocado halbieren, den Kern entfernen und das Fruchtfleisch mit einem Kugelformer/Melonenausstecher herausholen oder einfach würfeln.",
+      "In einer Schüssel alles mit der Quinoa locker vermischen.",
+      "Wir mögen den Salat gerne noch leicht warm, aber wenn er am nächsten Tag durchgezogen ist, ist er auch sehr lecker, nur sollte man dann auf jeden Fall die Avocado mit Zitrone beträufeln, die wird sonst braun.",
+      "Bei uns gibt es den Salat als Hauptgericht, zum Grillen oder einfach zu Pitabrot."
+    ]
+  },
+  {
+    "name": "Party Pizza-Muffins",
+    "image": "",
+    "totalTime": "30",
+    "category": "lunch",
+    "vegetarian": false,
+    "vegan": false,
+    "ingredients": [
+      {
+        "name": "Mehl",
+        "typeAmount": "115g"
+      },
+      {
+        "name": "Backpulver",
+        "typeAmount": "1 TL"
+      },
+      {
+        "name": "Milch",
+        "typeAmount": "180ml"
+      },
+      {
+        "name": "Ei",
+        "typeAmount": "1"
+      },
+      {
+        "name": "Käse - gerieben",
+        "typeAmount": "150g"
+      },
+      {
+        "name": "Schinken",
+        "typeAmount": "120g"
+      },
+      {
+        "name": "Petersilie",
+        "typeAmount": "2 EL"
+      }
+    ],
+    "instructions": [
+      "Mehl, ein Ei und geriebenen Käse in einer Schüssel vermengen. Man kann auch eine Mischung verschiedener Käsesorten verwenden, z.B. Mozzarella, Parmesan, Gouda, Cheddar, usw. Anschließend Schinken, Backpulver, Milch und frische Petersilie hinzufügen. Nach Geschmack salzen und pfeffern. Gut umrühren.",
+      "Die Muffin-Backform mit Öl einfetten und zu 2/3 mit dem Teig befüllen.",
+      "Im vorgeheizten Backofen bei 200 °C ca. 15-18 Minuten backen. Nach dem Backen in der Form auskühlen lassen und dann servieren."
+    ]
+  },
+  {
+    "name": "Super Sandwich",
+    "image": "",
+    "totalTime": "35",
+    "category": "lunch",
+    "vegetarian": false,
+    "vegan": false,
+    "ingredients": [
+      {
+        "name": "Toast",
+        "typeAmount": "6 Scheiben"
+      },
+      {
+        "name": "Eisbergsalat",
+        "typeAmount": "4 Blätter"
+      },
+      {
+        "name": "Putenbrust",
+        "typeAmount": "2 Scheiben, sehr dünn"
+      },
+      {
+        "name": "Käse",
+        "typeAmount": "2 Scheiben"
+      },
+      {
+        "name": "Bacon",
+        "typeAmount": "6 Scheiben"
+      },
+      {
+        "name": "Gurke",
+        "typeAmount": "8 Scheiben"
+      },
+      {
+        "name": "Tomate",
+        "typeAmount": "8 Scheiben"
+      },
+      {
+        "name": "Mayonnaise",
+        "typeAmount": "2 EL"
+      },
+      {
+        "name": "Senf",
+        "typeAmount": "2 EL"
+      },
+      {
+        "name": "Zitronensaft",
+        "typeAmount": "2 Spritzer"
+      }
+    ],
+    "instructions": [
+      "Als Erstes werden die Baconscheiben in der Pfanne leicht knusprig gebraten. Zum Abkühlen auf Küchenkrepp legen. Ohne weitere Zugabe von Fett wird das Fleisch in derselben Pfanne angebraten.",
+      "Die Toastscheiben werden im Toaster leicht geröstet. Die Mayonnaise und der Senf werden mit Zitrone, Salz und Pfeffer zu einer feinen Masse vermengt.",
+      "Jetzt eine Toastseite mit der Mayo-Senfmasse bestreichen. Ein Salatblatt drauf geben, den Speck und die Gurken- und/oder Tomatenscheiben.",
+      "Die nächste Toastscheibe von beiden Seiten bestreichen und drauflegen. Wieder ein Salatblatt, dann den Käse und das Fleisch auflegen. Zum Schluss noch die dritte Toastscheibe, die wieder mit der Creme einseitig bestrichen wurde, auflegen.",
+      "Mit zwei Zahnstochern fixieren und diagonal durchschneiden. Die Clubsandwiches werden mit gesalzenen Chips serviert."
+    ]
+  },
+  {
+    "name": "Tierisches Toast",
+    "image": "",
+    "totalTime": "15",
+    "category": "lunch",
+    "vegetarian": false,
+    "vegan": false,
+    "ingredients": [
+      {
+        "name": "Toast",
+        "typeAmount": "4 Scheiben"
+      },
+      {
+        "name": "Senf",
+        "typeAmount": "2 TL"
+      },
+      {
+        "name": "Mayonnaise",
+        "typeAmount": "2 TL"
+      },
+      {
+        "name": "Schinken",
+        "typeAmount": "4 Scheiben"
+      },
+      {
+        "name": "Käse",
+        "typeAmount": "4 Scheiben"
+      },
+      {
+        "name": "Ei",
+        "typeAmount": "1"
+      },
+      {
+        "name": "Milch",
+        "typeAmount": "2 EL"
+      },
+      {
+        "name": "Butter",
+        "typeAmount": "2 EL"
+      }
+    ],
+    "instructions": [
+      "Alle Toastbrot-Scheiben mit Senf und Mayonnaise bestreichen. Zwei Brotscheiben mit Schinken- und Käsescheiben belegen und mit den restlichen Brotscheiben zudecken.",
+      "Das Ei und die Milch mit einer Gabel verschlagen, nach Geschmack salzen und noch einmal ordentlich durchrühren.",
+      "In einer Pfanne 2 EL Butter schmelzen. Das Brot durch das Ei ziehen und von beiden Seiten goldbraun braten."
+    ]
+  },
+  {
+    "name": "Tolles Toast",
+    "image": "",
+    "totalTime": "20",
+    "category": "lunch",
+    "vegetarian": false,
+    "vegan": false,
+    "ingredients": [
+      {
+        "name": "Toast",
+        "typeAmount": "6"
+      },
+      {
+        "name": "Ei",
+        "typeAmount": "1"
+      },
+      {
+        "name": "Kochschinken",
+        "typeAmount": "150g, gewürfelt"
+      },
+      {
+        "name": "Käse",
+        "typeAmount": "100g, gerieben"
+      },
+      {
+        "name": "Naturjoghurt",
+        "typeAmount": "1 Tasse"
+      },
+      {
+        "name": "Saure Sahne",
+        "typeAmount": "1 EL"
+      },
+      {
+        "name": "Milch",
+        "typeAmount": "50ml"
+      }
+    ],
+    "instructions": [
+      "Den Backofen auf 200 °C vorheizen und eine Auflaufform oder ein Backblech bereitstellen.",
+      "Das Brot in Milch einweichen und in die Form legen.",
+      "Alle übrigen Zutaten in einer Schüssel mithilfe einer Gabel vermengen. Mit Salz, Pfeffer, Oregano und Petersilie würzen.",
+      "Die Mischung gleichmäßig auf dem Brot verteilen, in den Backofen schieben und 10 Minuten backen."
+    ]
+  },
+  {
+    "name": "Zielorientierte Zucchinipuffer",
+    "image": "",
+    "totalTime": "20",
+    "category": "lunch",
+    "vegetarian": false,
+    "vegan": false,
+    "ingredients": [
+      {
+        "name": "Zucchini",
+        "typeAmount": "500 g"
+      },
+      {
+        "name": "Zwiebel",
+        "typeAmount": "1"
+      },
+      {
+        "name": "Ei",
+        "typeAmount": "1"
+      },
+      {
+        "name": "Mehl",
+        "typeAmount": "3 EL"
+      },
+      {
+        "name": "Öl",
+        "typeAmount": "4 EL"
+      }
+    ],
+    "instructions": [
+      "Enden abschneiden und die Zucchini dann waschen und grob reiben.",
+      "Mit einer klein geschnittenen Zwiebel und einem Ei vermengen. Mit Salz und Pfeffer abschmecken. Zum Schluss Mehl dazugeben.",
+      "Öl in der Pfanne erhitzen. Den Teig mithilfe eines Löffels in die Pfanne geben und von beiden Seiten goldbraun braten."
+    ]
+  },
+  {
+    "name": "Rustikales Röstbrot mit Tomaten und Spiegelei",
+    "image": "",
+    "totalTime": "20",
+    "category": "dinner",
+    "vegetarian": true,
+    "vegan": false,
+    "ingredients": [
+      {
+        "name": "Zwiebel",
+        "typeAmount": "1"
+      },
+      {
+        "name": "Fleischtomate",
+        "typeAmount": "1"
+      },
+      {
+        "name": "Bauernbrot",
+        "typeAmount": "2 Scheiben"
+      },
+      {
+        "name": "Butter",
+        "typeAmount": "1 EL"
+      },
+      {
+        "name": "Öl",
+        "typeAmount": "1.5 EL"
+      },
+      {
+        "name": "Ei",
+        "typeAmount": "2"
+      },
+      {
+        "name": "Schnittlauch",
+        "typeAmount": "0.5 Bund"
+      }
+    ],
+    "instructions": [
+      "Zwiebeln schälen und in feine Ringe schneiden. Tomaten waschen und in Scheiben schneiden. Brot im Toaster rösten, mit Butter bestreichen und auf Teller legen.",
+      "1 EL Öl in einer Pfanne erhitzen. Zwiebeln darin goldbraun braten. Mit Salz und Pfeffer würzen, herausnehmen. 1 EL Öl im Bratfett erhitzen und die Tomaten darin von jeder Seite anbraten, mit Salz und Pfeffer würzen.",
+      "In einer beschichteten Pfanne 1 EL Öl erhitzen und darin die Eier zu Spiegeleiern braten. Mit Salz würzen. Schnittlauch waschen und in Röllchen schneiden.",
+      "Tomaten und Zwiebeln auf den Brotscheiben anrichten, ­Spiegeleier daraufgeben, Schnittlauch darüberstreuen."
+    ]
+  },
+  {
+    "name": "Belastender Bohnen-Brokkoli-Salat",
+    "image": "",
+    "totalTime": "30",
+    "category": "dinner",
+    "vegetarian": true,
+    "vegan": false,
+    "ingredients": [
+      {
+        "name": "grüne Bohnen",
+        "typeAmount": "180g"
+      },
+      {
+        "name": "Knoblauchzehen",
+        "typeAmount": "1"
+      },
+      {
+        "name": "Brokkoli",
+        "typeAmount": "1 Köpfe"
+      },
+      {
+        "name": "Minze",
+        "typeAmount": "1 1/2 Zweige"
+      },
+      {
+        "name": "Sahne",
+        "typeAmount": "80ml"
+      },
+      {
+        "name": "Senf",
+        "typeAmount": "1/2 TL"
+      },
+      {
+        "name": "Zitronenschale",
+        "typeAmount": "1/4 TL"
+      },
+      {
+        "name": "Salz",
+        "typeAmount": "1 Prise"
+      },
+      {
+        "name": "Pfeffer",
+        "typeAmount": "1 Prise"
+      },
+      {
+        "name": "Pinienkerne",
+        "typeAmount": "40g"
+      },
+      {
+        "name": "Olivenöl",
+        "typeAmount": "2EL"
+      },
+      {
+        "name": "Baguette",
+        "typeAmount": "1/4"
+      }
+    ],
+    "instructions": [
+      "Bohnen putzen und 10 Minuten kochen. Dann kalt abschrecken. Brokkoli in Röschen schneiden, 5 Minuten kochen und eiskalt abschrecken.",
+      "Für das Dressing Knoblauch pellen und grob hacken. Minzblätter abzupfen. Sahne, Senf, Zitronensaft, Zitronenschale, Knoblauch, die Hälfte der Minzblätter, Salz und Pfeffer in ein hohes Gefäß füllen und mit einem Mixstab fein pürieren.",
+      "Pinienkerne in einer Pfanne mit 1 EL Öl anrösten. Leicht salzen. Aus der Pfanne nehmen. Baguette in hauchdünne Scheiben schneiden (Tipp: z. B. mit einer Aufschnittmaschine). 3 EL Öl erhitzen und die Brotscheiben von beiden Seiten rösten. Dann abkühlen lassen und grob zerbrechen.",
+      "Bohnen, Brokkoli, Dressing und restliche Minzblätter gut vermischen. Mit Salz und Pfeffer nachwürzen. Brotchips und Pinienkerne darüber streuen."
+    ]
+  },
+  {
+    "name": "Köstlicher Karotten-Hummus-Dip",
+    "image": "",
+    "totalTime": "10",
+    "category": "dinner",
+    "vegetarian": true,
+    "vegan": true,
+    "ingredients": [
+      {
+        "name": "Karotten",
+        "typeAmount": "200g"
+      },
+      {
+        "name": "Salz",
+        "typeAmount": "1 Prise"
+      },
+      {
+        "name": "Ingwer",
+        "typeAmount": "1,5 cm"
+      },
+      {
+        "name": "Kichererbsen",
+        "typeAmount": "1/2 Dose"
+      },
+      {
+        "name": "Orange",
+        "typeAmount": "1/4"
+      },
+      {
+        "name": "Zitronensaft",
+        "typeAmount": "1 1/2 TL"
+      },
+      {
+        "name": "Olivenöl",
+        "typeAmount": "1EL"
+      },
+      {
+        "name": "Pfeffer",
+        "typeAmount": "1 Prise"
+      },
+      {
+        "name": "Kreuzkümmelpulver",
+        "typeAmount": "1/4 TL"
+      }
+    ],
+    "instructions": [
+      "Die Möhren schälen, klein schneiden und in wenig kochendem Salzwasser zugedeckt ca. 10 Minuten garen. Kalt abschrecken und abtropfen lassen. Den Ingwer schälen und fein raspeln. Die Kicherersben in einem Sieb abtropfen lassen.",
+      "Den Orangensaft zusammen mit dem Zirtonensaft, dem Olivenöl, den Möhren, den Kichererbsen und dem Ingwer fein pürieren. Mit Salz, Pfeffer und Kreuzkümmel abschmecken und dazu nach Belieben z. B. Papadam (indische Linsenmehlfladen) reichen.",
+      "Das Kichererbsenwasser auffangen, kalt stellen und als Eischnee-Ersatz z. B. für vegane Desserts aufschlagen."
+    ]
+  },
+  {
+    "name": "Hausgemachter Hähnchen-Nudel-Auflauf",
+    "image": "",
+    "totalTime": "60",
+    "category": "dinner",
+    "vegetarian": false,
+    "vegan": false,
+    "ingredients": [
+      {
+        "name": "Brokkoli",
+        "typeAmount": "150g"
+      },
+      {
+        "name": "Hähnchenbrustfilet",
+        "typeAmount": "150g"
+      },
+      {
+        "name": "Pflanzenöl",
+        "typeAmount": "1/2 EL"
+      },
+      {
+        "name": "Limette",
+        "typeAmount": "1"
+      },
+      {
+        "name": "Nudeln",
+        "typeAmount": "100g"
+      },
+      {
+        "name": "Tomate",
+        "typeAmount": "1"
+      },
+      {
+        "name": "Knoblauch",
+        "typeAmount": "1/2 Zehe"
+      },
+      {
+        "name": "Milch",
+        "typeAmount": "150ml"
+      },
+      {
+        "name": "Ei",
+        "typeAmount": "2"
+      },
+      {
+        "name": "Käse",
+        "typeAmount": "30g"
+      },
+      {
+        "name": "Petersilie",
+        "typeAmount": "1 1/2 EL"
+      },
+      {
+        "name": "Salz",
+        "typeAmount": "1 Prise"
+      },
+      {
+        "name": "Pfeffer",
+        "typeAmount": "1 Prise"
+      }
+    ],
+    "instructions": [
+      "Den Brokkoli in kleine Röschen schneiden. Das Hähnchenbrustfilet abspülen, mit einem Küchentuch abtupfen, in Streifen schneiden. Beides zusammen in einer beschichteten Pfanne mit etwas Öl anbraten.",
+      "Das Bratgut mit dem Abrieb und dem Saft der Limetten ablöschen und auf einem Teller beiseitestellen.",
+      "Die Nudeln nach Packungsanleitung al dente kochen und unter kaltem Wasser abschrecken.",
+      "Die Tomaten würfeln, die Knoblauchzehe schälen und in feine Scheiben schneiden.",
+      "Den Backofen auf 165°C Umluft oder 185°C Ober-/Unterhitze vorheizen.",
+      "Das gebratene Fleisch sowie die Nudeln und das Gemüse in eine Auflaufform geben und miteinander vermischen. Milch und Eier verquirlen, salzen und pfeffern und über das Gemüse und das Fleisch in der Auflaufform geben. Alles mit Käse bestreuen und für 25-30 Minuten backen."
+    ]
+  },
+  {
+    "name": "Krosses Kartoffelgratin",
+    "image": "",
+    "totalTime": "60",
+    "category": "dinner",
+    "vegetarian": false,
+    "vegan": false,
+    "ingredients": [
+      {
+        "name": "Butter",
+        "typeAmount": "etwas"
+      },
+      {
+        "name": "Kräuter",
+        "typeAmount": "1 1/2 EL"
+      },
+      {
+        "name": "Salz",
+        "typeAmount": "1/2 TL"
+      },
+      {
+        "name": "Pfeffer",
+        "typeAmount": "1/2 TL"
+      },
+      {
+        "name": "Emmentaler",
+        "typeAmount": "80g"
+      },
+      {
+        "name": "Kartoffel",
+        "typeAmount": "200g"
+      },
+      {
+        "name": "Süßkartoffel",
+        "typeAmount": "200g"
+      },
+      {
+        "name": "Milch",
+        "typeAmount": "100ml"
+      },
+      {
+        "name": "Creme fraiche",
+        "typeAmount": "80ml"
+      },
+      {
+        "name": "Lorbeerblatt",
+        "typeAmount": "1/2"
+      },
+      {
+        "name": "getrocknete Kräuter",
+        "typeAmount": "1/2 TL"
+      },
+      {
+        "name": "Knoblauchzehe",
+        "typeAmount": "1/2"
+      }
+    ],
+    "instructions": [
+      "Den Ofen auf 160 Grad Umluft vorheizen.",
+      "Eine Auflaufform mit Butter einfetten.",
+      "In einem kleinen Topf bei mittlere Hitze Milch und Creme Fraiche vermengen. Knoblauchzehe mit einem Messer andrücken und gemeinsam mit Lorbeerblatt und getrocknete Kräuter hinzufügen. Mit Salz und Pfeffer würzen und einmal aufkochen. Topf vom Herd nehmen und Lorbeer und Knoblauch entfernen.",
+      "50 g Käse unter die noch warme Sauce rühren.",
+      "Kartoffeln schälen und in Scheiben schneiden. Die Scheiben sollten ungefähr gleich groß sein. Große Scheiben ggf. halbieren.",
+      "Kartoffelscheiben aufrecht nebeneinander in die Form stellen, dabei die unterschiedlichen Kartoffelsorten und -farben abwechseln.",
+      "Kartoffeln mit der Sauce übergießen und ca. 45 Minuten im Ofen bei 160 Grad backen, bis die Kartoffeln weich sind. Dann den restlichen Käse über die Kartoffeln streuen und weitere 15 Minuten backen.",
+      "Fertiges Gratin mit gehackten Kräutern bestreuen."
+    ]
+  },
+  {
+    "name": "Raffinierte Rotkohl-Quinoa-Pfanne",
+    "image": "",
+    "totalTime": "20",
+    "category": "dinner",
+    "vegetarian": true,
+    "vegan": false,
+    "ingredients": [
+      {
+        "name": "Quinoa",
+        "typeAmount": "80g"
+      },
+      {
+        "name": "Ziebel",
+        "typeAmount": "1/2"
+      },
+      {
+        "name": "Orangesaft",
+        "typeAmount": "150ml"
+      },
+      {
+        "name": "Currypulver",
+        "typeAmount": "1/2 TL"
+      },
+      {
+        "name": "Karotte",
+        "typeAmount": "1"
+      },
+      {
+        "name": "Rapsöl",
+        "typeAmount": "1EL"
+      },
+      {
+        "name": "eingelegter Rotkohl",
+        "typeAmount": "200g"
+      },
+      {
+        "name": "Salz",
+        "typeAmount": "1 Prise"
+      },
+      {
+        "name": "Pfeffer",
+        "typeAmount": "1 Prise"
+      },
+      {
+        "name": "Walnusskerne",
+        "typeAmount": "50g"
+      }
+    ],
+    "instructions": [
+      "Zwiebeln in feine Streifen schneiden und zusammen mit etwas Rapsöl in einer Pfanne anschwitzen. Den Quinoa in ein Sieb geben und unter fließendem Wasser abspülen. Zusammen mit etwas Currypulver in die Pfanne geben.",
+      "Mit Orangensaft aufgießen, aufkochen und solange bei geringer Hitze ca. 10 Minuten köcheln lassen, bis die Flüssigkeit vollständig aufgenommen wurde.",
+      "Karotten schälen und in Scheiben schneiden.",
+      "Rapsöl, Karottenscheiben und 400 g Rotkohl hinzugeben, durchschwenken und ca. 5 Minuten unter Rühren anrösten. Die Walnüsse grob hacken und dazugeben.",
+      "Mit Salz und Pfeffer abschmecken."
+    ]
+  },
+  {
+    "name": "Simple Spaghetti Tarte",
+    "image": "",
+    "totalTime": "60",
+    "category": "dinner",
+    "vegetarian": false,
+    "vegan": false,
+    "ingredients": [
+      {
+        "name": "Spaghetti",
+        "typeAmount": "250g"
+      },
+      {
+        "name": "Ei",
+        "typeAmount": "1/2"
+      },
+      {
+        "name": "Sahne",
+        "typeAmount": "30g"
+      },
+      {
+        "name": "Mozzarella",
+        "typeAmount": "50g"
+      },
+      {
+        "name": "Rinderhack",
+        "typeAmount": "150g"
+      },
+      {
+        "name": "Rapsöl",
+        "typeAmount": "1EL"
+      },
+      {
+        "name": "Karotte",
+        "typeAmount": "1/2"
+      },
+      {
+        "name": "Ziebel",
+        "typeAmount": "1/2"
+      },
+      {
+        "name": "Knoblauch",
+        "typeAmount": "1/2 Zehe"
+      },
+      {
+        "name": "gehackte Tomaten",
+        "typeAmount": "150g"
+      },
+      {
+        "name": "Parmesan",
+        "typeAmount": "30g"
+      },
+      {
+        "name": "Ruccola",
+        "typeAmount": "1/4 Bund"
+      },
+      {
+        "name": "Walnusskerne",
+        "typeAmount": "30g"
+      }
+    ],
+    "instructions": [
+      "Die Spaghetti nach Packungsanleitung al dente garen, abschrecken und mit Ei, Sahne und geriebenem Mozzarella vermischen.",
+      "Den Backofen auf 165°C Umluft vorheizen.",
+      "Das Rinderhack mit etwas Rapsöl in einer Bratpfanne anbraten.",
+      "Die Zwiebel sowie die Karotte schälen und in feine Streifen schneiden. Beides zusammen mit dem Knoblauch zum Rinderhack geben und mitbraten.",
+      "Sobald das Hackfleisch und das Gemüse von allen Seiten angebraten sind die gehackten Tomaten hineingeben und für 10-15 Minuten bei mittlerer Hitze köcheln lassen.",
+      "Die Tarteform einfetten und mit der Spaghetti-Masse bis knapp über den Rand befüllen.",
+      "Für 15 Minuten goldbraun backen.",
+      "Die Bolognese hineingeben und mit dem geriebenen Parmesan bestreuen.",
+      "Anschließend für weitere 15 Minuten überbacken.",
+      "Den Ruccola waschen und trockenschleudern. Die Walnüsse grob zerhacken und zusammen mit dem Ruccola über der Tarte verteilen."
+    ]
+  },
+  {
+    "name": "Erfrischender Salat",
+    "image": "",
+    "totalTime": "25",
+    "category": "dinner",
+    "vegetarian": false,
+    "vegan": false,
+    "ingredients": [
+      {
+        "name": "Blattsalatmischung",
+        "typeAmount": "250g"
+      },
+      {
+        "name": "Zwiebel",
+        "typeAmount": "1/2"
+      },
+      {
+        "name": "Knoblauchzehe",
+        "typeAmount": "1"
+      },
+      {
+        "name": "Schwarzwälder Schinken",
+        "typeAmount": "70g"
+      },
+      {
+        "name": "Olivenöl",
+        "typeAmount": "2EL"
+      },
+      {
+        "name": "Pfifferling",
+        "typeAmount": "200g"
+      },
+      {
+        "name": "Balsamico Bianco",
+        "typeAmount": "4EL"
+      },
+      {
+        "name": "Salz",
+        "typeAmount": "1 Prise"
+      },
+      {
+        "name": "bunter Pfeffer",
+        "typeAmount": "1 Prise"
+      },
+      {
+        "name": "Büffel-Mozzarella",
+        "typeAmount": "1/2 Kugel"
+      },
+      {
+        "name": "Petersilie",
+        "typeAmount": "3 EL"
+      },
+      {
+        "name": "Johannisbeere",
+        "typeAmount": "80g"
+      },
+      {
+        "name": "Baguette",
+        "typeAmount": "6 Scheiben"
+      },
+      {
+        "name": "Basilikum",
+        "typeAmount": "1TL"
+      },
+      {
+        "name": "Dill",
+        "typeAmount": "1TL"
+      },
+      {
+        "name": "Magerquark",
+        "typeAmount": "100g"
+      },
+      {
+        "name": "Schnittlauchröllchen",
+        "typeAmount": "1TL"
+      },
+      {
+        "name": "Paprika edelsüß",
+        "typeAmount": "1 Prise"
+      }
+    ],
+    "instructions": [
+      "Salatblätter waschen, trocken schleudern, auf Tellern anrichten.",
+      "Zwiebel würfeln und Knoblauch klein schneiden. Schinken in Streifen schneiden.",
+      "Olivenöl in einer Pfanne erwärmen (ein Wassertropfen sollte darin brutzeln) und die Zwiebelwürfel zusammen mit Knoblauch, Pfifferlingen und Schinken ca. 5 Min. anbraten. Mit Balsamicoessig ablöschen, mit Salz und Pfeffer abschmecken und etwas abkühlen lassen.",
+      "Zwischenzeitlich den Büffelmozzarella würfeln.",
+      "Die Petersilie waschen, trockenschleudern und hacken. 1 TL für den Dipp zur Seite stellen.",
+      "Die Pilzmischung auf dem Salat verteilen, Büffelmozzarella, Petersilie und Johannisbeeren darüber streuen.",
+      "Basilikum und Dill waschen, trockenschleudern, klein schneiden.",
+      "Quark zusammen mit 1 EL Wasser, Kräutern sowie der gehackten Petersilie vermischen. Das Ganze mit Salz, Pfeffer und Paprikapulver abschmecken.",
+      "Alles zusammen mit den Baguettescheiben servieren. Wer mag kann die Baguettescheiben vorher kurz toasten."
+    ]
+  },
+  {
+    "name": "Schnelle Champignon-Pfanne",
+    "image": "",
+    "totalTime": "30",
+    "category": "dinner",
+    "vegetarian": false,
+    "vegan": false,
+    "ingredients": [
+      {
+        "name": "eingelegte Champignons",
+        "typeAmount": "200g"
+      },
+      {
+        "name": "Hähnchenbrustfilet",
+        "typeAmount": "100g"
+      },
+      {
+        "name": "rote Zwiebel",
+        "typeAmount": "1"
+      },
+      {
+        "name": "Zucchini",
+        "typeAmount": "1/2"
+      },
+      {
+        "name": "rote Paprika",
+        "typeAmount": "1/2"
+      },
+      {
+        "name": "gelbe Paprika",
+        "typeAmount": "1/2"
+      },
+      {
+        "name": "grüne Paprika",
+        "typeAmount": "1/2"
+      },
+      {
+        "name": "grüne Bohnen",
+        "typeAmount": "50g"
+      },
+      {
+        "name": "Knoblauch",
+        "typeAmount": "1 Zehe"
+      },
+      {
+        "name": "Cherrytomaten",
+        "typeAmount": "30g"
+      },
+      {
+        "name": "Saure Sahne",
+        "typeAmount": "130g"
+      },
+      {
+        "name": "Gemüsebrühe",
+        "typeAmount": "100ml"
+      },
+      {
+        "name": "Salz",
+        "typeAmount": "1 Prise"
+      },
+      {
+        "name": "Pfeffer",
+        "typeAmount": "1 Prise"
+      },
+      {
+        "name": "Tabasco",
+        "typeAmount": "etwas"
+      },
+      {
+        "name": "Lauchzwiebel",
+        "typeAmount": "1/2 Stange"
+      }
+    ],
+    "instructions": [
+      "Die Champignons in ein Sieb geben und das Champignonwasser in einer Schüssel auffangen.",
+      "Das Gemüse mit Ausnahme der tiefgekühlten Bohnen waschen. Die Hähnchenbrust mit Wasser kurz abspülen.",
+      "Das Hähnchenbrustfilet in Streifen schneiden. Die Zwiebeln schälen und in feine Streifen schneiden. Die Zucchini würfeln. Die Paprikaschoten halbieren, entkernen und ebenfalls würfeln.",
+      "In einer großen Pfanne etwas Rapsöl erhitzen und die Hähnchenbrust goldbraun anbraten. Zwiebeln, Zucchini, Paprika und die Bohnen dazugeben und für ca. 5 Minuten mit anbraten.",
+      "Den Knoblauch schälen und hineinpressen. Die Cherrytomaten, die abgetropften Champignons sowie die saure Sahne, die Gemüsebrühe und ca. 80 ml vom Champignonwasser hineingeben. Für 5-10 Minuten köcheln lassen. Mit Salz und Pfeffer sowie Tabasco abschmecken.",
+      "Die Lauchzwiebel in feine Ringe schneiden und vor dem Servieren auf dem Gericht verteilen."
+    ]
+  },
+  {
+    "name": "Geschmackvoller Gemüse-Cheeseburger",
+    "image": "",
+    "totalTime": "50",
+    "category": "dinner",
+    "vegetarian": true,
+    "vegan": false,
+    "ingredients": [
+      {
+        "name": "Aubergine",
+        "typeAmount": "130g"
+      },
+      {
+        "name": "Parmesan",
+        "typeAmount": "50g"
+      },
+      {
+        "name": "gelbe Zucchini",
+        "typeAmount": "100g"
+      },
+      {
+        "name": "grüne Zucchini",
+        "typeAmount": "100g"
+      },
+      {
+        "name": "Tomate",
+        "typeAmount": "50g"
+      },
+      {
+        "name": "Lollo Bianco",
+        "typeAmount": "1/2 Stück"
+      },
+      {
+        "name": "Burger-Brötchen",
+        "typeAmount": "2"
+      },
+      {
+        "name": "Hokkaido Kürbis",
+        "typeAmount": "250g"
+      },
+      {
+        "name": "Olivenöl",
+        "typeAmount": "1/2 EL"
+      },
+      {
+        "name": "Thymian",
+        "typeAmount": "1/2 Stängel"
+      },
+      {
+        "name": "gehackte Tomaten",
+        "typeAmount": "200g"
+      },
+      {
+        "name": "Honig",
+        "typeAmount": "1/2 EL"
+      },
+      {
+        "name": "BBQ Sauce",
+        "typeAmount": "1/2 EL"
+      },
+      {
+        "name": "Pfeffer",
+        "typeAmount": "1 Prise"
+      },
+      {
+        "name": "Salz",
+        "typeAmount": "1 Prise"
+      }
+    ],
+    "instructions": [
+      "Für den Ketchup die gehackten Tomaten in ein flachen Topf geben und ca. 20 Minuten bei mittlerer Hitze einkochen. Mit Honig, BBQ-Sauce, Salz und Pfeffer würzen und auskühlen lassen.",
+      "Den Ofen auf 165°C Umluft vorheizen. Den Kürbis putzen, entkernen und in Streifen schneiden. Die Streifen auf ein Backblech legen, das Olivenöl darüber geben und mit Thymian bestreuen. Für ca. 30 Minuten im Ofen backen.",
+      "Währenddessen die Aubergine in Scheiben schneiden und flach auf einem weiteren Blech verteilen. Mit einer Prise Salz bestreuen und für 5-10 Minuten beiseitestellen.",
+      "Die Wassertropfen von der Aubergine abtupfen und mit dem geriebenen Parmesan bestreuen. Die Aubergine auf mittlerer Schiene für ca. 10 Minuten im Ofen goldbraun backen. Beide Zucchini der Länge nach in ca. 5 mm dicke Scheiben schneiden und in der Grillpfanne (alternativ Bratpfanne mit etwas Fett) ohne Zugabe von Fett angrillen und bereithalten.",
+      "Nach Ende der Backzeit den Kürbis und die Aubergine auskühlen lassen und die Restwärme vom Ofen nutzen, um die Burger-Brötchen sowie die gegrillte Zucchini für einige Minuten anzuwärmen. Die Tomaten abwaschen und in Scheiben schneiden. Den Lollo Bionda waschen, schleudern und einige große Blätter bereithalten.",
+      "Den Burger mit allen Zutaten belegen und den Ketchup ebenfalls auf den Burger geben. Vor dem servieren mit einem Holzspieß fixieren.",
+      "Der Burger mit den gebackenen Kürbis-Streifen als Beilage servieren und sofort genießen."
+    ]
+  }
+]

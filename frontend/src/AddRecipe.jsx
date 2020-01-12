@@ -1,18 +1,8 @@
 import React, { Component } from "react";
 import "./AddRecipe.scss";
-import {
-  Box,
-  Grid,
-  Button,
-  FormControlLabel,
-  Radio,
-  FormLabel
-} from "@material-ui/core";
-import CloseIcon from "@material-ui/icons/Close";
-import AddIcon from "@material-ui/icons/Add";
-import TextField from "@material-ui/core/TextField";
-import RadioGroup from "@material-ui/core/RadioGroup";
+import { Grid, Button } from "@material-ui/core";
 import img from "./images/add_recipe.jpg";
+import AddRecipeForm from "./AddRecipeForm";
 
 class AddRecipe extends Component {
   constructor(params) {
@@ -68,6 +58,7 @@ class AddRecipe extends Component {
               </p>
               <div id="add_recipe_button_container">
                 <Button
+                  id="open_form_button"
                   color="secondary"
                   variant="contained"
                   onClick={this.openForm}
@@ -84,185 +75,6 @@ class AddRecipe extends Component {
             </Grid>
           </React.Fragment>
         </Grid>
-      </div>
-    );
-  }
-}
-
-class AddRecipeForm extends Component {
-  constructor(params) {
-    super(params);
-    this.state = {
-      meal: "fruehstueck",
-      dietForm: "keine",
-      closeForm: params.closeForm,
-      steps: 1
-    };
-
-    this.handleMeal = this.handleMeal.bind(this);
-    this.handleDietForm = this.handleDietForm.bind(this);
-    this.addStep = this.addStep.bind(this);
-    this.showSteps = this.showSteps.bind(this);
-  }
-
-  handleMeal(event) {
-    this.setState({
-      meal: event.target.value
-    });
-  }
-
-  handleDietForm(event) {
-    this.setState({
-      dietForm: event.target.value
-    });
-  }
-
-  showSteps() {
-    var steps = [];
-    for (var x = 0; x < this.state.steps; x++) {
-      steps.push(
-        <TextField
-          id={"step" + (x + 1)}
-          key={x}
-          label={"Arbeitsschritt " + (x + 1)}
-          variant="outlined"
-          multiline
-          rows="3"
-        />
-      );
-    }
-    return steps;
-  }
-
-  addStep() {
-    this.setState({
-      steps: this.state.steps + 1
-    });
-  }
-
-  // const addStep = event => {
-  //   steps.push(steps.length + 1);
-  // };
-
-  // var stepsInputFields = steps.map(step => {
-  //   <TextField
-  //     label={"Arbeitsschritt " + step}
-  //     key={step}
-  //     variant="outlined"
-  //   />;
-  // });
-  render() {
-    return (
-      <div className="AddRecipeForm">
-        <Box
-          display="flex"
-          justifyContent="flex-end"
-          id="close_button_container"
-        >
-          <p id="close_button_description">Rezept hinzufügen abbrechen</p>
-          <Button disableRipple onClick={this.state.closeForm}>
-            <CloseIcon />
-          </Button>
-        </Box>
-        <h3 id="add_recipe_form_headline">Eigenes Rezept hinzufügen</h3>
-        <form action="">
-          <TextField
-            id="recipe_name"
-            required
-            label="Rezeptname"
-            variant="outlined"
-          />
-          <Grid container spacing={3} id="radio_buttons_container">
-            <Grid item sm={6}>
-              <FormLabel component="legend" className="form_labels" required>
-                Mahlzeit
-              </FormLabel>
-              <div className="radioButtons">
-                <RadioGroup
-                  aria-label="meal"
-                  name="meal"
-                  value={this.state.meal}
-                  onChange={this.handleMeal}
-                >
-                  <FormControlLabel
-                    value="fruehstueck"
-                    control={<Radio disableRipple />}
-                    label="Frühstück"
-                  />
-                  <FormControlLabel
-                    value="mittagessen"
-                    control={<Radio disableRipple />}
-                    label="Mittagessen"
-                  />
-                  <FormControlLabel
-                    value="abendessen"
-                    control={<Radio disableRipple />}
-                    label="Abendessen"
-                  />
-                </RadioGroup>
-              </div>
-            </Grid>
-            <Grid item sm={6}>
-              <FormLabel component="legend" className="form_labels" required>
-                Ernährungsform
-              </FormLabel>
-              <div className="radioButtons">
-                <RadioGroup
-                  aria-label="diet_form"
-                  name="diet_form"
-                  value={this.state.dietForm}
-                  onChange={this.handleDietForm}
-                >
-                  <FormControlLabel
-                    value="keine"
-                    control={<Radio disableRipple />}
-                    label="keine"
-                  />
-                  <FormControlLabel
-                    value="vegetarisch"
-                    control={<Radio disableRipple />}
-                    label="vegetarisch"
-                  />
-                  <FormControlLabel
-                    value="vegan"
-                    control={<Radio disableRipple />}
-                    label="vegan"
-                  />
-                </RadioGroup>
-              </div>
-            </Grid>
-          </Grid>
-          <TextField
-            id="recipe_ingredients"
-            required
-            multiline
-            rows="8"
-            label="Zutaten"
-            placeholder="Bspw. 100g Butter"
-            variant="outlined"
-          />
-          <TextField
-            id="recipe_time"
-            className="recipe_time"
-            label="Dauer"
-            type="time"
-            defaultValue="01:00"
-            variant="outlined"
-            InputLabelProps={{
-              shrink: true
-            }}
-            inputProps={{
-              step: 300 // 5 min
-            }}
-          />
-          <div>{this.showSteps()}</div>
-          <div display="inline">
-            <Button onClick={this.addStep}>
-              <AddIcon />
-            </Button>
-            <p>Arbeitsschritt hinzufügen</p>
-          </div>
-        </form>
       </div>
     );
   }
