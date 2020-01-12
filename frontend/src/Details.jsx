@@ -4,7 +4,7 @@ import Ingredients from "./Ingredients";
 import Instructions from "./Instructions";
 import RecommenderHeader from "./RecommenderHeader";
 import RecommenderImage from "./RecommenderImage";
-import LasagneImage from "./resources/lasagne.jpg";
+import LasagneImage from "./images/lasagne.jpg";
 import "./Details.scss";
 
 class Details extends Component {

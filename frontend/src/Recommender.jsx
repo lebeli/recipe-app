@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import RecommenderImage from "./RecommenderImage";
 import RecommenderHeader from "./RecommenderHeader";
 import RecommenderReloadButton from "./RecommenderReloadButton";
-import wolfImage from "./resources/wolf.jpg";
-import LasagneImage from "./resources/lasagne.jpg";
+import ToastImage from "./images/toast.jpg";
+import LasagneImage from "./images/lasagne.jpg";
 import "./Recommender.scss";
 
 class Recommender extends Component {
@@ -18,7 +18,7 @@ class Recommender extends Component {
 
   changeImage() {
     this.setState({
-      image: wolfImage
+      image: TostImage
     });
   }
 
