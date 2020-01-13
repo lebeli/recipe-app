@@ -1,11 +1,11 @@
 import React from "react";
 import "./Recommender.scss";
 
-function RecommenderHeader() {
+function RecommenderHeader(params) {
   return (
     <div className="Header">
-      <div className="HeaderContent">Lasagne</div>
-      <div className="HeaderContent">45min</div>
+      <div className="HeaderContent">{params.recipeName}</div>
+      <div className="HeaderContent">{params.time}</div>
     </div>
   );
 }

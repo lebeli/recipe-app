@@ -26,7 +26,10 @@ class Recommender extends Component {
     return (
       <div className="Recommender" id="Container">
         <div className="RelativeParent">
-          <RecommenderHeader />
+          <RecommenderHeader
+            recipeName={this.props.recipeName}
+            time={this.props.time}
+          />
           <RecommenderReloadButton onClick={this.changeImage} />
           <RecommenderImage
             image={this.state.image}

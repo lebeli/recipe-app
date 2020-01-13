@@ -12,7 +12,13 @@ class Details extends Component {
     super(props);
     this.state = {
       pageNumber: 1,
-      image: LasagneImage
+      image: LasagneImage,
+      ingredients: ["flour", "cucumber"],
+      instructions: [
+        "Banannaaaaa",
+        "Gruuuu!",
+        "Halloosn viawhbfiaw hfeiuwbfhbwe diqwbdhbvwei lfhea iugf46griwa zdegksg fuishfiu gfzsgdfjz sfv,jhbs< fhksbc. kjsbdvjk bydskjvf sudhv ousgczs h!!"
+      ]
     };
   }
 
@@ -25,9 +31,12 @@ class Details extends Component {
             className="BackButton"
             handleGoBack={this.props.handleGoBack}
           />
-          <RecommenderHeader />
-          <Ingredients />
-          <Instructions />
+          <RecommenderHeader
+            recipeName={this.props.recipeName}
+            time={this.props.time}
+          />
+          <Ingredients ingredients={this.state.ingredients} />
+          <Instructions instructions={this.state.instructions} />
         </div>
       </div>
     );
