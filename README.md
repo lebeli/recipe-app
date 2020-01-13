@@ -19,7 +19,7 @@ This will create and start images/containers for:
 
 #### Usage
 ##### Requesting filtered recipes
-`POST localhost:8080/recipes`
+`GET localhost/api/recipes`
 
 Inside body specify filtering json object:
 ```json
@@ -35,7 +35,7 @@ Inside body specify filtering json object:
 ```
 
 ##### Adding a recipe
-`POST localhost:8080/recipes/add`
+`POST localhost/api/recipes/add`
 
 Inside body specify recipe json object (You can get a custom image url with adding-image-request in advance, shown next):
 ```json
@@ -64,7 +64,7 @@ Inside body specify recipe json object (You can get a custom image url with addi
 ```
 
 ##### Adding an image
-`POST localhost:8080/images/add`
+`POST localhost/api/images/add`
 
 Send image as form data in body.
 Key must be "file". Value the image. (Max file size: 1024KB)
@@ -74,4 +74,4 @@ The response contains the image url:
 ```
 
 ##### Requesting an image
-`GET localhost:8080/images/1.jpg`
+`GET localhost/api/images/1.jpg`

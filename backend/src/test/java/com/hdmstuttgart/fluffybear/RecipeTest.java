@@ -92,22 +92,4 @@ public class RecipeTest {
 		}
 		assertFalse(ingredientInList);
 	}
-
-//	@Test
-//	public void recipeSetRecipeInstructions() {
-//		List<RecipeIngredient> recipeIngredients = new ArrayList<>();
-//		recipeIngredients.add(recipeIngredients);
-//		recipe.setIngredients(recipeIngredients);
-//		assertEquals(recipe.getIngredients(), recipeIngredients);
-//	}
-//
-//	@Test
-//	public void recipeAddIngredients() {
-//		List<Ingredient> ingredients = new ArrayList<>();
-//		ingredients.add(noodles);
-//		ingredients.add(sauce);
-//		recipe.setIngredients(recipeIngredient);
-//		assertEquals(recipe.getYield(), 4);
-//	}
-
 }

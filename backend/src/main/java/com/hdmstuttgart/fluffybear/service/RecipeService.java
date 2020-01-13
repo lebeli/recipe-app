@@ -32,6 +32,15 @@ public class RecipeService {
 		return recipes;
 	}
 
+	public List<Recipe> getAllRecipesByFilterNoneVeganVegetarian(int minTime, int maxTime, List<String> categories) {
+		List<Recipe> recipes = new ArrayList<Recipe>();
+		recipeRepository.findByJsonParametersNoneVeganVegetarian(minTime, maxTime, categories)
+				.forEach(recipe -> {
+					recipes.add(recipe);
+				});
+		return recipes;
+	}
+
 	public Recipe getRecipe(long id) {
 		return recipeRepository.findById(id);
 	}
@@ -49,7 +58,7 @@ public class RecipeService {
 	}
 	
 	public void deleteRecipe(long id) {
-		recipeRepository.deleteById(id); // if id already exists, Spring updates the id with the passed recipe instance 
+		recipeRepository.deleteById(id);
 	}
 	
 	public void deleteAll() {
