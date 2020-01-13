@@ -20,7 +20,7 @@ class AddRecipeForm extends Component {
     this.state = {
       closeForm: params.closeForm,
       name: "",
-      meal: "fruehstueck",
+      meal: "breakfast",
       dietForm: "keine",
       duration: "01:00",
       ingredientsAmount: 0,
@@ -209,7 +209,20 @@ class AddRecipeForm extends Component {
   }
 
   saveRecipe() {
-    console.log("Saving recipe");
+    fetch("/api/recipes/add", {
+      method: "post",
+      headers: { "Content-Type": "application/json" },
+      body: {
+        name: this.state.name,
+        image: this.state.image,
+        totalTime: this.state.duration,
+        category: this.state.meal,
+        vegetarian: true,
+        vegan: false,
+        ingredients: this.state.ingredients,
+        instructions: this.state.instructions
+      }
+    });
     // TODO: Api call and reset of recipe state, if saving was successful
     // Also visual feedback, if saving was successful
   }
@@ -250,17 +263,17 @@ class AddRecipeForm extends Component {
                   onChange={event => this.updateStateParameters("meal", event)}
                 >
                   <FormControlLabel
-                    value="fruehstueck"
+                    value="breakfast"
                     control={<Radio disableRipple />}
                     label="Frühstück"
                   />
                   <FormControlLabel
-                    value="mittagessen"
+                    value="lunch"
                     control={<Radio disableRipple />}
                     label="Mittagessen"
                   />
                   <FormControlLabel
-                    value="abendessen"
+                    value="dinner"
                     control={<Radio disableRipple />}
                     label="Abendessen"
                   />
