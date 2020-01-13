@@ -28,17 +28,27 @@ public class RecipeController {
 	private RecipeIngredientService recipeIngredientService;
 	
 	@RequestMapping(value = "/recipes", consumes = {"application/json"})
-    public List<Recipe> getRecipes(@RequestBody Map<String, Boolean> filter) {
+    public List<Recipe> getRecipes(
+    		@RequestHeader(value="breakfast") boolean breakfast,
+			@RequestHeader(value="lunch") boolean lunch,
+			@RequestHeader(value="dinner") boolean dinner,
+			@RequestHeader(value="vegetarian") boolean vegetarian,
+			@RequestHeader(value="vegan") boolean vegan,
+			@RequestHeader(value="longTime") boolean longTime,
+			@RequestHeader(value="shortTime") boolean shortTime
+			) {
 		List<String> categories = new ArrayList<String>();
-		if(filter.get("breakfast")) { categories.add("breakfast"); }
-		if(filter.get("lunch")) { categories.add("lunch"); }
-		if(filter.get("dinner")) { categories.add("dinner"); }
+		if(breakfast) { categories.add("breakfast"); }
+		if(lunch) { categories.add("lunch"); }
+		if(dinner) { categories.add("dinner"); }
 		int minTime = 30;
 		int maxTime = 60;
-		if(filter.get("shortTime")) { minTime = 0; }
-		if(filter.get("shortTime")) { maxTime = 180; }
-
-		return recipeService.getAllRecipesByFilter(minTime, maxTime, categories, filter.get("vegetarian"), filter.get("vegan"));
+		if(shortTime) { minTime = 0; }
+		if(shortTime) { maxTime = 180; }
+		if(!vegan && !vegetarian) {
+			return recipeService.getAllRecipesByFilterNoneVeganVegetarian(minTime, maxTime, categories);
+		}
+		return recipeService.getAllRecipesByFilter(minTime, maxTime, categories, vegetarian, vegan);
 	}
 
 	@RequestMapping("/recipes/{id}")
