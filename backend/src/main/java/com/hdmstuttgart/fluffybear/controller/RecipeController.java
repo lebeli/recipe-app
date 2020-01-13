@@ -45,7 +45,9 @@ public class RecipeController {
 		int maxTime = 60;
 		if(shortTime) { minTime = 0; }
 		if(shortTime) { maxTime = 180; }
-
+		if(!vegan && !vegetarian) {
+			return recipeService.getAllRecipesByFilterNoneVeganVegetarian(minTime, maxTime, categories);
+		}
 		return recipeService.getAllRecipesByFilter(minTime, maxTime, categories, vegetarian, vegan);
 	}
 
