@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import "./Details.scss";
 
 function Ingredients(params) {
-  const items = params.ingredients.map(item => {
-    return <li>{item}</li>;
+  const items = params.ingredients.map((item, i) => {
+    return <li key={i}>{item}</li>;
   });
 
   return (
