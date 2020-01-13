@@ -27,8 +27,7 @@ public class RecipeController {
 	@Autowired
 	private RecipeIngredientService recipeIngredientService;
 	
-	@RequestMapping(value = "/recipes", method = {RequestMethod.POST},
-			consumes = {"application/json"})
+	@RequestMapping(value = "/recipes", consumes = {"application/json"})
     public List<Recipe> getRecipes(@RequestBody Map<String, Boolean> filter) {
 		List<String> categories = new ArrayList<String>();
 		if(filter.get("breakfast")) { categories.add("breakfast"); }

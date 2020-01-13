@@ -1,7 +1,7 @@
 [
   {
     "name": "Pfiffige Pfannkuchen",
-    "image": "https://image.brigitte.de/10912866/large1x1-622-622/ac2997ff530842027ca2a3f244ac5ae1/Bv/pfannkuchen.jpg",
+    "image": "",
     "totalTime": "50",
     "category": "breakfast",
     "vegetarian": true,
@@ -35,7 +35,7 @@
   },
   {
     "name": "Mickriges Müsli",
-    "image": "https://www.lecker.de/assets/styles/563x422/public/field/image/muesli-selber-machen-b3.jpg?itok=UEVVohMQ",
+    "image": "",
     "totalTime": "10",
     "category": "breakfast",
     "vegetarian": true,
@@ -79,7 +79,7 @@
   },
   {
     "name": "Korrekte Kürbissuppe",
-    "image": "https://img.chefkoch-cdn.de/rezepte/1277281233088043/bilder/1056717/crop-960x540/kuerbissuppe.jpg",
+    "image": "",
     "totalTime": "60",
     "category": "breakfast",
     "vegetarian": true,
@@ -124,7 +124,7 @@
   },
   {
     "name": "Affengeiles Avocadotoast",
-    "image": "https://img.chefkoch-cdn.de/rezepte/1277281233088043/bilder/1056717/crop-960x540/kuerbissuppe.jpg",
+    "image": "",
     "totalTime": "60",
     "category": "breakfast",
     "vegetarian": false,
@@ -170,7 +170,7 @@
   },
   {
     "name": "Schmackhafter Smoothie",
-    "image": "https://img.chefkoch-cdn.de/rezepte/1277281233088043/bilder/1056717/crop-960x540/kuerbissuppe.jpg",
+    "image": "",
     "totalTime": "15",
     "category": "breakfast",
     "vegetarian": true,
@@ -209,7 +209,7 @@
   },
   {
     "name": "Frivole Frühstückseier mit Pfiff",
-    "image": "https://img.chefkoch-cdn.de/rezepte/43571014898214/bilder/1005557/crop-600x400/fruehstueckseier-mit-pfiff.jpg",
+    "image": "",
     "totalTime": "20",
     "category": "breakfast",
     "vegetarian": false,
@@ -248,7 +248,7 @@
   },
   {
     "name": "Vortreffliche vegane Waffeln",
-    "image": "https://veganheaven.de/wp-content/uploads/2019/02/Veganes-Fr%C3%BChst%C3%BCck-14.jpg",
+    "image": "",
     "totalTime": "40",
     "category": "breakfast",
     "vegetarian": true,
@@ -291,7 +291,7 @@
   },
   {
     "name": "Fantastischer Frühstücks-Couscous",
-    "image": "https://img.chefkoch-cdn.de/rezepte/3017651454568586/bilder/1131190/crop-600x400/fruehstuecks-couscous-mit-joghurtcreme-und-fruechten.jpg",
+    "image": "",
     "totalTime": "25",
     "category": "breakfast",
     "vegetarian": true,
@@ -330,7 +330,7 @@
   },
   {
     "name": "Genialer Grießbrei mit Mandarinensauce",
-    "image": "https://www.eat-this.org/wp-content/uploads/2019/02/griessbrei-mit-mandarinensauce-1280x854@2x.jpg",
+    "image": "",
     "totalTime": "10",
     "category": "breakfast",
     "vegetarian": true,
@@ -366,7 +366,7 @@
   },
   {
     "name": "Akkurater Arme Ritter",
-    "image": "https://img.chefkoch-cdn.de/rezepte/1124881218819549/bilder/130521/crop-600x400/arme-ritter.jpg",
+    "image": "",
     "totalTime": "10",
     "category": "breakfast",
     "vegetarian": true,
@@ -409,7 +409,7 @@
   },
   {
     "name": "Bekannte Bratlinge",
-    "image": "https://st3.depositphotos.com/8416818/13565/i/1600/depositphotos_135653816-stock-photo-fried-vegetable-patties-on-a.jpg",
+    "image": "",
     "totalTime": "20",
     "category": "lunch",
     "vegetarian": true,
@@ -448,7 +448,7 @@
   },
   {
     "name": "Kaiserliche Kartoffeln",
-    "image": "https://einfach-schnell-gesund-vegan.de/wp-content/gallery/haupt/bratkartoffeln-mit-champignons.jpg",
+    "image": "",
     "totalTime": "45",
     "category": "lunch",
     "vegetarian": false,
@@ -488,7 +488,7 @@
   },
   {
     "name": "Nachdenkliche Nudelpfanne",
-    "image": "https://kochkarussell.com/wp-content/uploads/2019/04/Türkische-Nudeln-mit-Hackfleisch-Joghurt-und-Tomaten-1.jpg",
+    "image": "",
     "totalTime": "20",
     "category": "lunch",
     "vegetarian": false,
@@ -539,7 +539,7 @@
   },
   {
     "name": "Peppige Paprikaschoten",
-    "image": "https://www.gutekueche.at/img/rezept/12686/gefuellte-paprika-mit-schafskaese-und-couscous.jpg",
+    "image": "",
     "totalTime": "35",
     "category": "lunch",
     "vegetarian": true,
@@ -580,7 +580,7 @@
   },
   {
     "name": "Zeitlose Zucchinistäbchen",
-    "image": "https://www.aldi-sued.de/fileadmin/_processed_/e/e/csm_Rezepte_Zucchini_05_Panierte_Zucchinistaebchen_mit_Gartenkraeuterdip_daP_d6c72f931f.jpg",
+    "image": "",
     "totalTime": "55",
     "category": "lunch",
     "vegetarian": true,
@@ -624,7 +624,7 @@
   },
   {
     "name": "Quirliger Quinoasalat",
-    "image": "https://img.chefkoch-cdn.de/rezepte/2935291445873579/bilder/1029418/crop-600x400/inkasalat-wuerziger-quinoasalat-mit-avocado-und-rucola.jpg",
+    "image": "",
     "totalTime": "60",
     "category": "lunch",
     "vegetarian": true,
@@ -694,7 +694,7 @@
   },
   {
     "name": "Party Pizza-Muffins",
-    "image": "https://www.einfachbacken.de/sites/einfachbacken.de/files/styles/full_width_mobile_retina_4_3/public/2018-09/pizza_muffins_45715.jpg?itok=IX4CF8__",
+    "image": "",
     "totalTime": "30",
     "category": "lunch",
     "vegetarian": false,
@@ -737,7 +737,7 @@
   },
   {
     "name": "Super Sandwich",
-    "image": "http://assets.kraftfoods.com/recipe_images/opendeploy/195654_640x428.jpg",
+    "image": "",
     "totalTime": "35",
     "category": "lunch",
     "vegetarian": false,
@@ -794,7 +794,7 @@
   },
   {
     "name": "Tierisches Toast",
-    "image": "https://images.eatsmarter.de/sites/default/files/styles/576x432/public/schinken-kaese-toasts-in-ei-gebraten-115831.jpg",
+    "image": "",
     "totalTime": "15",
     "category": "lunch",
     "vegetarian": false,
@@ -841,7 +841,7 @@
   },
   {
     "name": "Tolles Toast",
-    "image": "https://www.foodtempel.de/wp-content/uploads/2018/04/20180827112649__MG_0552-678x470.jpg",
+    "image": "",
     "totalTime": "20",
     "category": "lunch",
     "vegetarian": false,
@@ -885,7 +885,7 @@
   },
   {
     "name": "Zielorientierte Zucchinipuffer",
-    "image": "https://images.lecker.de/,id=e4f89373,b=lecker,w=610,cg=c.jpg",
+    "image": "",
     "totalTime": "20",
     "category": "lunch",
     "vegetarian": false,
@@ -920,7 +920,7 @@
   },
   {
     "name": "Rustikales Röstbrot mit Tomaten und Spiegelei",
-    "image": "https://www.pexels.com/de-de/foto/brot-ernahrung-essen-fleisch-1833336/",
+    "image": "",
     "totalTime": "20",
     "category": "dinner",
     "vegetarian": true,
@@ -964,7 +964,7 @@
   },
   {
     "name": "Belastender Bohnen-Brokkoli-Salat",
-    "image": "https://www.edeka.de/rezepte/rezept/bohnen-brokkoli-salat.jsp",
+    "image": "",
     "totalTime": "30",
     "category": "dinner",
     "vegetarian": true,
@@ -1028,7 +1028,7 @@
   },
   {
     "name": "Köstlicher Karotten-Hummus-Dip",
-    "image": "https://www.edeka.de/rezepte/rezept/karotten-hummus-dip.jsp",
+    "image": "",
     "totalTime": "10",
     "category": "dinner",
     "vegetarian": true,
@@ -1079,7 +1079,7 @@
   },
   {
     "name": "Hausgemachter Hähnchen-Nudel-Auflauf",
-    "image": "https://www.edeka.de/rezepte/rezept/haehnchen-nudel-auflauf.jsp",
+    "image": "",
     "totalTime": "60",
     "category": "dinner",
     "vegetarian": false,
@@ -1149,7 +1149,7 @@
   },
   {
     "name": "Krosses Kartoffelgratin",
-    "image": "https://www.edeka.de/rezepte/rezept/kartoffelgratin.jsp",
+    "image": "",
     "totalTime": "60",
     "category": "dinner",
     "vegetarian": false,
@@ -1217,7 +1217,7 @@
   },
   {
     "name": "Raffinierte Rotkohl-Quinoa-Pfanne",
-    "image": "https://www.edeka.de/rezepte/rezept/rotkohl-quinoa-pfanne.jsp",
+    "image": "",
     "totalTime": "20",
     "category": "dinner",
     "vegetarian": true,
@@ -1274,7 +1274,7 @@
   },
   {
     "name": "Simple Spaghetti Tarte",
-    "image": "https://www.edeka.de/rezepte/rezept/spaghetti-tarte.jsp",
+    "image": "",
     "totalTime": "60",
     "category": "dinner",
     "vegetarian": false,
@@ -1348,7 +1348,7 @@
   },
   {
     "name": "Erfrischender Salat",
-    "image": "https://www.edeka.de/rezepte/rezept/erfrischender-salat.jsp",
+    "image": "",
     "totalTime": "25",
     "category": "dinner",
     "vegetarian": false,
@@ -1441,7 +1441,7 @@
   },
   {
     "name": "Schnelle Champignon-Pfanne",
-    "image": "https://www.edeka.de/rezepte/rezept/champignon-pfanne.jsp",
+    "image": "",
     "totalTime": "30",
     "category": "dinner",
     "vegetarian": false,
@@ -1523,7 +1523,7 @@
   },
   {
     "name": "Geschmackvoller Gemüse-Cheeseburger",
-    "image": "https://www.edeka.de/rezepte/rezept/gemuese-cheeseburger.jsp",
+    "image": "",
     "totalTime": "50",
     "category": "dinner",
     "vegetarian": true,

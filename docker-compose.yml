@@ -12,7 +12,7 @@ services:
     ports:
       - 80:80
   mysql-docker-container:
-    image: mysql:latest
+    image: mysql:5.7.27
     environment:
       - MYSQL_ROOT_PASSWORD=toor
       - MYSQL_DATABASE=fluffy_bear

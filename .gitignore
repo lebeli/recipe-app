@@ -21,17 +21,68 @@ chrome-user-data
 *.swp
 *.swo
 
+# eclipse files
+.project
+.metadata
+bin/
+tmp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.settings/
+.loadpath
+.recommenders
+
+# External tool builders
+.externalToolBuilders/
+
+# Locally stored "Eclipse launch configurations"
+*.launch
+
+# CDT- autotools
+.autotools
+
+# Java annotation processor (APT)
+.factorypath
+
+# PDT-specific (PHP Development Tools)
+.buildpath
+
+# sbteclipse plugin
+.target
+
+# Tern plugin
+.tern-project
+
+# TeXlipse plugin
+.texlipse
+
+# STS (Spring Tool Suite)
+.springBeans
+
+# Code Recommenders
+.recommenders/
+
+# Annotation Processing
+.apt_generated/
+.apt_generated_test/
+
 # java target folder
-*/target/**
+target/
+*/bin/**
 
 # Docker generated dirs and files
 mysql/
+backend/recipe_images/
 
 # Runtime data
 pids
 *.pid
 *.seed
 *.pid.lock
+backend/upload-dir/
 
 # Grunt intermediate storage (http://gruntjs.com/creating-plugins#storing-task-files)
 .grunt
@@ -82,7 +133,7 @@ log/
 
 # OS generated files #
 ######################
-.DS_Store
+*.DS_Store
 .DS_Store?
 ehthumbs.db
 Icon?
