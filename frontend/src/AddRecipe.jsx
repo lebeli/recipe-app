@@ -58,6 +58,7 @@ class AddRecipe extends Component {
               </p>
               <div id="add_recipe_button_container">
                 <Button
+                  id="open_form_button"
                   color="secondary"
                   variant="contained"
                   onClick={this.openForm}

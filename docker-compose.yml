@@ -1,6 +1,16 @@
 version: "3"
 
 services:
+  reverseproxy:
+    depends_on:
+      - frontend
+      - backend
+    image: reverseproxy
+    build:
+      context: ./proxy
+      dockerfile: Dockerfile
+    ports:
+      - 80:80
   mysql-docker-container:
     image: mysql:5.7.27
     environment:
@@ -9,29 +19,31 @@ services:
       - MYSQL_USER=springuser
       - MYSQL_PASSWORD=ThePassword
     ports:
-      - 3306:3306
-    volumes:
-      - ./mysql:/data/mysql #nicht für Produktion
-  fluffy-bear-backend:
+      - 3306
+    #TODO: mapping für Development, nicht für Produktion (ist Mapping überhaupt notwendig?)
+    #volumes:
+    #  - ./mysql:/data/mysql
+  backend:
     image: backend
     build:
-      context: ./backend/
+      context: ./backend
       dockerfile: Dockerfile
-    environment: 
+    environment:
       - SPRING_DATASOURCE_URL=jdbc:mysql://mysql-docker-container:3306/fluffy_bear?serverTimezone=UTC
     depends_on:
       - mysql-docker-container
     ports:
-      - 8080:8080 # host:container
+      - 8080 # host:container
     volumes:
       - /data/spring-boot-app #TODO: mapping für Development
-  fluffy-bear-frontend:
+  frontend:
     image: frontend
     build:
-      context: ./frontend/
+      context: ./frontend
       dockerfile: Dockerfile
     ports:
-      - 3000:3000
-    volumes:
-      - ./frontend:/frontend #nicht für Produktion
-
+      - 80
+  #TODO: raus in Produktion, funktionieren noch nicht für Development, da Rechte für Ordner in Container fehlen
+  #volumes:
+  #- ./src:/usr/share/nginx/html/dist/
+  #- ./public:/usr/share/nginx/html/

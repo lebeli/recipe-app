@@ -46,16 +46,16 @@ public class ImageController {
     @PostMapping("/images/add")
     @ResponseBody
     public String handleFileUpload(@RequestParam("file") MultipartFile file) {
-        String uuid = null;
+        String imageURL = null;
         try {
-            uuid = storageService.store(file);
+            imageURL = storageService.store(file);
         } catch (StorageServiceException e) {
             System.err.println("An error occured while storing image.");
             return "An error occured while storing image.";
         }
 
         JSONObject response = new JSONObject();
-        response.put("url", uuid);
+        response.put("url", imageURL);
 
         return response.toString();
     }
