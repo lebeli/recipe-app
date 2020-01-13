@@ -6,7 +6,9 @@ import {
   Button,
   FormControlLabel,
   Radio,
-  FormLabel
+  FormLabel,
+  FormGroup,
+  Checkbox
 } from "@material-ui/core";
 import CloseIcon from "@material-ui/icons/Close";
 import AddIcon from "@material-ui/icons/Add";
@@ -21,13 +23,16 @@ class AddRecipeForm extends Component {
       closeForm: params.closeForm,
       name: "",
       meal: "breakfast",
+      vegan: false,
+      vegetarian: false,
       dietForm: "keine",
       duration: "01:00",
       ingredientsAmount: 0,
       ingredients: [],
       stepsAmount: 0,
       steps: [],
-      image: {}
+      image: {},
+      fileUrl: ""
     };
 
     this.addIngredient = this.addIngredient.bind(this);
@@ -40,12 +45,19 @@ class AddRecipeForm extends Component {
     });
   }
 
+  setDietForms(name, value) {
+    this.setState({
+      [name]: value
+    });
+  }
+
   showIngredients() {
     var ingredientsComponent = new Array();
     if (this.state.ingredientsAmount > 0) {
       for (var x = 0; x < this.state.ingredientsAmount; x++) {
         ingredientsComponent.push(
           <Grid
+            className="ingredient"
             container
             spacing={2}
             key={"ingredient" + (x + 1)}
@@ -134,6 +146,7 @@ class AddRecipeForm extends Component {
       for (var x = 0; x < this.state.stepsAmount; x++) {
         steps.push(
           <Grid
+            className="step"
             container
             spacing={2}
             key={"step" + (x + 1)}
@@ -170,7 +183,7 @@ class AddRecipeForm extends Component {
   }
 
   updateStep(stepIndex, value) {
-    var index = stepIndex.substring(1, 2);
+    var index = stepIndex.substring(1, stepIndex.length);
     var stepsCopy = this.state.steps;
     var step = stepsCopy[index];
     step = value;
@@ -209,20 +222,35 @@ class AddRecipeForm extends Component {
   }
 
   saveRecipe() {
-    fetch("/api/recipes/add", {
+    console.log(this.state.image);
+    fetch("/api/images/add", {
       method: "post",
       headers: { "Content-Type": "application/json" },
       body: {
-        name: this.state.name,
-        image: this.state.image,
-        totalTime: this.state.duration,
-        category: this.state.meal,
-        vegetarian: true,
-        vegan: false,
-        ingredients: this.state.ingredients,
-        instructions: this.state.instructions
+        file: this.state.image
       }
-    });
+    }).then(
+      result => {
+        console.log(result);
+        console.log(result.url);
+        // fetch("/api/recipes/add", {
+        //   method: "post",
+        //   headers: { "Content-Type": "application/json" },
+        //   body: {
+        //     name: this.state.name,
+        //     image: result.url,
+        //     totalTime: this.state.duration,
+        //     category: this.state.meal,
+        //     vegetarian: this.state.vegetarian,
+        //     vegan: this.state.vegan,
+        //     ingredients: this.state.ingredients,
+        //     instructions: this.state.instructions
+        //   }
+        // });
+      },
+      error => {}
+    );
+
     // TODO: Api call and reset of recipe state, if saving was successful
     // Also visual feedback, if saving was successful
   }
@@ -250,7 +278,7 @@ class AddRecipeForm extends Component {
             value={this.state.name}
             onChange={event => this.updateStateParameters("name", event)}
           />
-          <Grid container spacing={3} id="radio_buttons_container">
+          <Grid container spacing={3} id="meal_dietform_container">
             <Grid item sm={6}>
               <FormLabel component="legend" className="form_labels" required>
                 Mahlzeit
@@ -281,34 +309,41 @@ class AddRecipeForm extends Component {
               </div>
             </Grid>
             <Grid item sm={6}>
-              <FormLabel component="legend" className="form_labels" required>
+              <FormLabel component="legend" className="form_labels">
                 Ernährungsform
               </FormLabel>
-              <div className="radioButtons">
-                <RadioGroup
-                  aria-label="diet_form"
-                  name="diet_form"
-                  value={this.state.dietForm}
-                  onChange={event =>
-                    this.updateStateParameters("dietForm", event)
-                  }
-                >
+              <div className="checkBoxes">
+                <FormGroup aria-label="diet_form">
                   <FormControlLabel
-                    value="keine"
-                    control={<Radio disableRipple />}
-                    label="keine"
-                  />
-                  <FormControlLabel
-                    value="vegetarisch"
-                    control={<Radio disableRipple />}
+                    control={
+                      <Checkbox
+                        disableRipple
+                        value="vegetarisch"
+                        checked={this.state.vegetarian}
+                        onChange={() =>
+                          this.setDietForms(
+                            "vegetarian",
+                            !this.state.vegetarian
+                          )
+                        }
+                      />
+                    }
                     label="vegetarisch"
                   />
                   <FormControlLabel
-                    value="vegan"
-                    control={<Radio disableRipple />}
+                    control={
+                      <Checkbox
+                        disableRipple
+                        value="vegan"
+                        checked={this.state.vegan}
+                        onChange={() =>
+                          this.setDietForms("vegan", !this.state.vegan)
+                        }
+                      />
+                    }
                     label="vegan"
                   />
-                </RadioGroup>
+                </FormGroup>
               </div>
             </Grid>
           </Grid>
@@ -336,7 +371,11 @@ class AddRecipeForm extends Component {
           </FormLabel>
           <div className="ingredients_container">{this.showIngredients()}</div>
           <div className="recipe_add" display="flex">
-            <Button onClick={this.addIngredient} disableTouchRipple>
+            <Button
+              id="add_ingredient_button"
+              onClick={this.addIngredient}
+              disableTouchRipple
+            >
               <AddIcon />
               Zutat hinzufügen
             </Button>

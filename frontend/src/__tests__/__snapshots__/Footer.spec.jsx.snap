@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Footer /> renders correctly 1`] = `
+<div
+  className="Footer"
+>
+  <div
+    className="MuiBox-root MuiBox-root-2"
+  >
+    <p>
+      <a
+        href="#"
+      >
+        Impressum
+      </a>
+       | 
+      <a
+        href="#"
+      >
+        Datenschutz
+      </a>
+    </p>
+  </div>
+</div>
+`;

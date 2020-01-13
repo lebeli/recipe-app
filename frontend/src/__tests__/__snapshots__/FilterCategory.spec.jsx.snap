@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<FilterCategory /> renders correctly 1`] = `
+<div
+  className="FilterCategory"
+>
+  <button
+    aria-pressed={false}
+    className="MuiButtonBase-root MuiToggleButton-root"
+    disabled={false}
+    onBlur={[Function]}
+    onChange={[Function]}
+    onClick={[Function]}
+    onDragLeave={[Function]}
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseLeave={[Function]}
+    onMouseUp={[Function]}
+    onTouchEnd={[Function]}
+    onTouchMove={[Function]}
+    onTouchStart={[Function]}
+    tabIndex={0}
+    type="button"
+    value="breakfast"
+  >
+    <span
+      className="MuiToggleButton-label"
+    >
+      Frühstück
+    </span>
+  </button>
+</div>
+`;

@@ -1,0 +1,68 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<AddRecipe /> renders correctly 1`] = `
+<div
+  className="Addrecipe"
+>
+  <div
+    className="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-5"
+    id="add_recipe_container"
+  >
+    <div
+      className="MuiGrid-root MuiGrid-item MuiGrid-grid-sm-12 MuiGrid-grid-md-7"
+      id="add_recipe_description"
+    >
+      <h2
+        id="add_recipe_headline"
+      >
+        Foodies aufgepasst!
+      </h2>
+      <p>
+        Minions ipsum uuuhhh tulaliloo belloo! Wiiiii poulet tikka masala bananaaaa para tú jeje poopayee po kass. Pepete tank yuuu! Jeje jiji. Bee do bee do bee do belloo! Bananaaaa gelatooo bananaaaa chasy para tú tulaliloo. Jeje chasy jiji tank yuuu! Po kass ti aamoo! Gelatooo wiiiii jiji. Wiiiii chasy aaaaaah me want bananaaa! Tulaliloo po kass baboiii tank yuuu! Bananaaaa la bodaaa tank yuuu! Chasy hana dul sae para tú po kass poulet tikka masala tulaliloo poopayee belloo! Daa la bodaaa tank yuuu!
+         
+      </p>
+      <p>
+        Tulaliloo gelatooo poopayee wiiiii baboiii butt bananaaaa belloo! Poulet tikka masala baboiii chasy. Potatoooo para tú potatoooo tulaliloo tank yuuu! Baboiii jiji. Jeje poulet tikka masala uuuhhh jiji para tú pepete hana dul sae chasy. Para tú pepete gelatooo la bodaaa tatata bala tu tulaliloo tatata bala tu. Jeje hana dul sae wiiiii jeje hahaha jiji. Butt tatata bala tu poulet tikka masala ti aamoo! Jeje hahaha baboiii. Poopayee ti aamoo! Gelatooo tulaliloo bananaaaa underweaaar bananaaaa tulaliloo. Chasy ti aamoo! Daa para tú jeje.
+      </p>
+      <div
+        id="add_recipe_button_container"
+      >
+        <button
+          className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedSecondary"
+          disabled={false}
+          id="open_form_button"
+          onBlur={[Function]}
+          onClick={[Function]}
+          onDragLeave={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex={0}
+          type="button"
+        >
+          <span
+            className="MuiButton-label"
+          >
+            Rezept hinzufügen
+          </span>
+        </button>
+      </div>
+    </div>
+    <div
+      className="MuiGrid-root MuiGrid-item MuiGrid-grid-sm-12 MuiGrid-grid-md-5"
+      id="add_recipe_image_container"
+    >
+      <img
+        src="test-file-stub"
+        width="100%"
+      />
+    </div>
+  </div>
+</div>
+`;

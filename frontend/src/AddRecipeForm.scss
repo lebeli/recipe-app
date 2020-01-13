@@ -88,6 +88,16 @@
     }
   }
 
+  // Checkboxes
+  .checkBoxes {
+    .MuiCheckbox-colorSecondary:hover {
+      background-color: transparent;
+    }
+    .MuiCheckbox-colorSecondary.Mui-checked {
+      color: $primaryColor;
+    }
+  }
+
   // Arbeitsschritte
 
   h4 {
