@@ -8,7 +8,7 @@ function RecommenderHeader(params) {
       <div className="HeaderContent">{params.recipeName}</div>
       <div className="HeaderContent">
         <AccessTimeIcon />
-        {params.time}
+        {params.duration}
       </div>
     </div>
   );

@@ -6,6 +6,8 @@ import Header from "./Header";
 import Filter from "./Filter";
 import Footer from "./Footer";
 import Recommender from "./Recommender";
+import ToastImage from "./images/toast.jpg";
+import LasagneImage from "./images/lasagne.jpg";
 import "./App.scss";
 
 class App extends Component {
@@ -13,12 +15,14 @@ class App extends Component {
     super(params);
     this.state = {
       pageNumber: 0,
+      image: LasagneImage,
       recipeName: "Lasagne",
-      time: "45min"
+      duration: "45min"
     };
 
     this.goToDetails = this.goToDetails.bind(this);
     this.handleGoBack = this.handleGoBack.bind(this);
+    this.changeRecipe = this.changeRecipe.bind(this);
   }
 
   goToDetails() {
@@ -33,6 +37,14 @@ class App extends Component {
     });
   }
 
+  changeRecipe() {
+    this.setState({
+      image: ToastImage,
+      recipeName: "Toast",
+      duration: "20min"
+    });
+  }
+
   render() {
     const pageNumber = this.state.pageNumber;
     let content;
@@ -40,16 +52,19 @@ class App extends Component {
       content = (
         <Recommender
           goToDetails={this.goToDetails}
+          image={this.state.image}
           recipeName={this.state.recipeName}
-          time={this.state.time}
+          duration={this.state.duration}
+          changeRecipe={this.changeRecipe}
         />
       );
     } else {
       content = (
         <Details
           handleGoBack={this.handleGoBack}
+          image={this.state.image}
           recipeName={this.state.recipeName}
-          time={this.state.time}
+          duration={this.state.duration}
         />
       );
     }

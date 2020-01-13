@@ -12,7 +12,6 @@ class Details extends Component {
     super(props);
     this.state = {
       pageNumber: 1,
-      image: LasagneImage,
       ingredients: ["flour", "cucumber"],
       instructions: [
         "Banannaaaaa",
@@ -25,7 +24,7 @@ class Details extends Component {
   render() {
     return (
       <div className="Details">
-        <RecommenderImage image={this.state.image} />
+        <RecommenderImage image={this.props.image} />
         <div className="DetailedInfo">
           <BackButton
             className="BackButton"
@@ -33,7 +32,7 @@ class Details extends Component {
           />
           <RecommenderHeader
             recipeName={this.props.recipeName}
-            time={this.props.time}
+            duration={this.props.duration}
           />
           <Ingredients ingredients={this.state.ingredients} />
           <Instructions instructions={this.state.instructions} />
