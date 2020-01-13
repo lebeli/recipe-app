@@ -222,13 +222,11 @@ class AddRecipeForm extends Component {
   }
 
   saveRecipe() {
-    console.log(this.state.image);
+    const formData = new FormData();
+    formData.append("file", this.state.image);
     fetch("/api/images/add", {
       method: "post",
-      headers: { "Content-Type": "application/json" },
-      body: {
-        file: this.state.image
-      }
+      body: formData
     }).then(
       result => {
         console.log(result);
