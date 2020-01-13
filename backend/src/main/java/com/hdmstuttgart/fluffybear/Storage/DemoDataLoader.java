@@ -46,7 +46,7 @@ public class DemoDataLoader implements ApplicationRunner {
             // Save ingredients
             JSONArray ingredientArray = (JSONArray) recipeJSON.get("ingredients");
             recipeJSON.remove("ingredients"); // Later added via repository
-            recipeJSON.put("image", "localhost:8080/images/" + currentIndex + ".jpg"); // set image path
+            recipeJSON.put("image", "localhost/api/images/" + currentIndex + ".jpg"); // set image path
             try {
                 // Map recipeJSON to recipe object
                 Recipe recipe = mapper.readValue(recipeJSON.toString(), Recipe.class);
