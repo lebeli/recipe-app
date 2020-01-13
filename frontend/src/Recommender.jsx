@@ -18,7 +18,7 @@ class Recommender extends Component {
 
   changeImage() {
     this.setState({
-      image: TostImage
+      image: ToastImage
     });
   }
 
