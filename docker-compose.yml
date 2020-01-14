@@ -18,11 +18,6 @@ services:
       - MYSQL_DATABASE=fluffy_bear
       - MYSQL_USER=springuser
       - MYSQL_PASSWORD=ThePassword
-    ports:
-      - 3306
-    #TODO: mapping für Development, nicht für Produktion (ist Mapping überhaupt notwendig?)
-    #volumes:
-    #  - ./mysql:/data/mysql
   backend:
     image: backend
     build:
@@ -32,18 +27,13 @@ services:
       - SPRING_DATASOURCE_URL=jdbc:mysql://mysql-docker-container:3306/fluffy_bear?serverTimezone=UTC
     depends_on:
       - mysql-docker-container
-    ports:
-      - 8080 # host:container
     volumes:
-      - /data/spring-boot-app #TODO: mapping für Development
+      - /data/spring-boot-app
   frontend:
     image: frontend
     build:
       context: ./frontend
       dockerfile: Dockerfile
-    ports:
-      - 80
-  #TODO: raus in Produktion, funktionieren noch nicht für Development, da Rechte für Ordner in Container fehlen
-  #volumes:
-  #- ./src:/usr/share/nginx/html/dist/
-  #- ./public:/usr/share/nginx/html/
+    volumes:
+      - ./frontend:/frontend/
+      - /frontend/node_modules

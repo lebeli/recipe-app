@@ -34,7 +34,7 @@ class AddRecipe extends Component {
         <Grid container spacing={5} id="add_recipe_container">
           <React.Fragment>
             <Grid item sm={12} md={7} id="add_recipe_description">
-              <h2 id="add_recipe_headline">Foodies aufgepasst!</h2>
+              <h2 id="add_recipe_headline">Foodies bitte aufgepasst!!!!!</h2>
               <p>
                 Minions ipsum uuuhhh tulaliloo belloo! Wiiiii poulet tikka
                 masala bananaaaa para tú jeje poopayee po kass. Pepete tank
