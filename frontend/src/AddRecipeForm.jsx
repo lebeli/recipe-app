@@ -31,7 +31,7 @@ class AddRecipeForm extends Component {
       ingredients: [],
       stepsAmount: 0,
       steps: [],
-      image: {},
+      image: "",
       fileUrl: ""
     };
 
@@ -217,37 +217,79 @@ class AddRecipeForm extends Component {
 
   handleImageUpload(file) {
     this.setState({
-      file: file
+      image: file
     });
   }
 
   saveRecipe() {
+    /// Funktionierendes GET----------------------
+    // const options = {
+    //   method: "GET",
+    //   headers: {
+    //     Accept: "application/json",
+    //     "Content-Type": "application/json",
+    //     breakfast: true,
+    //     lunch: true,
+    //     dinner: true,
+    //     vegetarian: false,
+    //     vegan: false,
+    //     longTime: true,
+    //     shortTime: true
+    //   }
+    // };
+
+    // fetch("/api/recipes", options).then(response => {
+    //   console.log(response.json);
+    // });
+    // -----------------------------------------------
+
     const formData = new FormData();
     formData.append("file", this.state.image);
-    fetch("/api/images/add", {
-      method: "post",
+
+    const addImageOptions = {
+      method: "POST",
       body: formData
-    }).then(
-      result => {
-        console.log(result);
-        console.log(result.url);
-        // fetch("/api/recipes/add", {
-        //   method: "post",
-        //   headers: { "Content-Type": "application/json" },
-        //   body: {
-        //     name: this.state.name,
-        //     image: result.url,
-        //     totalTime: this.state.duration,
-        //     category: this.state.meal,
-        //     vegetarian: this.state.vegetarian,
-        //     vegan: this.state.vegan,
-        //     ingredients: this.state.ingredients,
-        //     instructions: this.state.instructions
-        //   }
-        // });
-      },
-      error => {}
-    );
+    };
+
+    fetch("/api/images/add", addImageOptions)
+      .then(res => {
+        if (res.status == 200) {
+          return res.json();
+        }
+      })
+      .then(result => {
+        console.log("result.url:" + result.url);
+        const addRecipeOptions = {
+          headers: {
+            "Content-Type": "application/json"
+          },
+          method: "POST",
+          body: JSON.stringify({
+            name: this.state.name,
+            image: result.url,
+            totalTime: this.state.duration,
+            category: this.state.meal,
+            vegetarian: this.state.vegetarian,
+            vegan: this.state.vegan,
+            ingredients: this.state.ingredients,
+            instructions: this.state.steps
+          })
+        };
+
+        console.log("sdlfkjsldfj");
+
+        fetch("/api/recipes/add", addRecipeOptions)
+          .then(result => console.log(result.status))
+          .then(result => {
+            console.log("Added Recipe");
+          })
+          .catch(error => {
+            console.log("Something bad happend." + error);
+          });
+      })
+      .catch(error => {
+        console.log("fetch 1 ging nicht");
+      });
 
     // TODO: Api call and reset of recipe state, if saving was successful
     // Also visual feedback, if saving was successful
@@ -403,7 +445,7 @@ class AddRecipeForm extends Component {
                 </Button>
               </Grid>
               <Grid item id="filename_item">
-                <div>{this.state.file != null && this.state.file.name}</div>
+                <div>{this.state.image != null && this.state.image.name}</div>
               </Grid>
             </Grid>
           </div>
