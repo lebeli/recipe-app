@@ -17,8 +17,14 @@ public class Ingredient {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 
+	/**
+	 * Ingredient name.
+	 */
 	private String name;
 
+	/**
+	 * List of RecipeIngredient instances, containing all recipes this ingredient is needed for.
+	 */
 	@OneToMany(mappedBy = "ingredient", cascade = CascadeType.ALL, orphanRemoval = true)
 	@JsonIgnore
 	private List<RecipeIngredient> recipes = new ArrayList<>();

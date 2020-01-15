@@ -11,17 +11,41 @@ import java.util.*;
 @Entity
 @JsonIgnoreProperties({"id"})
 public class Recipe {
+	/**
+	 * Recipe id.
+	 */
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 
+	/**
+	 * Recipe name.
+	 */
 	private String name;
+	/**
+	 * Image for recipe.
+	 */
 	private String image;
+	/**
+	 * Estimated preparation and cooking time.
+	 */
 	private int totalTime;
+	/**
+	 * Recipe category (breakfast, lunch or dinner).
+	 */
 	private String category;
+	/**
+	 * Wether or not recipe is vegetarian.
+	 */
 	private boolean vegetarian;
+	/**
+	 * Wether or not recipe is vegan.
+	 */
 	private boolean vegan;
 
+	/**
+	 * List of RecipeIngredient instances, containing all ingredients needed for this recipe.
+	 */
 	@OneToMany(mappedBy = "recipe", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<RecipeIngredient> ingredients = new ArrayList<>();
 

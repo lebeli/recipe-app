@@ -12,9 +12,15 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class RecipeIngredientKey implements Serializable {
 
+	/**
+	 * Recipe id.
+	 */
 	@Column(name = "recipe_id")
 	private long recipeId;
-	
+
+	/**
+	 * Ingredient id.
+	 */
 	@Column(name = "ingredient_id")
 	private long ingredientId;
 	

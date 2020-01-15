@@ -10,22 +10,34 @@ import javax.persistence.*;
  */
 @Entity
 public class RecipeIngredient {
+	/**
+	 * Composite key for recipe and ingredient id.
+	 */
 	@EmbeddedId
 	@JsonIgnore
     private RecipeIngredientKey id = new RecipeIngredientKey();
-	
+
+	/**
+	 * Recipe instance of this relationship.
+	 */
 	@ManyToOne(fetch = FetchType.LAZY)
     @MapsId("recipeId")
 	@JoinColumn(name = "recipe_id", referencedColumnName = "id")
 	@JsonIgnore
 	private Recipe recipe;
-	
+
+	/**
+	 * Ingredient instance of this relationship.
+	 */
 	@ManyToOne(fetch = FetchType.LAZY)
     @MapsId("ingredientId")
 	@JoinColumn(name = "ingredient_id", referencedColumnName = "id")
 	@JsonUnwrapped
 	private Ingredient ingredient;
 
+	/**
+	 * Ingredient amount for a realated recipe.
+	 */
 	private String typeAmount;
 	
 	public RecipeIngredient() {}
