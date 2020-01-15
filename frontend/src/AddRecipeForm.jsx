@@ -111,7 +111,7 @@ class AddRecipeForm extends Component {
     var ingredientsCopy = Object.values(this.state.ingredients);
 
     var ingredient = ingredientsCopy[ingredientsIndex];
-    ingredient[ingredientIndex] = value;
+    ingredient[ingredientIndex][1] = value;
     ingredientsCopy.splice(ingredientsIndex, 1, ingredient);
 
     this.setState({
@@ -122,7 +122,10 @@ class AddRecipeForm extends Component {
   addIngredient() {
     // Add an entry into the ingredients array, so that it can be updated with "updateIngredient"
     var ingredientsCopy = this.state.ingredients;
-    var emptyIngredient = ["", ""];
+    var emptyIngredient = [
+      ["name", ""],
+      ["typeAmount", ""]
+    ];
     ingredientsCopy.push(emptyIngredient);
 
     this.setState({
@@ -222,30 +225,23 @@ class AddRecipeForm extends Component {
   }
 
   saveRecipe() {
-    /// Funktionierendes GET----------------------
-    // const options = {
-    //   method: "GET",
-    //   headers: {
-    //     Accept: "application/json",
-    //     "Content-Type": "application/json",
-    //     breakfast: true,
-    //     lunch: true,
-    //     dinner: true,
-    //     vegetarian: false,
-    //     vegan: false,
-    //     longTime: true,
-    //     shortTime: true
-    //   }
-    // };
+    // Calculate the minutes of the totalTime
+    var hours = parseInt(this.state.duration.substr(0, 2));
+    var minutes = parseInt(this.state.duration.substr(3));
+    var totalTime = hours * 60 + minutes;
 
-    // fetch("/api/recipes", options).then(response => {
-    //   console.log(response.json);
-    // });
-    // -----------------------------------------------
+    // Create "Sets" for Backend from Ingredients Array
+    var ingredients = this.state.ingredients;
+    var ingredientsSet = [];
+    for (let ingredient of ingredients) {
+      ingredientsSet.push(Object.fromEntries(ingredient));
+    }
 
+    // Put image as FormData
     const formData = new FormData();
     formData.append("file", this.state.image);
 
+    // Options for addImage-fetch
     const addImageOptions = {
       method: "POST",
       body: formData
@@ -258,41 +254,58 @@ class AddRecipeForm extends Component {
         }
       })
       .then(result => {
-        console.log("result.url:" + result.url);
+        // Body
+        var raw = JSON.stringify({
+          name: this.state.name,
+          image: result.url,
+          totalTime: totalTime,
+          category: this.state.meal,
+          vegetarian: this.state.vegetarian,
+          vegan: this.state.vegan,
+          ingredients: ingredientsSet,
+          instructions: this.state.steps
+        });
+
+        // Options for addRecipe-fetch
         const addRecipeOptions = {
           headers: {
             "Content-Type": "application/json"
           },
           method: "POST",
-          body: JSON.stringify({
-            name: this.state.name,
-            image: result.url,
-            totalTime: this.state.duration,
-            category: this.state.meal,
-            vegetarian: this.state.vegetarian,
-            vegan: this.state.vegan,
-            ingredients: this.state.ingredients,
-            instructions: this.state.steps
-          })
+          body: raw
         };
 
-        console.log("sdlfkjsldfj");
-
         fetch("/api/recipes/add", addRecipeOptions)
-          .then(result => console.log(result.status))
           .then(result => {
-            console.log("Added Recipe");
+            if (result.status == 200) {
+              this.resetState();
+            }
           })
           .catch(error => {
-            console.log("Something bad happend." + error);
+            console.log("Add recipe went wrong: " + error);
           });
       })
       .catch(error => {
-        console.log("fetch 1 ging nicht");
+        console.log("Add image or add recipe went wrong: " + error);
       });
 
     // TODO: Api call and reset of recipe state, if saving was successful
     // Also visual feedback, if saving was successful
+  }
+
+  resetState() {
+    this.setState({
+      name: "",
+      meal: "breakfast",
+      vegan: false,
+      vegetarian: false,
+      duration: "01:00",
+      ingredients: [],
+      ingredientsAmount: 0,
+      steps: [],
+      stepsAmount: 0,
+      image: ""
+    });
   }
 
   render() {
