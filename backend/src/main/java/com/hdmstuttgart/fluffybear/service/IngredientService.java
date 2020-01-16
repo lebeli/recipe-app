@@ -40,7 +40,7 @@ public class IngredientService {
 	}
 	
 	public void deleteIngredient(long id) {
-		ingredientRepository.deleteById(id); // if id already exists, Spring updates the id with the passed recipe instance 
+		ingredientRepository.deleteById(id); // if id already exists, Spring updates the id with the passed recipe instance
 	}
 	
 	public void deleteAll() {

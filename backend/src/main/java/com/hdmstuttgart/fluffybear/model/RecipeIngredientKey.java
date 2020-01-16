@@ -46,7 +46,7 @@ public class RecipeIngredientKey implements Serializable {
 		if (obj == this)
 			return true;
 		return (this.getIngredientId() == ((RecipeIngredientKey) obj).getIngredientId())
-				&& (this.getRecipeId() == ((RecipeIngredientKey) obj).getIngredientId());
+				&& (this.getRecipeId() == ((RecipeIngredientKey) obj).getRecipeId());
 	}
 
 	/**
