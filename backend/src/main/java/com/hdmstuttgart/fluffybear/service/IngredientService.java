@@ -9,12 +9,22 @@ import org.springframework.stereotype.Service;
 import com.hdmstuttgart.fluffybear.model.Ingredient;
 import com.hdmstuttgart.fluffybear.repository.IngredientRepository;
 
+/**
+ * Spring boot service for ingredients.
+ */
 @Service
 public class IngredientService {
 
+	/**
+	 * Related Repository for ingredients.
+	 */
 	@Autowired
 	private IngredientRepository ingredientRepository;
 
+	/**
+	 * Returns all ingredients from the repository in a simple java list.
+	 * @return the ingredient list
+	 */
 	public List<Ingredient> getAllIngredients() {
 		List<Ingredient> ingredients = new ArrayList<Ingredient>();
 		ingredientRepository.findAll().forEach(ingredient -> {
@@ -22,27 +32,53 @@ public class IngredientService {
 		});
 		return ingredients;
 	}
-	
+
+	/**
+	 * Get ingredient by a given id.
+	 * @param id which is related to an ingredient.
+	 * @return the given ingredient.
+	 */
 	public Ingredient getIngredient(long id) {
 		return ingredientRepository.findById(id);
 	}
-	
+
+	/**
+	 * Get ingredients by a given name.
+	 * @param name which is related to an ingredient.
+	 * @return ingredients in a list.
+	 */
 	public List<Ingredient> getIngredient(String name) {
 		return ingredientRepository.findByName(name);
 	}
-	
+
+	/**
+	 * Adds an ingredient to the repository.
+	 * @param ingredient which needs to be stored.
+	 */
 	public void addIngredient(Ingredient ingredient) {
 		ingredientRepository.save(ingredient);
 	}
-	
+
+	/**
+	 * Updates specific ingredient identified by the id.
+	 * @param id which identifies the unique ingredient.
+	 * @param ingredient which replaces the old ingredient.
+	 */
 	public void updateIngredient(long id, Ingredient ingredient) {
 		ingredientRepository.save(ingredient); // if id already exists, Spring updates the id with the passed recipe instance 
 	}
-	
+
+	/**
+	 * Removes ingredient identified by the id.
+	 * @param id which refers to ingredient which well be deleted.
+	 */
 	public void deleteIngredient(long id) {
 		ingredientRepository.deleteById(id); // if id already exists, Spring updates the id with the passed recipe instance 
 	}
-	
+
+	/**
+	 * Deletes all ingredients.
+	 */
 	public void deleteAll() {
 		ingredientRepository.deleteAll(); 
 	}

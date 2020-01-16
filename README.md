@@ -75,3 +75,6 @@ The response contains the image url:
 
 ##### Requesting an image
 `GET localhost/api/images/1.jpg`
+
+##### Requesting all ingredients
+`GET localhost/api/ingredients`
