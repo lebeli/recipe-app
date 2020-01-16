@@ -182,21 +182,5 @@ public class RecipeControllerTest {
                 .content(requestJson))
                 .andExpect(status().isOk()); // TODO: check if recipe correctly unmarshalled
         verify(recipeService, times(1)).addRecipe(any(Recipe.class));
-
     }
-
-    @Test
-    public void ingredientsRequestRecieved() throws Exception {
-        httpRequest.perform(get("/ingredients", 1L))
-                .andExpect(status().isOk());
-    }
-
-    @Test
-    public void ingredientsRequestServiceCalled() throws Exception {
-        httpRequest.perform(get("/ingredients", 1L))
-                .andExpect(status().isOk());
-        verify(ingredientService, times(1)).getAllIngredients();
-    }
-
-
 }

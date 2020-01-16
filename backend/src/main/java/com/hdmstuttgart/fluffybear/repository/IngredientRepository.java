@@ -8,7 +8,5 @@ import org.springframework.data.repository.CrudRepository;
 import com.hdmstuttgart.fluffybear.model.Ingredient;
 
 public interface IngredientRepository  extends CrudRepository<Ingredient, Long> {
-
 	Ingredient findById(String id);
-	List findByName(String name);
 }

@@ -32,7 +32,6 @@ public class IngredientService {
 //	}
 	
 	public Ingredient addIngredient(Ingredient ingredient) {
-		ingredient.setId(ingredient.getName());
 	    return ingredientRepository.save(ingredient);
 	}
 	

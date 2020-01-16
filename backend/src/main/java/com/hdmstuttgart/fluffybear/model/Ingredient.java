@@ -31,6 +31,7 @@ public class Ingredient {
 	public Ingredient() {}
 	
 	public Ingredient(String name) {
+		this.id = name;
 		this.name = name;
 	}
 
@@ -49,6 +50,7 @@ public class Ingredient {
 	 * @param name  name to be set for ingredient.
 	 */
 	public void setName(String name) {
+		setId(name);
 		this.name = name;
 	}
 

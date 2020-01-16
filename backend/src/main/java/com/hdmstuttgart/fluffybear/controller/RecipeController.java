@@ -98,14 +98,6 @@ public class RecipeController {
 		recipe.getIngredients().forEach(recipeIngredient -> {
 			recipeIngredient.setRecipe(recipe);
 		});
-
-		// persist entities
 		recipeService.addRecipe(recipe);
-		ingredients.forEach(ingredient -> {
-			ingredientService.addIngredient(ingredient);
-		});
-		recipeIngredients.forEach(recipeIngredient -> {
-			recipeIngredientService.addRecipeIngredient(recipeIngredient); //
-		});
 	}
 }
