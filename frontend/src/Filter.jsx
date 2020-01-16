@@ -64,7 +64,7 @@ class Filter extends Component {
 
   shouldComponentUpdate() {
     console.log("it should");
-    return false;
+    return true;
   }
 
   calculateActiveFilters() {

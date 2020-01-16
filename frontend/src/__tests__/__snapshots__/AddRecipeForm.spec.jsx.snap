@@ -8,11 +8,6 @@ exports[`<AddRecipeForm /> renders correctly 1`] = `
     className="MuiBox-root MuiBox-root-2"
     id="close_button_container"
   >
-    <p
-      id="close_button_description"
-    >
-      Rezept hinzufügen abbrechen
-    </p>
     <button
       className="MuiButtonBase-root MuiButton-root MuiButton-text"
       disabled={false}
@@ -33,6 +28,11 @@ exports[`<AddRecipeForm /> renders correctly 1`] = `
       <span
         className="MuiButton-label"
       >
+        <div
+          id="close_button_description"
+        >
+          Rezept hinzufügen abbrechen
+        </div>
         <svg
           aria-hidden="true"
           className="MuiSvgIcon-root"
@@ -54,23 +54,18 @@ exports[`<AddRecipeForm /> renders correctly 1`] = `
   </h3>
   <form
     action=""
+    onSubmit={[Function]}
   >
     <div
       className="MuiFormControl-root MuiTextField-root"
     >
       <label
-        className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined Mui-required Mui-required"
+        className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined"
         data-shrink={false}
         htmlFor="recipe_name"
         id="recipe_name-label"
       >
-        Rezeptname
-        <span
-          className="MuiFormLabel-asterisk MuiInputLabel-asterisk"
-        >
-           
-          *
-        </span>
+        Rezeptname*
       </label>
       <div
         className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
@@ -86,7 +81,7 @@ exports[`<AddRecipeForm /> renders correctly 1`] = `
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
-          required={true}
+          required={false}
           type="text"
           value=""
         />
@@ -142,10 +137,12 @@ exports[`<AddRecipeForm /> renders correctly 1`] = `
           <div
             aria-label="meal"
             className="MuiFormGroup-root"
+            required={true}
             role="radiogroup"
           >
             <label
               className="MuiFormControlLabel-root"
+              id="breakfast"
             >
               <span
                 aria-disabled={false}
@@ -211,6 +208,7 @@ exports[`<AddRecipeForm /> renders correctly 1`] = `
             </label>
             <label
               className="MuiFormControlLabel-root"
+              id="lunch"
             >
               <span
                 aria-disabled={false}
@@ -276,6 +274,7 @@ exports[`<AddRecipeForm /> renders correctly 1`] = `
             </label>
             <label
               className="MuiFormControlLabel-root"
+              id="dinner"
             >
               <span
                 aria-disabled={false}
@@ -686,10 +685,10 @@ exports[`<AddRecipeForm /> renders correctly 1`] = `
                   d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"
                 />
               </svg>
-              Bild hochladen
+              Bild hochladen*
               <input
+                name="image"
                 onChange={[Function]}
-                required={true}
                 style={
                   Object {
                     "display": "none",
@@ -709,13 +708,15 @@ exports[`<AddRecipeForm /> renders correctly 1`] = `
       </div>
     </div>
     <div
+      id="submit_feedback"
+    />
+    <div
       id="recipe_form_submit_button"
     >
       <button
         className="MuiButtonBase-root MuiButton-root MuiButton-contained"
         disabled={false}
         onBlur={[Function]}
-        onClick={[Function]}
         onDragLeave={[Function]}
         onFocus={[Function]}
         onKeyDown={[Function]}
@@ -727,7 +728,7 @@ exports[`<AddRecipeForm /> renders correctly 1`] = `
         onTouchMove={[Function]}
         onTouchStart={[Function]}
         tabIndex={0}
-        type="button"
+        type="submit"
       >
         <span
           className="MuiButton-label"
