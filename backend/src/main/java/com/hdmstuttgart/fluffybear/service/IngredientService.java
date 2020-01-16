@@ -23,16 +23,17 @@ public class IngredientService {
 		return ingredients;
 	}
 	
-	public Ingredient getIngredient(long id) {
+	public Ingredient getIngredient(String id) {
 		return ingredientRepository.findById(id);
 	}
 	
-	public List<Ingredient> getIngredient(String name) {
-		return ingredientRepository.findByName(name);
-	}
+//	public Ingredient getIngredient(String name) {
+//		return ingredientRepository.findByName(name);
+//	}
 	
-	public void addIngredient(Ingredient ingredient) {
-		ingredientRepository.save(ingredient);
+	public Ingredient addIngredient(Ingredient ingredient) {
+		ingredient.setId(ingredient.getName());
+	    return ingredientRepository.save(ingredient);
 	}
 	
 	public void updateIngredient(long id, Ingredient ingredient) {

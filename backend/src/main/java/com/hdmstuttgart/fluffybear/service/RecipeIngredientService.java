@@ -38,8 +38,8 @@ public class RecipeIngredientService {
 		return recipeIngredientRepository.findByIngredient(ingredient);
 	}
 	
-	public void addRecipeIngredient(RecipeIngredient recipeIngredient) {
-		recipeIngredientRepository.save(recipeIngredient);
+	public RecipeIngredient addRecipeIngredient(RecipeIngredient recipeIngredient) {
+		return recipeIngredientRepository.save(recipeIngredient);
 	}
 	
 	public void updateRecipeIngredient(RecipeIngredientKey id, RecipeIngredient recipeIngredient) {

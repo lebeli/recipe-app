@@ -13,11 +13,11 @@ public class RecipeIngredientKey implements Serializable {
 	private long recipeId;
 	
 	@Column(name = "ingredient_id")
-	private long ingredientId;
+	private String ingredientId;
 	
 	public RecipeIngredientKey() {}
 	
-	public RecipeIngredientKey(long recipeId, long ingredientId) {
+	public RecipeIngredientKey(long recipeId, String ingredientId) {
 		this.recipeId = recipeId;
 		this.ingredientId = ingredientId;
 	}
@@ -32,7 +32,7 @@ public class RecipeIngredientKey implements Serializable {
 		if (arg0 == this)
 			return true;
 		return (this.getIngredientId() == ((RecipeIngredientKey) arg0).getIngredientId())
-				&& (this.getRecipeId() == ((RecipeIngredientKey) arg0).getIngredientId());
+				&& (this.getRecipeId() == ((RecipeIngredientKey) arg0).getRecipeId());
 	}
 
 	// use recipe_id and ingredient_id for hash generation
@@ -49,7 +49,7 @@ public class RecipeIngredientKey implements Serializable {
 		this.recipeId = recipeId;
 	}
 
-	public long getIngredientId() {
+	public String getIngredientId() {
 		return ingredientId;
 	}
 

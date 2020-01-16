@@ -49,8 +49,8 @@ public class RecipeService {
 		return recipeRepository.findByName(name);
 	}
 	
-	public void addRecipe(Recipe recipe) {
-		recipeRepository.save(recipe);
+	public Recipe addRecipe(Recipe recipe) {
+		return recipeRepository.save(recipe);
 	}
 
 	public void updateRecipe(long id, Recipe recipe) {

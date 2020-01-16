@@ -11,8 +11,7 @@ import java.util.List;
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "id"})
 public class Ingredient {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long id;
+	private String id;
 
 	private String name;
 
@@ -34,11 +33,11 @@ public class Ingredient {
 		this.name = name;
 	}
 
-	public long getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(long ingredientId) {
+	public void setId(String ingredientId) {
 		this.id = ingredientId;
 	}
 

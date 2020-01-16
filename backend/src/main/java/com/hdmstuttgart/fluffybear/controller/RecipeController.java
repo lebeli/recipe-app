@@ -79,9 +79,4 @@ public class RecipeController {
 			recipeIngredientService.addRecipeIngredient(recipeIngredient); //
 		});
 	}
-
-	@RequestMapping("/ingredients")
-	public List<Ingredient> getIngredients() {
-		return ingredientService.getAllIngredients();
-	}
 }

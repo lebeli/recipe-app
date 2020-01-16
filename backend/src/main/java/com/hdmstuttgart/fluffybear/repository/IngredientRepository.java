@@ -9,6 +9,6 @@ import com.hdmstuttgart.fluffybear.model.Ingredient;
 
 public interface IngredientRepository  extends CrudRepository<Ingredient, Long> {
 
-	Ingredient findById(long id);
-	List<Ingredient> findByName(String name);
+	Ingredient findById(String id);
+	List findByName(String name);
 }
