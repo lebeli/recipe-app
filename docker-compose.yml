@@ -19,8 +19,7 @@ services:
       - MYSQL_USER=springuser
       - MYSQL_PASSWORD=ThePassword
     ports:
-      - 3306
-    #TODO: mapping für Development, nicht für Produktion (ist Mapping überhaupt notwendig?)
+      - 3306:3306 # Host port needed for local devlopment with spring
     #volumes:
     #  - ./mysql:/data/mysql
   backend:
