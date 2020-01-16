@@ -19,7 +19,7 @@ services:
       - MYSQL_USER=springuser
       - MYSQL_PASSWORD=ThePassword
     ports:
-      - 3306:3306 # Host port needed for local devlopment with spring
+      - 3306:3306 # Host port needed for local development with spring
     #volumes:
     #  - ./mysql:/data/mysql
   backend:
