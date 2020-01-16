@@ -81,7 +81,7 @@ public class RecipeController {
 
 	/**
 	 * Handler for /recipes/add resource. Reads JSON from POST request body and adds a recipe, ingredient and fitting
-	 * composite key to the respective repositories.
+	 * composite key to the database.
 	 *
 	 * @param recipe  unmarshaled Recipe instance from request body JSON.
 	 */

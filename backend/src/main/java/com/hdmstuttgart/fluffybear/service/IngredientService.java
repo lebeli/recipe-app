@@ -26,12 +26,9 @@ public class IngredientService {
 	public Ingredient getIngredient(String id) {
 		return ingredientRepository.findById(id);
 	}
-	
-//	public Ingredient getIngredient(String name) {
-//		return ingredientRepository.findByName(name);
-//	}
-	
+
 	public Ingredient addIngredient(Ingredient ingredient) {
+		ingredient.setId(ingredient.getName());
 	    return ingredientRepository.save(ingredient);
 	}
 	
