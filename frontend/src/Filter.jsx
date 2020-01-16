@@ -35,6 +35,38 @@ class Filter extends Component {
     this.updateState = this.updateState.bind(this);
   }
 
+  componentDidMount() {
+    const options = {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      }
+    };
+
+    fetch("/api/ingredients", options)
+      .then(response => response.json())
+      .then(response => {
+        var ingredientsArray = [];
+        for (let ingredient of response) {
+          ingredientsArray.push(ingredient.name);
+        }
+        this.setState({
+          ingredients: ingredientsArray
+        });
+      })
+      .catch(error => {
+        this.setState({
+          ingredients: ["Keine Zutaten zur Auswahl"]
+        });
+      });
+  }
+
+  shouldComponentUpdate() {
+    console.log("it should");
+    return false;
+  }
+
   calculateActiveFilters() {
     let active = 0;
     if (this.state.breakfast == true) {
