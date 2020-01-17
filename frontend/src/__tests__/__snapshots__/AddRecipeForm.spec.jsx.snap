@@ -1,0 +1,843 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<AddRecipeForm /> renders correctly 1`] = `
+<div
+  className="AddRecipeForm"
+>
+  <div
+    className="MuiBox-root MuiBox-root-2"
+    id="close_button_container"
+  >
+    <p
+      id="close_button_description"
+    >
+      Rezept hinzufügen abbrechen
+    </p>
+    <button
+      className="MuiButtonBase-root MuiButton-root MuiButton-text"
+      disabled={false}
+      onBlur={[Function]}
+      onDragLeave={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex={0}
+      type="button"
+    >
+      <span
+        className="MuiButton-label"
+      >
+        <svg
+          aria-hidden="true"
+          className="MuiSvgIcon-root"
+          focusable="false"
+          role="presentation"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+          />
+        </svg>
+      </span>
+    </button>
+  </div>
+  <h3
+    id="add_recipe_form_headline"
+  >
+    Eigenes Rezept hinzufügen
+  </h3>
+  <form
+    action=""
+  >
+    <div
+      className="MuiFormControl-root MuiTextField-root"
+    >
+      <label
+        className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined Mui-required Mui-required"
+        data-shrink={false}
+        htmlFor="recipe_name"
+        id="recipe_name-label"
+      >
+        Rezeptname
+        <span
+          className="MuiFormLabel-asterisk MuiInputLabel-asterisk"
+        >
+           
+          *
+        </span>
+      </label>
+      <div
+        className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
+        onClick={[Function]}
+      >
+        <input
+          aria-invalid={false}
+          autoFocus={false}
+          className="MuiInputBase-input MuiOutlinedInput-input"
+          disabled={false}
+          id="recipe_name"
+          onAnimationStart={[Function]}
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          required={true}
+          type="text"
+          value=""
+        />
+        <fieldset
+          aria-hidden={true}
+          className="PrivateNotchedOutline-root-104 MuiOutlinedInput-notchedOutline"
+          style={
+            Object {
+              "paddingLeft": 8,
+            }
+          }
+        >
+          <legend
+            className="PrivateNotchedOutline-legend-105"
+            style={
+              Object {
+                "width": 0.01,
+              }
+            }
+          >
+            <span
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": "&#8203;",
+                }
+              }
+            />
+          </legend>
+        </fieldset>
+      </div>
+    </div>
+    <div
+      className="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-3"
+      id="radio_buttons_container"
+    >
+      <div
+        className="MuiGrid-root MuiGrid-item MuiGrid-grid-sm-6"
+      >
+        <legend
+          className="MuiFormLabel-root form_labels Mui-required"
+        >
+          Mahlzeit
+          <span
+            className="MuiFormLabel-asterisk"
+          >
+             
+            *
+          </span>
+        </legend>
+        <div
+          className="radioButtons"
+        >
+          <div
+            aria-label="meal"
+            className="MuiFormGroup-root"
+            role="radiogroup"
+          >
+            <label
+              className="MuiFormControlLabel-root"
+            >
+              <span
+                aria-disabled={false}
+                className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-222 MuiRadio-root MuiRadio-colorSecondary PrivateSwitchBase-checked-223 Mui-checked MuiIconButton-colorSecondary"
+                onBlur={[Function]}
+                onDragLeave={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                tabIndex={null}
+              >
+                <span
+                  className="MuiIconButton-label"
+                >
+                  <input
+                    checked={true}
+                    className="PrivateSwitchBase-input-225"
+                    disabled={false}
+                    name="meal"
+                    onChange={[Function]}
+                    type="radio"
+                    value="fruehstueck"
+                  />
+                  <div
+                    className="PrivateRadioButtonIcon-root-235 PrivateRadioButtonIcon-checked-237"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      className="MuiSvgIcon-root"
+                      focusable="false"
+                      role="presentation"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
+                      />
+                    </svg>
+                    <svg
+                      aria-hidden="true"
+                      className="MuiSvgIcon-root PrivateRadioButtonIcon-layer-236"
+                      focusable="false"
+                      role="presentation"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M8.465 8.465C9.37 7.56 10.62 7 12 7C14.76 7 17 9.24 17 12C17 13.38 16.44 14.63 15.535 15.535C14.63 16.44 13.38 17 12 17C9.24 17 7 14.76 7 12C7 10.62 7.56 9.37 8.465 8.465Z"
+                      />
+                    </svg>
+                  </div>
+                </span>
+              </span>
+              <span
+                className="MuiTypography-root MuiFormControlLabel-label MuiTypography-body1"
+              >
+                Frühstück
+              </span>
+            </label>
+            <label
+              className="MuiFormControlLabel-root"
+            >
+              <span
+                aria-disabled={false}
+                className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-222 MuiRadio-root MuiRadio-colorSecondary MuiIconButton-colorSecondary"
+                onBlur={[Function]}
+                onDragLeave={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                tabIndex={null}
+              >
+                <span
+                  className="MuiIconButton-label"
+                >
+                  <input
+                    checked={false}
+                    className="PrivateSwitchBase-input-225"
+                    disabled={false}
+                    name="meal"
+                    onChange={[Function]}
+                    type="radio"
+                    value="mittagessen"
+                  />
+                  <div
+                    className="PrivateRadioButtonIcon-root-235"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      className="MuiSvgIcon-root"
+                      focusable="false"
+                      role="presentation"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
+                      />
+                    </svg>
+                    <svg
+                      aria-hidden="true"
+                      className="MuiSvgIcon-root PrivateRadioButtonIcon-layer-236"
+                      focusable="false"
+                      role="presentation"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M8.465 8.465C9.37 7.56 10.62 7 12 7C14.76 7 17 9.24 17 12C17 13.38 16.44 14.63 15.535 15.535C14.63 16.44 13.38 17 12 17C9.24 17 7 14.76 7 12C7 10.62 7.56 9.37 8.465 8.465Z"
+                      />
+                    </svg>
+                  </div>
+                </span>
+              </span>
+              <span
+                className="MuiTypography-root MuiFormControlLabel-label MuiTypography-body1"
+              >
+                Mittagessen
+              </span>
+            </label>
+            <label
+              className="MuiFormControlLabel-root"
+            >
+              <span
+                aria-disabled={false}
+                className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-222 MuiRadio-root MuiRadio-colorSecondary MuiIconButton-colorSecondary"
+                onBlur={[Function]}
+                onDragLeave={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                tabIndex={null}
+              >
+                <span
+                  className="MuiIconButton-label"
+                >
+                  <input
+                    checked={false}
+                    className="PrivateSwitchBase-input-225"
+                    disabled={false}
+                    name="meal"
+                    onChange={[Function]}
+                    type="radio"
+                    value="abendessen"
+                  />
+                  <div
+                    className="PrivateRadioButtonIcon-root-235"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      className="MuiSvgIcon-root"
+                      focusable="false"
+                      role="presentation"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
+                      />
+                    </svg>
+                    <svg
+                      aria-hidden="true"
+                      className="MuiSvgIcon-root PrivateRadioButtonIcon-layer-236"
+                      focusable="false"
+                      role="presentation"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M8.465 8.465C9.37 7.56 10.62 7 12 7C14.76 7 17 9.24 17 12C17 13.38 16.44 14.63 15.535 15.535C14.63 16.44 13.38 17 12 17C9.24 17 7 14.76 7 12C7 10.62 7.56 9.37 8.465 8.465Z"
+                      />
+                    </svg>
+                  </div>
+                </span>
+              </span>
+              <span
+                className="MuiTypography-root MuiFormControlLabel-label MuiTypography-body1"
+              >
+                Abendessen
+              </span>
+            </label>
+          </div>
+        </div>
+      </div>
+      <div
+        className="MuiGrid-root MuiGrid-item MuiGrid-grid-sm-6"
+      >
+        <legend
+          className="MuiFormLabel-root form_labels Mui-required"
+        >
+          Ernährungsform
+          <span
+            className="MuiFormLabel-asterisk"
+          >
+             
+            *
+          </span>
+        </legend>
+        <div
+          className="radioButtons"
+        >
+          <div
+            aria-label="diet_form"
+            className="MuiFormGroup-root"
+            role="radiogroup"
+          >
+            <label
+              className="MuiFormControlLabel-root"
+            >
+              <span
+                aria-disabled={false}
+                className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-222 MuiRadio-root MuiRadio-colorSecondary PrivateSwitchBase-checked-223 Mui-checked MuiIconButton-colorSecondary"
+                onBlur={[Function]}
+                onDragLeave={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                tabIndex={null}
+              >
+                <span
+                  className="MuiIconButton-label"
+                >
+                  <input
+                    checked={true}
+                    className="PrivateSwitchBase-input-225"
+                    disabled={false}
+                    name="diet_form"
+                    onChange={[Function]}
+                    type="radio"
+                    value="keine"
+                  />
+                  <div
+                    className="PrivateRadioButtonIcon-root-235 PrivateRadioButtonIcon-checked-237"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      className="MuiSvgIcon-root"
+                      focusable="false"
+                      role="presentation"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
+                      />
+                    </svg>
+                    <svg
+                      aria-hidden="true"
+                      className="MuiSvgIcon-root PrivateRadioButtonIcon-layer-236"
+                      focusable="false"
+                      role="presentation"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M8.465 8.465C9.37 7.56 10.62 7 12 7C14.76 7 17 9.24 17 12C17 13.38 16.44 14.63 15.535 15.535C14.63 16.44 13.38 17 12 17C9.24 17 7 14.76 7 12C7 10.62 7.56 9.37 8.465 8.465Z"
+                      />
+                    </svg>
+                  </div>
+                </span>
+              </span>
+              <span
+                className="MuiTypography-root MuiFormControlLabel-label MuiTypography-body1"
+              >
+                keine
+              </span>
+            </label>
+            <label
+              className="MuiFormControlLabel-root"
+            >
+              <span
+                aria-disabled={false}
+                className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-222 MuiRadio-root MuiRadio-colorSecondary MuiIconButton-colorSecondary"
+                onBlur={[Function]}
+                onDragLeave={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                tabIndex={null}
+              >
+                <span
+                  className="MuiIconButton-label"
+                >
+                  <input
+                    checked={false}
+                    className="PrivateSwitchBase-input-225"
+                    disabled={false}
+                    name="diet_form"
+                    onChange={[Function]}
+                    type="radio"
+                    value="vegetarisch"
+                  />
+                  <div
+                    className="PrivateRadioButtonIcon-root-235"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      className="MuiSvgIcon-root"
+                      focusable="false"
+                      role="presentation"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
+                      />
+                    </svg>
+                    <svg
+                      aria-hidden="true"
+                      className="MuiSvgIcon-root PrivateRadioButtonIcon-layer-236"
+                      focusable="false"
+                      role="presentation"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M8.465 8.465C9.37 7.56 10.62 7 12 7C14.76 7 17 9.24 17 12C17 13.38 16.44 14.63 15.535 15.535C14.63 16.44 13.38 17 12 17C9.24 17 7 14.76 7 12C7 10.62 7.56 9.37 8.465 8.465Z"
+                      />
+                    </svg>
+                  </div>
+                </span>
+              </span>
+              <span
+                className="MuiTypography-root MuiFormControlLabel-label MuiTypography-body1"
+              >
+                vegetarisch
+              </span>
+            </label>
+            <label
+              className="MuiFormControlLabel-root"
+            >
+              <span
+                aria-disabled={false}
+                className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-222 MuiRadio-root MuiRadio-colorSecondary MuiIconButton-colorSecondary"
+                onBlur={[Function]}
+                onDragLeave={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                tabIndex={null}
+              >
+                <span
+                  className="MuiIconButton-label"
+                >
+                  <input
+                    checked={false}
+                    className="PrivateSwitchBase-input-225"
+                    disabled={false}
+                    name="diet_form"
+                    onChange={[Function]}
+                    type="radio"
+                    value="vegan"
+                  />
+                  <div
+                    className="PrivateRadioButtonIcon-root-235"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      className="MuiSvgIcon-root"
+                      focusable="false"
+                      role="presentation"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
+                      />
+                    </svg>
+                    <svg
+                      aria-hidden="true"
+                      className="MuiSvgIcon-root PrivateRadioButtonIcon-layer-236"
+                      focusable="false"
+                      role="presentation"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M8.465 8.465C9.37 7.56 10.62 7 12 7C14.76 7 17 9.24 17 12C17 13.38 16.44 14.63 15.535 15.535C14.63 16.44 13.38 17 12 17C9.24 17 7 14.76 7 12C7 10.62 7.56 9.37 8.465 8.465Z"
+                      />
+                    </svg>
+                  </div>
+                </span>
+              </span>
+              <span
+                className="MuiTypography-root MuiFormControlLabel-label MuiTypography-body1"
+              >
+                vegan
+              </span>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <legend
+      className="MuiFormLabel-root form_labels Mui-required"
+    >
+      Zubereitungsdauer
+      <span
+        className="MuiFormLabel-asterisk"
+      >
+         
+        *
+      </span>
+    </legend>
+    <div
+      className="MuiFormControl-root MuiTextField-root recipe_time"
+    >
+      <label
+        className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-filled Mui-required Mui-required"
+        data-shrink={true}
+        htmlFor="recipe_time"
+        id="recipe_time-label"
+      >
+        std/min
+        <span
+          className="MuiFormLabel-asterisk MuiInputLabel-asterisk"
+        >
+           
+          *
+        </span>
+      </label>
+      <div
+        className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
+        onClick={[Function]}
+      >
+        <input
+          aria-invalid={false}
+          autoFocus={false}
+          className="MuiInputBase-input MuiOutlinedInput-input"
+          defaultValue="01:00"
+          disabled={false}
+          id="recipe_time"
+          onAnimationStart={[Function]}
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          required={true}
+          step={300}
+          type="time"
+        />
+        <fieldset
+          aria-hidden={true}
+          className="PrivateNotchedOutline-root-104 MuiOutlinedInput-notchedOutline"
+          style={
+            Object {
+              "paddingLeft": 8,
+            }
+          }
+        >
+          <legend
+            className="PrivateNotchedOutline-legend-105"
+            style={
+              Object {
+                "width": 0,
+              }
+            }
+          >
+            <span
+              dangerouslySetInnerHTML={
+                Object {
+                  "__html": "&#8203;",
+                }
+              }
+            />
+          </legend>
+        </fieldset>
+      </div>
+    </div>
+    <legend
+      className="MuiFormLabel-root form_labels Mui-required"
+    >
+      Zutaten
+      <span
+        className="MuiFormLabel-asterisk"
+      >
+         
+        *
+      </span>
+    </legend>
+    <div
+      className="ingredients_container"
+    />
+    <div
+      className="recipe_add"
+      display="flex"
+    >
+      <button
+        className="MuiButtonBase-root MuiButton-root MuiButton-text"
+        disabled={false}
+        id="add_ingredient_button"
+        onBlur={[Function]}
+        onClick={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex={0}
+        type="button"
+      >
+        <span
+          className="MuiButton-label"
+        >
+          <svg
+            aria-hidden="true"
+            className="MuiSvgIcon-root"
+            focusable="false"
+            role="presentation"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+            />
+          </svg>
+          Zutat hinzufügen
+        </span>
+      </button>
+    </div>
+    <legend
+      className="MuiFormLabel-root form_labels Mui-required"
+    >
+      Arbeitsschritte
+      <span
+        className="MuiFormLabel-asterisk"
+      >
+         
+        *
+      </span>
+    </legend>
+    <div
+      className="steps_container"
+    />
+    <div
+      className="recipe_add"
+      display="flex"
+    >
+      <button
+        className="MuiButtonBase-root MuiButton-root MuiButton-text"
+        disabled={false}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex={0}
+        type="button"
+      >
+        <span
+          className="MuiButton-label"
+        >
+          <svg
+            aria-hidden="true"
+            className="MuiSvgIcon-root"
+            focusable="false"
+            role="presentation"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+            />
+          </svg>
+          Arbeitsschritt hinzufügen
+        </span>
+      </button>
+    </div>
+    <div
+      id="add_image_button_container"
+    >
+      <div
+        className="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-1"
+      >
+        <div
+          className="MuiGrid-root MuiGrid-item"
+        >
+          <label
+            aria-disabled={false}
+            className="MuiButtonBase-root MuiButton-root MuiButton-outlined"
+            onBlur={[Function]}
+            onDragLeave={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            role="button"
+            tabIndex={0}
+          >
+            <span
+              className="MuiButton-label"
+            >
+              <svg
+                aria-hidden="true"
+                className="MuiSvgIcon-root"
+                focusable="false"
+                id="photo_icon"
+                role="presentation"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"
+                />
+              </svg>
+              Bild hochladen
+              <input
+                onChange={[Function]}
+                required={true}
+                style={
+                  Object {
+                    "display": "none",
+                  }
+                }
+                type="file"
+              />
+            </span>
+          </label>
+        </div>
+        <div
+          className="MuiGrid-root MuiGrid-item"
+          id="filename_item"
+        >
+          <div />
+        </div>
+      </div>
+    </div>
+    <div
+      id="recipe_form_submit_button"
+    >
+      <button
+        className="MuiButtonBase-root MuiButton-root MuiButton-contained"
+        disabled={false}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex={0}
+        type="button"
+      >
+        <span
+          className="MuiButton-label"
+        >
+          Rezept speichern
+        </span>
+      </button>
+    </div>
+  </form>
+</div>
+`;

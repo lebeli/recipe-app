@@ -8,7 +8,8 @@ import org.springframework.context.annotation.Bean;
 
 
 /**
- * Class for initiating the application context (retrival of models, services and repositories).
+ * Starting point of the spring boot java backend application for the recipes app develop for mobile
+ * application development. Initiates the application context (retrival of models, services and repositories).
  */
 @SpringBootApplication
 public class FluffyBearApplication {
@@ -22,11 +23,12 @@ public class FluffyBearApplication {
 		SpringApplication.run(FluffyBearApplication.class, args);
 	}
 
-
 	/**
-	 * Inititiates repositories at a cleant state.
+	 * Method is invoked after startup of the application.
+	 * The storage service, which is used for persisting files/images, is initialized.
+	 * For developing purposes the delete all method is invoked.
 	 *
-	 * @param storageService  FileSystemStorageService instance.
+	 * @param  storageService  utility instance for storing Images locally on application server's filesystem.
 	 * @return  spring bean for repository initialization at application startup.
 	 */
 	@Bean

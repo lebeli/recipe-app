@@ -17,9 +17,15 @@ import org.springframework.stereotype.Component;
 import java.io.*;
 import java.util.Iterator;
 
+/**
+ * Loads 30 demo recipes from demo_recipes file into connected database.
+ */
 @Component
 public class DemoDataLoader implements ApplicationRunner {
 
+    /**
+     * Maps json data to java classes
+     */
     private final ObjectMapper mapper = new ObjectMapper();
 
     private final RecipeService recipeService;
@@ -33,6 +39,12 @@ public class DemoDataLoader implements ApplicationRunner {
         this.recipeIngredientService = recipeIngredientService;
     }
 
+    /**
+     * Called after application successfully launched.
+     * Executes logic for reading recipes from demo_recipes files and inserting them into database.
+     *
+     * @param args
+     */
     public void run(ApplicationArguments args) {
         InputStream path = getClass().getClassLoader().getResourceAsStream("demo_recipes.json");
         String jsonString = convertStreamToString(path);
@@ -58,6 +70,13 @@ public class DemoDataLoader implements ApplicationRunner {
         }
     }
 
+    /**
+     * Adds every single ingredient from the parameter array to the parameter recipe.
+     *
+     * @param ingredientArray containts all ingredients to be added
+     * @param recipe in which the ingredients will be inserted
+     * @throws IOException if mapping json to ingredient class fails
+     */
     private void addIngredients(JSONArray ingredientArray, Recipe recipe) throws IOException {
         Iterator<Object> ingredientIterator = ingredientArray.iterator();
         while (ingredientIterator.hasNext()) {
@@ -71,7 +90,13 @@ public class DemoDataLoader implements ApplicationRunner {
         }
     }
 
-    static String convertStreamToString(java.io.InputStream is) {
+    /**
+     * Converts Inputstream contents into a simple String.
+     *
+     * @param is the inputstream to be converted
+     * @return the converted string
+     */
+    private static String convertStreamToString(java.io.InputStream is) {
         java.util.Scanner s = new java.util.Scanner(is).useDelimiter("\\A");
         return s.hasNext() ? s.next() : "";
     }
