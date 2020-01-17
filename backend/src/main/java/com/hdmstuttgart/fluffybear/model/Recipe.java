@@ -63,7 +63,7 @@ public class Recipe {
 
 	/**
 	 * Instanciates new RecipeIngredient with given Ingredient instance beeing assigned to the ingredient member variable
-	 * and the self reference to the recipe member variable. The RecipeIngredient instance is beeing added to the instructions
+	 * and the self reference to the recipe member variable. The RecipeIngredient instance is beeing added to the ingredients
 	 * list.
 	 *
 	 * @param ingredient  ingredient instance to be added to the new RecipeIngredient instance.

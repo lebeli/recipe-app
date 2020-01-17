@@ -1,4 +1,4 @@
-package com.hdmstuttgart.fluffybear;
+package com.hdmstuttgart.fluffybear.model;
 
 import com.hdmstuttgart.fluffybear.model.Ingredient;
 import com.hdmstuttgart.fluffybear.model.Recipe;

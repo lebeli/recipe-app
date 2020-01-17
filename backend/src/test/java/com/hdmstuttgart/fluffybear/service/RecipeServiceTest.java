@@ -1,4 +1,4 @@
-package com.hdmstuttgart.fluffybear;
+package com.hdmstuttgart.fluffybear.service;
 
 import com.hdmstuttgart.fluffybear.model.Recipe;
 import com.hdmstuttgart.fluffybear.repository.RecipeRepository;
@@ -89,7 +89,6 @@ public class RecipeServiceTest {
     public void addAndUpdateRecipeTest() {
         recipeService.addRecipe(spaghetti);
         recipeService.updateRecipe(1, spaghetti);
-
         verify(recipeRepository, times(2)).save(spaghetti);
     }
 

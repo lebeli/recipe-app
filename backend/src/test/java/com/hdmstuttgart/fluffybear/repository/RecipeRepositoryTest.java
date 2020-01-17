@@ -1,4 +1,4 @@
-package com.hdmstuttgart.fluffybear;
+package com.hdmstuttgart.fluffybear.repository;
 
 import com.hdmstuttgart.fluffybear.model.Recipe;
 import com.hdmstuttgart.fluffybear.repository.RecipeRepository;
@@ -25,8 +25,6 @@ import static org.junit.Assert.*;
 @AutoConfigureTestDatabase // embedded db
 @Transactional // db rollback after each test
 public class RecipeRepositoryTest {
-    public static boolean repositoryInitiated = false;
-
     @Autowired
     private RecipeRepository recipeRepository;
 
