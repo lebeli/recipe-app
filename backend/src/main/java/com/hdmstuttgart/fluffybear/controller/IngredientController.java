@@ -1,8 +1,10 @@
 package com.hdmstuttgart.fluffybear.controller;
 
 
+import com.hdmstuttgart.fluffybear.Storage.FileSystemStorageService;
 import com.hdmstuttgart.fluffybear.model.Ingredient;
 import com.hdmstuttgart.fluffybear.service.IngredientService;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,11 +19,14 @@ import java.util.stream.Collectors;
  */
 @RestController
 public class IngredientController {
+    private final static Logger logger = Logger.getLogger(FileSystemStorageService.class);
+
     @Autowired
     IngredientService ingredientService;
 
     @RequestMapping("/ingredients")
     public List<String> getIngredients() {
+        logger.info("Ingredient request performed.");
         return ingredientService.getAllIngredients().stream().map(ingredient -> ingredient.getName()).collect(Collectors.toList());
     }
 
