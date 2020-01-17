@@ -3,6 +3,8 @@ package com.hdmstuttgart.fluffybear.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.hdmstuttgart.fluffybear.Storage.FileSystemStorageService;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,7 +22,8 @@ import com.hdmstuttgart.fluffybear.service.RecipeService;
  */
 @RestController
 public class RecipeController {
-	
+	private final static Logger logger = Logger.getLogger(FileSystemStorageService.class);
+
 	@Autowired
 	private RecipeService recipeService;
 
@@ -41,7 +44,7 @@ public class RecipeController {
 	 * @param vegan  boolean if vegan recipes should be considered.
 	 * @param longTime  boolean if recipes with over 60 min preparation time should be considered.
 	 * @param shortTime  boolean if recipes with under 30 min preparation time should be considered.
-	 * @return  recipes fitting the given query parameters.
+	 * @return recipes fitting the given query parameters.
 	 */
 	@RequestMapping(value = "/recipes", consumes = {"application/json"})
     public List<Recipe> getRecipes(
@@ -98,5 +101,6 @@ public class RecipeController {
 			recipeIngredient.setRecipe(recipe);
 		});
 		recipeService.addRecipe(recipe);
+		logger.info("New recipe added.");
 	}
 }

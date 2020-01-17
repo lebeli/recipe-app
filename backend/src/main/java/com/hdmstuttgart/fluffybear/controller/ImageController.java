@@ -1,7 +1,9 @@
 package com.hdmstuttgart.fluffybear.controller;
 
+import com.hdmstuttgart.fluffybear.Storage.FileSystemStorageService;
 import com.hdmstuttgart.fluffybear.Storage.StorageService;
 import com.hdmstuttgart.fluffybear.Storage.StorageServiceException;
+import org.apache.log4j.Logger;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
@@ -20,6 +22,7 @@ import java.io.FileNotFoundException;
  */
 @RestController
 public class ImageController {
+    private final static Logger logger = Logger.getLogger(FileSystemStorageService.class);
 
     private final StorageService storageService;
 
@@ -46,6 +49,7 @@ public class ImageController {
         } catch (FileNotFoundException e) {
             String errorMessage = "Invalid Request for image performed.";
             System.err.println(errorMessage);
+            logger.warn(errorMessage + " Filename: " + filename);
             return new ResponseEntity<>(new HttpHeaders(), HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(file, new HttpHeaders(), HttpStatus.OK);
@@ -64,8 +68,9 @@ public class ImageController {
         try {
             imageURL = storageService.store(file);
         } catch (StorageServiceException e) {
-            System.err.println("An error occured while storing image.");
-            return "An error occured while storing image.";
+            String warningMessage = "An error occured while storing the image.";
+            logger.warn(warningMessage);
+            return warningMessage;
         }
 
         JSONObject response = new JSONObject();

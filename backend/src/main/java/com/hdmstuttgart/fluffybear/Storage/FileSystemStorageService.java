@@ -1,5 +1,6 @@
 package com.hdmstuttgart.fluffybear.Storage;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
@@ -24,6 +25,7 @@ import java.util.UUID;
  */
 @Service
 public class FileSystemStorageService implements StorageService {
+	private final static Logger logger = Logger.getLogger(FileSystemStorageService.class);
 
 	/**
 	 * Path of the root location where the files are stored.
@@ -64,6 +66,7 @@ public class FileSystemStorageService implements StorageService {
 			Files.copy(inputStream, this.rootLocation.resolve(uuid));
 			return "localhost/api/images/" + uuid;
 		} catch (IOException e) {
+			logger.error("Error while copying File to directory");
 			e.printStackTrace();
 			throw new StorageServiceException("Error while copying File to directory.");
 		}
@@ -116,6 +119,7 @@ public class FileSystemStorageService implements StorageService {
 	 */
 	@Override
 	public void init() {
+		logger.info("Initializing File system storage service");
 		// Create upload directory
 		try {
 			Files.createDirectories(rootLocation);
@@ -138,8 +142,10 @@ public class FileSystemStorageService implements StorageService {
 						Paths.get(rootLocation.toString() + "/" + fileEntry.getName()),
 						StandardCopyOption.REPLACE_EXISTING);
 			} catch (IOException e) {
+				logger.error("Error copying demo images");
 				e.printStackTrace();
 			}
 		}
+		logger.info("File system storage service initialization completed");
 	}
 }

@@ -7,6 +7,7 @@ import com.hdmstuttgart.fluffybear.model.RecipeIngredient;
 import com.hdmstuttgart.fluffybear.service.IngredientService;
 import com.hdmstuttgart.fluffybear.service.RecipeIngredientService;
 import com.hdmstuttgart.fluffybear.service.RecipeService;
+import org.apache.log4j.Logger;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,7 @@ import java.util.Iterator;
  */
 @Component
 public class DemoDataLoader implements ApplicationRunner {
+    private final static Logger logger = Logger.getLogger(FileSystemStorageService.class);
 
     /**
      * Maps json data to java classes
@@ -46,6 +48,7 @@ public class DemoDataLoader implements ApplicationRunner {
      * @param args
      */
     public void run(ApplicationArguments args) {
+        logger.info("Started loading demo data");
         InputStream path = getClass().getClassLoader().getResourceAsStream("demo_recipes.json");
         String jsonString = convertStreamToString(path);
         JSONArray recipeArray = new JSONArray(jsonString);
@@ -68,6 +71,7 @@ public class DemoDataLoader implements ApplicationRunner {
             }
             currentIndex++;
         }
+        logger.info("Finished loading demo data");
     }
 
     /**
