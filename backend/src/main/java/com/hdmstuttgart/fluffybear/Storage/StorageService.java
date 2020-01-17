@@ -5,7 +5,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.FileNotFoundException;
 import java.nio.file.Path;
-import java.util.stream.Stream;
 
 /**
  * Interface for a storages service which persists multi part files.
@@ -18,6 +17,7 @@ public interface StorageService {
 
 	/**
 	 * Persist the file.
+	 *
 	 * @param file file to save
 	 * @return the url where the file is stored
 	 */
@@ -25,6 +25,7 @@ public interface StorageService {
 
 	/**
 	 * Returns the path to the corresponding name.
+	 *
 	 * @param filename which paths needs to be resolved to path
 	 * @return the resolved path of the file
 	 * @throws FileNotFoundException if the file does not exists.
@@ -33,6 +34,7 @@ public interface StorageService {
 
 	/**
 	 * Creates and returns a resource object from a filename.
+	 *
 	 * @param filename which should be loaded and returned as resource
 	 * @return the created resource object
 	 * @throws FileNotFoundException if no resources were found for the fiven filename

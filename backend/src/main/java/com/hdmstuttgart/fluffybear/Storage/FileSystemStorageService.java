@@ -42,6 +42,7 @@ public class FileSystemStorageService implements StorageService {
 
 	/**
 	 * Persists the file in the filesystem and returns the public URL to access the file from the spring boot server.
+	 *
 	 * @param file image to save.
 	 * @return the public URL of the saved image.
 	 * @throws StorageServiceException
@@ -70,6 +71,7 @@ public class FileSystemStorageService implements StorageService {
 
 	/**
 	 * Resolves the path from the filename.
+	 *
 	 * @param filename which paths needs to be resolved to path
 	 * @return the resolved path of the file
 	 */
@@ -80,6 +82,7 @@ public class FileSystemStorageService implements StorageService {
 
 	/**
 	 * Creates and returns a resource object from a filename.
+	 *
 	 * @param filename which should be loaded and returned as resource
 	 * @return the created resource object
 	 * @throws FileNotFoundException if no resources were found for the fiven filename
@@ -125,6 +128,7 @@ public class FileSystemStorageService implements StorageService {
 
 	/**
 	 * Copies 30 demo images for demo recipes into the root location folder.
+	 *
 	 * @param folder the folder in which the demo images are stored.
 	 */
 	public void copyDemoImages(final File folder) {

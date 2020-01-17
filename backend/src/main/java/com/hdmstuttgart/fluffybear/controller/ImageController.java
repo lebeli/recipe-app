@@ -9,14 +9,16 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.FileNotFoundException;
 
 
-@Controller
+/**
+ * Controller Class for handling image requests and saving/returning recipe images.
+ */
+@RestController
 public class ImageController {
 
     private final StorageService storageService;
@@ -26,6 +28,12 @@ public class ImageController {
         this.storageService = storageService;
     }
 
+    /**
+     * Handler for /images/[filename] resource GET requests. Loads image from database and returs it in the response body.
+     *
+     * @param filename  name the images has been stored under.
+     * @return  response with embedded image and http status code 200.
+     */
     @GetMapping(
             value = "/images/{filename:.+}",
             produces = MediaType.IMAGE_JPEG_VALUE
@@ -43,6 +51,12 @@ public class ImageController {
         return new ResponseEntity<>(file, new HttpHeaders(), HttpStatus.OK);
     }
 
+    /**
+     * Handler for /images/add resource POST requests that adds images to the database.
+     *
+     * @param file  uploaded image recived in a multipart request.
+     * @return  response body containing JSON with "url" key and resource url for the presisted image as value.
+     */
     @PostMapping("/images/add")
     @ResponseBody
     public String handleFileUpload(@RequestParam("file") MultipartFile file) {
@@ -60,6 +74,12 @@ public class ImageController {
         return response.toString();
     }
 
+    /**
+     * Exception handler in case that requested image is not found in database.
+     *
+     * @param exc  thrown exception during image retrieval.
+     * @return  returns StorageServiceException message.
+     */
     @ExceptionHandler(StorageServiceException.class)
     public ResponseEntity<?> handleStorageFileNotFound(StorageServiceException exc) {
         return ResponseEntity.notFound().build();

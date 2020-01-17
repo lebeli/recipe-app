@@ -22,6 +22,7 @@ public class RecipeService {
 
 	/**
 	 * Returns all recipes from the repository in a simple java list.
+	 *
 	 * @return the recipe list
 	 */
 	public List<Recipe> getAllRecipes() {
@@ -35,6 +36,7 @@ public class RecipeService {
 
 	/**
 	 * Applies a filter to all recipes and returns the list of the filtered recipes.
+	 *
 	 * @param minTime Minmal time of the recipe in minutes.
 	 * @param maxTime Maximum time of the recipe in minutes.
 	 * @param categories List of all possible categories for the recipe.
@@ -53,6 +55,7 @@ public class RecipeService {
 
 	/**
 	 * Applies a filter to all non vegan nor vegetarian recipes and returns the list of the filtered recipes.
+	 *
 	 * @param minTime Minmal time of the recipe in minutes.
 	 * @param maxTime Maximum time of the recipe in minutes.
 	 * @param categories List of all possible categories for the recipe.
@@ -69,6 +72,7 @@ public class RecipeService {
 
 	/**
 	 * Returns recipe object identified by a unique id.
+	 *
 	 * @param id which is used for identifying the recipe.
 	 * @return the recipe
 	 */
@@ -78,6 +82,7 @@ public class RecipeService {
 
 	/**
 	 * Returns recipe list identified by a name.
+	 *
 	 * @param name which is used for identifying the recipe.
 	 * @return the list of recipes identified by name.
 	 */
@@ -87,14 +92,17 @@ public class RecipeService {
 
 	/**
 	 * Saves a recipe via the repository.
+	 *
 	 * @param recipe which will be saved.
+	 * @return  saved Recipe instance.
 	 */
-	public void addRecipe(Recipe recipe) {
-		recipeRepository.save(recipe);
+	public Recipe addRecipe(Recipe recipe) {
+		return recipeRepository.save(recipe);
 	}
 
 	/**
 	 * Updates a recipe identified by an id.
+	 *
 	 * @param id which identifies the recipe which will be updated.
 	 * @param recipe which property values will update the old values.
 	 */
@@ -104,6 +112,7 @@ public class RecipeService {
 
 	/**
 	 * Deletes a recipe identified by an id.
+	 *
 	 * @param id which identifies the recipe which will be deleted.
 	 */
 	public void deleteRecipe(long id) {

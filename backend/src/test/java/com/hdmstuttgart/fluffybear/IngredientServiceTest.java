@@ -36,9 +36,6 @@ public class IngredientServiceTest {
         tomatoes = new Ingredient("Tomatoes");
         meat = new Ingredient("Meat");
         flour = new Ingredient("Flour");
-        tomatoes.setId(1);
-        meat.setId(2);
-        flour.setId(3);
         allIngredients.add(tomatoes);
         allIngredients.add(meat);
         allIngredients.add(flour);
@@ -53,34 +50,14 @@ public class IngredientServiceTest {
 
     @Test
     public void getIngredientByIdTest() {
-        when(ingredientRepository.findById(1)).thenReturn(tomatoes);
-        when(ingredientRepository.findById(2)).thenReturn(meat);
-        assertEquals(1, ingredientService.getIngredient(1).getId());
-        assertEquals(2, ingredientService.getIngredient(2).getId());
-        assertEquals("Tomatoes", ingredientService.getIngredient(1).getName());
-        assertEquals("Meat", ingredientService.getIngredient(2).getName());
-        verify(ingredientRepository, times(2)).findById(1);
-        verify(ingredientRepository, times(2)).findById(2);
-    }
-
-    @Test
-    public void getIngredientByNameTest() {
-        Ingredient meat2 = new Ingredient("Meat");
-        meat2.setId(4);
-
-        when(ingredientRepository.findByName("Tomatoes")).thenReturn(new ArrayList<Ingredient>(Arrays.asList(tomatoes)));
-        when(ingredientRepository.findByName("Meat")).thenReturn(new ArrayList<Ingredient>(Arrays.asList(meat, meat2)));
-
-        List<Ingredient> tomatoesQuery = ingredientService.getIngredient("Tomatoes");
-        List<Ingredient> meatQuery = ingredientService.getIngredient("Meat");
-
-        assertEquals(1, tomatoesQuery.size());
-        assertEquals(2, meatQuery.size());
-        assertEquals("Tomatoes", tomatoesQuery.get(0).getName());
-        assertEquals("Meat", meatQuery.get(0).getName());
-        assertEquals("Meat", meatQuery.get(1).getName());
-        verify(ingredientRepository, times(1)).findByName("Tomatoes");
-        verify(ingredientRepository, times(1)).findByName("Meat");
+        when(ingredientRepository.findById("Tomatoes")).thenReturn(tomatoes);
+        when(ingredientRepository.findById("Meat")).thenReturn(meat);
+        assertEquals("Tomatoes", ingredientService.getIngredient("Tomatoes").getId());
+        assertEquals("Meat", ingredientService.getIngredient("Meat").getId());
+        assertEquals("Tomatoes", ingredientService.getIngredient("Tomatoes").getName());
+        assertEquals("Meat", ingredientService.getIngredient("Meat").getName());
+        verify(ingredientRepository, times(2)).findById("Tomatoes");
+        verify(ingredientRepository, times(2)).findById("Tomatoes");
     }
 
     @Test

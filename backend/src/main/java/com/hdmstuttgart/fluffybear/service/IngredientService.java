@@ -23,6 +23,7 @@ public class IngredientService {
 
 	/**
 	 * Returns all ingredients from the repository in a simple java list.
+	 *
 	 * @return the ingredient list
 	 */
 	public List<Ingredient> getAllIngredients() {
@@ -34,33 +35,28 @@ public class IngredientService {
 	}
 
 	/**
-	 * Get ingredient by a given id.
-	 * @param id which is related to an ingredient.
-	 * @return the given ingredient.
+	 * Get ingredients by a given name.
+	 *
+	 * @param id  name which is related to an ingredient.
+	 * @return ingredients in a list.
 	 */
-	public Ingredient getIngredient(long id) {
+	public Ingredient getIngredient(String id) {
 		return ingredientRepository.findById(id);
 	}
 
 	/**
-	 * Get ingredients by a given name.
-	 * @param name which is related to an ingredient.
-	 * @return ingredients in a list.
-	 */
-	public List<Ingredient> getIngredient(String name) {
-		return ingredientRepository.findByName(name);
-	}
-
-	/**
 	 * Adds an ingredient to the repository.
+	 *
 	 * @param ingredient which needs to be stored.
 	 */
-	public void addIngredient(Ingredient ingredient) {
-		ingredientRepository.save(ingredient);
+	public Ingredient addIngredient(Ingredient ingredient) {
+		ingredient.setId(ingredient.getName());
+	    return ingredientRepository.save(ingredient);
 	}
 
 	/**
 	 * Updates specific ingredient identified by the id.
+	 *
 	 * @param id which identifies the unique ingredient.
 	 * @param ingredient which replaces the old ingredient.
 	 */
@@ -70,10 +66,11 @@ public class IngredientService {
 
 	/**
 	 * Removes ingredient identified by the id.
+	 *
 	 * @param id which refers to ingredient which well be deleted.
 	 */
 	public void deleteIngredient(long id) {
-		ingredientRepository.deleteById(id); // if id already exists, Spring updates the id with the passed recipe instance 
+		ingredientRepository.deleteById(id); // if id already exists, Spring updates the id with the passed recipe instance
 	}
 
 	/**

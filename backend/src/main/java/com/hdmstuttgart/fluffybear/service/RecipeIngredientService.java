@@ -26,6 +26,7 @@ public class RecipeIngredientService {
 
 	/**
 	 * Returns all ingredients related to recipes from the repository in a simple java list.
+	 *
 	 * @return the recipeIngredient list
 	 */
 	public List<RecipeIngredient> getAllRecipeIngredients() {
@@ -38,6 +39,7 @@ public class RecipeIngredientService {
 
 	/**
 	 * Get recipeIngredient list by a given recipe.
+	 *
 	 * @param recipe which is related to different recipeIngredient objects.
 	 * @return recipeIngredients in a list.
 	 */
@@ -47,6 +49,7 @@ public class RecipeIngredientService {
 
 	/**
 	 * Get recipeIngredient list by a given ingredient.
+	 *
 	 * @param ingredient which is related to different recipeIngredient objects.
 	 * @return recipeIngredients in a list.
 	 */
@@ -56,14 +59,16 @@ public class RecipeIngredientService {
 
 	/**
 	 * Adds a recipeIngredient to the repository.
+	 *
 	 * @param recipeIngredient which will be stored via the repository.
 	 */
-	public void addRecipeIngredient(RecipeIngredient recipeIngredient) {
-		recipeIngredientRepository.save(recipeIngredient);
+	public RecipeIngredient addRecipeIngredient(RecipeIngredient recipeIngredient) {
+		return recipeIngredientRepository.save(recipeIngredient);
 	}
 
 	/**
 	 * Updates a recipeIngredient identified by a unique id.
+	 *
 	 * @param id which is used for identifying the recipeingredient to be updated.
 	 * @param recipeIngredient which will replace the old recipeIngredient.
 	 */
@@ -73,6 +78,7 @@ public class RecipeIngredientService {
 
 	/**
 	 * Deletes a recipeIngredient identified by a unique id.
+	 *
 	 * @param id which is used for identifying the recipeingredient to be deleted.
 	 */
 	public void deleteRecipeIngredient(RecipeIngredientKey id) {

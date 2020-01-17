@@ -48,9 +48,6 @@ public class RecipeIngredientServiceTest {
         meat = new Ingredient("Meat");
         spaghetti.setId(1);
         lasagna.setId(2);
-        garlic.setId(1);
-        tomatoes.setId(2);
-        meat.setId(3);
         spaghettiGarlic = new RecipeIngredient(spaghetti, garlic);
         spaghettiTomatoes = new RecipeIngredient(spaghetti, tomatoes);
         lasagnaTomatoes = new RecipeIngredient(lasagna, tomatoes);

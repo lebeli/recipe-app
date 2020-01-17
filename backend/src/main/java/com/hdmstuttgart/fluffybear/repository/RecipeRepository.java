@@ -12,6 +12,7 @@ import com.hdmstuttgart.fluffybear.model.Recipe;
 public interface RecipeRepository extends CrudRepository<Recipe, Long> {
 	/**
 	 * Returns a Recipe object from the connected database by a given id.
+	 *
 	 * @param id which is used for identifying the recipe in the database.
 	 * @return the created Recipe object.
 	 */
@@ -19,6 +20,7 @@ public interface RecipeRepository extends CrudRepository<Recipe, Long> {
 
 	/**
 	 * Returns a list of recipes identified by the name.
+	 *
 	 * @param name which is used for identifying recipes.
 	 * @return the list of recipes identified by the given name.
 	 */
@@ -26,6 +28,7 @@ public interface RecipeRepository extends CrudRepository<Recipe, Long> {
 
 	/**
 	 * Returns a list of filtered recipes. The filter values are defined by json parameters.
+	 *
 	 * @param minTime Minmal time of the recipe in minutes.
 	 * @param maxTime Maximum time of the recipe in minutes.
 	 * @param category List of all possible categories for the recipe.
@@ -43,6 +46,7 @@ public interface RecipeRepository extends CrudRepository<Recipe, Long> {
 
 	/**
 	 * Returns a list of all non vegan nor vegetarian filtered recipes. The filter values are defined by json parameters.
+	 *
 	 * @param minTime Minmal time of the recipe in minutes.
 	 * @param maxTime Maximum time of the recipe in minutes.
 	 * @param category List of all possible categories for the recipe.

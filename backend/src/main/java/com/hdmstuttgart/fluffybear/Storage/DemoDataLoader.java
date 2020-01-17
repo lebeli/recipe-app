@@ -4,9 +4,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.hdmstuttgart.fluffybear.model.Ingredient;
 import com.hdmstuttgart.fluffybear.model.Recipe;
 import com.hdmstuttgart.fluffybear.model.RecipeIngredient;
-import com.hdmstuttgart.fluffybear.repository.IngredientRepository;
-import com.hdmstuttgart.fluffybear.repository.RecipeIngredientRepository;
-import com.hdmstuttgart.fluffybear.repository.RecipeRepository;
+import com.hdmstuttgart.fluffybear.service.IngredientService;
+import com.hdmstuttgart.fluffybear.service.RecipeIngredientService;
+import com.hdmstuttgart.fluffybear.service.RecipeService;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,29 +27,22 @@ public class DemoDataLoader implements ApplicationRunner {
      * Maps json data to java classes
      */
     private final ObjectMapper mapper = new ObjectMapper();
-    /**
-     * Spring boot repository for recipes
-     */
-    private final RecipeRepository recipeRepository;
-    /**
-     * Spring boot repository for ingredients
-     */
-    private final IngredientRepository ingredientRepository;
-    /**
-     * Spring boot repository for recipes and ingredients
-     */
-    private final RecipeIngredientRepository recipeIngredientRepository;
+
+    private final RecipeService recipeService;
+    private final IngredientService ingredientService;
+    private final RecipeIngredientService recipeIngredientService;
 
     @Autowired
-    public DemoDataLoader(RecipeRepository recipeRepository, IngredientRepository ingredientRepository, RecipeIngredientRepository recipeIngredientRepository) {
-        this.recipeRepository = recipeRepository;
-        this.ingredientRepository = ingredientRepository;
-        this.recipeIngredientRepository = recipeIngredientRepository;
+    public DemoDataLoader(RecipeService recipeService, IngredientService ingredientService, RecipeIngredientService recipeIngredientService) {
+        this.recipeService = recipeService;
+        this.ingredientService = ingredientService;
+        this.recipeIngredientService = recipeIngredientService;
     }
 
     /**
      * Called after application successfully launched.
      * Executes logic for reading recipes from demo_recipes files and inserting them into database.
+     *
      * @param args
      */
     public void run(ApplicationArguments args) {
@@ -68,8 +61,7 @@ public class DemoDataLoader implements ApplicationRunner {
             recipeJSON.put("image", "localhost/api/images/" + currentIndex + ".jpg"); // set image path
             try {
                 // Map recipeJSON to recipe object
-                Recipe recipe = mapper.readValue(recipeJSON.toString(), Recipe.class);
-                recipeRepository.save(recipe);
+                Recipe recipe = recipeService.addRecipe(mapper.readValue(recipeJSON.toString(), Recipe.class));
                 addIngredients(ingredientArray, recipe);
             } catch (IOException e) {
                 e.printStackTrace();
@@ -80,6 +72,7 @@ public class DemoDataLoader implements ApplicationRunner {
 
     /**
      * Adds every single ingredient from the parameter array to the parameter recipe.
+     *
      * @param ingredientArray containts all ingredients to be added
      * @param recipe in which the ingredients will be inserted
      * @throws IOException if mapping json to ingredient class fails
@@ -90,13 +83,16 @@ public class DemoDataLoader implements ApplicationRunner {
             JSONObject ingredientJSON = (JSONObject) ingredientIterator.next();
             String typeAmount = ingredientJSON.getString("typeAmount");
             ingredientJSON.remove("typeAmount");
-            Ingredient ingredient = ingredientRepository.save(mapper.readValue(ingredientJSON.toString(), Ingredient.class));
-            recipeIngredientRepository.save(new RecipeIngredient(recipe, ingredient, typeAmount));
+            Ingredient ingredient = mapper.readValue(ingredientJSON.toString(), Ingredient.class);
+            ingredient.setId(ingredient.getName());
+            ingredientService.addIngredient(ingredient);
+            recipeIngredientService.addRecipeIngredient(new RecipeIngredient(recipe, ingredient, typeAmount));
         }
     }
 
     /**
      * Converts Inputstream contents into a simple String.
+     *
      * @param is the inputstream to be converted
      * @return the converted string
      */

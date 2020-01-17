@@ -11,12 +11,14 @@ public class StorageServiceException extends Exception {
 
     /**
      * Simple constructor for storage service releated errors.
+     *
      * @param message message to be printed.
      */
     public StorageServiceException(String message) { super(message); }
 
     /**
      * Constructor with error code for storage service releated errors.
+     *
      * @param message message to be printed.
      * @param code which describes the error.
      */
