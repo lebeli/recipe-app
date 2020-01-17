@@ -69,7 +69,6 @@ The response contains the image url:
 {"url": "localhost:8080/images/321c860f-3d1d-4c22-b313-5f7d989d4e58"}
 ```
 
-<<<<<<< HEAD
 ##### Requesting all ingredients
 `GET localhost/api/ingredients`
 
@@ -80,11 +79,3 @@ Inside body specify ingredient json object:
 ```json
 {"name": "salt"}
 ```
-
-=======
-##### Requesting an image
-`GET localhost/api/images/1.jpg`
-
-##### Requesting all ingredients
-`GET localhost/api/ingredients`
->>>>>>> develop
