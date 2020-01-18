@@ -26,16 +26,21 @@ class Details extends Component {
       <div className="Details">
         <RecommenderImage image={this.props.image} />
         <div className="DetailedInfo">
-          <BackButton
-            className="BackButton"
-            handleGoBack={this.props.handleGoBack}
-          />
-          <RecommenderHeader
-            recipeName={this.props.recipeName}
-            duration={this.props.duration}
-          />
-          <Ingredients ingredients={this.state.ingredients} />
-          <Instructions instructions={this.state.instructions} />
+          <div className="TextInfo">
+            <BackButton
+              className="BackButton"
+              handleGoBack={this.props.handleGoBack}
+            />
+            <RecommenderHeader
+              recipeName={this.props.recipeName}
+              duration={this.props.duration}
+            />
+            <Ingredients ingredients={this.state.ingredients} />
+            <Instructions instructions={this.state.instructions} />
+          </div>
+          <div className="FullImage">
+            <img src={this.props.image} alt="finished dish" />
+          </div>
         </div>
       </div>
     );

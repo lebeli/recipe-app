@@ -18,11 +18,11 @@
       display: flex;
       justify-content: center;
       width: 100%;
-      object-fit: fill;
 
       Img {
         height: 100%;
         width: 100%;
+        object-fit: cover;
       }
     }
 
