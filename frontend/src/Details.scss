@@ -67,9 +67,13 @@
     }
 
     .FullImage {
-      max-width: 50vw;
       float: right;
       display: table-column;
+
+      Img {
+        width: 100%;
+        object-fit: cover;
+      }
     }
 
     @media screen and (max-width: 360px) {
