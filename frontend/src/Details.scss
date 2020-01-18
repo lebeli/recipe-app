@@ -18,16 +18,13 @@
   .DetailedInfo {
     padding: 5%;
     width: calc(100vw - 10%);
-    display: table;
-    position: relative;
-    overflow: auto;
+    display: flex;
 
     .TextInfo {
       width: 50%;
       bottom: 0;
       left: 0;
-      display: table-cell;
-      overflow: hidden;
+      flex: 50%;
 
       .Header {
         background: rgba(255, 255, 255, 0.5);
@@ -65,22 +62,29 @@
     }
 
     .FullImage {
-      float: right;
-      display: table-cell;
+      flex: 50%;
+      display: flex;
+      align-items: center;
 
       Img {
         width: 100%;
         object-fit: cover;
       }
     }
+  }
 
-    @media screen and (max-width: 450px) {
+  @media screen and (max-width: 450px) {
+    .DetailedInfo {
+      display: block;
+
       .TextInfo {
-        float: left;
-        min-width: 100%;
+        width: 100%;
       }
+
       .FullImage {
-        float: left;
+        Img {
+          width: 100%;
+        }
       }
     }
   }
