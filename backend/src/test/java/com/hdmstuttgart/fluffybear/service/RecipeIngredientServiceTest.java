@@ -5,7 +5,6 @@ import com.hdmstuttgart.fluffybear.model.Recipe;
 import com.hdmstuttgart.fluffybear.model.RecipeIngredient;
 import com.hdmstuttgart.fluffybear.model.RecipeIngredientKey;
 import com.hdmstuttgart.fluffybear.repository.RecipeIngredientRepository;
-import com.hdmstuttgart.fluffybear.service.RecipeIngredientService;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

@@ -2,10 +2,10 @@ package com.hdmstuttgart.fluffybear.service;
 
 import com.hdmstuttgart.fluffybear.model.Recipe;
 import com.hdmstuttgart.fluffybear.repository.RecipeRepository;
-import com.hdmstuttgart.fluffybear.service.RecipeService;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.junit.Before;
@@ -54,15 +54,15 @@ public class RecipeServiceTest {
 
     @Test
     public void getRecipesByIdTest() {
-        when(recipeRepository.findById(1)).thenReturn(spaghetti);
-        when(recipeRepository.findById(2)).thenReturn(soup);
+        when(recipeRepository.findById(1L)).thenReturn(Optional.of(spaghetti));
+        when(recipeRepository.findById(2L)).thenReturn(Optional.of(soup));
 
-        assertEquals(1, recipeService.getRecipe(1).getId());
-        assertEquals(2, recipeService.getRecipe(2).getId());
-        assertEquals("Spaghetti", recipeService.getRecipe(1).getName());
-        assertEquals("Soup", recipeService.getRecipe(2).getName());
-        verify(recipeRepository, times(2)).findById(1);
-        verify(recipeRepository, times(2)).findById(2);
+        assertEquals(1, (recipeService.getRecipe(1L)).getId());
+        assertEquals(2, recipeService.getRecipe(2L).getId());
+        assertEquals("Spaghetti", recipeService.getRecipe(1L).getName());
+        assertEquals("Soup", recipeService.getRecipe(2L).getName());
+        verify(recipeRepository, times(2)).findById(1L);
+        verify(recipeRepository, times(2)).findById(2L);
     }
 
     @Test

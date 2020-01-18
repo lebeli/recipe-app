@@ -1,11 +1,7 @@
 package com.hdmstuttgart.fluffybear.controller;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.ObjectWriter;
-import com.fasterxml.jackson.databind.SerializationFeature;
 import com.hdmstuttgart.fluffybear.Storage.StorageService;
 import com.hdmstuttgart.fluffybear.TestUtilities;
-import com.hdmstuttgart.fluffybear.controller.IngredientController;
 import com.hdmstuttgart.fluffybear.model.Ingredient;
 import com.hdmstuttgart.fluffybear.service.IngredientService;
 import com.hdmstuttgart.fluffybear.service.RecipeService;

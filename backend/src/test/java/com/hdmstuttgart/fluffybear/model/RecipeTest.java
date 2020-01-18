@@ -1,8 +1,6 @@
 package com.hdmstuttgart.fluffybear.model;
 
 import com.hdmstuttgart.fluffybear.TestUtilities;
-import com.hdmstuttgart.fluffybear.model.Ingredient;
-import com.hdmstuttgart.fluffybear.model.Recipe;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;

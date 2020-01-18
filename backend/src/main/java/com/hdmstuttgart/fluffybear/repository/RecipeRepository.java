@@ -1,6 +1,8 @@
 package com.hdmstuttgart.fluffybear.repository;
 
 import java.util.List;
+import java.util.Optional;
+
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.data.repository.CrudRepository;
@@ -16,7 +18,7 @@ public interface RecipeRepository extends CrudRepository<Recipe, Long> {
 	 * @param id which is used for identifying the recipe in the database.
 	 * @return the created Recipe object.
 	 */
-	Recipe findById(long id);
+	Optional<Recipe> findById(Long id);
 
 	/**
 	 * Returns a list of recipes identified by the name.

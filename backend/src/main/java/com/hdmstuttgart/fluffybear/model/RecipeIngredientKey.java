@@ -90,9 +90,9 @@ public class RecipeIngredientKey implements Serializable {
 	/**
 	 * Setter for ingredienId member variable.
 	 *
-	 * @param ingredienId  ingredien id.
+	 * @param ingredientId  ingredien id.
 	 */
-	public void setIngredientId(long ingredienId) {
+	public void setIngredientId(String ingredientId) {
 		this.ingredientId = ingredientId;
 	}
 }

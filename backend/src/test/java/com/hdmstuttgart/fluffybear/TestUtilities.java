@@ -7,8 +7,10 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import com.hdmstuttgart.fluffybear.model.Ingredient;
 import com.hdmstuttgart.fluffybear.model.Recipe;
 import com.hdmstuttgart.fluffybear.model.RecipeIngredient;
+import org.springframework.data.jpa.repository.support.SimpleJpaRepository;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 
@@ -22,6 +24,13 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 public final class TestUtilities {
     private TestUtilities() {}
 
+    /**
+     * Recipe builder for convenience.
+     *
+     * @param recipeName  Name of the recipe.
+     * @param ingredientNames  List of names for ingredient generation.
+     * @return  Recipe instance wir added ingredients.
+     */
     public static Recipe buildRecipe(String recipeName, List<String> ingredientNames) {
         Recipe recipe = new Recipe(recipeName);
         ingredientNames.forEach(ingredientName -> {
@@ -35,6 +44,14 @@ public final class TestUtilities {
         return recipe;
     }
 
+    /**
+     * Serialize a generic entity for emulating the unmarshalling process in the controller.
+     *
+     * @param recipeComponent  Recipe or Ingredient entity.
+     * @param <T>  Generic type, in this case Recipe or Ingredient.
+     * @return  Serialized Recipe or Ingredient instance.
+     * @throws JsonProcessingException
+     */
     public static <T> String serialize(T recipeComponent) throws JsonProcessingException {
         ObjectMapper mapper = new ObjectMapper();
         mapper.configure(SerializationFeature.WRAP_ROOT_VALUE, false);
@@ -42,6 +59,14 @@ public final class TestUtilities {
         return ow.writeValueAsString(recipeComponent);
     }
 
+    /**
+     * Generate common GET request with meta data in header for recipe retrival.
+     *
+     * @param httpRequest  MockMvc instance for mocking http request.
+     * @param vegan  Boolean, wether the recipe should be vegan or not
+     * @return  ResultActions with which expected values can be tested.
+     * @throws Exception
+     */
     public static ResultActions addRecipesRequest(MockMvc httpRequest, Boolean vegan) throws Exception {
         return httpRequest.perform(get("/recipes")
                 .header("breakfast", "true")
@@ -52,15 +77,5 @@ public final class TestUtilities {
                 .header("longTime", "true")
                 .header("shortTime", "true")
                 .contentType("application/json"));
-    }
-
-    public static int repositorySize(CrudRepository repository) {
-        int size = 0;
-        Iterator it = repository.findAll().iterator();
-        do {
-            size++;
-            if(it.hasNext()) {it.next();}
-        } while (it.hasNext());
-        return size;
     }
 }

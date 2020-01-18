@@ -2,7 +2,6 @@ package com.hdmstuttgart.fluffybear.controller;
 
 import com.hdmstuttgart.fluffybear.Storage.StorageService;
 import com.hdmstuttgart.fluffybear.TestUtilities;
-import com.hdmstuttgart.fluffybear.controller.RecipeController;
 import com.hdmstuttgart.fluffybear.model.Recipe;
 import com.hdmstuttgart.fluffybear.service.IngredientService;
 import com.hdmstuttgart.fluffybear.service.RecipeIngredientService;
@@ -17,7 +16,6 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.Arrays;
 
-import static org.assertj.core.internal.bytebuddy.matcher.ElementMatchers.is;
 import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.verify;
 import static org.mockito.internal.verification.VerificationModeFactory.times;
@@ -74,7 +72,7 @@ public class RecipeControllerTest {
         httpRequest.perform(get("/recipes/{id}", 1L)
                 .contentType("application/json"))
                 .andExpect(status().isOk());
-        verify(recipeService, times(1)).getRecipe(1);
+        verify(recipeService, times(1)).getRecipe(1L);
 
     }
 

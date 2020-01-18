@@ -1,8 +1,5 @@
 package com.hdmstuttgart.fluffybear.model;
 
-import com.hdmstuttgart.fluffybear.model.Ingredient;
-import com.hdmstuttgart.fluffybear.model.Recipe;
-import com.hdmstuttgart.fluffybear.model.RecipeIngredient;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

@@ -1,8 +1,6 @@
 package com.hdmstuttgart.fluffybear.repository;
 
-import com.hdmstuttgart.fluffybear.TestUtilities;
 import com.hdmstuttgart.fluffybear.model.Ingredient;
-import com.hdmstuttgart.fluffybear.model.Recipe;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,9 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.persistence.criteria.CriteriaBuilder;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -36,29 +32,29 @@ public class IngredientRepositoryTest {
 
     @Test
     public void repositoryInitTest() {
-        assertEquals(147, TestUtilities.repositorySize(ingredientRepository));
+        assertEquals(147, ingredientRepository.count());
     }
 
     @Test
     public void saveIngredientTest() {
-        int initialSize = TestUtilities.repositorySize(ingredientRepository);
+        long initialSize = ingredientRepository.count();
         Ingredient ingredientTest = new Ingredient("Test");
         ingredientRepository.save(ingredientTest);
-        assertEquals(initialSize+1, TestUtilities.repositorySize(ingredientRepository));
+        assertEquals(initialSize+1, ingredientRepository.count());
         assertEquals(ingredientTest.getName(), ingredientRepository.findById("Test").get().getName());
     }
 
     @Test
     public void saveDuplicateTest() {
-        int initialSize = TestUtilities.repositorySize(ingredientRepository);
+        long initialSize = ingredientRepository.count();
         ingredientRepository.save(ingredientRepository.findById("Eier").get());
-        assertEquals(initialSize, TestUtilities.repositorySize(ingredientRepository));
+        assertEquals(initialSize, ingredientRepository.count());
     }
 
     @Test
     public void deleteIngredientTest() {
-        int initialSize = TestUtilities.repositorySize(ingredientRepository);
+        long initialSize = ingredientRepository.count();
         ingredientRepository.delete(ingredientRepository.findById("Eier").get());
-        assertEquals(initialSize-1, TestUtilities.repositorySize(ingredientRepository));
+        assertEquals(initialSize-1, ingredientRepository.count());
     }
 }
