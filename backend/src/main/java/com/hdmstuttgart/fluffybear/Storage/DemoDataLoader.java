@@ -89,6 +89,7 @@ public class DemoDataLoader implements ApplicationRunner {
             ingredientJSON.remove("typeAmount");
             Ingredient ingredient = mapper.readValue(ingredientJSON.toString(), Ingredient.class);
             ingredient.setId(ingredient.getName());
+//            ingredient.addRecipe(recipe);
             ingredientService.addIngredient(ingredient);
             recipeIngredientService.addRecipeIngredient(new RecipeIngredient(recipe, ingredient, typeAmount));
         }

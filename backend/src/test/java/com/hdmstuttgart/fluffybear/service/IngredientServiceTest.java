@@ -1,11 +1,10 @@
-package com.hdmstuttgart.fluffybear;
+package com.hdmstuttgart.fluffybear.service;
 
 import com.hdmstuttgart.fluffybear.model.Ingredient;
 import com.hdmstuttgart.fluffybear.repository.IngredientRepository;
-import com.hdmstuttgart.fluffybear.service.IngredientService;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -50,8 +49,8 @@ public class IngredientServiceTest {
 
     @Test
     public void getIngredientByIdTest() {
-        when(ingredientRepository.findById("Tomatoes")).thenReturn(tomatoes);
-        when(ingredientRepository.findById("Meat")).thenReturn(meat);
+        when(ingredientRepository.findById("Tomatoes")).thenReturn(Optional.of(tomatoes));
+        when(ingredientRepository.findById("Meat")).thenReturn(Optional.of(meat));
         assertEquals("Tomatoes", ingredientService.getIngredient("Tomatoes").getId());
         assertEquals("Meat", ingredientService.getIngredient("Meat").getId());
         assertEquals("Tomatoes", ingredientService.getIngredient("Tomatoes").getName());
@@ -69,8 +68,8 @@ public class IngredientServiceTest {
 
     @Test
     public void deleteIngredientTest() {
-        ingredientService.deleteIngredient(1);
-        verify(ingredientRepository, times(1)).deleteById(1L);
+        ingredientService.deleteIngredient("Eier");
+        verify(ingredientRepository, times(1)).deleteById("Eier");
     }
 }
 

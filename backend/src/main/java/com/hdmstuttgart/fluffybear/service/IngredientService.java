@@ -2,12 +2,15 @@ package com.hdmstuttgart.fluffybear.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.hdmstuttgart.fluffybear.model.Ingredient;
 import com.hdmstuttgart.fluffybear.repository.IngredientRepository;
+
+import javax.persistence.EntityNotFoundException;
 
 /**
  * Spring boot service for ingredients.
@@ -41,7 +44,7 @@ public class IngredientService {
 	 * @return ingredients in a list.
 	 */
 	public Ingredient getIngredient(String id) {
-		return ingredientRepository.findById(id);
+		return ingredientRepository.findById(id).orElseThrow(() -> new EntityNotFoundException(id));
 	}
 
 	/**
@@ -69,7 +72,7 @@ public class IngredientService {
 	 *
 	 * @param id which refers to ingredient which well be deleted.
 	 */
-	public void deleteIngredient(long id) {
+	public void deleteIngredient(String id) {
 		ingredientRepository.deleteById(id); // if id already exists, Spring updates the id with the passed recipe instance
 	}
 

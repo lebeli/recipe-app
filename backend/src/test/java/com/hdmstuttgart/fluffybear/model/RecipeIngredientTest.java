@@ -1,13 +1,7 @@
-package com.hdmstuttgart.fluffybear;
+package com.hdmstuttgart.fluffybear.model;
 
-import com.hdmstuttgart.fluffybear.model.Ingredient;
-import com.hdmstuttgart.fluffybear.model.Recipe;
-import com.hdmstuttgart.fluffybear.model.RecipeIngredient;
 import org.junit.Before;
 import org.junit.Test;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 

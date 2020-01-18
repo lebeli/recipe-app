@@ -1,11 +1,10 @@
-package com.hdmstuttgart.fluffybear;
+package com.hdmstuttgart.fluffybear.service;
 
 import com.hdmstuttgart.fluffybear.model.Ingredient;
 import com.hdmstuttgart.fluffybear.model.Recipe;
 import com.hdmstuttgart.fluffybear.model.RecipeIngredient;
 import com.hdmstuttgart.fluffybear.model.RecipeIngredientKey;
 import com.hdmstuttgart.fluffybear.repository.RecipeIngredientRepository;
-import com.hdmstuttgart.fluffybear.service.RecipeIngredientService;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -69,21 +68,6 @@ public class RecipeIngredientServiceTest {
         verify(recipeIngredientRepository, times(1)).findAll();
     }
 
-//    @Test
-//    public void getRecipeIngredientsByIdTest() {
-//        RecipeIngredientKey spaghettiGarlicKey = new RecipeIngredientKey(spaghetti.getId(), garlic.getId());
-//        when(recipeIngredientRepository.findByKey(spaghettiGarlicKey)).thenReturn(
-//                (RecipeIngredient) allRecipeIngredients
-//                    .stream()
-//                    .filter(recipeIngredient -> recipeIngredient.getId().getRecipeId() == 1 && recipeIngredient.getId().getIngredientId() == 1)
-//                    .findFirst()
-//                    .orElse(null)
-//        );
-//        RecipeIngredient queryRecipeIngredientKey = recipeIngredientService.getRecipeIngredient(spaghettiGarlicKey);
-//        assertEquals("Spaghetti", queryRecipeIngredientKey.getRecipe().getName());
-//        assertEquals("Garlic", queryRecipeIngredientKey.getIngredient().getName());
-//        verify(recipeIngredientRepository, times(1)).findByKey(spaghettiGarlicKey);
-//    }
 
     @Test
     public void getRecipeIngredientsByRecipeTest() {

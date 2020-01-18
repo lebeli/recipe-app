@@ -1,8 +1,6 @@
-package com.hdmstuttgart.fluffybear;
+package com.hdmstuttgart.fluffybear.model;
 
-import com.hdmstuttgart.fluffybear.model.Ingredient;
-import com.hdmstuttgart.fluffybear.model.Recipe;
-import com.hdmstuttgart.fluffybear.model.RecipeIngredient;
+import com.hdmstuttgart.fluffybear.TestUtilities;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -10,8 +8,7 @@ import static org.junit.Assert.*;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Arrays;
 
 // do not use SpringBootTest for unit testing (no need for spring boot application context)
 @RunWith(JUnit4.class)
@@ -20,34 +17,12 @@ public class RecipeTest {
 	private Recipe recipe;
 	private Ingredient noodles;
 	private Ingredient sauce;
-	private RecipeIngredient spaghettiNoodles;
-	private RecipeIngredient spaghettiSauce;
 
 	@Before
 	public void setUpEntities() {
-		recipe = new Recipe("Spaghetti");
-		noodles = new Ingredient("Noodles");
-		sauce = new Ingredient("Sauce");
-		spaghettiNoodles = new RecipeIngredient();
-		spaghettiSauce = new RecipeIngredient();
-
-		List<RecipeIngredient> spaghettiIngredients = new ArrayList<>();
-		List<RecipeIngredient> noodleRecipes = new ArrayList<>();
-		List<RecipeIngredient> sauceRecipes = new ArrayList<>();
-
-		spaghettiNoodles.setRecipe(recipe);
-		spaghettiNoodles.setIngredient(noodles);
-		spaghettiSauce.setRecipe(recipe);
-		spaghettiSauce.setIngredient(sauce);
-
-		spaghettiIngredients.add(spaghettiNoodles);
-		spaghettiIngredients.add(spaghettiSauce);
-		noodleRecipes.add(spaghettiNoodles);
-		sauceRecipes.add(spaghettiSauce);
-
-		recipe.setIngredients(spaghettiIngredients);
-		noodles.setRecipes(noodleRecipes);
-		sauce.setRecipes(sauceRecipes);
+		recipe = TestUtilities.buildRecipe("Spaghetti", Arrays.asList("Noodles", "Sauce"));
+		noodles = recipe.getIngredients().get(0).getIngredient();
+		sauce = recipe.getIngredients().get(1).getIngredient();
 	}
 
 	@Test

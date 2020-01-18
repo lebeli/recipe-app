@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -33,6 +34,38 @@ public class Ingredient {
 	public Ingredient(String name) {
 		this.id = name;
 		this.name = name;
+	}
+
+	/**
+	 * Instanciates new RecipeIngredient with given Recipe instance beeing assigned to the recipe member variable
+	 * and the self reference to the ingredient member variable. The RecipeIngredient instance is beeing added to the recipes
+	 * list.
+	 *
+	 * @param recipe  recipe instance to be added to the new RecipeIngredient instance.
+	 */
+	public void addRecipe(Recipe recipe) {
+		RecipeIngredient recipeIngredient= new RecipeIngredient(recipe, this);
+		recipes.add(recipeIngredient);
+	}
+
+	/**
+	 * Iterates over all RecipeIngredient instances and removes every the each instance with matching Ingredient instance
+	 * referenced by the ingredient member variable.
+	 *
+	 * @param recipe  ingredient instance that defines which RecipeIngredient instance is going to be removed.
+	 */
+	public void removeRecipe(Recipe recipe) {
+		for (Iterator<RecipeIngredient> iterator = recipes.iterator();
+			 iterator.hasNext(); ) {
+			RecipeIngredient recipeIngredient = iterator.next();
+
+			if (recipeIngredient.getIngredient().equals(this) &&
+					recipeIngredient.getRecipe().equals(recipe)) {
+				iterator.remove();
+				recipeIngredient.setRecipe(null);
+				recipeIngredient.setIngredient(null);
+			}
+		}
 	}
 
 	/**

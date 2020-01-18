@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 import com.hdmstuttgart.fluffybear.model.Recipe;
 import com.hdmstuttgart.fluffybear.repository.RecipeRepository;
 
+import javax.persistence.EntityNotFoundException;
+
 /**
  * Spring boot service for recipes.
  */
@@ -76,8 +78,8 @@ public class RecipeService {
 	 * @param id which is used for identifying the recipe.
 	 * @return the recipe
 	 */
-	public Recipe getRecipe(long id) {
-		return recipeRepository.findById(id);
+	public Recipe getRecipe(Long id) {
+		return recipeRepository.findById(id).orElseThrow(() -> new EntityNotFoundException(id.toString()));
 	}
 
 	/**
