@@ -73,6 +73,7 @@ class App extends Component {
         <Header />
         <Filter />
         {content}
+        <AddRecipe />
         <Footer />
       </div>
     );
