@@ -12,7 +12,16 @@ class Details extends Component {
     super(props);
     this.state = {
       pageNumber: 1,
-      ingredients: ["flour", "cucumber"],
+      ingredients: [
+        {
+          name: "flour",
+          typeAmount: "300g"
+        },
+        {
+          name: "cucumber",
+          typeAmount: "1"
+        }
+      ],
       instructions: [
         "Banannaaaaa",
         "Gruuuu!",

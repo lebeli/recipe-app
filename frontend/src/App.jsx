@@ -50,13 +50,17 @@ class App extends Component {
     let content;
     if (pageNumber == 0) {
       content = (
-        <Recommender
-          goToDetails={this.goToDetails}
-          image={this.state.image}
-          recipeName={this.state.recipeName}
-          duration={this.state.duration}
-          changeRecipe={this.changeRecipe}
-        />
+        <div>
+          <Filter />
+          <Recommender
+            goToDetails={this.goToDetails}
+            image={this.state.image}
+            recipeName={this.state.recipeName}
+            duration={this.state.duration}
+            changeRecipe={this.changeRecipe}
+          />
+          <AddRecipe />
+        </div>
       );
     } else {
       content = (
@@ -71,9 +75,7 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-        <Filter />
         {content}
-        <AddRecipe />
         <Footer />
       </div>
     );
