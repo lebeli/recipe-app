@@ -1,6 +1,5 @@
 const path = require("path");
 const webpack = require("webpack");
-const regenerator = require("regenerator-runtime");
 
 module.exports = {
   entry: "./src/index.jsx",
