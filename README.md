@@ -1,3 +1,18 @@
+# FOODBABY
+An Application by fluffy-bear.
+
+##### Project members
+* Johanna Reiting (jr087)
+* Erik Großkopf (eg034)
+* Leonhard Lie (ll040)
+* Manuela Müller (mm243)
+
+## Abstract
+FOODBABY is a recipe recommender application for people who don’t know what to eat, is it for breakfast, lunch or dinner. Because most recipe applications recommend a ton of recipes when looking for a suitable one, FOODBABY is designed to make the decision of what to eat as easy as possible. One single recipe is all the user gets recommended. Additionally, the user can filter the search according to preparation time, diet and type of meal. Furthermore the recipe suggestion can be adjusted by specifying ingredients. 
+The frontend technologies used for FOODBABY are React.js, Babel and Webpack. Sass in combination with material UI provide good usability and a fresh look. The Spring Boot Backend makes use of a mysql database for data storage. For running the application in different environments, FOODBABY is using a Docker setup. Every part of the application is wrapped in a separate Docker Container and the containers are connected through an Nginx reverse proxy that serves as the intermediate between the containers. 
+The quality of the application is ensured by several UI and unit tests. Component and snapshot tests, which were created with the help of Jest and Enzyme, ensure a functioning frontend. A good coverage of the unit tests guarantees a functioning backend implementation.
+
+
 # Mobile web application for browsing receipts
 ## Backend
 ### Getting Started
