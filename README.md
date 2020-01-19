@@ -1,14 +1,22 @@
+# FOODBABY
+An Application by fluffy-bear.
+
+##### Project members
+* Johanna Reiting (jr087)
+* Erik Großkopf (eg034)
+* Leonhard Lie (ll040)
+* Manuela Müller (mm243)
+
+## Abstract
+FOODBABY is a recipe recommender application for people who don’t know what to eat, is it for breakfast, lunch or dinner. Because most recipe applications recommend a ton of recipes when looking for a suitable one, FOODBABY is designed to make the decision of what to eat as easy as possible. One single recipe is all the user gets recommended. Additionally, the user can filter the search according to preparation time, diet and type of meal. Furthermore the recipe suggestion can be adjusted by specifying ingredients. 
+The frontend technologies used for FOODBABY are React.js, Babel and Webpack. Sass in combination with material UI provide good usability and a fresh look. The Spring Boot Backend makes use of a mysql database for data storage. For running the application in different environments, FOODBABY is using a Docker setup. Every part of the application is wrapped in a separate Docker Container and the containers are connected through an Nginx reverse proxy that serves as the intermediate between the containers. 
+The quality of the application is ensured by several UI and unit tests. Component and snapshot tests, which were created with the help of Jest and Enzyme, ensure a functioning frontend. A good coverage of the unit tests guarantees a functioning backend implementation.
+
+
 # Mobile web application for browsing receipts
 ## Backend
 ### Getting Started
 The fluffy-bear backend is deployed as spring boot application with mysql database access - both running in docker containers. These instructions will cover requirements and usage for running both services in docker containers.
-
-#### Prerequisites
-Install:
-
-* [JDK 13.0.1](https://www.oracle.com/technetwork/java/javase/downloads/jdk13-downloads-5672538.html)
-* [Maven](https://maven.apache.org/download.cgi)
-* Docker ([Windows](https://download.docker.com/win/stable/Docker%20for%20Windows%20Installer.exe) / [Mac](https://download.docker.com/mac/stable/Docker.dmg))
 
 #### Deploying the application
 Inside the root project folder, simply execute "docker-compose up".
@@ -63,6 +71,9 @@ Inside body specify recipe json object (You can get a custom image url with addi
 }
 ```
 
+##### Requesting an image
+`GET localhost/api/images/1.jpg`
+
 ##### Adding an image
 `POST localhost/api/images/add`
 
@@ -73,5 +84,13 @@ The response contains the image url:
 {"url": "localhost:8080/images/321c860f-3d1d-4c22-b313-5f7d989d4e58"}
 ```
 
-##### Requesting an image
-`GET localhost/api/images/1.jpg`
+##### Requesting all ingredients
+`GET localhost/api/ingredients`
+
+##### Adding an ingredients
+`POST localhost/api/ingredients/adding-image-request
+
+Inside body specify ingredient json object:
+```json
+{"name": "salt"}
+```

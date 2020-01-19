@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Header /> renders correctly 1`] = `
+<div
+  className="Header"
+>
+  <div
+    className="MuiBox-root MuiBox-root-2"
+  >
+    <img
+      alt="foodbaby logo"
+      id="logo"
+      src="test-file-stub"
+    />
+  </div>
+  <div
+    className="MuiBox-root MuiBox-root-3"
+  >
+    <p
+      id="slogan"
+    >
+      Was isst du heute?
+    </p>
+  </div>
+</div>
+`;

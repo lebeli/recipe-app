@@ -17,6 +17,7 @@ function Tags(params) {
         renderInput={tags => (
           <TextField
             {...tags}
+            className="tag"
             variant="outlined"
             placeholder="Nach Zutaten suchen..."
             margin="normal"
