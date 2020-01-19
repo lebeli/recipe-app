@@ -1,0 +1,101 @@
+@import "./styles/styles.scss";
+
+.Details {
+
+  .TeaserImage {
+    height: 50vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+
+    Img {
+      height: 50vh;
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .DetailedInfo {
+    padding: 5%;
+    width: calc(100vw - 10%);
+    display: flex;
+
+    .TextInfo {
+      width: 50%;
+      bottom: 0;
+      left: 0;
+      flex: 50%;
+
+      .Header {
+        background: rgba(255, 255, 255, 0.5);
+        height: 10%;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+        display: flex;
+
+        .HeaderContent {
+          margin: 5px;
+          width: 100%;
+          text-align: center;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+      }
+
+      Button {
+        color: $primaryColor;
+        padding-left: 0;
+      }
+
+      .Ingredients {
+        h4 {
+          margin: 0;
+        }
+
+        div {
+          display: flex;
+
+          span {
+          width: 50px;
+          }
+        }
+      }
+
+      .Instructions {
+        ol {
+          padding-inline-start: 0;
+          list-style-position: inside;
+        }
+      }
+    }
+
+    .FullImage {
+      flex: 50%;
+      display: flex;
+      align-items: center;
+
+      Img {
+        width: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+
+  @media screen and (max-width: 450px) {
+    .DetailedInfo {
+      display: block;
+
+      .TextInfo {
+        width: 100%;
+      }
+
+      .FullImage {
+        Img {
+          width: 100%;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,55 @@
+@import './styles/styles.scss';
+
+#Container {
+  height: calc(100vh - 276px);
+
+  .RelativeParent {
+    position: relative;
+    top: 0;
+    bottom: 100px;
+    width: 100%;
+    height: -webkit-fill-available;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+
+    .TeaserImage {
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      width: 100%;
+
+      Img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+      }
+    }
+
+    .Header {
+      background: rgba(255, 255, 255, 0.5);
+      display: flex;
+      width: 100%;
+      min-height: 68px;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+
+      .HeaderContent {
+        margin: 5px;
+        width: 100%;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+  }
+}
+
+#ReloadFab {
+  background: #EB672C;
+  color: white;
+  position: absolute;
+  bottom: 20px;
+}

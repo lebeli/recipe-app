@@ -1,8 +1,5 @@
-package com.hdmstuttgart.fluffybear;
+package com.hdmstuttgart.fluffybear.model;
 
-import com.hdmstuttgart.fluffybear.model.Ingredient;
-import com.hdmstuttgart.fluffybear.model.Recipe;
-import com.hdmstuttgart.fluffybear.model.RecipeIngredient;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -27,20 +24,10 @@ public class IngredientTest {
         recipeSpaghetti = new Recipe("Spaghetti");
         sauce = new Ingredient("Sauce");
         spaghettiSauce = new RecipeIngredient();
-
-        List<RecipeIngredient> spaghettiIngredients = new ArrayList<>();
-        List<RecipeIngredient> tortelliniIngredients = new ArrayList<>();
-        List<RecipeIngredient> sauceRecipes = new ArrayList<>();
-
         spaghettiSauce.setRecipe(recipeSpaghetti);
         spaghettiSauce.setIngredient(sauce);
-
-//      spaghettiIngredients.add(spaghettiSauce);
-//      tortelliniIngredients.add(tortelliniSauce);
+        List<RecipeIngredient> sauceRecipes = new ArrayList<>();
         sauceRecipes.add(spaghettiSauce);
-
-//      recipeSpaghetti.setIngredients(spaghettiIngredients);
-//      recipeTortellini.setIngredients(spaghettiIngredients);
         sauce.setRecipes(sauceRecipes);
     }
 
