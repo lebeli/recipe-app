@@ -1,14 +1,13 @@
 @import "./styles/styles.scss";
 
 .Details {
-
   .TeaserImage {
     height: 50vh;
     overflow: hidden;
     display: flex;
     justify-content: center;
 
-    Img {
+    img {
       height: 50vh;
       width: 100%;
       object-fit: cover;
@@ -26,25 +25,24 @@
       left: 0;
       flex: 50%;
 
-      .Header {
-        background: rgba(255, 255, 255, 0.5);
-        height: 10%;
-        justify-content: center;
-        align-items: center;
-        padding: 10px;
-        display: flex;
+      #details_header {
+        margin: 20px 0 20px 0;
+        #details_recipe_name {
+          font-family: $primaryFont;
+          padding-right: 20px;
+        }
 
-        .HeaderContent {
-          margin: 5px;
-          width: 100%;
-          text-align: center;
+        #details_duration {
+          font-family: $primaryFont;
           display: flex;
-          align-items: center;
-          justify-content: center;
+
+          svg {
+            padding-right: 5px;
+          }
         }
       }
 
-      Button {
+      button {
         color: $primaryColor;
         padding-left: 0;
       }
@@ -58,15 +56,20 @@
           display: flex;
 
           span {
-          width: 50px;
+            width: 100px;
           }
         }
       }
 
       .Instructions {
+        padding-right: 30px;
         ol {
           padding-inline-start: 0;
           list-style-position: inside;
+
+          li {
+            padding-bottom: 10px;
+          }
         }
       }
     }
@@ -76,7 +79,7 @@
       display: flex;
       align-items: center;
 
-      Img {
+      img {
         width: 100%;
         object-fit: cover;
       }
@@ -92,7 +95,7 @@
       }
 
       .FullImage {
-        Img {
+        img {
           width: 100%;
         }
       }

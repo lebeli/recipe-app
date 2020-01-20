@@ -9,9 +9,9 @@ import ToggleButtons from "./ToggleButtons";
 import Tags from "./Tags";
 import "./Filter.scss";
 
-class Filter extends Component {
-  constructor(params) {
-    super(params);
+class Filter extends React.Component {
+  constructor(props) {
+    super(props);
     this.state = {
       ingredients: [
         "Gurke",
@@ -96,9 +96,22 @@ class Filter extends Component {
   }
 
   updateState(name, val) {
-    this.setState({
-      [name]: val
-    });
+    this.setState(
+      {
+        [name]: val
+      },
+      () => {
+        this.props.updateRecipe(
+          this.state.breakfast,
+          this.state.lunch,
+          this.state.dinner,
+          this.state.vegetarian,
+          this.state.vegan,
+          this.state.i_have_time,
+          this.state.fast
+        );
+      }
+    );
   }
 
   render() {

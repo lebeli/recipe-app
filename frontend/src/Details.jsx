@@ -5,6 +5,8 @@ import Instructions from "./Instructions";
 import RecommenderHeader from "./RecommenderHeader";
 import RecommenderImage from "./RecommenderImage";
 import LasagneImage from "./images/lasagne.jpg";
+import { Grid, Button } from "@material-ui/core";
+import AccessTimeIcon from "@material-ui/icons/AccessTime";
 import "./Details.scss";
 
 class Details extends Component {
@@ -12,21 +14,8 @@ class Details extends Component {
     super(props);
     this.state = {
       pageNumber: 1,
-      ingredients: [
-        {
-          name: "flour",
-          typeAmount: "300g"
-        },
-        {
-          name: "cucumber",
-          typeAmount: "1"
-        }
-      ],
-      instructions: [
-        "Banannaaaaa",
-        "Gruuuu!",
-        "Halloosn viawhbfiaw hfeiuwbfhbwe diqwbdhbvwei lfhea iugf46griwa zdegksg fuishfiu gfzsgdfjz sfv,jhbs< fhksbc. kjsbdvjk bydskjvf sudhv ousgczs h!!"
-      ]
+      ingredients: props.ingredients,
+      instructions: props.instructions
     };
   }
 
@@ -40,10 +29,19 @@ class Details extends Component {
               className="BackButton"
               handleGoBack={this.props.handleGoBack}
             />
-            <RecommenderHeader
+            <Grid container id="details_header">
+              <Grid item id="details_recipe_name">
+                {this.props.recipeName}
+              </Grid>
+              <Grid item id="details_duration">
+                <AccessTimeIcon />
+                {this.props.duration}
+              </Grid>
+            </Grid>
+            {/* <RecommenderHeader
               recipeName={this.props.recipeName}
               duration={this.props.duration}
-            />
+            /> */}
             <Ingredients ingredients={this.state.ingredients} />
             <Instructions instructions={this.state.instructions} />
           </div>
