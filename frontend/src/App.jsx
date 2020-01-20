@@ -6,16 +6,16 @@ import Header from "./Header";
 import Filter from "./Filter";
 import Footer from "./Footer";
 import Recommender from "./Recommender";
-import ToastImage from "./images/toast.jpg";
-import LasagneImage from "./images/lasagne.jpg";
 import "./App.scss";
+import EmptyPlate from "./images/empty_plate.jpg";
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      errorImage: EmptyPlate,
       recipe: {},
-      image: "/api/images/5.jpg",
+      image: EmptyPlate,
       pageNumber: 0,
       breakfast: false,
       lunch: false,
@@ -33,20 +33,19 @@ class App extends Component {
   }
 
   componentDidMount() {
-    console.log("componentDidMount");
     // initial recipe fetch
     const options = {
       method: "GET",
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
-        breakfast: true,
-        lunch: true,
-        dinner: true,
-        vegetarian: true,
-        vegan: true,
-        longTime: true,
-        shortTime: true
+        breakfast: this.state.breakfast,
+        lunch: this.state.lunch,
+        dinner: this.state.dinner,
+        vegetarian: this.state.vegetarian,
+        vegan: this.state.vegan,
+        longTime: this.state.longTime,
+        shortTime: this.state.shortTime
       }
     };
 
@@ -145,40 +144,50 @@ class App extends Component {
       .then(response => response.json())
       .then(response => {
         //TODO: Nachher kommt nur noch ein Rezept zurück und muss weitergegeben werden
-        this.setState({
-          recipe: response[0]
-        });
 
-        var imageUrl = response[0].image;
-
-        // TODO: raus
-        if (response[0].image.includes("localhost")) {
-          imageUrl = imageUrl.substring(9);
-        }
-        fetch(imageUrl, {
-          method: "GET"
-        })
-          .then(response => response.blob())
-          .then(response => {
-            this.setState({
-              image: URL.createObjectURL(response)
-            });
-          })
-          .catch(error => {
-            console.log("fetch image - error");
-            // Error-Handling
+        if (response[0]) {
+          this.setState({
+            recipe: response[0]
           });
+          var imageUrl = response[0].image;
+          // TODO: raus
+          if (response[0].image.includes("localhost")) {
+            imageUrl = imageUrl.substring(9);
+          }
+          fetch(imageUrl, {
+            method: "GET"
+          })
+            .then(response => response.blob())
+            .then(response => {
+              if (response) {
+                this.setState({
+                  pageNumber: 0,
+                  image: URL.createObjectURL(response)
+                });
+              }
+            })
+            .catch(() => {
+              this.setState({
+                pageNumber: 1000
+              });
+            });
+        } else {
+          this.setState({
+            pageNumber: 1000
+          });
+        }
       })
-      .catch(error => {
-        console.log("updateState - fetch - error: " + error);
-        // TODO: Text "no matching recipe"
+      .catch(() => {
+        this.setState({
+          pageNumber: 1000
+        });
       });
   }
 
   render() {
     const pageNumber = this.state.pageNumber;
     let content;
-    if (pageNumber == 0) {
+    if (pageNumber == 0 && this.state.recipe) {
       content = (
         <div>
           <Filter updateRecipe={this.updateRecipe} />
@@ -192,7 +201,7 @@ class App extends Component {
           <AddRecipe />
         </div>
       );
-    } else {
+    } else if (pageNumber == 1 && this.state.recipe) {
       content = (
         <Details
           handleGoBack={this.handleGoBack}
@@ -202,6 +211,21 @@ class App extends Component {
           ingredients={this.state.recipe.ingredients}
           instructions={this.state.recipe.instructions}
         />
+      );
+    } else {
+      content = (
+        <div>
+          <Filter updateRecipe={this.updateRecipe} />
+          <div id="error_container">
+            <div className="error_image">
+              <img src={this.state.errorImage} alt="Kein Rezept gefunden" />
+            </div>
+            <div id="error_text">
+              Wir haben leider kein passendes Rezept gefunden.
+            </div>
+          </div>
+          <AddRecipe />
+        </div>
       );
     }
     return (
