@@ -15,4 +15,10 @@ describe("Recommender", () => {
     const tree = renderer.create(<Recommender />).toJSON();
     expect(tree).toMatchSnapshot();
   });
+
+  test("photo data is passed to child component", () => {
+    const wrapper = mount(<Recommender image="../images/lasagne.jpg" />);
+    const image = wrapper.find("img");
+    expect(image.prop("src")).toEqual("../images/lasagne.jpg");
+  });
 });

@@ -1,0 +1,123 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Recommender renders correctly 1`] = `
+<div
+  className="Details"
+>
+  <div
+    className="TeaserImage"
+  >
+    <img
+      alt="finished dish"
+    />
+  </div>
+  <div
+    className="DetailedInfo"
+  >
+    <div
+      className="TextInfo"
+    >
+      <button
+        className="MuiButtonBase-root MuiButton-root MuiButton-text"
+        disabled={false}
+        onBlur={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex={0}
+        type="button"
+      >
+        <span
+          className="MuiButton-label"
+        >
+          <svg
+            aria-hidden="true"
+            className="MuiSvgIcon-root"
+            focusable="false"
+            role="presentation"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"
+            />
+          </svg>
+          Zurück
+        </span>
+      </button>
+      <div
+        className="Header"
+      >
+        <div
+          className="HeaderContent"
+        />
+        <div
+          className="HeaderContent"
+        >
+          <svg
+            aria-hidden="true"
+            className="MuiSvgIcon-root"
+            focusable="false"
+            role="presentation"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
+            />
+            <path
+              d="M12.5 7H11v6l5.25 3.15.75-1.23-4.5-2.67z"
+            />
+          </svg>
+        </div>
+      </div>
+      <div
+        className="Ingredients"
+      >
+        <h4>
+          ZUTATEN
+        </h4>
+        <div>
+          <span>
+            300g
+          </span>
+          flour
+        </div>
+        <div>
+          <span>
+            1
+          </span>
+          cucumber
+        </div>
+      </div>
+      <div
+        className="Instructions"
+      >
+        <ol>
+          <li>
+            Banannaaaaa
+          </li>
+          <li>
+            Gruuuu!
+          </li>
+          <li>
+            Halloosn viawhbfiaw hfeiuwbfhbwe diqwbdhbvwei lfhea iugf46griwa zdegksg fuishfiu gfzsgdfjz sfv,jhbs&lt; fhksbc. kjsbdvjk bydskjvf sudhv ousgczs h!!
+          </li>
+        </ol>
+      </div>
+    </div>
+    <div
+      className="FullImage"
+    >
+      <img
+        alt="finished dish"
+      />
+    </div>
+  </div>
+</div>
+`;

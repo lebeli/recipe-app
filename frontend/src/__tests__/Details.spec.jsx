@@ -14,7 +14,7 @@ describe("Recommender", () => {
   });
 
   test("renders correctly", () => {
-    const tree = renderer.create(<Recommender />).toJSON();
+    const tree = renderer.create(<Details />).toJSON();
     expect(tree).toMatchSnapshot();
   });
 });
