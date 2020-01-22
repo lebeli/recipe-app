@@ -14,6 +14,34 @@ The quality of the application is ensured by several UI and unit tests. Componen
 
 
 # Mobile web application for browsing receipts
+## Frontend
+### Getting Started
+Fluffy-bear's frontend is written with the help of the JavaScript library ReactJS as well as the React Library Material UI.
+The frontend is deployed via Docker. Instructions on how to deploy the service can be found below.
+
+#### Deploying the application
+Navigate to the root folder of the project and run 'docker-compose up'.
+This will create and start images/containers for:
+1. MYSQL database
+2. Spring Boot application
+3. React frontend Nginx server
+4. Nginx reverse-proxy
+
+
+### Structure
+Every frontend-relevant file is located in the directiory 'frontend'. 
+All component files are .jsx files and are located under 'frontend > src'.
+The frontend-team has decided to separate every class and function into a respective file. This way components are ensured to be reusable throughout the entire project.
+
+Styling for the components are done using Sass. The style sheet files have the same name as the component they are designed for.
+For example the JavaScript code for the Header component is located in it's designated file 'Header.jsx'. The corresponding style sheet is named 'Header.scss'.
+
+Tests can be found under '__test__'. The frontend is snapshot-tested. For this purpose the files containing the tests are named (component).spec.jsx.
+For the creating of the tests the testing frameworks Jest and Enzyme are used.
+When running a snapshot test for the first time, the corresponding snapshot is automatically created and stored in the folder '__snapshots__'.
+
+Any images needed for the application are stored in the folder called 'images'.
+
 ## Backend
 ### Getting Started
 The fluffy-bear backend is deployed as spring boot application with mysql database access - both running in docker containers. These instructions will cover requirements and usage for running both services in docker containers.
