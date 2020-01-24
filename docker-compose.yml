@@ -1,6 +1,16 @@
 version: "3"
 
 services:
+  reverseproxy:
+    depends_on:
+      - frontend
+      - backend
+    image: reverseproxy
+    build:
+      context: ./proxy
+      dockerfile: Dockerfile
+    ports:
+      - 80:80
   mysql-docker-container:
     image: mysql:5.7.27
     environment:
@@ -9,4 +19,30 @@ services:
       - MYSQL_USER=springuser
       - MYSQL_PASSWORD=ThePassword
     ports:
-      - 3306:3306
+      - 3306:3306 # Host port needed for local development with spring
+    #volumes:
+    #  - ./mysql:/data/mysql
+  backend:
+    image: backend
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql-docker-container:3306/fluffy_bear?serverTimezone=UTC
+    depends_on:
+      - mysql-docker-container
+    ports:
+      - 8080:8080 # host:container
+    volumes:
+      - /data/spring-boot-app #TODO: mapping für Development
+  frontend:
+    image: frontend
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - 80
+  #TODO: raus in Produktion, funktionieren noch nicht für Development, da Rechte für Ordner in Container fehlen
+  #volumes:
+  #- ./src:/usr/share/nginx/html/dist/
+  #- ./public:/usr/share/nginx/html/
