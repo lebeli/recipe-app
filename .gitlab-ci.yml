@@ -8,4 +8,4 @@ pages:
   only: 
    - tags
   except:
-   - /^(?!master).+@/
+   - master
