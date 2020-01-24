@@ -3,7 +3,6 @@ package com.hdmstuttgart.fluffybear.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonUnwrapped;
-import org.hibernate.annotations.GeneratorType;
 
 import javax.persistence.*;
 
@@ -13,13 +12,6 @@ import javax.persistence.*;
 @Entity
 @JsonIgnoreProperties({"id"})
 public class RecipeIngredient {
-	/**
-	 * Composite key for recipe and ingredient id.
-	 */
-//	@EmbeddedId
-//	@JsonIgnore
-//    private RecipeIngredientKey id = new RecipeIngredientKey();
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	long id;
