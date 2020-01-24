@@ -1,1 +1,0 @@
-packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"com.hdmstuttgart.fluffybear"},{"l":"com.hdmstuttgart.fluffybear.controller"},{"l":"com.hdmstuttgart.fluffybear.model"},{"l":"com.hdmstuttgart.fluffybear.repository"},{"l":"com.hdmstuttgart.fluffybear.service"},{"l":"com.hdmstuttgart.fluffybear.storage"}]
