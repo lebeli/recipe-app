@@ -67,8 +67,28 @@ public final class TestUtilities {
      * @return  ResultActions with which expected values can be tested.
      * @throws Exception
      */
-    public static ResultActions addRecipesRequest(MockMvc httpRequest, Boolean vegan) throws Exception {
-        return httpRequest.perform(get("/recipes")
+    public static ResultActions allRecipesGetRequest(MockMvc httpRequest, Boolean vegan) throws Exception {
+        return httpRequest.perform(get("/recipes/all")
+                .header("breakfast", "true")
+                .header("lunch", "true")
+                .header("dinner", "true")
+                .header("vegetarian", vegan.toString())
+                .header("vegan", vegan.toString())
+                .header("longTime", "true")
+                .header("shortTime", "true")
+                .contentType("application/json"));
+    }
+
+    /**
+     * Generate common GET request with meta data in header for recipe retrival.
+     *
+     * @param httpRequest  MockMvc instance for mocking http request.
+     * @param vegan  Boolean, wether the recipe should be vegan or not
+     * @return  ResultActions with which expected values can be tested.
+     * @throws Exception
+     */
+    public static ResultActions randomRecipeGetRequest(MockMvc httpRequest, Boolean vegan) throws Exception {
+        return httpRequest.perform(get("/recipes/all")
                 .header("breakfast", "true")
                 .header("lunch", "true")
                 .header("dinner", "true")

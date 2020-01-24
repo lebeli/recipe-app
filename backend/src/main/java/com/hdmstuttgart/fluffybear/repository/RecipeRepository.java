@@ -58,4 +58,18 @@ public interface RecipeRepository extends CrudRepository<Recipe, Long> {
 	List<Recipe> findByJsonParametersNoneVeganVegetarian(@Param("minTime") int minTime,
 									  @Param("maxTime") int maxTime,
 									  @Param("category") List<String> category);
+
+	@Query(value = "SELECT * FROM recipe WHERE total_time <= :maxTime AND total_time > :minTime AND category IN :category " +
+			"AND vegetarian = :vegetarian AND vegan = :vegan ORDER BY RAND() LIMIT 1", nativeQuery = true)
+	Recipe findOneByJsonParameters(@Param("minTime") int minTime,
+									  @Param("maxTime") int maxTime,
+									  @Param("category") List<String> category,
+									  @Param("vegetarian") boolean vegetarian,
+									  @Param("vegan") boolean vegan);
+
+	@Query(value = "SELECT * FROM recipe WHERE total_time <= :maxTime AND total_time > :minTime AND category IN :category " +
+			"ORDER BY RAND() LIMIT 1", nativeQuery = true)
+	Recipe findOneByJsonParametersNoneVeganVegetarian(@Param("minTime") int minTime,
+														 @Param("maxTime") int maxTime,
+														 @Param("category") List<String> category);
 }

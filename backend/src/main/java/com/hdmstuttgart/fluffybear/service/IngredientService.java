@@ -53,7 +53,6 @@ public class IngredientService {
 	 * @param ingredient which needs to be stored.
 	 */
 	public Ingredient addIngredient(Ingredient ingredient) {
-		ingredient.setId(ingredient.getName());
 	    return ingredientRepository.save(ingredient);
 	}
 

@@ -3,7 +3,6 @@ package com.hdmstuttgart.fluffybear.service;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.hdmstuttgart.fluffybear.model.RecipeIngredientKey;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -72,7 +71,7 @@ public class RecipeIngredientService {
 	 * @param id which is used for identifying the recipeingredient to be updated.
 	 * @param recipeIngredient which will replace the old recipeIngredient.
 	 */
-	public void updateRecipeIngredient(RecipeIngredientKey id, RecipeIngredient recipeIngredient) {
+	public void updateRecipeIngredient(RecipeIngredient recipeIngredient) {
 		recipeIngredientRepository.save(recipeIngredient); // if id already exists, Spring updates the id with the passed recipe instance 
 	}
 
@@ -81,8 +80,8 @@ public class RecipeIngredientService {
 	 *
 	 * @param id which is used for identifying the recipeingredient to be deleted.
 	 */
-	public void deleteRecipeIngredient(RecipeIngredientKey id) {
-		recipeIngredientRepository.deleteById(id); // if id already exists, Spring updates the id with the passed recipe instance 
+	public void deleteRecipeIngredient(long id) {
+		recipeIngredientRepository.deleteById(id); // if id already exists, Spring updates the id with the passed recipe instance
 	}
 
 	/**

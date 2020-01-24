@@ -39,37 +39,60 @@ public class RecipeService {
 	/**
 	 * Applies a filter to all recipes and returns the list of the filtered recipes.
 	 *
-	 * @param minTime Minmal time of the recipe in minutes.
-	 * @param maxTime Maximum time of the recipe in minutes.
-	 * @param categories List of all possible categories for the recipe.
-	 * @param vegetarian indicating if the recipe is vegetarian.
-	 * @param vegan indicating if the recipe is vegan.
-	 * @return the filtered list of recipes.
+	 * @param breakfast  indicating if recipe is for lunch.
+	 * @param lunch  maximum time of the recipe in minutes.
+	 * @param dinner  list of all possible categories for the recipe.
+	 * @param vegetarian  indicating if the recipe is vegetarian.
+	 * @param vegan  indicating if the recipe is vegan.
+	 * @return  the filtered list of recipes.
 	 */
-	public List<Recipe> getAllRecipesByFilter(int minTime, int maxTime, List<String> categories, boolean vegetarian, boolean vegan) {
+	public List<Recipe> getAllRecipesByFilter(boolean breakfast, boolean lunch, boolean dinner, boolean vegetarian, boolean vegan, boolean longTime, boolean shortTime) {
 		List<Recipe> recipes = new ArrayList<Recipe>();
-		recipeRepository.findByJsonParameters(minTime, maxTime, categories, vegetarian, vegan)
-		.forEach(recipe -> {
-			recipes.add(recipe);
-		});
+		List<String> categories = new ArrayList<>();
+		if(breakfast) { categories.add("breakfast"); }
+		if(lunch) { categories.add("lunch"); }
+		if(dinner) { categories.add("dinner"); }
+		int minTime = 30;
+		int maxTime = 60;
+		if(shortTime) { minTime = 0; }
+		if(longTime) { maxTime = 180; }
+		if(!vegan && !vegetarian) {
+			recipeRepository.findByJsonParametersNoneVeganVegetarian(minTime, maxTime, categories).forEach(recipe -> {
+				recipes.add(recipe);
+			});
+		} else {
+			recipeRepository.findByJsonParameters(minTime, maxTime, categories, vegetarian, vegan)
+					.forEach(recipe -> {
+						recipes.add(recipe);
+					});
+		}
 		return recipes;
 	}
 
 	/**
-	 * Applies a filter to all non vegan nor vegetarian recipes and returns the list of the filtered recipes.
+	 * Applies a filter to all recipes and returns a single random recipe of the resulting subset.
 	 *
-	 * @param minTime Minmal time of the recipe in minutes.
-	 * @param maxTime Maximum time of the recipe in minutes.
-	 * @param categories List of all possible categories for the recipe.
-	 * @return the filtered list of recipes.
+	 * @param breakfast  indicating if recipe is for lunch.
+	 * @param lunch  maximum time of the recipe in minutes.
+	 * @param dinner  list of all possible categories for the recipe.
+	 * @param vegetarian  indicating if the recipe is vegetarian.
+	 * @param vegan  indicating if the recipe is vegan.
+	 * @return  the filtered list of recipes.
 	 */
-	public List<Recipe> getAllRecipesByFilterNoneVeganVegetarian(int minTime, int maxTime, List<String> categories) {
-		List<Recipe> recipes = new ArrayList<Recipe>();
-		recipeRepository.findByJsonParametersNoneVeganVegetarian(minTime, maxTime, categories)
-				.forEach(recipe -> {
-					recipes.add(recipe);
-				});
-		return recipes;
+	public Recipe getOneRecipeByFilter(boolean breakfast, boolean lunch, boolean dinner, boolean vegetarian, boolean vegan, boolean longTime, boolean shortTime) {
+		List<String> categories = new ArrayList<String>();
+		if(breakfast) { categories.add("breakfast"); }
+		if(lunch) { categories.add("lunch"); }
+		if(dinner) { categories.add("dinner"); }
+		int minTime = 30;
+		int maxTime = 60;
+		if(shortTime) { minTime = 0; }
+		if(longTime) { maxTime = 180; }
+		if(!vegan && !vegetarian) {
+			return recipeRepository.findOneByJsonParametersNoneVeganVegetarian(minTime, maxTime, categories);
+		} else {
+			return recipeRepository.findOneByJsonParameters(minTime, maxTime, categories, vegetarian, vegan);
+		}
 	}
 
 	/**

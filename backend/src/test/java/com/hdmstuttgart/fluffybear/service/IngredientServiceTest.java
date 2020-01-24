@@ -53,8 +53,8 @@ public class IngredientServiceTest {
         when(ingredientRepository.findById("Meat")).thenReturn(Optional.of(meat));
         assertEquals("Tomatoes", ingredientService.getIngredient("Tomatoes").getId());
         assertEquals("Meat", ingredientService.getIngredient("Meat").getId());
-        assertEquals("Tomatoes", ingredientService.getIngredient("Tomatoes").getName());
-        assertEquals("Meat", ingredientService.getIngredient("Meat").getName());
+        assertEquals("Tomatoes", ingredientService.getIngredient("Tomatoes").getId());
+        assertEquals("Meat", ingredientService.getIngredient("Meat").getId());
         verify(ingredientRepository, times(2)).findById("Tomatoes");
         verify(ingredientRepository, times(2)).findById("Tomatoes");
     }

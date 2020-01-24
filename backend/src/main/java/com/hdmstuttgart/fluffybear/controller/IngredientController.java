@@ -1,7 +1,7 @@
 package com.hdmstuttgart.fluffybear.controller;
 
 
-import com.hdmstuttgart.fluffybear.Storage.FileSystemStorageService;
+import com.hdmstuttgart.fluffybear.storage.FileSystemStorageService;
 import com.hdmstuttgart.fluffybear.model.Ingredient;
 import com.hdmstuttgart.fluffybear.service.IngredientService;
 import org.apache.log4j.Logger;
@@ -27,7 +27,7 @@ public class IngredientController {
     @RequestMapping("/ingredients")
     public List<String> getIngredients() {
         logger.info("Ingredient request performed.");
-        return ingredientService.getAllIngredients().stream().map(ingredient -> ingredient.getName()).collect(Collectors.toList());
+        return ingredientService.getAllIngredients().stream().map(ingredient -> ingredient.getId()).collect(Collectors.toList());
     }
 
     /**

@@ -46,7 +46,7 @@ public class Recipe {
 	/**
 	 * List of RecipeIngredient instances, containing all ingredients needed for this recipe.
 	 */
-	@OneToMany(mappedBy = "recipe", cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(mappedBy = "recipe", orphanRemoval = true)
 	private List<RecipeIngredient> ingredients = new ArrayList<>();
 
 	@ElementCollection(fetch=FetchType.EAGER)

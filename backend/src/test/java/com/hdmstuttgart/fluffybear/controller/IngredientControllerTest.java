@@ -1,6 +1,6 @@
 package com.hdmstuttgart.fluffybear.controller;
 
-import com.hdmstuttgart.fluffybear.Storage.StorageService;
+import com.hdmstuttgart.fluffybear.storage.StorageService;
 import com.hdmstuttgart.fluffybear.TestUtilities;
 import com.hdmstuttgart.fluffybear.model.Ingredient;
 import com.hdmstuttgart.fluffybear.service.IngredientService;

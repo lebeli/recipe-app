@@ -1,4 +1,4 @@
-package com.hdmstuttgart.fluffybear.Storage;
+package com.hdmstuttgart.fluffybear.storage;
 
 /**
  * Exception for storage service releated errors.

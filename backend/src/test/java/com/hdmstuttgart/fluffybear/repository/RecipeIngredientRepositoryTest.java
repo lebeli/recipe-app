@@ -41,7 +41,7 @@ public class RecipeIngredientRepositoryTest {
 
     @Test
     public void repositoryInitTest() {
-        assertEquals(147, recipeIngredientRepository.count());
+        assertEquals(294, recipeIngredientRepository.count());
     }
 
     @Test

@@ -3,7 +3,6 @@ package com.hdmstuttgart.fluffybear.service;
 import com.hdmstuttgart.fluffybear.model.Ingredient;
 import com.hdmstuttgart.fluffybear.model.Recipe;
 import com.hdmstuttgart.fluffybear.model.RecipeIngredient;
-import com.hdmstuttgart.fluffybear.model.RecipeIngredientKey;
 import com.hdmstuttgart.fluffybear.repository.RecipeIngredientRepository;
 import org.junit.Before;
 import org.junit.Test;
@@ -51,10 +50,10 @@ public class RecipeIngredientServiceTest {
         spaghettiTomatoes = new RecipeIngredient(spaghetti, tomatoes);
         lasagnaTomatoes = new RecipeIngredient(lasagna, tomatoes);
         lasagnaMeat = new RecipeIngredient(lasagna, meat);
-        spaghettiGarlic.setId(new RecipeIngredientKey(spaghetti.getId(), garlic.getId()));
-        spaghettiTomatoes.setId(new RecipeIngredientKey(spaghetti.getId(), tomatoes.getId()));
-        lasagnaTomatoes.setId(new RecipeIngredientKey(lasagna.getId(), tomatoes.getId()));
-        lasagnaMeat.setId(new RecipeIngredientKey(lasagna.getId(), meat.getId()));
+        spaghettiGarlic.setId(1);
+        spaghettiTomatoes.setId(2);
+        lasagnaTomatoes.setId(3);
+        lasagnaMeat.setId(4);
         allRecipeIngredients.add(spaghettiGarlic);
         allRecipeIngredients.add(spaghettiTomatoes);
         allRecipeIngredients.add(lasagnaTomatoes);
@@ -89,13 +88,13 @@ public class RecipeIngredientServiceTest {
         when(recipeIngredientRepository.findByIngredient(garlic)).thenReturn(
                 allRecipeIngredients
                     .stream()
-                    .filter(recipeIngredient -> recipeIngredient.getIngredient().getName() == "Garlic")
+                    .filter(recipeIngredient -> recipeIngredient.getIngredient().getId() == "Garlic")
                     .collect(Collectors.toList())
         );
         when(recipeIngredientRepository.findByIngredient(tomatoes)).thenReturn(
                 allRecipeIngredients
                     .stream()
-                    .filter(recipeIngredient -> recipeIngredient.getIngredient().getName() == "Tomatoes")
+                    .filter(recipeIngredient -> recipeIngredient.getIngredient().getId() == "Tomatoes")
                     .collect(Collectors.toList())
         );
 
@@ -103,29 +102,26 @@ public class RecipeIngredientServiceTest {
         List<RecipeIngredient> queryRecipeIngredientTomatoes = recipeIngredientService.getRecipeIngredient(tomatoes);
 
         assertEquals(1, queryRecipeIngredientGarlic.size());
-        assertEquals("Garlic", queryRecipeIngredientGarlic.get(0).getIngredient().getName());
+        assertEquals("Garlic", queryRecipeIngredientGarlic.get(0).getIngredient().getId());
         assertEquals(2, queryRecipeIngredientTomatoes.size());
-        assertEquals("Tomatoes", queryRecipeIngredientTomatoes.get(0).getIngredient().getName());
-        assertEquals("Tomatoes", queryRecipeIngredientTomatoes.get(1).getIngredient().getName());
+        assertEquals("Tomatoes", queryRecipeIngredientTomatoes.get(0).getIngredient().getId());
+        assertEquals("Tomatoes", queryRecipeIngredientTomatoes.get(1).getIngredient().getId());
         verify(recipeIngredientRepository, times(2)).findByIngredient(any(Ingredient.class));
     }
 
     @Test
     public void addAndUpdateRecipeIngredientTest() {
         RecipeIngredient lasagnaGarlic = new RecipeIngredient(lasagna, garlic);
-        RecipeIngredientKey lasagnaGarlicKey = new RecipeIngredientKey(lasagna.getId(), garlic.getId());
-
+        lasagnaGarlic.setId(1);
         recipeIngredientService.addRecipeIngredient(lasagnaGarlic);
-        recipeIngredientService.updateRecipeIngredient(lasagnaGarlicKey, lasagnaGarlic);
-
+        recipeIngredientService.updateRecipeIngredient(lasagnaGarlic);
         verify(recipeIngredientRepository, times(2)).save(lasagnaGarlic);
     }
 
     @Test
     public void deleteRecipeTest() {
-        Recipe recipe = new Recipe("Spaghetti");
-        RecipeIngredientKey spaghettiGarlicKey = new RecipeIngredientKey(spaghetti.getId(), garlic.getId());
-        recipeIngredientService.deleteRecipeIngredient(spaghettiGarlicKey);
-        verify(recipeIngredientRepository, times(1)).deleteById(spaghettiGarlicKey);
+        long id = allRecipeIngredients.get(0).getId();
+        recipeIngredientService.deleteRecipeIngredient(id);
+        verify(recipeIngredientRepository, times(1)).deleteById(id);
     }
 }

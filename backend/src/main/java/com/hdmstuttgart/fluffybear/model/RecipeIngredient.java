@@ -1,6 +1,7 @@
 package com.hdmstuttgart.fluffybear.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonUnwrapped;
 
 import javax.persistence.*;
@@ -9,19 +10,16 @@ import javax.persistence.*;
  * Class for modeling the bidirectional relationship between a recipe and its containing ingredients.
  */
 @Entity
+@JsonIgnoreProperties({"id"})
 public class RecipeIngredient {
-	/**
-	 * Composite key for recipe and ingredient id.
-	 */
-	@EmbeddedId
-	@JsonIgnore
-    private RecipeIngredientKey id = new RecipeIngredientKey();
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	long id;
 
 	/**
 	 * Recipe instance of this relationship.
 	 */
 	@ManyToOne(fetch = FetchType.LAZY)
-    @MapsId("recipeId")
 	@JoinColumn(name = "recipe_id", referencedColumnName = "id")
 	@JsonIgnore
 	private Recipe recipe;
@@ -30,7 +28,6 @@ public class RecipeIngredient {
 	 * Ingredient instance of this relationship.
 	 */
 	@ManyToOne(fetch = FetchType.LAZY)
-    @MapsId("ingredientId")
 	@JoinColumn(name = "ingredient_id", referencedColumnName = "id")
 	@JsonUnwrapped
 	private Ingredient ingredient;
@@ -58,7 +55,7 @@ public class RecipeIngredient {
 	 *
 	 * @return  composite key with recipe and ingredient id.
 	 */
-	public RecipeIngredientKey getId() {
+	public long getId() {
 		return id;
 	}
 
@@ -67,7 +64,7 @@ public class RecipeIngredient {
 	 *
 	 * @param id  composite key with recipe and ingredient id.
 	 */
-	public void setId(RecipeIngredientKey id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 

@@ -41,7 +41,7 @@ public class IngredientRepositoryTest {
         Ingredient ingredientTest = new Ingredient("Test");
         ingredientRepository.save(ingredientTest);
         assertEquals(initialSize+1, ingredientRepository.count());
-        assertEquals(ingredientTest.getName(), ingredientRepository.findById("Test").get().getName());
+        assertEquals(ingredientTest.getId(), ingredientRepository.findById("Test").get().getId());
     }
 
     @Test
