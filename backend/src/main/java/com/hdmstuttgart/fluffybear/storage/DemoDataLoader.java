@@ -1,4 +1,4 @@
-package com.hdmstuttgart.fluffybear.Storage;
+package com.hdmstuttgart.fluffybear.storage;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.hdmstuttgart.fluffybear.model.Ingredient;

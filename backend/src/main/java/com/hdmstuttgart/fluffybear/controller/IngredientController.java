@@ -1,7 +1,7 @@
 package com.hdmstuttgart.fluffybear.controller;
 
 
-import com.hdmstuttgart.fluffybear.Storage.FileSystemStorageService;
+import com.hdmstuttgart.fluffybear.storage.FileSystemStorageService;
 import com.hdmstuttgart.fluffybear.model.Ingredient;
 import com.hdmstuttgart.fluffybear.service.IngredientService;
 import org.apache.log4j.Logger;

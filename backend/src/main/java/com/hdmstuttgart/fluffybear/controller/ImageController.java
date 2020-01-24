@@ -1,8 +1,8 @@
 package com.hdmstuttgart.fluffybear.controller;
 
-import com.hdmstuttgart.fluffybear.Storage.FileSystemStorageService;
-import com.hdmstuttgart.fluffybear.Storage.StorageService;
-import com.hdmstuttgart.fluffybear.Storage.StorageServiceException;
+import com.hdmstuttgart.fluffybear.storage.FileSystemStorageService;
+import com.hdmstuttgart.fluffybear.storage.StorageService;
+import com.hdmstuttgart.fluffybear.storage.StorageServiceException;
 import org.apache.log4j.Logger;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;

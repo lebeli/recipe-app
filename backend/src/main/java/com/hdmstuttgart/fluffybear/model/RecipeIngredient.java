@@ -1,6 +1,7 @@
 package com.hdmstuttgart.fluffybear.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonUnwrapped;
 import org.hibernate.annotations.GeneratorType;
 
@@ -10,6 +11,7 @@ import javax.persistence.*;
  * Class for modeling the bidirectional relationship between a recipe and its containing ingredients.
  */
 @Entity
+@JsonIgnoreProperties({"id"})
 public class RecipeIngredient {
 	/**
 	 * Composite key for recipe and ingredient id.

@@ -1,6 +1,6 @@
 package com.hdmstuttgart.fluffybear;
 
-import com.hdmstuttgart.fluffybear.Storage.StorageService;
+import com.hdmstuttgart.fluffybear.storage.StorageService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
