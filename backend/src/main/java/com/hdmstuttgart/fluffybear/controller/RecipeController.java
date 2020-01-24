@@ -59,17 +59,31 @@ public class RecipeController {
 		return recipeService.getAllRecipesByFilter(breakfast, lunch, dinner, vegetarian, vegan, longTime, shortTime);
 	}
 
+//	@RequestMapping(value = "/recipes", consumes = {"application/json"})
+//	public Recipe getRandomRecipeByFilter(
+//			@RequestHeader(value="breakfast") boolean breakfast,
+//			@RequestHeader(value="lunch") boolean lunch,
+//			@RequestHeader(value="dinner") boolean dinner,
+//			@RequestHeader(value="vegetarian") boolean vegetarian,
+//			@RequestHeader(value="vegan") boolean vegan,
+//			@RequestHeader(value="longTime") boolean longTime,
+//			@RequestHeader(value="shortTime") boolean shortTime
+//	) {
+//		return recipeService.getOneRecipeByFilter(breakfast, lunch, dinner, vegetarian, vegan, longTime, shortTime);
+//	}
+
 	@RequestMapping(value = "/recipes", consumes = {"application/json"})
 	public Recipe getRandomRecipeByFilter(
-			@RequestHeader(value="breakfast") boolean breakfast,
-			@RequestHeader(value="lunch") boolean lunch,
-			@RequestHeader(value="dinner") boolean dinner,
-			@RequestHeader(value="vegetarian") boolean vegetarian,
-			@RequestHeader(value="vegan") boolean vegan,
-			@RequestHeader(value="longTime") boolean longTime,
-			@RequestHeader(value="shortTime") boolean shortTime
+			@RequestParam(value="breakfast") boolean breakfast,
+			@RequestParam(value="lunch") boolean lunch,
+			@RequestParam(value="dinner") boolean dinner,
+			@RequestParam(value="vegetarian") boolean vegetarian,
+			@RequestParam(value="vegan") boolean vegan,
+			@RequestParam(value="longTime") boolean longTime,
+			@RequestParam(value="shortTime") boolean shortTime,
+			@RequestParam(value="ingredients") String[] ingredients
 	) {
-		return recipeService.getOneRecipeByFilter(breakfast, lunch, dinner, vegetarian, vegan, longTime, shortTime);
+		return recipeService.getOneRecipeByFilter(breakfast, lunch, dinner, vegetarian, vegan, longTime, shortTime, ingredients);
 	}
 
 	/**
