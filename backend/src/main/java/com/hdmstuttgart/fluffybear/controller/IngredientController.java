@@ -27,7 +27,7 @@ public class IngredientController {
     @RequestMapping("/ingredients")
     public List<String> getIngredients() {
         logger.info("Ingredient request performed.");
-        return ingredientService.getAllIngredients().stream().map(ingredient -> ingredient.getName()).collect(Collectors.toList());
+        return ingredientService.getAllIngredients().stream().map(ingredient -> ingredient.getId()).collect(Collectors.toList());
     }
 
     /**

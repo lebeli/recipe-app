@@ -51,10 +51,10 @@ public class RecipeIngredientServiceTest {
         spaghettiTomatoes = new RecipeIngredient(spaghetti, tomatoes);
         lasagnaTomatoes = new RecipeIngredient(lasagna, tomatoes);
         lasagnaMeat = new RecipeIngredient(lasagna, meat);
-        spaghettiGarlic.setId(new RecipeIngredientKey(spaghetti.getId(), garlic.getId()));
-        spaghettiTomatoes.setId(new RecipeIngredientKey(spaghetti.getId(), tomatoes.getId()));
-        lasagnaTomatoes.setId(new RecipeIngredientKey(lasagna.getId(), tomatoes.getId()));
-        lasagnaMeat.setId(new RecipeIngredientKey(lasagna.getId(), meat.getId()));
+//        spaghettiGarlic.setId(new RecipeIngredientKey(spaghetti.getId(), garlic.getId()));
+//        spaghettiTomatoes.setId(new RecipeIngredientKey(spaghetti.getId(), tomatoes.getId()));
+//        lasagnaTomatoes.setId(new RecipeIngredientKey(lasagna.getId(), tomatoes.getId()));
+//        lasagnaMeat.setId(new RecipeIngredientKey(lasagna.getId(), meat.getId()));
         allRecipeIngredients.add(spaghettiGarlic);
         allRecipeIngredients.add(spaghettiTomatoes);
         allRecipeIngredients.add(lasagnaTomatoes);
@@ -89,13 +89,13 @@ public class RecipeIngredientServiceTest {
         when(recipeIngredientRepository.findByIngredient(garlic)).thenReturn(
                 allRecipeIngredients
                     .stream()
-                    .filter(recipeIngredient -> recipeIngredient.getIngredient().getName() == "Garlic")
+                    .filter(recipeIngredient -> recipeIngredient.getIngredient().getId() == "Garlic")
                     .collect(Collectors.toList())
         );
         when(recipeIngredientRepository.findByIngredient(tomatoes)).thenReturn(
                 allRecipeIngredients
                     .stream()
-                    .filter(recipeIngredient -> recipeIngredient.getIngredient().getName() == "Tomatoes")
+                    .filter(recipeIngredient -> recipeIngredient.getIngredient().getId() == "Tomatoes")
                     .collect(Collectors.toList())
         );
 
@@ -103,10 +103,10 @@ public class RecipeIngredientServiceTest {
         List<RecipeIngredient> queryRecipeIngredientTomatoes = recipeIngredientService.getRecipeIngredient(tomatoes);
 
         assertEquals(1, queryRecipeIngredientGarlic.size());
-        assertEquals("Garlic", queryRecipeIngredientGarlic.get(0).getIngredient().getName());
+        assertEquals("Garlic", queryRecipeIngredientGarlic.get(0).getIngredient().getId());
         assertEquals(2, queryRecipeIngredientTomatoes.size());
-        assertEquals("Tomatoes", queryRecipeIngredientTomatoes.get(0).getIngredient().getName());
-        assertEquals("Tomatoes", queryRecipeIngredientTomatoes.get(1).getIngredient().getName());
+        assertEquals("Tomatoes", queryRecipeIngredientTomatoes.get(0).getIngredient().getId());
+        assertEquals("Tomatoes", queryRecipeIngredientTomatoes.get(1).getIngredient().getId());
         verify(recipeIngredientRepository, times(2)).findByIngredient(any(Ingredient.class));
     }
 
