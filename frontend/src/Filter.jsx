@@ -47,12 +47,8 @@ class Filter extends React.Component {
     fetch("/api/ingredients", options)
       .then(response => response.json())
       .then(response => {
-        var ingredientsArray = [];
-        for (let ingredient of response) {
-          ingredientsArray.push(ingredient.name);
-        }
         this.setState({
-          ingredients: ingredientsArray
+          ingredients: response
         });
       })
       .catch(error => {
@@ -108,7 +104,8 @@ class Filter extends React.Component {
           this.state.vegetarian,
           this.state.vegan,
           this.state.i_have_time,
-          this.state.fast
+          this.state.fast,
+          this.state.chosen_ingredients
         );
       }
     );

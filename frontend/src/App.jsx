@@ -23,7 +23,8 @@ class App extends Component {
       vegetarian: false,
       vegan: false,
       longTime: false,
-      shortTime: false
+      shortTime: false,
+      chosen_ingredients: []
     };
 
     this.goToDetails = this.goToDetails.bind(this);
@@ -45,7 +46,8 @@ class App extends Component {
         vegetarian: this.state.vegetarian,
         vegan: this.state.vegan,
         longTime: this.state.longTime,
-        shortTime: this.state.shortTime
+        shortTime: this.state.shortTime,
+        chosen_ingredients: this.state.chosen_ingredients
       }
     };
 
@@ -106,7 +108,8 @@ class App extends Component {
     vegetarian,
     vegan,
     longTime,
-    shortTime
+    shortTime,
+    chosen_ingredients
   ) {
     this.setState(
       {
@@ -116,7 +119,8 @@ class App extends Component {
         vegetarian: vegetarian,
         vegan: vegan,
         longTime: longTime,
-        shortTime: shortTime
+        shortTime: shortTime,
+        chosen_ingredients: chosen_ingredients
       },
       () => {
         this.getRecipe();
@@ -136,7 +140,8 @@ class App extends Component {
         vegetarian: this.state.vegetarian,
         vegan: this.state.vegan,
         longTime: this.state.longTime,
-        shortTime: this.state.shortTime
+        shortTime: this.state.shortTime,
+        chosen_ingredients: this.state.chosen_ingredients
       }
     };
 
