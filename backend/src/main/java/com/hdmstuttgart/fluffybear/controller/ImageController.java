@@ -59,7 +59,7 @@ public class ImageController {
      * Handler for /images/add resource POST requests that adds images to the database.
      *
      * @param file  uploaded image recived in a multipart request.
-     * @return  response body containing JSON with "url" key and resource url for the presisted image as value.
+     * @return  response body containing JSON with "url" key and resource url for the persisted image as value.
      */
     @PostMapping("/images/add")
     @ResponseBody
