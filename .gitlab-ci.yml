@@ -5,3 +5,7 @@ pages:
   artifacts:
     paths:
     - public
+  only: 
+   - tags
+  except:
+   - /^(?!master).+@/
