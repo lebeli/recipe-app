@@ -7,5 +7,3 @@ pages:
     - public
   only: 
    - tags
-  except:
-   - master
