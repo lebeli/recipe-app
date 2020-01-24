@@ -2,6 +2,7 @@ package com.hdmstuttgart.fluffybear.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -15,12 +16,8 @@ import java.util.List;
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "id"})
 public class Ingredient {
 	@Id
+	@JsonProperty("name")
 	private String id;
-
-	/**
-	 * Ingredient name.
-	 */
-	private String name;
 
 	/**
 	 * List of RecipeIngredient instances, containing all recipes this ingredient is needed for.
@@ -33,7 +30,6 @@ public class Ingredient {
 	
 	public Ingredient(String name) {
 		this.id = name;
-		this.name = name;
 	}
 
 	/**
@@ -46,6 +42,7 @@ public class Ingredient {
 	public void addRecipe(Recipe recipe) {
 		RecipeIngredient recipeIngredient= new RecipeIngredient(recipe, this);
 		recipes.add(recipeIngredient);
+		recipe.getIngredients().add(recipeIngredient);
 	}
 
 	/**
@@ -66,25 +63,6 @@ public class Ingredient {
 				recipeIngredient.setIngredient(null);
 			}
 		}
-	}
-
-	/**
-	 * Getter for name member variable.
-	 *
-	 * @return  ingredient name.
-	 */
-	public String getName() {
-		return name;
-	}
-
-	/**
-	 * Setter for name member variable.
-	 *
-	 * @param name  name to be set for ingredient.
-	 */
-	public void setName(String name) {
-		setId(name);
-		this.name = name;
 	}
 
 	/**

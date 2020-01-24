@@ -3,7 +3,7 @@ package com.hdmstuttgart.fluffybear.controller;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.hdmstuttgart.fluffybear.Storage.FileSystemStorageService;
+import com.hdmstuttgart.fluffybear.storage.FileSystemStorageService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -46,28 +46,30 @@ public class RecipeController {
 	 * @param shortTime  boolean if recipes with under 30 min preparation time should be considered.
 	 * @return recipes fitting the given query parameters.
 	 */
-	@RequestMapping(value = "/recipes", consumes = {"application/json"})
-    public List<Recipe> getRecipes(
-    		@RequestHeader(value="breakfast") boolean breakfast,
+	@RequestMapping(value = "/recipes/all", consumes = {"application/json"})
+	public List<Recipe> getAllRecipesByFilter(
+			@RequestHeader(value="breakfast") boolean breakfast,
 			@RequestHeader(value="lunch") boolean lunch,
 			@RequestHeader(value="dinner") boolean dinner,
 			@RequestHeader(value="vegetarian") boolean vegetarian,
 			@RequestHeader(value="vegan") boolean vegan,
 			@RequestHeader(value="longTime") boolean longTime,
 			@RequestHeader(value="shortTime") boolean shortTime
-			) {
-		List<String> categories = new ArrayList<String>();
-		if(breakfast) { categories.add("breakfast"); }
-		if(lunch) { categories.add("lunch"); }
-		if(dinner) { categories.add("dinner"); }
-		int minTime = 30;
-		int maxTime = 60;
-		if(shortTime) { minTime = 0; }
-		if(shortTime) { maxTime = 180; }
-		if(!vegan && !vegetarian) {
-			return recipeService.getAllRecipesByFilterNoneVeganVegetarian(minTime, maxTime, categories);
-		}
-		return recipeService.getAllRecipesByFilter(minTime, maxTime, categories, vegetarian, vegan);
+	) {
+		return recipeService.getAllRecipesByFilter(breakfast, lunch, dinner, vegetarian, vegan, longTime, shortTime);
+	}
+
+	@RequestMapping(value = "/recipes", consumes = {"application/json"})
+	public Recipe getRandomRecipeByFilter(
+			@RequestHeader(value="breakfast") boolean breakfast,
+			@RequestHeader(value="lunch") boolean lunch,
+			@RequestHeader(value="dinner") boolean dinner,
+			@RequestHeader(value="vegetarian") boolean vegetarian,
+			@RequestHeader(value="vegan") boolean vegan,
+			@RequestHeader(value="longTime") boolean longTime,
+			@RequestHeader(value="shortTime") boolean shortTime
+	) {
+		return recipeService.getOneRecipeByFilter(breakfast, lunch, dinner, vegetarian, vegan, longTime, shortTime);
 	}
 
 	/**

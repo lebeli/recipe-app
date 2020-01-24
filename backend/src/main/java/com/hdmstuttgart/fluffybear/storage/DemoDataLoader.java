@@ -1,4 +1,4 @@
-package com.hdmstuttgart.fluffybear.Storage;
+package com.hdmstuttgart.fluffybear.storage;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.hdmstuttgart.fluffybear.model.Ingredient;
@@ -88,10 +88,14 @@ public class DemoDataLoader implements ApplicationRunner {
             String typeAmount = ingredientJSON.getString("typeAmount");
             ingredientJSON.remove("typeAmount");
             Ingredient ingredient = mapper.readValue(ingredientJSON.toString(), Ingredient.class);
-            ingredient.setId(ingredient.getName());
-//            ingredient.addRecipe(recipe);
+
+            RecipeIngredient recipeIngredient = new RecipeIngredient(recipe, ingredient, typeAmount);
+            recipe.getIngredients().add(recipeIngredient);
+            ingredient.getRecipes().add(recipeIngredient);
+
+            recipeService.addRecipe(recipe);
             ingredientService.addIngredient(ingredient);
-            recipeIngredientService.addRecipeIngredient(new RecipeIngredient(recipe, ingredient, typeAmount));
+            recipeIngredientService.addRecipeIngredient(recipeIngredient);
         }
     }
 

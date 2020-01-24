@@ -33,13 +33,13 @@ public class IngredientTest {
 
     @Test
     public void ingredientGetName() {
-        assertEquals("Sauce", sauce.getName());
+        assertEquals("Sauce", sauce.getId());
     }
 
     @Test
     public void ingredientSetName() {
-        sauce.setName("Sauce Hollandaise");
-        assertEquals("Sauce Hollandaise", sauce.getName());
+        sauce.setId("Sauce Hollandaise");
+        assertEquals("Sauce Hollandaise", sauce.getId());
     }
 
     @Test

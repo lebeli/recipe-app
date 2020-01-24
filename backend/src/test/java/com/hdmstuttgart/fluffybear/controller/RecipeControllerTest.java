@@ -1,6 +1,6 @@
 package com.hdmstuttgart.fluffybear.controller;
 
-import com.hdmstuttgart.fluffybear.Storage.StorageService;
+import com.hdmstuttgart.fluffybear.storage.StorageService;
 import com.hdmstuttgart.fluffybear.TestUtilities;
 import com.hdmstuttgart.fluffybear.model.Recipe;
 import com.hdmstuttgart.fluffybear.service.IngredientService;
@@ -42,23 +42,43 @@ public class RecipeControllerTest {
     private StorageService storageService;
 
     @Test
-    public void recipeRequestRecieved() throws Exception {
-        TestUtilities.addRecipesRequest(httpRequest, true)
+    public void allRecipesRequestRecieved() throws Exception {
+        TestUtilities.allRecipesGetRequest(httpRequest, true)
                 .andExpect(status().isOk());
     }
 
     @Test
-    public void recipeRequestServiceCalled() throws Exception {
-        TestUtilities.addRecipesRequest(httpRequest, true)
+    public void allRecipesRequestServiceCalled() throws Exception {
+        TestUtilities.allRecipesGetRequest(httpRequest, true)
                 .andExpect(status().isOk());
-        verify(recipeService, times(1)).getAllRecipesByFilter(anyInt(), anyInt(), anyList(), anyBoolean(), anyBoolean());
+        verify(recipeService, times(1)).getAllRecipesByFilter(anyBoolean(), anyBoolean(), anyBoolean(), anyBoolean(), anyBoolean(), anyBoolean(), anyBoolean());
     }
 
     @Test
-    public void recipeRequestServiceCalledNoneVeganVegetarian() throws Exception {
-        TestUtilities.addRecipesRequest(httpRequest, false)
+    public void allRecipesRequestServiceCalledNoneVeganVegetarian() throws Exception {
+        TestUtilities.allRecipesGetRequest(httpRequest, false)
                 .andExpect(status().isOk());
-        verify(recipeService, times(1)).getAllRecipesByFilterNoneVeganVegetarian(anyInt(), anyInt(), anyList());
+        verify(recipeService, times(1)).getAllRecipesByFilter(anyBoolean(), anyBoolean(), anyBoolean(), anyBoolean(), anyBoolean(), anyBoolean(), anyBoolean());
+    }
+
+    @Test
+    public void randomRecipeRequestRecieved() throws Exception {
+        TestUtilities.randomRecipeGetRequest(httpRequest, true)
+                .andExpect(status().isOk());
+    }
+
+    @Test
+    public void randomRecipeRequestServiceCalled() throws Exception {
+        TestUtilities.randomRecipeGetRequest(httpRequest, true)
+                .andExpect(status().isOk());
+        verify(recipeService, times(1)).getAllRecipesByFilter(anyBoolean(), anyBoolean(), anyBoolean(), anyBoolean(), anyBoolean(), anyBoolean(), anyBoolean());
+    }
+
+    @Test
+    public void randomRecipeRequestServiceCalledNoneVeganVegetarian() throws Exception {
+        TestUtilities.randomRecipeGetRequest(httpRequest, false)
+                .andExpect(status().isOk());
+        verify(recipeService, times(1)).getAllRecipesByFilter(anyBoolean(), anyBoolean(), anyBoolean(), anyBoolean(), anyBoolean(), anyBoolean(), anyBoolean());
     }
 
     @Test

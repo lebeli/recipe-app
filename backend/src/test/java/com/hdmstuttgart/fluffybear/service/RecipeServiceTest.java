@@ -101,12 +101,12 @@ public class RecipeServiceTest {
     @Test
     public void getAllRecipesByFilterTest() {
         // spaghetti
-        spaghetti.setCategory("Dinner");
+        spaghetti.setCategory("dinner");
         spaghetti.setTotalTime(30);
         spaghetti.setVegan(false);
         spaghetti.setVegetarian(true);
         // soup
-        soup.setCategory("Lunch");
+        soup.setCategory("lunch");
         soup.setTotalTime(45);
         soup.setVegan(true);
         soup.setVegetarian(true);
@@ -114,9 +114,9 @@ public class RecipeServiceTest {
         pancakes.setCategory("Breakfast");
         pancakes.setTotalTime(10);
         pancakes.setVegan(false);
-        pancakes.setVegetarian(true);
+        pancakes.setVegetarian(false);
 
-        List<String> categoriesFilter = new ArrayList<String>(Arrays.asList("Dinner", "Lunch"));
+        List<String> categoriesFilter = new ArrayList<String>(Arrays.asList("lunch", "dinner"));
 
         when(recipeRepository.findByJsonParameters(anyInt(), anyInt(), anyList(), anyBoolean(), eq(true)))
                 .thenReturn(new ArrayList<Recipe>(
@@ -132,14 +132,24 @@ public class RecipeServiceTest {
                                 .filter(recipe -> (categoriesFilter).contains(recipe.getCategory()))
                                 .collect(Collectors.toList())
                 ));
+        when(recipeRepository.findByJsonParametersNoneVeganVegetarian(anyInt(), anyInt(), eq(categoriesFilter)))
+                .thenReturn(new ArrayList<Recipe>(
+                        allRecipes
+                                .stream()
+                                .filter(recipe -> !recipe.isVegan() && !recipe.isVegetarian())
+                                .collect(Collectors.toList())
+                ));
 
-        List<Recipe> filteredRecipesByVegan = recipeService.getAllRecipesByFilter(0, 180, new ArrayList<String>(Arrays.asList("Dinner", "Lunch", "Breakfast")), true, true);
-        List<Recipe> filteredRecipesByCategory = recipeService.getAllRecipesByFilter(0, 180, new ArrayList<String>(Arrays.asList("Dinner", "Lunch")), true, true);
+        List<Recipe> filteredRecipesByVegan = recipeService.getAllRecipesByFilter(true, true, true, true, true, true, true);
+        List<Recipe> filteredRecipesByCategory = recipeService.getAllRecipesByFilter(false, true, true, true, false, true, false);
+        List<Recipe> filteredRecipesByNoneVeganVegetarian = recipeService.getAllRecipesByFilter(false, true, true, false, false, true, false);
         assertEquals(1, filteredRecipesByVegan.size());
         assertEquals("Soup", filteredRecipesByVegan.get(0).getName());
         assertEquals(2, filteredRecipesByCategory.size());
         assertEquals("Spaghetti", filteredRecipesByCategory.get(0).getName());
         assertEquals("Soup", filteredRecipesByCategory.get(1).getName());
+        assertEquals(1, filteredRecipesByNoneVeganVegetarian.size());
+        assertEquals("Pancakes", filteredRecipesByNoneVeganVegetarian.get(0).getName());
         verify(recipeRepository, times(2)).findByJsonParameters(anyInt(), anyInt(), anyList(), anyBoolean(), anyBoolean());
     }
 }
