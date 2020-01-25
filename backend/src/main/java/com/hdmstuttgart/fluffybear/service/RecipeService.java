@@ -85,6 +85,9 @@ public class RecipeService {
 		if(breakfast) { categories.add("breakfast"); }
 		if(lunch) { categories.add("lunch"); }
 		if(dinner) { categories.add("dinner"); }
+		if(!breakfast && !lunch && !dinner) {
+			categories.addAll(Arrays.asList("breakfast", "lunch", "dinner"));
+		}
 		int minTime = 30;
 		int maxTime = 60;
 		if(shortTime) { minTime = 0; }
@@ -96,6 +99,7 @@ public class RecipeService {
 				return recipeRepository.findOneByJsonParametersNoneVeganVegetarianIngredients(minTime, maxTime, categories, Arrays.asList(ingredients));
 			}
 		} else {
+			if(vegan) {vegetarian = true;};
 			int i = ingredients.length;
 			if(ingredients.length == 0) {
 				return recipeRepository.findOneByJsonParameters(minTime, maxTime, categories, vegetarian, vegan);
