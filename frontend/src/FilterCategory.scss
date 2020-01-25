@@ -16,10 +16,26 @@
   }
 
   .MuiToggleButton-root:hover {
-    background-color: $primaryColor;
+    border-radius: 24px;
+    border: 0px;
+    background-color: white;
+    height: 40px;
+    padding: 0 40px 0 40px;
 
     .MuiToggleButton-label {
-      color: white;
+      font-family: $secondaryFont;
+      text-transform: none;
+      color: black;
+    }
+  }
+
+  @media screen and (min-width: 1024px) {
+    .MuiToggleButton-root:hover {
+      background-color: $primaryColor;
+
+      .MuiToggleButton-label {
+        color: white;
+      }
     }
   }
 
@@ -32,6 +48,10 @@
   }
 
   .MuiToggleButton-root.Mui-selected:hover {
-    background-color: #d24e13;
+    background-color: $primaryColorDarker;
+
+    .MuiToggleButton-label {
+      color: white;
+    }
   }
 }

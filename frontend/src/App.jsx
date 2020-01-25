@@ -46,7 +46,15 @@ class App extends Component {
 
   handleGoBack() {
     this.setState({
-      pageNumber: 0
+      pageNumber: 0,
+      breakfast: false,
+      lunch: false,
+      dinner: false,
+      vegetarian: false,
+      vegan: false,
+      longTime: false,
+      shortTime: false,
+      chosen_ingredients: []
     });
   }
 

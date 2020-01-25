@@ -87,7 +87,6 @@ class Filter extends React.Component {
   }
 
   updateState(name, val) {
-    console.log("Filter - updateState");
     this.setState(
       {
         [name]: val
