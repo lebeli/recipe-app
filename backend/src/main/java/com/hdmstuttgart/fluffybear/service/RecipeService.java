@@ -1,6 +1,7 @@
 package com.hdmstuttgart.fluffybear.service;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -79,19 +80,32 @@ public class RecipeService {
 	 * @param vegan  indicating if the recipe is vegan.
 	 * @return  the filtered list of recipes.
 	 */
-	public Recipe getOneRecipeByFilter(boolean breakfast, boolean lunch, boolean dinner, boolean vegetarian, boolean vegan, boolean longTime, boolean shortTime) {
+	public Recipe getOneRecipeByFilter(boolean breakfast, boolean lunch, boolean dinner, boolean vegetarian, boolean vegan, boolean longTime, boolean shortTime, String[] ingredients) {
 		List<String> categories = new ArrayList<String>();
 		if(breakfast) { categories.add("breakfast"); }
 		if(lunch) { categories.add("lunch"); }
 		if(dinner) { categories.add("dinner"); }
+		if(!breakfast && !lunch && !dinner) {
+			categories.addAll(Arrays.asList("breakfast", "lunch", "dinner"));
+		}
 		int minTime = 30;
 		int maxTime = 60;
 		if(shortTime) { minTime = 0; }
 		if(longTime) { maxTime = 180; }
 		if(!vegan && !vegetarian) {
-			return recipeRepository.findOneByJsonParametersNoneVeganVegetarian(minTime, maxTime, categories);
+			if(ingredients.length == 0) {
+				return recipeRepository.findOneByJsonParametersNoneVeganVegetarian(minTime, maxTime, categories);
+			} else {
+				return recipeRepository.findOneByJsonParametersNoneVeganVegetarianIngredients(minTime, maxTime, categories, Arrays.asList(ingredients));
+			}
 		} else {
-			return recipeRepository.findOneByJsonParameters(minTime, maxTime, categories, vegetarian, vegan);
+			if(vegan) {vegetarian = true;};
+			int i = ingredients.length;
+			if(ingredients.length == 0) {
+				return recipeRepository.findOneByJsonParameters(minTime, maxTime, categories, vegetarian, vegan);
+			} else {
+				return recipeRepository.findOneByJsonParametersIngredients(minTime, maxTime, categories, vegetarian, vegan, Arrays.asList(ingredients));
+			}
 		}
 	}
 
