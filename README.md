@@ -14,12 +14,8 @@ The quality of the application is ensured by several UI and unit tests. Componen
 
 
 # Mobile web application for browsing receipts
-## Frontend
-### Getting Started
-Fluffy-bear's frontend is written with the help of the JavaScript library ReactJS as well as the React Library Material UI.
-The frontend is deployed via Docker. Instructions on how to deploy the service can be found below.
-
-#### Deploying the application
+## Deploying the application
+Fluffy-Bear is a single-page application which is deployed via Docker. These instructions will cover requirements and usage for running all services in docker containers.
 Navigate to the root folder of the project and run 'docker-compose up'.
 This will create and start images/containers for:
 1. MYSQL database
@@ -27,6 +23,9 @@ This will create and start images/containers for:
 3. React frontend Nginx server
 4. Nginx reverse-proxy
 
+## Frontend
+Fluffy-bear's frontend is written with the help of the JavaScript library ReactJS as well as the React Library Material UI.
+The frontend is deployed via Docker. Instructions on how to deploy the service can be found below.
 
 ### Structure
 Every frontend-relevant file is located in the directiory 'frontend'. 
@@ -42,16 +41,16 @@ When running a snapshot test for the first time, the corresponding snapshot is a
 
 Any images needed for the application are stored in the folder called 'images'.
 
-## Backend
-### Getting Started
-The fluffy-bear backend is deployed as spring boot application with mysql database access - both running in docker containers. These instructions will cover requirements and usage for running both services in docker containers.
+### Navigation
+The main class of the application is called 'App.jsx'.
+Eventhough you can 'navigate' to details, fluffy-bear still is a single-page application. What changes is the content displayed between the Header and Footer.
+This content is set in the render() method inside App.jsx. The state has a variable 'pageNumber', which is set to 0 initially. 
+As soon as the user triggers "goToDetails()" by clicking on the image, the pageNumber is set to 1. 
+If the user clicks on the 'back' button, the method 'handleGoBack()' is triggered, which sets pageNumber to 0.
+If the pageNumber is 0 the Filter, Recommender and AddRecipe components are rendered, if the pageNumber is 1 the Details Component is rendered.
 
-#### Deploying the application
-Inside the root project folder, simply execute "docker-compose up".
-This will create and start images/containers for:
-1. MYSQL database
-2. Spring Boot application
-3. React frontend dev server
+## Backend
+The fluffy-bear backend is deployed as spring boot application with mysql database access - both running in docker containers.
 
 #### Usage
 ##### Requesting filtered recipes
