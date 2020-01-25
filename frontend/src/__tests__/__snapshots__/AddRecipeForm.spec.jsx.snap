@@ -8,11 +8,6 @@ exports[`<AddRecipeForm /> renders correctly 1`] = `
     className="MuiBox-root MuiBox-root-2"
     id="close_button_container"
   >
-    <p
-      id="close_button_description"
-    >
-      Rezept hinzufügen abbrechen
-    </p>
     <button
       className="MuiButtonBase-root MuiButton-root MuiButton-text"
       disabled={false}
@@ -33,6 +28,11 @@ exports[`<AddRecipeForm /> renders correctly 1`] = `
       <span
         className="MuiButton-label"
       >
+        <div
+          id="close_button_description"
+        >
+          Rezept hinzufügen abbrechen
+        </div>
         <svg
           aria-hidden="true"
           className="MuiSvgIcon-root"
@@ -54,23 +54,18 @@ exports[`<AddRecipeForm /> renders correctly 1`] = `
   </h3>
   <form
     action=""
+    onSubmit={[Function]}
   >
     <div
       className="MuiFormControl-root MuiTextField-root"
     >
       <label
-        className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined Mui-required Mui-required"
+        className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined"
         data-shrink={false}
         htmlFor="recipe_name"
         id="recipe_name-label"
       >
-        Rezeptname
-        <span
-          className="MuiFormLabel-asterisk MuiInputLabel-asterisk"
-        >
-           
-          *
-        </span>
+        Rezeptname*
       </label>
       <div
         className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
@@ -86,7 +81,7 @@ exports[`<AddRecipeForm /> renders correctly 1`] = `
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
-          required={true}
+          required={false}
           type="text"
           value=""
         />
@@ -120,7 +115,7 @@ exports[`<AddRecipeForm /> renders correctly 1`] = `
     </div>
     <div
       className="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-3"
-      id="radio_buttons_container"
+      id="meal_dietform_container"
     >
       <div
         className="MuiGrid-root MuiGrid-item MuiGrid-grid-sm-6"
@@ -142,10 +137,12 @@ exports[`<AddRecipeForm /> renders correctly 1`] = `
           <div
             aria-label="meal"
             className="MuiFormGroup-root"
+            required={true}
             role="radiogroup"
           >
             <label
               className="MuiFormControlLabel-root"
+              id="breakfast"
             >
               <span
                 aria-disabled={false}
@@ -173,7 +170,7 @@ exports[`<AddRecipeForm /> renders correctly 1`] = `
                     name="meal"
                     onChange={[Function]}
                     type="radio"
-                    value="fruehstueck"
+                    value="breakfast"
                   />
                   <div
                     className="PrivateRadioButtonIcon-root-235 PrivateRadioButtonIcon-checked-237"
@@ -211,6 +208,7 @@ exports[`<AddRecipeForm /> renders correctly 1`] = `
             </label>
             <label
               className="MuiFormControlLabel-root"
+              id="lunch"
             >
               <span
                 aria-disabled={false}
@@ -238,7 +236,7 @@ exports[`<AddRecipeForm /> renders correctly 1`] = `
                     name="meal"
                     onChange={[Function]}
                     type="radio"
-                    value="mittagessen"
+                    value="lunch"
                   />
                   <div
                     className="PrivateRadioButtonIcon-root-235"
@@ -276,6 +274,7 @@ exports[`<AddRecipeForm /> renders correctly 1`] = `
             </label>
             <label
               className="MuiFormControlLabel-root"
+              id="dinner"
             >
               <span
                 aria-disabled={false}
@@ -303,7 +302,7 @@ exports[`<AddRecipeForm /> renders correctly 1`] = `
                     name="meal"
                     onChange={[Function]}
                     type="radio"
-                    value="abendessen"
+                    value="dinner"
                   />
                   <div
                     className="PrivateRadioButtonIcon-root-235"
@@ -346,95 +345,23 @@ exports[`<AddRecipeForm /> renders correctly 1`] = `
         className="MuiGrid-root MuiGrid-item MuiGrid-grid-sm-6"
       >
         <legend
-          className="MuiFormLabel-root form_labels Mui-required"
+          className="MuiFormLabel-root form_labels"
         >
           Ernährungsform
-          <span
-            className="MuiFormLabel-asterisk"
-          >
-             
-            *
-          </span>
         </legend>
         <div
-          className="radioButtons"
+          className="checkBoxes"
         >
           <div
             aria-label="diet_form"
             className="MuiFormGroup-root"
-            role="radiogroup"
           >
             <label
               className="MuiFormControlLabel-root"
             >
               <span
                 aria-disabled={false}
-                className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-222 MuiRadio-root MuiRadio-colorSecondary PrivateSwitchBase-checked-223 Mui-checked MuiIconButton-colorSecondary"
-                onBlur={[Function]}
-                onDragLeave={[Function]}
-                onFocus={[Function]}
-                onKeyDown={[Function]}
-                onKeyUp={[Function]}
-                onMouseDown={[Function]}
-                onMouseLeave={[Function]}
-                onMouseUp={[Function]}
-                onTouchEnd={[Function]}
-                onTouchMove={[Function]}
-                onTouchStart={[Function]}
-                tabIndex={null}
-              >
-                <span
-                  className="MuiIconButton-label"
-                >
-                  <input
-                    checked={true}
-                    className="PrivateSwitchBase-input-225"
-                    disabled={false}
-                    name="diet_form"
-                    onChange={[Function]}
-                    type="radio"
-                    value="keine"
-                  />
-                  <div
-                    className="PrivateRadioButtonIcon-root-235 PrivateRadioButtonIcon-checked-237"
-                  >
-                    <svg
-                      aria-hidden="true"
-                      className="MuiSvgIcon-root"
-                      focusable="false"
-                      role="presentation"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
-                      />
-                    </svg>
-                    <svg
-                      aria-hidden="true"
-                      className="MuiSvgIcon-root PrivateRadioButtonIcon-layer-236"
-                      focusable="false"
-                      role="presentation"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        d="M8.465 8.465C9.37 7.56 10.62 7 12 7C14.76 7 17 9.24 17 12C17 13.38 16.44 14.63 15.535 15.535C14.63 16.44 13.38 17 12 17C9.24 17 7 14.76 7 12C7 10.62 7.56 9.37 8.465 8.465Z"
-                      />
-                    </svg>
-                  </div>
-                </span>
-              </span>
-              <span
-                className="MuiTypography-root MuiFormControlLabel-label MuiTypography-body1"
-              >
-                keine
-              </span>
-            </label>
-            <label
-              className="MuiFormControlLabel-root"
-            >
-              <span
-                aria-disabled={false}
-                className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-222 MuiRadio-root MuiRadio-colorSecondary MuiIconButton-colorSecondary"
+                className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-222 MuiCheckbox-root MuiCheckbox-colorSecondary MuiIconButton-colorSecondary"
                 onBlur={[Function]}
                 onDragLeave={[Function]}
                 onFocus={[Function]}
@@ -454,38 +381,23 @@ exports[`<AddRecipeForm /> renders correctly 1`] = `
                   <input
                     checked={false}
                     className="PrivateSwitchBase-input-225"
+                    data-indeterminate={false}
                     disabled={false}
-                    name="diet_form"
                     onChange={[Function]}
-                    type="radio"
+                    type="checkbox"
                     value="vegetarisch"
                   />
-                  <div
-                    className="PrivateRadioButtonIcon-root-235"
+                  <svg
+                    aria-hidden="true"
+                    className="MuiSvgIcon-root"
+                    focusable="false"
+                    role="presentation"
+                    viewBox="0 0 24 24"
                   >
-                    <svg
-                      aria-hidden="true"
-                      className="MuiSvgIcon-root"
-                      focusable="false"
-                      role="presentation"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
-                      />
-                    </svg>
-                    <svg
-                      aria-hidden="true"
-                      className="MuiSvgIcon-root PrivateRadioButtonIcon-layer-236"
-                      focusable="false"
-                      role="presentation"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        d="M8.465 8.465C9.37 7.56 10.62 7 12 7C14.76 7 17 9.24 17 12C17 13.38 16.44 14.63 15.535 15.535C14.63 16.44 13.38 17 12 17C9.24 17 7 14.76 7 12C7 10.62 7.56 9.37 8.465 8.465Z"
-                      />
-                    </svg>
-                  </div>
+                    <path
+                      d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"
+                    />
+                  </svg>
                 </span>
               </span>
               <span
@@ -499,7 +411,7 @@ exports[`<AddRecipeForm /> renders correctly 1`] = `
             >
               <span
                 aria-disabled={false}
-                className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-222 MuiRadio-root MuiRadio-colorSecondary MuiIconButton-colorSecondary"
+                className="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-222 MuiCheckbox-root MuiCheckbox-colorSecondary MuiIconButton-colorSecondary"
                 onBlur={[Function]}
                 onDragLeave={[Function]}
                 onFocus={[Function]}
@@ -519,38 +431,23 @@ exports[`<AddRecipeForm /> renders correctly 1`] = `
                   <input
                     checked={false}
                     className="PrivateSwitchBase-input-225"
+                    data-indeterminate={false}
                     disabled={false}
-                    name="diet_form"
                     onChange={[Function]}
-                    type="radio"
+                    type="checkbox"
                     value="vegan"
                   />
-                  <div
-                    className="PrivateRadioButtonIcon-root-235"
+                  <svg
+                    aria-hidden="true"
+                    className="MuiSvgIcon-root"
+                    focusable="false"
+                    role="presentation"
+                    viewBox="0 0 24 24"
                   >
-                    <svg
-                      aria-hidden="true"
-                      className="MuiSvgIcon-root"
-                      focusable="false"
-                      role="presentation"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
-                      />
-                    </svg>
-                    <svg
-                      aria-hidden="true"
-                      className="MuiSvgIcon-root PrivateRadioButtonIcon-layer-236"
-                      focusable="false"
-                      role="presentation"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        d="M8.465 8.465C9.37 7.56 10.62 7 12 7C14.76 7 17 9.24 17 12C17 13.38 16.44 14.63 15.535 15.535C14.63 16.44 13.38 17 12 17C9.24 17 7 14.76 7 12C7 10.62 7.56 9.37 8.465 8.465Z"
-                      />
-                    </svg>
-                  </div>
+                    <path
+                      d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"
+                    />
+                  </svg>
                 </span>
               </span>
               <span
@@ -788,10 +685,10 @@ exports[`<AddRecipeForm /> renders correctly 1`] = `
                   d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"
                 />
               </svg>
-              Bild hochladen
+              Bild hochladen*
               <input
+                name="image"
                 onChange={[Function]}
-                required={true}
                 style={
                   Object {
                     "display": "none",
@@ -811,13 +708,15 @@ exports[`<AddRecipeForm /> renders correctly 1`] = `
       </div>
     </div>
     <div
+      id="submit_feedback"
+    />
+    <div
       id="recipe_form_submit_button"
     >
       <button
         className="MuiButtonBase-root MuiButton-root MuiButton-contained"
         disabled={false}
         onBlur={[Function]}
-        onClick={[Function]}
         onDragLeave={[Function]}
         onFocus={[Function]}
         onKeyDown={[Function]}
@@ -829,7 +728,7 @@ exports[`<AddRecipeForm /> renders correctly 1`] = `
         onTouchMove={[Function]}
         onTouchStart={[Function]}
         tabIndex={0}
-        type="button"
+        type="submit"
       >
         <span
           className="MuiButton-label"

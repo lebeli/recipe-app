@@ -6,7 +6,11 @@ import {
   Button,
   FormControlLabel,
   Radio,
-  FormLabel
+  FormLabel,
+  FormGroup,
+  Checkbox,
+  FormControl,
+  FormHelperText
 } from "@material-ui/core";
 import CloseIcon from "@material-ui/icons/Close";
 import AddIcon from "@material-ui/icons/Add";
@@ -20,14 +24,19 @@ class AddRecipeForm extends Component {
     this.state = {
       closeForm: params.closeForm,
       name: "",
-      meal: "fruehstueck",
+      meal: "breakfast",
+      vegan: false,
+      vegetarian: false,
       dietForm: "keine",
       duration: "01:00",
       ingredientsAmount: 0,
       ingredients: [],
       stepsAmount: 0,
       steps: [],
-      image: {}
+      image: "",
+      feedback: false,
+      valid: false,
+      postError: false
     };
 
     this.addIngredient = this.addIngredient.bind(this);
@@ -37,6 +46,12 @@ class AddRecipeForm extends Component {
   updateStateParameters(name, event) {
     this.setState({
       [name]: event.target.value
+    });
+  }
+
+  setDietForms(name, value) {
+    this.setState({
+      [name]: value
     });
   }
 
@@ -56,8 +71,7 @@ class AddRecipeForm extends Component {
               <TextField
                 id={x.toString()}
                 className="ingredient_amount"
-                required
-                label="Menge"
+                label="Menge*"
                 placeholder="Bspw. 100g"
                 variant="outlined"
                 onChange={evt =>
@@ -69,8 +83,7 @@ class AddRecipeForm extends Component {
               <TextField
                 id={x.toString()}
                 className="ingredient_name"
-                required
-                label="Zutat"
+                label="Zutat*"
                 placeholder="bspw. Butter"
                 variant="outlined"
                 onChange={evt =>
@@ -100,7 +113,7 @@ class AddRecipeForm extends Component {
     var ingredientsCopy = Object.values(this.state.ingredients);
 
     var ingredient = ingredientsCopy[ingredientsIndex];
-    ingredient[ingredientIndex] = value;
+    ingredient[ingredientIndex][1] = value;
     ingredientsCopy.splice(ingredientsIndex, 1, ingredient);
 
     this.setState({
@@ -111,7 +124,10 @@ class AddRecipeForm extends Component {
   addIngredient() {
     // Add an entry into the ingredients array, so that it can be updated with "updateIngredient"
     var ingredientsCopy = this.state.ingredients;
-    var emptyIngredient = ["", ""];
+    var emptyIngredient = [
+      ["name", ""],
+      ["typeAmount", ""]
+    ];
     ingredientsCopy.push(emptyIngredient);
 
     this.setState({
@@ -144,7 +160,7 @@ class AddRecipeForm extends Component {
             <Grid item xs={10} sm={11}>
               <TextField
                 id={"x" + x}
-                label={"Schritt " + (x + 1)}
+                label={"Schritt " + (x + 1) + "*"}
                 variant="outlined"
                 multiline
                 rows="3"
@@ -206,14 +222,150 @@ class AddRecipeForm extends Component {
 
   handleImageUpload(file) {
     this.setState({
-      file: file
+      image: file
     });
   }
 
-  saveRecipe() {
-    console.log("Saving recipe");
-    // TODO: Api call and reset of recipe state, if saving was successful
-    // Also visual feedback, if saving was successful
+  saveRecipe(event) {
+    // Prevent Page-Reload after submit
+    event.preventDefault();
+
+    // Check if all necessary inputs are given
+    if (
+      this.state.name != "" &&
+      this.state.ingredients != null &&
+      this.state.ingredients.length > 0 &&
+      this.state.steps != null &&
+      this.state.steps.length > 0 &&
+      this.state.image != ""
+    ) {
+      this.setState({
+        valid: true,
+        feedback: true,
+        postError: false
+      });
+
+      // Calculate the minutes of the totalTime
+      var hours = parseInt(this.state.duration.substr(0, 2));
+      var minutes = parseInt(this.state.duration.substr(3));
+      var totalTime = hours * 60 + minutes;
+
+      // Create "Sets" for Backend from Ingredients Array
+      var ingredients = this.state.ingredients;
+      var ingredientsSet = [];
+      for (let ingredient of ingredients) {
+        ingredientsSet.push(Object.fromEntries(ingredient));
+      }
+
+      // Put image as FormData
+      const formData = new FormData();
+      formData.append("file", this.state.image);
+
+      // Options for addImage-fetch
+      const addImageOptions = {
+        method: "POST",
+        body: formData
+      };
+
+      fetch("/api/images/add", addImageOptions)
+        .then(res => {
+          if (res.status == 200) {
+            return res.json();
+          }
+        })
+        .then(result => {
+          // Body
+          var raw = JSON.stringify({
+            name: this.state.name,
+            image: result.url,
+            totalTime: totalTime,
+            category: this.state.meal,
+            vegetarian: this.state.vegetarian,
+            vegan: this.state.vegan,
+            ingredients: ingredientsSet,
+            instructions: this.state.steps
+          });
+
+          // Options for addRecipe-fetch
+          const addRecipeOptions = {
+            headers: {
+              "Content-Type": "application/json"
+            },
+            method: "POST",
+            body: raw
+          };
+
+          fetch("/api/recipes/add", addRecipeOptions)
+            .then(result => {
+              if (result.status == 200) {
+                this.resetState();
+              } else {
+                this.setState({
+                  postError: true
+                });
+              }
+            })
+            .catch(error => {
+              this.setState({
+                postError: true
+              });
+            });
+        })
+        .catch(error => {
+          this.setState({
+            postError: true
+          });
+        });
+    } else {
+      this.setState({
+        valid: false,
+        postError: false,
+        feedback: true
+      });
+    }
+  }
+
+  resetState() {
+    this.setState({
+      name: "",
+      meal: "breakfast",
+      vegan: false,
+      vegetarian: false,
+      duration: "01:00",
+      ingredients: [],
+      ingredientsAmount: 0,
+      steps: [],
+      stepsAmount: 0,
+      image: ""
+    });
+  }
+
+  showFeedback() {
+    var feedback;
+    if (this.state.valid == false) {
+      feedback = (
+        <div className="feedback" id="invalid_form_feedback">
+          Das Rezept ist leider noch nicht vollständig. Überprüfe die mit *
+          markierten Felder.
+        </div>
+      );
+    } else {
+      feedback = (
+        <div className="feedback" id="valid_form_feedback">
+          Das Rezept wurde erfolgreich hinzugefügt. Die FOODBABY Community dankt
+          dir :)
+        </div>
+      );
+    }
+    if (this.state.postError == true) {
+      feedback = (
+        <div className="feedback" id="invalid_form_feedback">
+          Ein Fehler ist aufgetreten. Versuche es später noch einmal.
+        </div>
+      );
+    }
+
+    return feedback;
   }
 
   render() {
@@ -224,45 +376,48 @@ class AddRecipeForm extends Component {
           justifyContent="flex-end"
           id="close_button_container"
         >
-          <p id="close_button_description">Rezept hinzufügen abbrechen</p>
           <Button disableRipple onClick={this.state.closeForm}>
+            <div id="close_button_description">Rezept hinzufügen abbrechen</div>
             <CloseIcon />
           </Button>
         </Box>
         <h3 id="add_recipe_form_headline">Eigenes Rezept hinzufügen</h3>
-        <form action="">
+        <form action="" onSubmit={event => this.saveRecipe(event)}>
           <TextField
             id="recipe_name"
-            required
-            label="Rezeptname"
+            label="Rezeptname*"
             variant="outlined"
             value={this.state.name}
             onChange={event => this.updateStateParameters("name", event)}
           />
-          <Grid container spacing={3} id="radio_buttons_container">
+          <Grid container spacing={3} id="meal_dietform_container">
             <Grid item sm={6}>
               <FormLabel component="legend" className="form_labels" required>
                 Mahlzeit
               </FormLabel>
               <div className="radioButtons">
                 <RadioGroup
+                  required
                   aria-label="meal"
                   name="meal"
                   value={this.state.meal}
                   onChange={event => this.updateStateParameters("meal", event)}
                 >
                   <FormControlLabel
-                    value="fruehstueck"
+                    id="breakfast"
+                    value="breakfast"
                     control={<Radio disableRipple />}
                     label="Frühstück"
                   />
                   <FormControlLabel
-                    value="mittagessen"
+                    id="lunch"
+                    value="lunch"
                     control={<Radio disableRipple />}
                     label="Mittagessen"
                   />
                   <FormControlLabel
-                    value="abendessen"
+                    id="dinner"
+                    value="dinner"
                     control={<Radio disableRipple />}
                     label="Abendessen"
                   />
@@ -270,34 +425,41 @@ class AddRecipeForm extends Component {
               </div>
             </Grid>
             <Grid item sm={6}>
-              <FormLabel component="legend" className="form_labels" required>
+              <FormLabel component="legend" className="form_labels">
                 Ernährungsform
               </FormLabel>
-              <div className="radioButtons">
-                <RadioGroup
-                  aria-label="diet_form"
-                  name="diet_form"
-                  value={this.state.dietForm}
-                  onChange={event =>
-                    this.updateStateParameters("dietForm", event)
-                  }
-                >
+              <div className="checkBoxes">
+                <FormGroup aria-label="diet_form">
                   <FormControlLabel
-                    value="keine"
-                    control={<Radio disableRipple />}
-                    label="keine"
-                  />
-                  <FormControlLabel
-                    value="vegetarisch"
-                    control={<Radio disableRipple />}
+                    control={
+                      <Checkbox
+                        disableRipple
+                        value="vegetarisch"
+                        checked={this.state.vegetarian}
+                        onChange={() =>
+                          this.setDietForms(
+                            "vegetarian",
+                            !this.state.vegetarian
+                          )
+                        }
+                      />
+                    }
                     label="vegetarisch"
                   />
                   <FormControlLabel
-                    value="vegan"
-                    control={<Radio disableRipple />}
+                    control={
+                      <Checkbox
+                        disableRipple
+                        value="vegan"
+                        checked={this.state.vegan}
+                        onChange={() =>
+                          this.setDietForms("vegan", !this.state.vegan)
+                        }
+                      />
+                    }
                     label="vegan"
                   />
-                </RadioGroup>
+                </FormGroup>
               </div>
             </Grid>
           </Grid>
@@ -349,9 +511,9 @@ class AddRecipeForm extends Component {
               <Grid item>
                 <Button variant="outlined" component="label">
                   <PhotoIcon id="photo_icon" />
-                  Bild hochladen
+                  Bild hochladen*
                   <input
-                    required
+                    name="image"
                     type="file"
                     style={{ display: "none" }}
                     onChange={e => this.handleImageUpload(e.target.files[0])}
@@ -359,12 +521,15 @@ class AddRecipeForm extends Component {
                 </Button>
               </Grid>
               <Grid item id="filename_item">
-                <div>{this.state.file != null && this.state.file.name}</div>
+                <div>{this.state.image != null && this.state.image.name}</div>
               </Grid>
             </Grid>
           </div>
+          <div id="submit_feedback">
+            {this.state.feedback == true && this.showFeedback()}
+          </div>
           <div id="recipe_form_submit_button">
-            <Button variant="contained" onClick={() => this.saveRecipe()}>
+            <Button variant="contained" type="submit">
               Rezept speichern
             </Button>
           </div>

@@ -72,7 +72,7 @@ public class RecipeController {
 //		return recipeService.getOneRecipeByFilter(breakfast, lunch, dinner, vegetarian, vegan, longTime, shortTime);
 //	}
 
-	@RequestMapping(value = "/recipes", consumes = {"application/json"})
+	@RequestMapping(value = "/recipes")
 	public Recipe getRandomRecipeByFilter(
 			@RequestParam(value="breakfast") boolean breakfast,
 			@RequestParam(value="lunch") boolean lunch,

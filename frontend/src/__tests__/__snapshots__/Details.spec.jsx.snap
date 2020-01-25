@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Recommender renders correctly 1`] = `
+exports[`Details renders correctly 1`] = `
 <div
   className="Details"
 >
@@ -52,13 +52,16 @@ exports[`Recommender renders correctly 1`] = `
         </span>
       </button>
       <div
-        className="Header"
+        className="MuiGrid-root MuiGrid-container"
+        id="details_header"
       >
         <div
-          className="HeaderContent"
+          className="MuiGrid-root MuiGrid-item"
+          id="details_recipe_name"
         />
         <div
-          className="HeaderContent"
+          className="MuiGrid-root MuiGrid-item"
+          id="details_duration"
         >
           <svg
             aria-hidden="true"
@@ -115,7 +118,8 @@ exports[`Recommender renders correctly 1`] = `
       className="FullImage"
     >
       <img
-        alt="finished dish"
+        alt="Rezept Detail Bild - Freunde beim Essen"
+        src="test-file-stub"
       />
     </div>
   </div>

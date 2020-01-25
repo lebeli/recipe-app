@@ -1,15 +1,15 @@
 import React from "react";
-import { shallow, mount } from "enzyme";
+import { shallow } from "enzyme";
 import AddRecipeForm from "../AddRecipeForm";
 import renderer from "react-test-renderer";
-import { Button } from "@material-ui/core";
 
 describe("<AddRecipeForm />", () => {
   test("should render elements", () => {
     const wrapper = shallow(<AddRecipeForm />);
     expect(wrapper.find(".AddRecipeForm"));
     expect(wrapper.find("#recipe_name"));
-    expect(wrapper.find(".radioButtons").length).toEqual(2);
+    expect(wrapper.find(".radioButtons").length).toEqual(1);
+    expect(wrapper.find(".checkBoxes").length).toEqual(1);
     expect(wrapper.find("#recipe_time"));
     expect(wrapper.find(".ingredients_container"));
     expect(wrapper.find(".steps_container"));
@@ -53,7 +53,12 @@ describe("<AddRecipeForm />", () => {
 
     // Then
     expect(wrapper.state("ingredientsAmount")).toEqual(1);
-    expect(wrapper.state("ingredients")).toEqual([["", ""]]);
+    expect(wrapper.state("ingredients")).toEqual([
+      [
+        ["name", ""],
+        ["typeAmount", ""]
+      ]
+    ]);
     expect(wrapper.find(".ingredient").length).toEqual(1);
     expect(spyShowIngredients).toHaveBeenCalled();
     expect(spyAddIngredient).toHaveBeenCalled();
@@ -69,13 +74,23 @@ describe("<AddRecipeForm />", () => {
     wrapper.instance().addIngredient();
 
     // Then
-    expect(wrapper.state("ingredients")).toEqual([["", ""]]);
+    expect(wrapper.state("ingredients")).toEqual([
+      [
+        ["name", ""],
+        ["typeAmount", ""]
+      ]
+    ]);
 
     // When
-    wrapper.instance().updateIngredient(0, 0, "100g");
+    wrapper.instance().updateIngredient(0, 1, "100g");
 
     // Then
-    expect(wrapper.state("ingredients")).toEqual([["100g", ""]]);
+    expect(wrapper.state("ingredients")).toEqual([
+      [
+        ["name", ""],
+        ["typeAmount", "100g"]
+      ]
+    ]);
   });
 
   test("addIngredient() should change the state of 'ingredientsAmount' and 'ingredients'", () => {
@@ -90,7 +105,12 @@ describe("<AddRecipeForm />", () => {
 
     // Then
     expect(wrapper.state("ingredientsAmount")).toEqual(1);
-    expect(wrapper.state("ingredients")).toEqual([["", ""]]);
+    expect(wrapper.state("ingredients")).toEqual([
+      [
+        ["name", ""],
+        ["typeAmount", ""]
+      ]
+    ]);
   });
 
   test("removeIngredient() should change the state of 'ingredientsAmount' and 'ingredients'", () => {
@@ -105,7 +125,12 @@ describe("<AddRecipeForm />", () => {
 
     // Then
     expect(wrapper.state("ingredientsAmount")).toEqual(1);
-    expect(wrapper.state("ingredients")).toEqual([["", ""]]);
+    expect(wrapper.state("ingredients")).toEqual([
+      [
+        ["name", ""],
+        ["typeAmount", ""]
+      ]
+    ]);
 
     // When
     wrapper.instance().removeIngredient();
@@ -196,13 +221,13 @@ describe("<AddRecipeForm />", () => {
     const file = new File([""], "filename");
 
     // Given
-    expect(wrapper.state("file")).toEqual(undefined);
+    expect(wrapper.state("image")).toEqual("");
 
     // When
     wrapper.instance().handleImageUpload(file);
 
     // Then
-    expect(wrapper.state("file")).toEqual(file);
+    expect(wrapper.state("image")).toEqual(file);
   });
 
   test("renders correctly", () => {

@@ -29,7 +29,8 @@ describe("<AddRecipe />", () => {
       .simulate("click");
     expect(wrapper.find(AddRecipeForm).length).toEqual(1);
     expect(wrapper.find("#recipe_name"));
-    expect(wrapper.find(".radioButtons").length).toEqual(2);
+    expect(wrapper.find(".radioButtons").length).toEqual(1);
+    expect(wrapper.find(".checkBoxes").length).toEqual(1);
     expect(wrapper.find("#recipe_time"));
     expect(wrapper.find(".ingredients_container"));
     expect(wrapper.find(".steps_container"));

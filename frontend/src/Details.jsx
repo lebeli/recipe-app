@@ -2,31 +2,19 @@ import React, { Component } from "react";
 import BackButton from "./BackButton";
 import Ingredients from "./Ingredients";
 import Instructions from "./Instructions";
-import RecommenderHeader from "./RecommenderHeader";
 import RecommenderImage from "./RecommenderImage";
-import LasagneImage from "./images/lasagne.jpg";
+import { Grid } from "@material-ui/core";
+import AccessTimeIcon from "@material-ui/icons/AccessTime";
 import "./Details.scss";
+import DetailImage from "./images/details_image.jpg";
 
 class Details extends Component {
   constructor(props) {
     super(props);
     this.state = {
       pageNumber: 1,
-      ingredients: [
-        {
-          name: "flour",
-          typeAmount: "300g"
-        },
-        {
-          name: "cucumber",
-          typeAmount: "1"
-        }
-      ],
-      instructions: [
-        "Banannaaaaa",
-        "Gruuuu!",
-        "Halloosn viawhbfiaw hfeiuwbfhbwe diqwbdhbvwei lfhea iugf46griwa zdegksg fuishfiu gfzsgdfjz sfv,jhbs< fhksbc. kjsbdvjk bydskjvf sudhv ousgczs h!!"
-      ]
+      ingredients: props.ingredients,
+      instructions: props.instructions
     };
   }
 
@@ -40,15 +28,23 @@ class Details extends Component {
               className="BackButton"
               handleGoBack={this.props.handleGoBack}
             />
-            <RecommenderHeader
-              recipeName={this.props.recipeName}
-              duration={this.props.duration}
-            />
+            <Grid container id="details_header">
+              <Grid item id="details_recipe_name">
+                {this.props.recipeName}
+              </Grid>
+              <Grid item id="details_duration">
+                <AccessTimeIcon />
+                {this.props.duration}
+              </Grid>
+            </Grid>
             <Ingredients ingredients={this.state.ingredients} />
             <Instructions instructions={this.state.instructions} />
           </div>
           <div className="FullImage">
-            <img src={this.props.image} alt="finished dish" />
+            <img
+              src={DetailImage}
+              alt="Rezept Detail Bild - Freunde beim Essen"
+            />
           </div>
         </div>
       </div>

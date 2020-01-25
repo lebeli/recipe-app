@@ -2,16 +2,41 @@ import React from "react";
 import { shallow, mount } from "enzyme";
 import Filter from "../Filter";
 import renderer from "react-test-renderer";
+import "regenerator-runtime";
 
 describe("<Filter />", () => {
-  test("should render elements", () => {
+  beforeEach(function() {
+    global.fetch = jest.fn().mockImplementation(() => {
+      var p = new Promise((resolve, reject) => {
+        resolve({
+          ok: true,
+          ingredients: [
+            "Gurke",
+            "Tomate",
+            "Zwiebel",
+            "Knoblauch",
+            "Ziegenkäse",
+            "Gouda",
+            "Erdnüsse"
+          ],
+          json: function() {
+            return ingredients;
+          }
+        });
+      });
+      return p;
+    });
+  });
+
+  test("should render elements", async () => {
     const wrapper = mount(<Filter />);
     expect(wrapper.find(".ToggleButtons"));
     expect(wrapper.find(".Tags"));
   });
 
   test("calculateActiveFilters() should return a description of how many filters are active", () => {
-    const wrapper = shallow(<Filter />);
+    var mockFunction = () => function mock() {};
+    const wrapper = shallow(<Filter updateRecipe={mockFunction} />);
 
     // Given
     expect(
@@ -36,7 +61,8 @@ describe("<Filter />", () => {
   });
 
   test("updateState() should update different state attribute", () => {
-    const wrapper = shallow(<Filter />);
+    var mockFunction = () => function mock() {};
+    const wrapper = shallow(<Filter updateRecipe={mockFunction} />);
 
     // Given
     expect(wrapper.state("fast")).toEqual(false);

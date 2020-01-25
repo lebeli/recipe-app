@@ -9,9 +9,9 @@ import ToggleButtons from "./ToggleButtons";
 import Tags from "./Tags";
 import "./Filter.scss";
 
-class Filter extends Component {
-  constructor(params) {
-    super(params);
+class Filter extends React.Component {
+  constructor(props) {
+    super(props);
     this.state = {
       ingredients: [
         "Gurke",
@@ -33,6 +33,33 @@ class Filter extends Component {
     };
 
     this.updateState = this.updateState.bind(this);
+  }
+
+  componentDidMount() {
+    const options = {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      }
+    };
+
+    fetch("/api/ingredients", options)
+      .then(response => response.json())
+      .then(response => {
+        this.setState({
+          ingredients: response
+        });
+      })
+      .catch(error => {
+        this.setState({
+          ingredients: ["Keine Zutaten zur Auswahl"]
+        });
+      });
+  }
+
+  shouldComponentUpdate() {
+    return true;
   }
 
   calculateActiveFilters() {
@@ -64,9 +91,23 @@ class Filter extends Component {
   }
 
   updateState(name, val) {
-    this.setState({
-      [name]: val
-    });
+    this.setState(
+      {
+        [name]: val
+      },
+      () => {
+        this.props.updateRecipe(
+          this.state.breakfast,
+          this.state.lunch,
+          this.state.dinner,
+          this.state.vegetarian,
+          this.state.vegan,
+          this.state.i_have_time,
+          this.state.fast,
+          this.state.chosen_ingredients
+        );
+      }
+    );
   }
 
   render() {

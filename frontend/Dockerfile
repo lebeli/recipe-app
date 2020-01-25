@@ -13,3 +13,5 @@ FROM nginx
 COPY --from=frontend-builder /frontend/dist/* /usr/share/nginx/html/dist/
 COPY --from=frontend-builder /frontend/public/* /usr/share/nginx/html/
 EXPOSE 80
+
+

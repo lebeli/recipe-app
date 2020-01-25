@@ -85,13 +85,14 @@ public class RecipeService {
 		if(breakfast) { categories.add("breakfast"); }
 		if(lunch) { categories.add("lunch"); }
 		if(dinner) { categories.add("dinner"); }
-		if(!breakfast && !lunch && !dinner) {
-			categories.addAll(Arrays.asList("breakfast", "lunch", "dinner"));
+		if(breakfast == false && lunch == false && dinner == false) {
+			categories.add("breakfast");
+			categories.add("lunch");
+			categories.add("dinner");
 		}
-		int minTime = 30;
-		int maxTime = 60;
-		if(shortTime) { minTime = 0; }
-		if(longTime) { maxTime = 180; }
+		int minTime = 0;
+		int maxTime = (int) Integer.MAX_VALUE;
+		if(shortTime) { maxTime = 20; }
 		if(!vegan && !vegetarian) {
 			if(ingredients.length == 0) {
 				return recipeRepository.findOneByJsonParametersNoneVeganVegetarian(minTime, maxTime, categories);

@@ -36,25 +36,19 @@ class AddRecipe extends Component {
             <Grid item sm={12} md={7} id="add_recipe_description">
               <h2 id="add_recipe_headline">Foodies aufgepasst!</h2>
               <p>
-                Minions ipsum uuuhhh tulaliloo belloo! Wiiiii poulet tikka
-                masala bananaaaa para tú jeje poopayee po kass. Pepete tank
-                yuuu! Jeje jiji. Bee do bee do bee do belloo! Bananaaaa gelatooo
-                bananaaaa chasy para tú tulaliloo. Jeje chasy jiji tank yuuu! Po
-                kass ti aamoo! Gelatooo wiiiii jiji. Wiiiii chasy aaaaaah me
-                want bananaaa! Tulaliloo po kass baboiii tank yuuu! Bananaaaa la
-                bodaaa tank yuuu! Chasy hana dul sae para tú po kass poulet
-                tikka masala tulaliloo poopayee belloo! Daa la bodaaa tank yuuu!{" "}
+                Wir von FOODBABY sind stets darum bemüht euch täglich neue
+                Rezepte zu präsentieren, um euch nicht immer mit demselben Fraß
+                zu langweilen. Und auf dieser Mission könnt ihr uns nun
+                behilflich sein. Grabt die altbewährten Rezepte von Oma aus und
+                tut der FOODBABY Community etwas Gutes indem ihr auf den Button
+                unter diesem Text klickt und das Formular ausfüllt.
               </p>
               <p>
-                Tulaliloo gelatooo poopayee wiiiii baboiii butt bananaaaa
-                belloo! Poulet tikka masala baboiii chasy. Potatoooo para tú
-                potatoooo tulaliloo tank yuuu! Baboiii jiji. Jeje poulet tikka
-                masala uuuhhh jiji para tú pepete hana dul sae chasy. Para tú
-                pepete gelatooo la bodaaa tatata bala tu tulaliloo tatata bala
-                tu. Jeje hana dul sae wiiiii jeje hahaha jiji. Butt tatata bala
-                tu poulet tikka masala ti aamoo! Jeje hahaha baboiii. Poopayee
-                ti aamoo! Gelatooo tulaliloo bananaaaa underweaaar bananaaaa
-                tulaliloo. Chasy ti aamoo! Daa para tú jeje.
+                Bei der Wahl eines Namens für euer Rezept sind euch natürlich
+                keine Grenzen gesetzt. Kleiner Tipp am Rande, Rezepte mit einer
+                Alliteration im Namen werden häufiger angezeigt, als Rezepte mit
+                langweiligem Namen ;) Auch ein schön inszeniertes Stillleben des
+                Gerichtes sollte nicht fehlen. Also gebt euch Mühe!
               </p>
               <div id="add_recipe_button_container">
                 <Button

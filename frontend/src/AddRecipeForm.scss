@@ -7,9 +7,12 @@
   // Close button ----------------------------
 
   #close_button_container {
+    border-top: 1px solid $primaryColor;
     #close_button_description {
       font-size: 11pt;
-      color: $primaryColor;
+      font-family: $secondaryFont;
+      text-transform: none;
+      padding-right: 5px;
     }
     .MuiButton-root {
       color: $primaryColor;
@@ -84,6 +87,16 @@
       background-color: transparent;
     }
     .MuiRadio-colorSecondary.Mui-checked {
+      color: $primaryColor;
+    }
+  }
+
+  // Checkboxes
+  .checkBoxes {
+    .MuiCheckbox-colorSecondary:hover {
+      background-color: transparent;
+    }
+    .MuiCheckbox-colorSecondary.Mui-checked {
       color: $primaryColor;
     }
   }
@@ -170,6 +183,24 @@
   .ingredients_container,
   .steps_container {
     margin-bottom: 10px;
+  }
+
+  // Feedback
+  #submit_feedback {
+    .feedback {
+      margin: 20px 0 20px 0;
+      padding: 10px 10px 10px 10px;
+    }
+
+    #invalid_form_feedback {
+      color: white;
+      background-color: $errorColor;
+    }
+
+    #valid_form_feedback {
+      color: white;
+      background-color: $secondaryColor;
+    }
   }
 
   // Submit Button
