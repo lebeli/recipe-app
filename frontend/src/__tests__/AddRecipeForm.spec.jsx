@@ -234,6 +234,4 @@ describe("<AddRecipeForm />", () => {
     const tree = renderer.create(<AddRecipeForm />).toJSON();
     expect(tree).toMatchSnapshot();
   });
-
-  //TODO: Save Recipe
 });

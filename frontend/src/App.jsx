@@ -108,8 +108,6 @@ class App extends Component {
     fetch("/api/recipes" + "?" + requestParams, options)
       .then(response => response.json())
       .then(response => {
-        //TODO: Nachher kommt nur noch ein Rezept zurück und muss weitergegeben werden
-
         if (response) {
           this.setState({
             recipe: response
