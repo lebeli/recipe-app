@@ -14,9 +14,9 @@ The quality of the application is ensured by several UI and unit tests. Componen
 
 
 # Mobile web application for browsing receipts
-## Deploying the application
+## Building the application
 Fluffy-Bear is a single-page application which is deployed via Docker. These instructions will cover requirements and usage for running all services in docker containers.
-Navigate to the root folder of the project and run 'docker-compose up'.
+Pull the latest commit of the master branch, navigate to the root folder of the project and run 'docker-compose up'.
 This will create and start images/containers for:
 1. MYSQL database
 2. Spring Boot application
@@ -54,20 +54,7 @@ The fluffy-bear backend is deployed as spring boot application with mysql databa
 
 #### Usage
 ##### Requesting filtered recipes
-`GET localhost/api/recipes`
-
-Inside body specify filtering json object:
-```json
-{
-    "breakfast": true,
-    "lunch": true,
-    "dinner": true,
-    "vegetarian": false,
-    "vegan": false,
-    "longTime": true,
-    "shortTime": true
-}
-```
+`GET localhost/api/recipes?breakfast=false&lunch=false&dinner=false&vegetarian=false&vegan=false&longTime=false&shortTime=false&ingredients=Zucker,Mehl`
 
 ##### Adding a recipe
 `POST localhost/api/recipes/add`
