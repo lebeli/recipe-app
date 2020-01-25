@@ -17,7 +17,7 @@ import javax.persistence.EntityNotFoundException;
 @Service
 public class RecipeService {
 
-	final private int DEFAULT_TIME = 60;
+	final private int DEFAULT_TIME = 45;
 	final private int LONG_TIME = Integer.MAX_VALUE;
 	final private int SHORT_TIME = 20;
 
