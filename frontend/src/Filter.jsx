@@ -58,10 +58,6 @@ class Filter extends React.Component {
       });
   }
 
-  shouldComponentUpdate() {
-    return true;
-  }
-
   calculateActiveFilters() {
     let active = 0;
     if (this.state.breakfast == true) {
@@ -91,6 +87,7 @@ class Filter extends React.Component {
   }
 
   updateState(name, val) {
+    console.log("Filter - updateState");
     this.setState(
       {
         [name]: val
