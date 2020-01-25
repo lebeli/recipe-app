@@ -58,11 +58,11 @@ public class RecipeService {
 		if(shortTime) { minTime = 0; }
 		if(longTime) { maxTime = 180; }
 		if(!vegan && !vegetarian) {
-			recipeRepository.findByJsonParametersNoneVeganVegetarian(minTime, maxTime, categories).forEach(recipe -> {
+			recipeRepository.findByJsonParametersNoneVeganVegetarian(maxTime, categories).forEach(recipe -> {
 				recipes.add(recipe);
 			});
 		} else {
-			recipeRepository.findByJsonParameters(minTime, maxTime, categories, vegetarian, vegan)
+			recipeRepository.findByJsonParameters(maxTime, categories, vegetarian, vegan)
 					.forEach(recipe -> {
 						recipes.add(recipe);
 					});
@@ -90,22 +90,21 @@ public class RecipeService {
 			categories.add("lunch");
 			categories.add("dinner");
 		}
-		int minTime = 0;
 		int maxTime = (int) Integer.MAX_VALUE;
 		if(shortTime) { maxTime = 20; }
 		if(!vegan && !vegetarian) {
 			if(ingredients.length == 0) {
-				return recipeRepository.findOneByJsonParametersNoneVeganVegetarian(minTime, maxTime, categories);
+				return recipeRepository.findOneByJsonParametersNoneVeganVegetarian(maxTime, categories);
 			} else {
-				return recipeRepository.findOneByJsonParametersNoneVeganVegetarianIngredients(minTime, maxTime, categories, Arrays.asList(ingredients));
+				return recipeRepository.findOneByJsonParametersNoneVeganVegetarianIngredients(maxTime, categories, Arrays.asList(ingredients));
 			}
 		} else {
 			if(vegan) {vegetarian = true;};
 			int i = ingredients.length;
 			if(ingredients.length == 0) {
-				return recipeRepository.findOneByJsonParameters(minTime, maxTime, categories, vegetarian, vegan);
+				return recipeRepository.findOneByJsonParameters(maxTime, categories, vegetarian, vegan);
 			} else {
-				return recipeRepository.findOneByJsonParametersIngredients(minTime, maxTime, categories, vegetarian, vegan, Arrays.asList(ingredients));
+				return recipeRepository.findOneByJsonParametersIngredients(maxTime, categories, vegetarian, vegan, Arrays.asList(ingredients));
 			}
 		}
 	}

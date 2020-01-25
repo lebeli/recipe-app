@@ -118,21 +118,21 @@ public class RecipeServiceTest {
 
         List<String> categoriesFilter = new ArrayList<String>(Arrays.asList("lunch", "dinner"));
 
-        when(recipeRepository.findByJsonParameters(anyInt(), anyInt(), anyList(), anyBoolean(), eq(true)))
+        when(recipeRepository.findByJsonParameters(anyInt(), anyList(), anyBoolean(), eq(true)))
                 .thenReturn(new ArrayList<Recipe>(
                         allRecipes
                                 .stream()
                                 .filter(recipe -> recipe.isVegan())
                                 .collect(Collectors.toList())
                 ));
-        when(recipeRepository.findByJsonParameters(anyInt(), anyInt(), eq(categoriesFilter), anyBoolean(), anyBoolean()))
+        when(recipeRepository.findByJsonParameters(anyInt(), eq(categoriesFilter), anyBoolean(), anyBoolean()))
                 .thenReturn(new ArrayList<Recipe>(
                         allRecipes
                                 .stream()
                                 .filter(recipe -> (categoriesFilter).contains(recipe.getCategory()))
                                 .collect(Collectors.toList())
                 ));
-        when(recipeRepository.findByJsonParametersNoneVeganVegetarian(anyInt(), anyInt(), eq(categoriesFilter)))
+        when(recipeRepository.findByJsonParametersNoneVeganVegetarian(anyInt(), eq(categoriesFilter)))
                 .thenReturn(new ArrayList<Recipe>(
                         allRecipes
                                 .stream()
@@ -150,6 +150,6 @@ public class RecipeServiceTest {
         assertEquals("Soup", filteredRecipesByCategory.get(1).getName());
         assertEquals(1, filteredRecipesByNoneVeganVegetarian.size());
         assertEquals("Pancakes", filteredRecipesByNoneVeganVegetarian.get(0).getName());
-        verify(recipeRepository, times(2)).findByJsonParameters(anyInt(), anyInt(), anyList(), anyBoolean(), anyBoolean());
+        verify(recipeRepository, times(2)).findByJsonParameters(anyInt(), anyList(), anyBoolean(), anyBoolean());
     }
 }
