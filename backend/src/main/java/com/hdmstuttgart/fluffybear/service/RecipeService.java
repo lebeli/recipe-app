@@ -17,6 +17,9 @@ import javax.persistence.EntityNotFoundException;
 @Service
 public class RecipeService {
 
+	final private int LONG_TIME = Integer.MAX_VALUE;
+	final private int SHORT_TIME = 20;
+
 	/**
 	 * Related Repository for recipes.
 	 */
@@ -53,10 +56,8 @@ public class RecipeService {
 		if(breakfast) { categories.add("breakfast"); }
 		if(lunch) { categories.add("lunch"); }
 		if(dinner) { categories.add("dinner"); }
-		int minTime = 30;
-		int maxTime = 60;
-		if(shortTime) { minTime = 0; }
-		if(longTime) { maxTime = 180; }
+		int maxTime = LONG_TIME;
+		if(shortTime) { maxTime = SHORT_TIME; }
 		if(!vegan && !vegetarian) {
 			recipeRepository.findByJsonParametersNoneVeganVegetarian(maxTime, categories).forEach(recipe -> {
 				recipes.add(recipe);
@@ -90,8 +91,8 @@ public class RecipeService {
 			categories.add("lunch");
 			categories.add("dinner");
 		}
-		int maxTime = (int) Integer.MAX_VALUE;
-		if(shortTime) { maxTime = 20; }
+		int maxTime = LONG_TIME;
+		if(shortTime) { maxTime = SHORT_TIME; }
 		if(!vegan && !vegetarian) {
 			if(ingredients.length == 0) {
 				return recipeRepository.findOneByJsonParametersNoneVeganVegetarian(maxTime, categories);
