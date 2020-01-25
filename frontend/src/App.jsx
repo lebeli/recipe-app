@@ -39,29 +39,36 @@ class App extends Component {
       method: "GET",
       headers: {
         Accept: "application/json",
-        "Content-Type": "application/json",
-        breakfast: this.state.breakfast,
-        lunch: this.state.lunch,
-        dinner: this.state.dinner,
-        vegetarian: this.state.vegetarian,
-        vegan: this.state.vegan,
-        longTime: this.state.longTime,
-        shortTime: this.state.shortTime,
-        chosen_ingredients: this.state.chosen_ingredients
+        "Content-Type": "application/json"
       }
     };
 
-    fetch("/api/recipes", options)
+    var params = {
+      breakfast: this.state.breakfast,
+      lunch: this.state.lunch,
+      dinner: this.state.dinner,
+      vegetarian: this.state.vegetarian,
+      vegan: this.state.vegan,
+      longTime: this.state.longTime,
+      shortTime: this.state.shortTime,
+      ingredients: this.state.chosen_ingredients
+    };
+
+    var requestParams = Object.keys(params)
+      .map(key => key + "=" + params[key])
+      .join("&");
+
+    fetch("/api/recipes" + "?" + requestParams, options)
       .then(response => response.json())
       .then(response => {
         this.setState({
-          recipe: response[0]
+          recipe: response
         });
 
-        var imageUrl = response[0].image;
+        var imageUrl = response.image;
 
         // TODO: raus
-        if (response[0].image.includes("localhost")) {
+        if (response.image.includes("localhost")) {
           imageUrl = imageUrl.substring(9);
         }
 
@@ -75,13 +82,11 @@ class App extends Component {
             });
           })
           .catch(error => {
-            console.log("fetch image - error");
-            // Error-Handling
+            // TODO: Error-Handling
           });
       })
       .catch(error => {
-        console.log("fetch recipes - error");
-        // Error-Handling
+        // TODO: Error-Handling
       });
   }
 
@@ -133,30 +138,37 @@ class App extends Component {
       method: "GET",
       headers: {
         Accept: "application/json",
-        "Content-Type": "application/json",
-        breakfast: this.state.breakfast,
-        lunch: this.state.lunch,
-        dinner: this.state.dinner,
-        vegetarian: this.state.vegetarian,
-        vegan: this.state.vegan,
-        longTime: this.state.longTime,
-        shortTime: this.state.shortTime,
-        chosen_ingredients: this.state.chosen_ingredients
+        "Content-Type": "application/json"
       }
     };
 
-    fetch("/api/recipes", options)
+    var params = {
+      breakfast: this.state.breakfast,
+      lunch: this.state.lunch,
+      dinner: this.state.dinner,
+      vegetarian: this.state.vegetarian,
+      vegan: this.state.vegan,
+      longTime: this.state.longTime,
+      shortTime: this.state.shortTime,
+      ingredients: this.state.chosen_ingredients
+    };
+
+    var requestParams = Object.keys(params)
+      .map(key => key + "=" + params[key])
+      .join("&");
+
+    fetch("/api/recipes" + "?" + requestParams, options)
       .then(response => response.json())
       .then(response => {
         //TODO: Nachher kommt nur noch ein Rezept zurück und muss weitergegeben werden
 
-        if (response[0]) {
+        if (response) {
           this.setState({
-            recipe: response[0]
+            recipe: response
           });
-          var imageUrl = response[0].image;
+          var imageUrl = response.image;
           // TODO: raus
-          if (response[0].image.includes("localhost")) {
+          if (response.image.includes("localhost")) {
             imageUrl = imageUrl.substring(9);
           }
           fetch(imageUrl, {

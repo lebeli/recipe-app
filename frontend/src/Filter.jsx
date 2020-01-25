@@ -59,7 +59,6 @@ class Filter extends React.Component {
   }
 
   shouldComponentUpdate() {
-    console.log("it should");
     return true;
   }
 

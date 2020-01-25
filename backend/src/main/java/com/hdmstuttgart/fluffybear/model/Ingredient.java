@@ -22,7 +22,7 @@ public class Ingredient {
 	/**
 	 * List of RecipeIngredient instances, containing all recipes this ingredient is needed for.
 	 */
-	@OneToMany(mappedBy = "ingredient", cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(mappedBy = "ingredient", orphanRemoval = true)
 	@JsonIgnore
 	private List<RecipeIngredient> recipes = new ArrayList<>();
 

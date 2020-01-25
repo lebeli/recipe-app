@@ -3,6 +3,7 @@ package com.hdmstuttgart.fluffybear.repository;
 import com.hdmstuttgart.fluffybear.TestUtilities;
 import com.hdmstuttgart.fluffybear.model.Ingredient;
 import com.hdmstuttgart.fluffybear.model.Recipe;
+import com.hdmstuttgart.fluffybear.model.RecipeIngredient;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -41,16 +42,18 @@ public class RecipeIngredientRepositoryTest {
 
     @Test
     public void repositoryInitTest() {
-        assertEquals(294, recipeIngredientRepository.count());
+        assertEquals(272, recipeIngredientRepository.count());
     }
 
     @Test
-    public void saveIngredientTest() {
+    public void saveRecipeIngredientTest() {
         long initialSize = recipeIngredientRepository.count();
         Recipe recipe = TestUtilities.buildRecipe("Recipe", Arrays.asList("Ingredient"));
         Ingredient ingredient = recipe.getIngredients().get(0).getIngredient();
+        RecipeIngredient recipeIngredient = new RecipeIngredient(recipe, ingredient, "2 Spoons");
         recipeRepository.save(recipe);
-        ingredientRepository.save(ingredient);  // RecipeIngredient implicitly saved
+        ingredientRepository.save(ingredient);
+        recipeIngredientRepository.save(recipeIngredient);
         assertEquals(initialSize+1, recipeIngredientRepository.count());
         assertEquals("Recipe", recipeIngredientRepository.findByRecipe(recipe).get(0).getRecipe().getName());
     }
