@@ -100,6 +100,8 @@ public class RecipeService {
 				return recipeRepository.findOneByJsonParametersNoneVeganVegetarianIngredients(minTime, maxTime, categories, Arrays.asList(ingredients));
 			}
 		} else {
+			if(vegan) {vegetarian = true;};
+			int i = ingredients.length;
 			if(ingredients.length == 0) {
 				return recipeRepository.findOneByJsonParameters(minTime, maxTime, categories, vegetarian, vegan);
 			} else {

@@ -64,7 +64,7 @@ public class FileSystemStorageService implements StorageService {
 		try (InputStream inputStream = file.getInputStream()) {
 			String uuid = UUID.randomUUID().toString();
 			Files.copy(inputStream, this.rootLocation.resolve(uuid));
-			return "localhost/api/images/" + uuid;
+			return uuid;
 		} catch (IOException e) {
 			logger.error("Error while copying File to directory");
 			e.printStackTrace();

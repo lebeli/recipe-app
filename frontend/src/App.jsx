@@ -61,6 +61,7 @@ class App extends Component {
     fetch("/api/recipes" + "?" + requestParams, options)
       .then(response => response.json())
       .then(response => {
+        console.log(response);
         this.setState({
           recipe: response
         });
@@ -72,7 +73,7 @@ class App extends Component {
           imageUrl = imageUrl.substring(9);
         }
 
-        fetch(imageUrl, {
+        fetch("/api/images/" + imageUrl, {
           method: "GET"
         })
           .then(response => response.blob())
@@ -171,7 +172,7 @@ class App extends Component {
           if (response.image.includes("localhost")) {
             imageUrl = imageUrl.substring(9);
           }
-          fetch(imageUrl, {
+          fetch("api/images/" + imageUrl, {
             method: "GET"
           })
             .then(response => response.blob())
