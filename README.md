@@ -14,16 +14,43 @@ The quality of the application is ensured by several UI and unit tests. Componen
 
 
 # Mobile web application for browsing receipts
-## Backend
-### Getting Started
-The fluffy-bear backend is deployed as spring boot application with mysql database access - both running in docker containers. These instructions will cover requirements and usage for running both services in docker containers.
-
-#### Deploying the application
-Inside the root project folder, simply execute "docker-compose up".
+## Deploying the application
+Fluffy-Bear is a single-page application which is deployed via Docker. These instructions will cover requirements and usage for running all services in docker containers.
+Navigate to the root folder of the project and run 'docker-compose up'.
 This will create and start images/containers for:
 1. MYSQL database
 2. Spring Boot application
-3. React frontend dev server
+3. React frontend Nginx server
+4. Nginx reverse-proxy
+
+## Frontend
+Fluffy-bear's frontend is written with the help of the JavaScript library ReactJS as well as the React Library Material UI.
+The frontend is deployed via Docker. Instructions on how to deploy the service can be found below.
+
+### Structure
+Every frontend-relevant file is located in the directiory 'frontend'. 
+All component files are .jsx files and are located under 'frontend > src'.
+The frontend-team has decided to separate every class and function into a respective file. This way components are ensured to be reusable throughout the entire project.
+
+Styling for the components are done using Sass. The style sheet files have the same name as the component they are designed for.
+For example the JavaScript code for the Header component is located in it's designated file 'Header.jsx'. The corresponding style sheet is named 'Header.scss'.
+
+Tests can be found under '__test__'. The frontend is snapshot-tested. For this purpose the files containing the tests are named (component).spec.jsx.
+For the creating of the tests the testing frameworks Jest and Enzyme are used.
+When running a snapshot test for the first time, the corresponding snapshot is automatically created and stored in the folder '__snapshots__'.
+
+Any images needed for the application are stored in the folder called 'images'.
+
+### Navigation
+The main class of the application is called 'App.jsx'.
+Eventhough you can 'navigate' to details, fluffy-bear still is a single-page application. What changes is the content displayed between the Header and Footer.
+This content is set in the render() method inside App.jsx. The state has a variable 'pageNumber', which is set to 0 initially. 
+As soon as the user triggers "goToDetails()" by clicking on the image, the pageNumber is set to 1. 
+If the user clicks on the 'back' button, the method 'handleGoBack()' is triggered, which sets pageNumber to 0.
+If the pageNumber is 0 the Filter, Recommender and AddRecipe components are rendered, if the pageNumber is 1 the Details Component is rendered.
+
+## Backend
+The fluffy-bear backend is deployed as spring boot application with mysql database access - both running in docker containers.
 
 #### Usage
 ##### Requesting filtered recipes
