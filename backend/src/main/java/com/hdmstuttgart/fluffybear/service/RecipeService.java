@@ -90,13 +90,14 @@ public class RecipeService {
 		if(shortTime) { minTime = 0; }
 		if(longTime) { maxTime = 180; }
 		if(!vegan && !vegetarian) {
-			if(ingredients == null) {
+			if(ingredients.length == 0) {
 				return recipeRepository.findOneByJsonParametersNoneVeganVegetarian(minTime, maxTime, categories);
 			} else {
 				return recipeRepository.findOneByJsonParametersNoneVeganVegetarianIngredients(minTime, maxTime, categories, Arrays.asList(ingredients));
 			}
 		} else {
-			if(ingredients == null) {
+			int i = ingredients.length;
+			if(ingredients.length == 0) {
 				return recipeRepository.findOneByJsonParameters(minTime, maxTime, categories, vegetarian, vegan);
 			} else {
 				return recipeRepository.findOneByJsonParametersIngredients(minTime, maxTime, categories, vegetarian, vegan, Arrays.asList(ingredients));
