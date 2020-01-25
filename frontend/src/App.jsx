@@ -116,7 +116,7 @@ class App extends Component {
           });
           var imageUrl = response.image;
 
-          fetch("api/images/" + imageUrl, {
+          fetch("/api/images/" + imageUrl, {
             method: "GET"
           })
             .then(response => response.blob())

@@ -35,7 +35,8 @@ describe("<Filter />", () => {
   });
 
   test("calculateActiveFilters() should return a description of how many filters are active", () => {
-    const wrapper = shallow(<Filter updateRecipe={updateRecipe} />);
+    var mockFunction = () => function mock() {};
+    const wrapper = shallow(<Filter updateRecipe={mockFunction} />);
 
     // Given
     expect(
@@ -60,7 +61,8 @@ describe("<Filter />", () => {
   });
 
   test("updateState() should update different state attribute", () => {
-    const wrapper = shallow(<Filter />);
+    var mockFunction = () => function mock() {};
+    const wrapper = shallow(<Filter updateRecipe={mockFunction} />);
 
     // Given
     expect(wrapper.state("fast")).toEqual(false);
