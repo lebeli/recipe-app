@@ -110,6 +110,7 @@ public class RecipeController {
 		List<RecipeIngredient> recipeIngredients = recipe.getIngredients();
 		recipeIngredients.forEach(recipeIngredient -> {
 			ingredients.add(recipeIngredient.getIngredient());
+			ingredientService.addIngredient(recipeIngredient.getIngredient());
 		});
 		
 		// add Recipe instance to RecipeIngredient instances (maps relationship)
