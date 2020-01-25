@@ -35,7 +35,7 @@ describe("<Filter />", () => {
   });
 
   test("calculateActiveFilters() should return a description of how many filters are active", () => {
-    const wrapper = shallow(<Filter />);
+    const wrapper = shallow(<Filter updateRecipe={updateRecipe} />);
 
     // Given
     expect(
