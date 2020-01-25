@@ -35,60 +35,7 @@ class App extends Component {
 
   componentDidMount() {
     // initial recipe fetch
-    const options = {
-      method: "GET",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json"
-      }
-    };
-
-    var params = {
-      breakfast: this.state.breakfast,
-      lunch: this.state.lunch,
-      dinner: this.state.dinner,
-      vegetarian: this.state.vegetarian,
-      vegan: this.state.vegan,
-      longTime: this.state.longTime,
-      shortTime: this.state.shortTime,
-      ingredients: this.state.chosen_ingredients
-    };
-
-    var requestParams = Object.keys(params)
-      .map(key => key + "=" + params[key])
-      .join("&");
-
-    fetch("/api/recipes" + "?" + requestParams, options)
-      .then(response => response.json())
-      .then(response => {
-        console.log(response);
-        this.setState({
-          recipe: response
-        });
-
-        var imageUrl = response.image;
-
-        // TODO: raus
-        if (response.image.includes("localhost")) {
-          imageUrl = imageUrl.substring(9);
-        }
-
-        fetch("/api/images/" + imageUrl, {
-          method: "GET"
-        })
-          .then(response => response.blob())
-          .then(response => {
-            this.setState({
-              image: URL.createObjectURL(response)
-            });
-          })
-          .catch(error => {
-            // TODO: Error-Handling
-          });
-      })
-      .catch(error => {
-        // TODO: Error-Handling
-      });
+    this.getRecipe();
   }
 
   goToDetails() {
@@ -168,10 +115,7 @@ class App extends Component {
             recipe: response
           });
           var imageUrl = response.image;
-          // TODO: raus
-          if (response.image.includes("localhost")) {
-            imageUrl = imageUrl.substring(9);
-          }
+
           fetch("api/images/" + imageUrl, {
             method: "GET"
           })

@@ -35,7 +35,8 @@ class AddRecipeForm extends Component {
       steps: [],
       image: "",
       feedback: false,
-      valid: false
+      valid: false,
+      postError: false
     };
 
     this.addIngredient = this.addIngredient.bind(this);
@@ -240,7 +241,8 @@ class AddRecipeForm extends Component {
     ) {
       this.setState({
         valid: true,
-        feedback: true
+        feedback: true,
+        postError: false
       });
 
       // Calculate the minutes of the totalTime
@@ -297,18 +299,27 @@ class AddRecipeForm extends Component {
             .then(result => {
               if (result.status == 200) {
                 this.resetState();
+              } else {
+                this.setState({
+                  postError: true
+                });
               }
             })
             .catch(error => {
-              console.log("Add recipe went wrong: " + error);
+              this.setState({
+                postError: true
+              });
             });
         })
         .catch(error => {
-          console.log("Add image or add recipe went wrong: " + error);
+          this.setState({
+            postError: true
+          });
         });
     } else {
       this.setState({
         valid: false,
+        postError: false,
         feedback: true
       });
     }
@@ -343,6 +354,13 @@ class AddRecipeForm extends Component {
         <div className="feedback" id="valid_form_feedback">
           Das Rezept wurde erfolgreich hinzugefügt. Die FOODBABY Community dankt
           dir :)
+        </div>
+      );
+    }
+    if (this.state.postError == true) {
+      feedback = (
+        <div className="feedback" id="invalid_form_feedback">
+          Ein Fehler ist aufgetreten. Versuche es später noch einmal.
         </div>
       );
     }
