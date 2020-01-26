@@ -1,6 +1,17 @@
 version: "3"
 
 services:
+  reverseproxy:
+    image: reverseproxy
+    depends_on:
+      - frontend
+      - backend
+    image: reverseproxy
+    build:
+      context: ./proxy
+      dockerfile: Dockerfile
+    ports:
+      - 80:80
   mysql-docker-container:
     image: mysql:5.7.27
     environment:
@@ -10,3 +21,20 @@ services:
       - MYSQL_PASSWORD=ThePassword
     ports:
       - 3306:3306
+  backend:
+    image: backend
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql-docker-container:3306/fluffy_bear?serverTimezone=UTC
+    depends_on:
+      - mysql-docker-container
+    volumes:
+      - /data/spring-boot-app
+  frontend:
+    image: frontend
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+  
