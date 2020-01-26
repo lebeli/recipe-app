@@ -6,6 +6,6 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@ComponentScan(basePackages = {"com.hdmstuttgart.fluffybear.repository", "com.hdmstuttgart.fluffybear.Storage"}) // load instances of classes in repository package
+@ComponentScan(basePackages = {"com.hdmstuttgart.fluffybear.repository", "com.hdmstuttgart.fluffybear.storage"}) // load instances of classes in repository package
 public class RepositoryTestConfiguration {
 }

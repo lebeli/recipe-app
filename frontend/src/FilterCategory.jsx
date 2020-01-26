@@ -10,6 +10,7 @@ function FilterCategory(params) {
       <ToggleButton
         value={params.value}
         selected={selected}
+        disableFocusRipple
         onChange={() => {
           params.updateState(params.value, !params.selected);
           setSelected(!params.selected);

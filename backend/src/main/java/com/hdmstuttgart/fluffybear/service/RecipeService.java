@@ -17,6 +17,10 @@ import javax.persistence.EntityNotFoundException;
 @Service
 public class RecipeService {
 
+	final private int DEFAULT_TIME = 45;
+	final private int LONG_TIME = Integer.MAX_VALUE;
+	final private int SHORT_TIME = 20;
+
 	/**
 	 * Related Repository for recipes.
 	 */
@@ -53,16 +57,15 @@ public class RecipeService {
 		if(breakfast) { categories.add("breakfast"); }
 		if(lunch) { categories.add("lunch"); }
 		if(dinner) { categories.add("dinner"); }
-		int minTime = 30;
-		int maxTime = 60;
-		if(shortTime) { minTime = 0; }
-		if(longTime) { maxTime = 180; }
+		int maxTime = DEFAULT_TIME;
+		if(shortTime) { maxTime = SHORT_TIME; }
+		if(longTime) { maxTime = LONG_TIME; }
 		if(!vegan && !vegetarian) {
-			recipeRepository.findByJsonParametersNoneVeganVegetarian(minTime, maxTime, categories).forEach(recipe -> {
+			recipeRepository.findByJsonParametersNoneVeganVegetarian(maxTime, categories).forEach(recipe -> {
 				recipes.add(recipe);
 			});
 		} else {
-			recipeRepository.findByJsonParameters(minTime, maxTime, categories, vegetarian, vegan)
+			recipeRepository.findByJsonParameters(maxTime, categories, vegetarian, vegan)
 					.forEach(recipe -> {
 						recipes.add(recipe);
 					});
@@ -90,22 +93,21 @@ public class RecipeService {
 			categories.add("lunch");
 			categories.add("dinner");
 		}
-		int minTime = 0;
-		int maxTime = (int) Integer.MAX_VALUE;
-		if(shortTime) { maxTime = 20; }
+		int maxTime = LONG_TIME;
+		if(shortTime) { maxTime = SHORT_TIME; }
 		if(!vegan && !vegetarian) {
 			if(ingredients.length == 0) {
-				return recipeRepository.findOneByJsonParametersNoneVeganVegetarian(minTime, maxTime, categories);
+				return recipeRepository.findOneByJsonParametersNoneVeganVegetarian(maxTime, categories);
 			} else {
-				return recipeRepository.findOneByJsonParametersNoneVeganVegetarianIngredients(minTime, maxTime, categories, Arrays.asList(ingredients));
+				return recipeRepository.findOneByJsonParametersNoneVeganVegetarianIngredients(maxTime, categories, Arrays.asList(ingredients));
 			}
 		} else {
 			if(vegan) {vegetarian = true;};
 			int i = ingredients.length;
 			if(ingredients.length == 0) {
-				return recipeRepository.findOneByJsonParameters(minTime, maxTime, categories, vegetarian, vegan);
+				return recipeRepository.findOneByJsonParameters(maxTime, categories, vegetarian, vegan);
 			} else {
-				return recipeRepository.findOneByJsonParametersIngredients(minTime, maxTime, categories, vegetarian, vegan, Arrays.asList(ingredients));
+				return recipeRepository.findOneByJsonParametersIngredients(maxTime, categories, vegetarian, vegan, Arrays.asList(ingredients));
 			}
 		}
 	}

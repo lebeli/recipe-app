@@ -58,10 +58,6 @@ class Filter extends React.Component {
       });
   }
 
-  shouldComponentUpdate() {
-    return true;
-  }
-
   calculateActiveFilters() {
     let active = 0;
     if (this.state.breakfast == true) {

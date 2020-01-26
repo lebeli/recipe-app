@@ -73,7 +73,7 @@ public class RecipeRepositoryTest {
 
     @Test
     public void findByJsonParameters() {
-        recipeRepository.findByJsonParameters(10, 45, new ArrayList<>(Arrays.asList("breakfast")), false, false).forEach(recipe -> {
+        recipeRepository.findByJsonParameters(45, new ArrayList<>(Arrays.asList("breakfast")), false, false).forEach(recipe -> {
             queryResult.add(recipe);
         });
         assertEquals("Frivole Frühstückseier mit Pfiff", queryResult.get(0).getName());
