@@ -20,7 +20,7 @@ public class RecipeTest {
 
 	@Before
 	public void setUpEntities() {
-		recipe = TestUtilities.buildRecipe("Spaghetti", Arrays.asList("Noodles", "Sauce"));
+		recipe = TestUtilities.buildRecipe("Spaghetti", Arrays.asList("Noodles", "Sauce"), "dinner", 30);
 		noodles = recipe.getIngredients().get(0).getIngredient();
 		sauce = recipe.getIngredients().get(1).getIngredient();
 	}

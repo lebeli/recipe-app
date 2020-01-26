@@ -15,20 +15,9 @@ import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
-@SpringBootTest
-@RunWith(SpringRunner.class)
-@AutoConfigureTestDatabase
-@Transactional
-public class IngredientRepositoryTest {
+public class IngredientRepositoryTest extends RepositoryTest {
     @Autowired
     private IngredientRepository ingredientRepository;
-
-    private List<Ingredient> queryResult;
-
-    @Before
-    public void setUp() {
-        queryResult = new ArrayList<>();
-    }
 
     @Test
     public void repositoryInitTest() {

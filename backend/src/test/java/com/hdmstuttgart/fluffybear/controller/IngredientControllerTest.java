@@ -1,5 +1,8 @@
 package com.hdmstuttgart.fluffybear.controller;
 
+import com.hdmstuttgart.fluffybear.FluffyBearTestApplication;
+import com.hdmstuttgart.fluffybear.service.RecipeIngredientService;
+import com.hdmstuttgart.fluffybear.storage.DemoDataLoader;
 import com.hdmstuttgart.fluffybear.storage.StorageService;
 import com.hdmstuttgart.fluffybear.TestUtilities;
 import com.hdmstuttgart.fluffybear.model.Ingredient;
@@ -10,6 +13,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -20,21 +24,10 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@RunWith(SpringRunner.class)
 @WebMvcTest(controllers = IngredientController.class)
-public class IngredientControllerTest {
+public class IngredientControllerTest extends ControllerTest {
     @Autowired
-    private MockMvc httpRequest;
-
-    @MockBean
-    private RecipeService recipeService;
-
-    @MockBean
-    private IngredientService ingredientService;
-
-
-    @MockBean
-    private StorageService storageService;
+    protected MockMvc httpRequest;
 
     @Test
     public void ingredientsRequestRecieved() throws Exception {

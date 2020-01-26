@@ -53,6 +53,54 @@ public class RecipeServiceTest {
     }
 
     @Test
+    public void getAllRecipesFilterTest() {
+        recipeService.getAllRecipesByFilter(true, false, false, true, false, true, false, new String[] {});
+        verify(recipeRepository, times(1)).findAllByJsonParameters(eq(Integer.MAX_VALUE), eq(Arrays.asList("breakfast")), eq(true), eq(false));
+    }
+
+    @Test
+    public void getAllRecipesFilterNoneVeganVegetarianTest() {
+        recipeService.getAllRecipesByFilter(true, false, false, false, false, true, false, new String[] {"Mehl"});
+        recipeRepository.findAllByJsonParametersNoneVeganVegetarian(eq(Integer.MAX_VALUE), eq(Arrays.asList("breakfast")));
+    }
+
+    @Test
+    public void getAllRecipesFilterIngredientsTest() {
+        recipeService.getAllRecipesByFilter(true, false, false, true, false, true, false, new String[] {"Mehl"});
+        verify(recipeRepository, times(1)).findAllByJsonParametersIngredients(eq(Integer.MAX_VALUE), eq(Arrays.asList("breakfast")), eq(true), eq(false), eq(Arrays.asList("Mehl")));
+    }
+
+    @Test
+    public void getAllRecipesFilterNoneVeganVegetarianIngredientsTest() {
+        recipeService.getAllRecipesByFilter(true, false, false, false, false, true, false, new String[] {"Mehl"});
+        verify(recipeRepository, times(1)).findAllByJsonParametersNoneVeganVegetarianIngredients(eq(Integer.MAX_VALUE), eq(Arrays.asList("breakfast")), eq(Arrays.asList("Mehl")));
+    }
+
+    @Test
+    public void getOneRecipesFilterTest() {
+        recipeService.getOneRecipeByFilter(true, false, false, true, false, true, false, new String[] {});
+        verify(recipeRepository, times(1)).findOneByJsonParameters(eq(Integer.MAX_VALUE), eq(Arrays.asList("breakfast")), eq(true), eq(false));
+    }
+
+    @Test
+    public void getOneRecipesFilterNoneVeganVegetarianTest() {
+        recipeService.getOneRecipeByFilter(true, false, false, false, false, true, false, new String[] {});
+        verify(recipeRepository, times(1)).findOneByJsonParametersNoneVeganVegetarian(eq(Integer.MAX_VALUE), eq(Arrays.asList("breakfast")));
+    }
+
+    @Test
+    public void getOneRecipesFilterIngredientsTest() {
+        recipeService.getOneRecipeByFilter(true, false, false, true, false, true, false, new String[] {"Mehl"});
+        verify(recipeRepository, times(1)).findOneByJsonParametersIngredients(eq(Integer.MAX_VALUE), eq(Arrays.asList("breakfast")), eq(true), eq(false), eq(Arrays.asList("Mehl")));
+    }
+
+    @Test
+    public void getOneRecipesFilterNoneVeganVegetarianIngredientsTest() {
+        recipeService.getOneRecipeByFilter(true, false, false, false, false, true, false, new String[] {"Mehl"});
+        verify(recipeRepository, times(1)).findOneByJsonParametersNoneVeganVegetarianIngredients(eq(Integer.MAX_VALUE), eq(Arrays.asList("breakfast")), eq(Arrays.asList("Mehl")));
+    }
+
+    @Test
     public void getRecipesByIdTest() {
         when(recipeRepository.findById(1L)).thenReturn(Optional.of(spaghetti));
         when(recipeRepository.findById(2L)).thenReturn(Optional.of(soup));
@@ -118,21 +166,21 @@ public class RecipeServiceTest {
 
         List<String> categoriesFilter = new ArrayList<String>(Arrays.asList("lunch", "dinner"));
 
-        when(recipeRepository.findByJsonParameters(anyInt(), anyList(), anyBoolean(), eq(true)))
+        when(recipeRepository.findAllByJsonParameters(anyInt(), anyList(), anyBoolean(), eq(true)))
                 .thenReturn(new ArrayList<Recipe>(
                         allRecipes
                                 .stream()
                                 .filter(recipe -> recipe.isVegan())
                                 .collect(Collectors.toList())
                 ));
-        when(recipeRepository.findByJsonParameters(anyInt(), eq(categoriesFilter), anyBoolean(), anyBoolean()))
+        when(recipeRepository.findAllByJsonParameters(anyInt(), eq(categoriesFilter), anyBoolean(), anyBoolean()))
                 .thenReturn(new ArrayList<Recipe>(
                         allRecipes
                                 .stream()
                                 .filter(recipe -> (categoriesFilter).contains(recipe.getCategory()))
                                 .collect(Collectors.toList())
                 ));
-        when(recipeRepository.findByJsonParametersNoneVeganVegetarian(anyInt(), eq(categoriesFilter)))
+        when(recipeRepository.findAllByJsonParametersNoneVeganVegetarian(anyInt(), eq(categoriesFilter)))
                 .thenReturn(new ArrayList<Recipe>(
                         allRecipes
                                 .stream()
@@ -140,9 +188,9 @@ public class RecipeServiceTest {
                                 .collect(Collectors.toList())
                 ));
 
-        List<Recipe> filteredRecipesByVegan = recipeService.getAllRecipesByFilter(true, true, true, true, true, true, true);
-        List<Recipe> filteredRecipesByCategory = recipeService.getAllRecipesByFilter(false, true, true, true, false, true, false);
-        List<Recipe> filteredRecipesByNoneVeganVegetarian = recipeService.getAllRecipesByFilter(false, true, true, false, false, true, false);
+        List<Recipe> filteredRecipesByVegan = recipeService.getAllRecipesByFilter(true, true, true, true, true, true, true, new String[] {});
+        List<Recipe> filteredRecipesByCategory = recipeService.getAllRecipesByFilter(false, true, true, true, false, true, false, new String[] {});
+        List<Recipe> filteredRecipesByNoneVeganVegetarian = recipeService.getAllRecipesByFilter(false, true, true, false, false, true, false, new String[] {});
         assertEquals(1, filteredRecipesByVegan.size());
         assertEquals("Soup", filteredRecipesByVegan.get(0).getName());
         assertEquals(2, filteredRecipesByCategory.size());
@@ -150,6 +198,6 @@ public class RecipeServiceTest {
         assertEquals("Soup", filteredRecipesByCategory.get(1).getName());
         assertEquals(1, filteredRecipesByNoneVeganVegetarian.size());
         assertEquals("Pancakes", filteredRecipesByNoneVeganVegetarian.get(0).getName());
-        verify(recipeRepository, times(2)).findByJsonParameters(anyInt(), anyList(), anyBoolean(), anyBoolean());
+        verify(recipeRepository, times(2)).findAllByJsonParameters(anyInt(), anyList(), anyBoolean(), anyBoolean());
     }
 }

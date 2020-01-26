@@ -19,11 +19,7 @@ import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
-@SpringBootTest
-@RunWith(SpringRunner.class)
-@AutoConfigureTestDatabase
-@Transactional
-public class RecipeIngredientRepositoryTest {
+public class RecipeIngredientRepositoryTest extends RepositoryTest {
     @Autowired
     private RecipeIngredientRepository recipeIngredientRepository;
 
@@ -33,13 +29,6 @@ public class RecipeIngredientRepositoryTest {
     @Autowired
     private IngredientRepository ingredientRepository;
 
-    private List<Ingredient> queryResult;
-
-    @Before
-    public void setUp() {
-        queryResult = new ArrayList<>();
-    }
-
     @Test
     public void repositoryInitTest() {
         assertEquals(272, recipeIngredientRepository.count());
@@ -48,7 +37,7 @@ public class RecipeIngredientRepositoryTest {
     @Test
     public void saveRecipeIngredientTest() {
         long initialSize = recipeIngredientRepository.count();
-        Recipe recipe = TestUtilities.buildRecipe("Recipe", Arrays.asList("Ingredient"));
+        Recipe recipe = TestUtilities.buildRecipe("Recipe", Arrays.asList("Ingredient"), "dinner", 30);
         Ingredient ingredient = recipe.getIngredients().get(0).getIngredient();
         RecipeIngredient recipeIngredient = new RecipeIngredient(recipe, ingredient, "2 Spoons");
         recipeRepository.save(recipe);
