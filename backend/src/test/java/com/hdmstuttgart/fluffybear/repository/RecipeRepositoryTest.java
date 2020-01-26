@@ -66,7 +66,7 @@ public class RecipeRepositoryTest extends RepositoryTest {
         recipeRepository.findAll().forEach(recipe -> {
             queryResult.add(recipe);
         });
-        assertEquals(31, queryResult.size());
+        assertEquals(32, queryResult.size());
     }
 
     @Test
@@ -75,7 +75,7 @@ public class RecipeRepositoryTest extends RepositoryTest {
         recipeRepository.findAll().forEach(recipe -> {
             queryResult.add(recipe);
         });
-        assertEquals(30, queryResult.size());
+        assertEquals(31, queryResult.size());
     }
 
     @Test
