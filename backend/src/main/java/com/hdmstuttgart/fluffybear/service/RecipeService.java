@@ -51,7 +51,7 @@ public class RecipeService {
 	 * @param vegan  indicating if the recipe is vegan.
 	 * @return  the filtered list of recipes.
 	 */
-	public List<Recipe> getAllRecipesByFilter(boolean breakfast, boolean lunch, boolean dinner, boolean vegetarian, boolean vegan, boolean longTime, boolean shortTime) {
+	public List<Recipe> getAllRecipesByFilter(boolean breakfast, boolean lunch, boolean dinner, boolean vegetarian, boolean vegan, boolean longTime, boolean shortTime, String[] ingredients) {
 		List<Recipe> recipes = new ArrayList<Recipe>();
 		List<String> categories = new ArrayList<>();
 		if(breakfast) { categories.add("breakfast"); }
@@ -61,14 +61,25 @@ public class RecipeService {
 		if(shortTime) { maxTime = SHORT_TIME; }
 		if(longTime) { maxTime = LONG_TIME; }
 		if(!vegan && !vegetarian) {
-			recipeRepository.findByJsonParametersNoneVeganVegetarian(maxTime, categories).forEach(recipe -> {
-				recipes.add(recipe);
-			});
+			if(ingredients.length == 0) {
+				recipeRepository.findAllByJsonParametersNoneVeganVegetarian(maxTime, categories).forEach(recipe -> {
+					recipes.add(recipe);
+				});
+			} else {
+				recipeRepository.findAllByJsonParametersNoneVeganVegetarianIngredients(maxTime, categories, Arrays.asList(ingredients)).forEach(recipe -> {
+					recipes.add(recipe);
+				});
+			}
 		} else {
-			recipeRepository.findByJsonParameters(maxTime, categories, vegetarian, vegan)
-					.forEach(recipe -> {
-						recipes.add(recipe);
-					});
+			if(ingredients.length == 0) {
+				recipeRepository.findAllByJsonParameters(maxTime, categories, vegetarian, vegan).forEach(recipe -> {
+					recipes.add(recipe);
+				});
+			} else {
+				recipeRepository.findAllByJsonParametersIngredients(maxTime, categories, vegetarian, vegan, Arrays.asList(ingredients)).forEach(recipe -> {
+					recipes.add(recipe);
+				});
+			}
 		}
 		return recipes;
 	}

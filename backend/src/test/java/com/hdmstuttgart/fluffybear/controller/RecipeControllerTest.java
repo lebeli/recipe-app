@@ -14,6 +14,8 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 import static org.mockito.ArgumentMatchers.*;
@@ -23,63 +25,54 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@RunWith(SpringRunner.class)
-@WebMvcTest(controllers = RecipeController.class)  // includes only RecipeController in the application context
-public class RecipeControllerTest {
+@WebMvcTest(controllers = RecipeController.class)
+public class RecipeControllerTest extends ControllerTest {
     @Autowired
-    private MockMvc httpRequest;
-
-    @MockBean
-    private RecipeService recipeService;
-
-    @MockBean
-    private IngredientService ingredientService;
-
-    @MockBean
-    private RecipeIngredientService recipeIngredientService;
-
-    @MockBean
-    private StorageService storageService;
+    protected MockMvc httpRequest;
 
     @Test
     public void allRecipesRequestRecieved() throws Exception {
-        TestUtilities.allRecipesGetRequest(httpRequest, true)
+        TestUtilities.allRecipesGetRequest(httpRequest, true, new String[] {"Mehl"})
                 .andExpect(status().isOk());
     }
 
     @Test
     public void allRecipesRequestServiceCalled() throws Exception {
-        TestUtilities.allRecipesGetRequest(httpRequest, true)
+        TestUtilities.allRecipesGetRequest(httpRequest, true, new String[] {"Mehl"})
                 .andExpect(status().isOk());
-        verify(recipeService, times(1)).getAllRecipesByFilter(anyBoolean(), anyBoolean(), anyBoolean(), anyBoolean(), anyBoolean(), anyBoolean(), anyBoolean());
+        verify(recipeService, times(1)).getAllRecipesByFilter(anyBoolean(), anyBoolean(), anyBoolean(), anyBoolean(), anyBoolean(), anyBoolean(), anyBoolean(), any(String[].class));
     }
 
     @Test
     public void allRecipesRequestServiceCalledNoneVeganVegetarian() throws Exception {
-        TestUtilities.allRecipesGetRequest(httpRequest, false)
+        TestUtilities.allRecipesGetRequest(httpRequest, false, new String[] {"Mehl"})
                 .andExpect(status().isOk());
-        verify(recipeService, times(1)).getAllRecipesByFilter(anyBoolean(), anyBoolean(), anyBoolean(), anyBoolean(), anyBoolean(), anyBoolean(), anyBoolean());
+        verify(recipeService, times(1)).getAllRecipesByFilter(anyBoolean(), anyBoolean(), anyBoolean(), anyBoolean(), anyBoolean(), anyBoolean(), anyBoolean(), any(String[].class));
     }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     @Test
     public void randomRecipeRequestRecieved() throws Exception {
-        TestUtilities.randomRecipeGetRequest(httpRequest, true)
+        TestUtilities.randomRecipeGetRequest(httpRequest, true, new String[] {"Mehl"})
                 .andExpect(status().isOk());
     }
 
     @Test
     public void randomRecipeRequestServiceCalled() throws Exception {
-        TestUtilities.randomRecipeGetRequest(httpRequest, true)
+        TestUtilities.randomRecipeGetRequest(httpRequest, true, new String[] {"Mehl"})
                 .andExpect(status().isOk());
-        verify(recipeService, times(1)).getAllRecipesByFilter(anyBoolean(), anyBoolean(), anyBoolean(), anyBoolean(), anyBoolean(), anyBoolean(), anyBoolean());
+        verify(recipeService, times(1)).getOneRecipeByFilter(anyBoolean(), anyBoolean(), anyBoolean(), anyBoolean(), anyBoolean(), anyBoolean(), anyBoolean(), any(String[].class));
     }
 
     @Test
     public void randomRecipeRequestServiceCalledNoneVeganVegetarian() throws Exception {
-        TestUtilities.randomRecipeGetRequest(httpRequest, false)
+        TestUtilities.randomRecipeGetRequest(httpRequest, false, new String[] {"Mehl"})
                 .andExpect(status().isOk());
-        verify(recipeService, times(1)).getAllRecipesByFilter(anyBoolean(), anyBoolean(), anyBoolean(), anyBoolean(), anyBoolean(), anyBoolean(), anyBoolean());
+        verify(recipeService, times(1)).getOneRecipeByFilter(anyBoolean(), anyBoolean(), anyBoolean(), anyBoolean(), anyBoolean(), anyBoolean(), anyBoolean(), any(String[].class));
     }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     @Test
     public void recipeRequestByIdRecieved() throws Exception {
@@ -98,7 +91,7 @@ public class RecipeControllerTest {
 
     @Test
     public void recipeRequestAddRecieved() throws Exception {
-        Recipe recipe = TestUtilities.buildRecipe("Spaghetti", Arrays.asList("Noodles", "Sauce"));
+        Recipe recipe = TestUtilities.buildRecipe("Spaghetti", Arrays.asList("Noodles", "Sauce"), "dinner", 30);
 
         httpRequest.perform(post("/recipes/add")
                 .contentType("application/json")
@@ -108,7 +101,7 @@ public class RecipeControllerTest {
 
     @Test
     public void recipeRequestAddServiceCalled() throws Exception {
-        Recipe recipe = TestUtilities.buildRecipe("Spaghetti", Arrays.asList("Noodles", "Sauce"));
+        Recipe recipe = TestUtilities.buildRecipe("Spaghetti", Arrays.asList("Noodles", "Sauce"), "dinner", 30);
 
         httpRequest.perform(post("/recipes/add")
                 .contentType("application/json")

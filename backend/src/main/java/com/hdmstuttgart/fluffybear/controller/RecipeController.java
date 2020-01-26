@@ -46,31 +46,19 @@ public class RecipeController {
 	 * @param shortTime  boolean if recipes with under 30 min preparation time should be considered.
 	 * @return recipes fitting the given query parameters.
 	 */
-	@RequestMapping(value = "/recipes/all", consumes = {"application/json"})
+	@RequestMapping(value = "/recipes/all")
 	public List<Recipe> getAllRecipesByFilter(
-			@RequestHeader(value="breakfast") boolean breakfast,
-			@RequestHeader(value="lunch") boolean lunch,
-			@RequestHeader(value="dinner") boolean dinner,
-			@RequestHeader(value="vegetarian") boolean vegetarian,
-			@RequestHeader(value="vegan") boolean vegan,
-			@RequestHeader(value="longTime") boolean longTime,
-			@RequestHeader(value="shortTime") boolean shortTime
+			@RequestParam(value="breakfast") boolean breakfast,
+			@RequestParam(value="lunch") boolean lunch,
+			@RequestParam(value="dinner") boolean dinner,
+			@RequestParam(value="vegetarian") boolean vegetarian,
+			@RequestParam(value="vegan") boolean vegan,
+			@RequestParam(value="longTime") boolean longTime,
+			@RequestParam(value="shortTime") boolean shortTime,
+			@RequestParam(value = "ingredients") String[] ingredients
 	) {
-		return recipeService.getAllRecipesByFilter(breakfast, lunch, dinner, vegetarian, vegan, longTime, shortTime);
+		return recipeService.getAllRecipesByFilter(breakfast, lunch, dinner, vegetarian, vegan, longTime, shortTime, ingredients);
 	}
-
-//	@RequestMapping(value = "/recipes", consumes = {"application/json"})
-//	public Recipe getRandomRecipeByFilter(
-//			@RequestHeader(value="breakfast") boolean breakfast,
-//			@RequestHeader(value="lunch") boolean lunch,
-//			@RequestHeader(value="dinner") boolean dinner,
-//			@RequestHeader(value="vegetarian") boolean vegetarian,
-//			@RequestHeader(value="vegan") boolean vegan,
-//			@RequestHeader(value="longTime") boolean longTime,
-//			@RequestHeader(value="shortTime") boolean shortTime
-//	) {
-//		return recipeService.getOneRecipeByFilter(breakfast, lunch, dinner, vegetarian, vegan, longTime, shortTime);
-//	}
 
 	@RequestMapping(value = "/recipes")
 	public Recipe getRandomRecipeByFilter(

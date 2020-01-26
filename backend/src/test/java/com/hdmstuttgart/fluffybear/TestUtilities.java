@@ -31,8 +31,11 @@ public final class TestUtilities {
      * @param ingredientNames  List of names for ingredient generation.
      * @return  Recipe instance wir added ingredients.
      */
-    public static Recipe buildRecipe(String recipeName, List<String> ingredientNames) {
+    public static Recipe buildRecipe(String recipeName, List<String> ingredientNames, String category, int totalTime) {
         Recipe recipe = new Recipe(recipeName);
+        recipe.setVegetarian(true);
+        recipe.setCategory(category);
+        recipe.setTotalTime(totalTime);
         ingredientNames.forEach(ingredientName -> {
             Ingredient ingredient = new Ingredient(ingredientName);
             recipe.addIngredient(ingredient);
@@ -67,16 +70,16 @@ public final class TestUtilities {
      * @return  ResultActions with which expected values can be tested.
      * @throws Exception
      */
-    public static ResultActions allRecipesGetRequest(MockMvc httpRequest, Boolean vegan) throws Exception {
+    public static ResultActions allRecipesGetRequest(MockMvc httpRequest, Boolean vegan, String[] ingredients) throws Exception {
         return httpRequest.perform(get("/recipes/all")
-                .header("breakfast", "true")
-                .header("lunch", "true")
-                .header("dinner", "true")
-                .header("vegetarian", vegan.toString())
-                .header("vegan", vegan.toString())
-                .header("longTime", "true")
-                .header("shortTime", "true")
-                .contentType("application/json"));
+                .param("breakfast", "true")
+                .param("lunch", "true")
+                .param("dinner", "true")
+                .param("vegetarian", vegan.toString())
+                .param("vegan", vegan.toString())
+                .param("longTime", "true")
+                .param("shortTime", "true")
+                .param("ingredients", ingredients));
     }
 
     /**
@@ -87,15 +90,15 @@ public final class TestUtilities {
      * @return  ResultActions with which expected values can be tested.
      * @throws Exception
      */
-    public static ResultActions randomRecipeGetRequest(MockMvc httpRequest, Boolean vegan) throws Exception {
-        return httpRequest.perform(get("/recipes/all")
-                .header("breakfast", "true")
-                .header("lunch", "true")
-                .header("dinner", "true")
-                .header("vegetarian", vegan.toString())
-                .header("vegan", vegan.toString())
-                .header("longTime", "true")
-                .header("shortTime", "true")
-                .contentType("application/json"));
+    public static ResultActions randomRecipeGetRequest(MockMvc httpRequest, Boolean vegan, String[] ingredients) throws Exception {
+        return httpRequest.perform(get("/recipes")
+                .param("breakfast", "true")
+                .param("lunch", "true")
+                .param("dinner", "true")
+                .param("vegetarian", vegan.toString())
+                .param("vegan", vegan.toString())
+                .param("longTime", "true")
+                .param("shortTime", "true")
+                .param("ingredients", ingredients));
     }
 }
